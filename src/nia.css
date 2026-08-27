@@ -1,0 +1,712 @@
+/* ==========================================================
+   NEW ILOCOS AIRPORT CASE STUDY
+   ----------------------------------------------------------
+   Global reset, glass nav, and hamburger menu already live in
+   index.css and are rendered by the shared <Nav> component —
+   this file only holds Nia-page-specific rules.
+   ----------------------------------------------------------
+   CONTENTS
+   1. VARIABLES
+   2. HERO & GATEWAY
+   3. TIMELINE SYSTEM & LAYOUT
+   4. COLOR BLOCKS & BACKGROUNDS
+   5. TYPOGRAPHY & COMPONENTS
+========================================================== */
+
+/* --- 1. VARIABLES --- */
+.nia-case-study {
+    --nia-teal: #48C1B0;
+    --nia-teal-dark: #3AA394;
+    --nia-gray: #8A8B8F;
+    --nia-blue: #5B86C6;
+    --nia-light-gray: #D1D3D4;
+
+    --text-dark: #333333;
+    --text-light: #FFFFFF;
+    --text-muted: #666666;
+
+    /* One coordinate system keeps every timeline section on the same axis. */
+    --timeline-width: 1100px;
+    --timeline-left: max(5vw, calc((100vw - var(--timeline-width)) / 2));
+    --timeline-rule-width: 3px;
+    --timeline-rule-half: 1.5px;
+    --timeline-axis-left: calc(var(--timeline-left) + var(--timeline-rule-half));
+    --timeline-gutter: 60px;
+
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Karla', sans-serif;
+    --transition: 0.35s ease;
+
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    background-color: #FFFFFF;
+    overflow-x: hidden;
+}
+
+@font-face {
+    font-family: 'Bahnschrift';
+    src: url('/assets/fonts/BAHNSCHRIFT.TTF') format('truetype');
+    font-weight: 100 900; 
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sansation';
+    src: url('/assets/fonts/SANSATION.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.nia-case-study h1,
+.nia-case-study h2,
+.nia-case-study h3,
+.nia-case-study h4,
+.nia-case-study h5,
+.nia-case-study h6 { font-family: var(--font-heading); }
+
+.nia-case-study img { max-width: 100%; display: block; }
+
+/* ==========================================================
+   2. HERO & GATEWAY
+========================================================== */
+.hero-section {
+    background: linear-gradient(180deg, #48C1B0 0%, #168475 60%, #001512 100%);
+    color: #FFFFFF;
+    padding: 180px 8vw 50px;
+    text-align: center;
+}
+
+.hero-center {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-main-logo {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 91px;
+}
+
+.hero-description {
+    font-size: 15px;
+    line-height: 1.8;
+    opacity: 0.95;
+    margin-bottom: 60px;
+}
+
+.hero-editorial-table {
+    width: 100%;
+    max-width: 1600px; 
+    margin: 0 auto;
+    text-align: left;
+    padding: 0 4vw; 
+}
+
+.editorial-line {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.4);
+    margin-bottom: 30px; 
+}
+
+.table-grid {
+    display: grid;
+    grid-template-columns: 1fr 140px 140px 220px; 
+    gap: 30px;
+    font-family: var(--font-heading);
+}
+
+.brand-cell {
+    display: flex;
+    align-items: center;
+    gap: 40px; 
+    justify-self: flex-start;
+}
+
+.brand-cell img { height: 45px; }
+
+.brand-cell p {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+}
+
+.details-col span {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    opacity: 1; 
+    display: block;
+    margin-bottom: 15px; 
+}
+
+.details-col ul li {
+    font-size: 12px;
+    font-weight: 300;
+    margin-bottom: 8px; 
+    opacity: 0.9;
+}
+
+.details-col ul li strong {
+    font-weight: 600;
+    opacity: 1;
+}
+
+.nia-case-study .gateway-section {
+    background: linear-gradient(180deg, #48C1B0 0%, #48C1B0 30%, #FFFFFF 85%);
+    text-align: center;
+    padding-top: 60px;
+    position: relative;
+}
+
+.nia-case-study .gateway-section h2 {
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: #FFFFFF;
+    font-weight: 700;
+    margin-bottom: 50px; 
+    position: relative;
+    z-index: 2;
+    text-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+}
+
+.nia-case-study .airplane-image {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* ==========================================================
+   4. TIMELINE SYSTEM & LAYOUT
+========================================================== */
+.nia-case-study .content-section {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.nia-case-study .timeline-container {
+    max-width: var(--timeline-width);
+    margin: 0 auto;
+    border-left: var(--timeline-rule-width) solid;
+    padding-left: var(--timeline-gutter);
+    margin-left: var(--timeline-left);
+    padding-top: 60px;
+    padding-bottom: 60px;
+    isolation: isolate; 
+}
+
+.nia-case-study .timeline-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    padding-bottom: 120px; 
+}
+
+.nia-case-study .marker-img {
+    position: absolute;
+    /* Account for the 3px rule so the icon is centered, not right-shifted. */
+    left: calc(0px - var(--timeline-gutter) - var(--timeline-rule-half));
+    transform: translateX(-50%);
+    top: 2px;
+    width: 22px;
+    height: auto;
+    z-index: 10;
+}
+
+/* --- FULL-WIDTH CENTERED LAYOUT (LOGO CONCEPT) --- */
+.nia-case-study .col-full-center {
+    grid-column: 1 / -1; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 100px; 
+    width: 100%;
+}
+
+.nia-case-study .centered-teal-heading {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--nia-teal);
+    margin-bottom: 50px;
+}
+
+.nia-case-study .centered-grid-img {
+    width: 100%;
+    max-width: 900px; 
+}
+
+/* --- LINE COLOR MODIFIERS --- */
+.nia-case-study .border-light-gray { border-color: #E6E8E9; }
+.nia-case-study .border-white { border-color: #FFFFFF; }
+.nia-case-study .border-teal { border-color: var(--nia-teal) !important; }
+
+/* Spacing Helpers */
+.nia-case-study .pb-large { padding-bottom: 100px; }
+.nia-case-study .pt-large { padding-top: 60px; }
+.nia-case-study .meta-gap { margin-top: 45px !important; }
+.nia-case-study .feature-list-offset { margin-top: 215px; }
+
+/* Content Columns */
+.nia-case-study .col-left h3 {
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.nia-case-study .col-left p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-weight: 300;
+}
+
+.nia-case-study .col-left p.meta {
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* --- WHITE SECTION TYPOGRAPHY --- */
+.nia-case-study .bg-white .col-left h3 { color: var(--nia-teal); }
+
+.bg-white .col-left p,
+.bg-white .col-left p.meta,
+.nia-case-study .bg-white .feature-item p {
+    color: var(--nia-teal);
+    opacity: 0.95; 
+}
+
+.nia-case-study .bg-white .feature-item h4 {
+    color: var(--nia-teal);
+    font-weight: 500;
+}
+
+.nia-case-study .bg-white .sub-label {
+    color: var(--nia-teal);
+    opacity: 0.5;
+}
+
+.text-white .col-left h3,
+.text-white .col-left p,
+.text-white .col-left p.meta,
+.nia-case-study .text-white .feature-item p {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.nia-case-study .text-white .bullet-list { color: rgba(255, 255, 255, 0.9); }
+
+.nia-case-study .graphic-img {
+    width: 125%;
+    height: auto;
+}
+
+.nia-case-study .wayfinding-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 125%; 
+}
+
+.nia-case-study .wayfinding-card {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 18px;
+    padding: 14px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 100%);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); 
+}
+
+.nia-case-study .wayfinding-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* ==========================================================
+   5. COLOR BLOCKS & BACKGROUNDS
+========================================================== */
+.nia-case-study .bg-white { background-color: #FFFFFF; }
+.nia-case-study .bg-blue { background-color: var(--nia-blue); }
+.nia-case-study .bg-light-gray { background-color: var(--nia-light-gray); }
+
+.nia-case-study .bg-gray { background-color: var(--nia-gray); }
+.nia-case-study .bg-gray .timeline-container { padding-bottom: 60px; }
+
+.nia-case-study .bg-terminal-mockup {
+    background-image: url('/assets/images/nia/NIA-TERMINAL.jpg');
+    background-size: cover;
+    background-position: center top; 
+    background-repeat: no-repeat;
+    padding-bottom: 0 !important;
+}
+
+.nia-case-study .bg-terminal-mockup .timeline-container {
+    padding-top: 150px;
+    padding-bottom: 0;
+}
+
+.nia-case-study .spacer-huge { margin-top: 250px; }
+
+.bg-terminal-mockup .wayfinding-text h3,
+.nia-case-study .bg-terminal-mockup .wayfinding-text p { color: #FFFFFF; }
+
+.bg-terminal-mockup .terminal-text h3,
+.nia-case-study .bg-terminal-mockup .terminal-text p { color: var(--text-dark); }
+
+.nia-case-study .marker-dark { filter: brightness(0.15); }
+
+/* The reference switches the rule from white to charcoal at this marker.
+   Extending the final item also carries the rule all the way to the ID section. */
+.nia-case-study .terminal-environment {
+    padding-bottom: 450px;
+}
+
+.nia-case-study .terminal-environment::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(0px - var(--timeline-gutter) - var(--timeline-rule-width));
+    width: var(--timeline-rule-width);
+    background: #303030;
+    z-index: 4;
+}
+
+.nia-case-study .terminal-environment .marker-img {
+    z-index: 5;
+}
+
+/* ==========================================================
+   ID MOCKUP SECTION — matches Figma exactly
+   - Soft neutral background, artwork begins at the section boundary
+   - Teal vertical rule aligned to the global timeline column
+   - NIA logo + heading + subtitle on the left
+========================================================== */
+
+.nia-case-study {
+    --id-text-left: calc(var(--timeline-left) + var(--timeline-rule-width) + var(--timeline-gutter));
+}
+
+.nia-case-study .id-section {
+    position: relative;
+    background:
+        radial-gradient(circle at 78% 35%, rgba(72, 193, 176, 0.12), transparent 26%),
+        linear-gradient(135deg, #FFFFFF 0%, #F3F7F6 48%, #FFFFFF 100%);
+    min-height: 760px;
+    overflow: hidden;
+    z-index: 10;
+}
+
+/* Teal vertical rule */
+.nia-case-study .id-timeline-line {
+    position: absolute;
+    left: var(--timeline-axis-left);
+    top: 0;
+    height: 500px;
+    width: var(--timeline-rule-width);
+    background: var(--nia-teal);
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+/* Arrow marker on the line */
+.nia-case-study .id-marker {
+    position: absolute;
+    left: calc(0px - var(--timeline-gutter) - var(--timeline-rule-half));
+    top: 4px;
+    transform: translateX(-50%);
+    width: 22px;
+    height: auto;
+    z-index: 10;
+}
+
+.nia-case-study .id-copy {
+    position: relative;
+}
+
+/* Left content block */
+.nia-case-study .id-content {
+    position: relative;
+    z-index: 5;
+    padding-top: 100px;
+    padding-bottom: 120px;
+    padding-left: var(--id-text-left);
+    max-width: 560px;
+}
+
+.nia-case-study .id-logo {
+    width: 180px;
+    margin-bottom: 48px;
+}
+
+.nia-case-study .id-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(30px, 3vw, 48px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--nia-teal);
+    margin-bottom: 20px;
+    letter-spacing: -0.3px;
+}
+
+.nia-case-study .id-sub {
+    font-size: 16px;
+    color: #8DCDC8;
+    font-weight: 300;
+    margin: 0;
+}
+
+/* ID card image */
+.nia-case-study .id-card-img {
+    position: absolute;
+    top: 0;
+    right: -60px;
+    width: 62%;
+    max-width: 920px;
+    height: auto;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* ==========================================================
+   RESPONSIVE — ID SECTION
+========================================================== */
+@media (max-width: 1200px) {
+.nia-case-study .id-card-img {
+        width: 56%;
+        top: 0;
+        right: -40px;
+    }
+}
+
+@media (max-width: 900px) {
+.nia-case-study {
+        --timeline-left: 24px;
+        --timeline-rule-width: 2px;
+        --timeline-rule-half: 1px;
+        --timeline-gutter: 36px;
+    }
+
+.nia-case-study .timeline-container {
+        max-width: none;
+        margin-right: 0;
+        padding-right: 24px;
+    }
+
+.nia-case-study .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding-bottom: 80px;
+    }
+
+.nia-case-study .marker-img {
+        width: 18px;
+    }
+
+.nia-case-study .feature-list-offset { margin-top: 0; }
+.nia-case-study .graphic-img,
+.nia-case-study .wayfinding-stack,
+.nia-case-study .color-palette-img { width: 100%; }
+
+.nia-case-study .terminal-environment {
+        padding-bottom: 220px;
+    }
+
+.nia-case-study .terminal-environment::before {
+    }
+
+.nia-case-study .id-section { min-height: auto; }
+.nia-case-study .id-timeline-line {
+        height: 450px;
+    }
+.nia-case-study .id-marker {
+        width: 18px;
+    }
+.nia-case-study .id-card-img {
+        position: relative;
+        top: auto; right: auto;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        display: block;
+    }
+.nia-case-study .id-content { padding-bottom: 40px; }
+}
+
+@media (max-width: 600px) {
+.nia-case-study .id-logo { width: 130px; }
+.nia-case-study .id-heading { font-size: 28px; }
+.nia-case-study .id-sub { font-size: 14px; }
+}
+
+/* ==========================================================
+   6. TYPOGRAPHY & COMPONENTS
+========================================================== */
+.nia-case-study .feature-item {
+    display: flex;
+    align-items: flex-start; 
+    gap: 15px;
+    margin-bottom: 40px; 
+}
+
+.nia-case-study .feature-icon-img {
+    width: 22px;
+    height: 22px;
+    margin-top: 2px; 
+}
+
+.nia-case-study .feature-item h4 {
+    font-size: 22px;
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+.nia-case-study .sub-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.nia-case-study .feature-item p {
+    font-size: 15px;
+    margin: 0;
+    font-weight: 300;
+}
+
+.nia-case-study .type-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.nia-case-study .type-card {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 18px;
+    padding: 18px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 100%);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden; 
+}
+
+.nia-case-study .type-card h2 {
+    font-size: 75px; 
+    font-weight: normal;
+    color: #FFFFFF; 
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0; 
+}
+
+.nia-case-study .font-name-sansation { font-family: 'Sansation', var(--font-heading); }
+.nia-case-study .font-name-bahnschrift { font-family: 'Bahnschrift', var(--font-heading); font-size: 62px; }
+
+.nia-case-study .badge-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 4px;
+    flex-shrink: 0; 
+}
+
+.nia-case-study .badge {
+    background: var(--nia-teal);
+    padding: 4px 12px;
+    font-size: 10px;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 1.4;
+    font-family: var(--font-heading); 
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    color: #FFFFFF;
+}
+
+.nia-case-study .type-card:has(.font-name-sansation) .badge { font-family: 'Sansation', var(--font-heading); }
+.nia-case-study .type-card:has(.font-name-bahnschrift) .badge { font-family: 'Bahnschrift', var(--font-heading); }
+
+.nia-case-study .badge-sansation-1 { font-family: 'Sansation', var(--font-heading); }
+.nia-case-study .badge-sansation-2 { font-family: 'Sansation', var(--font-heading); }
+.nia-case-study .badge-bahnschrift-1 { font-family: 'Bahnschrift', var(--font-heading); }
+.nia-case-study .badge-bahnschrift-2 { font-family: 'Bahnschrift', var(--font-heading); }
+.nia-case-study .badge-bahnschrift-3 { font-family: 'Bahnschrift', var(--font-heading); }
+
+.nia-case-study .bullet-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+.nia-case-study .color-palette-img {
+    width: 130%; 
+    max-width: none;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.nia-case-study .timeline-item .col-right:has(.color-palette-img) {
+    min-width: 0;
+    overflow: visible;
+}
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+.nia-case-study .portfolio-footer {
+    background: linear-gradient(180deg, #D4F1EE 0%, #4AAFA6 100%);
+    padding: 80px 20px;
+    text-align: center;
+    color: var(--nia-teal-dark);
+}
+
+.nia-case-study .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.nia-case-study .footer-content img {
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.nia-case-study .footer-content p {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+.nia-case-study .footer-content .year {
+    font-size: 12px;
+    margin-top: 20px;
+}

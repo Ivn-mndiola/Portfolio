@@ -1,0 +1,13 @@
+import Nav from '../components/Nav.jsx'
+
+export default function ContactPage() {
+  return (
+    <div className="min-h-screen bg-[#071030] bg-[url('/assets/images/HOME-HERO-BG.jpg')] bg-cover bg-center text-white">
+      <Nav active="/contact" />
+      <section className="flex h-screen flex-col items-center justify-center gap-3 text-center">
+        <h1 className="font-oswald text-[clamp(48px,8vw,96px)] font-bold italic uppercase">Contact</h1>
+        <p className="text-base text-white/60">Content coming soon.</p>
+      </section>
+    </div>
+  )
+}

@@ -1,0 +1,992 @@
+/* =========================================
+   DESIGN SYSTEM & VARIABLES
+   ========================================= */
+.gamedev-case-study {
+  --text-white: #FFFFFF;
+  --text-muted: #A39EBA;
+  --accent-cream: #EFE4D3;
+  --accent-purple: #8C80B3;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --font-primary: 'Montserrat', sans-serif;
+  --font-secondary: 'Karla', sans-serif;
+  --nav-height: 80px;
+}
+
+.gamedev-case-study, .gamedev-case-study * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.gamedev-case-study {
+  scroll-behavior: smooth;
+}
+
+/* Master Page Background using BG-PHGDE.jpg */
+.gamedev-case-study {
+  margin: 0;
+  padding: 0;
+  background-image: url('/assets/images/gamedev/BG-PHGDE.jpg'), url('/assets/images/gamedev/GAME-DEV-BG.jpg');
+
+  /* Anchor the image to the bottom so the pine trees sit at the footer */
+  background-position: bottom center;
+  background-repeat: no-repeat;
+
+  /* 'cover' ensures the image stretches to fill the entire height of the webpage */
+  background-size: cover;
+
+  /* Note: background-attachment: fixed; has been removed! */
+
+  background-color: #141126;
+  color: var(--text-white);
+  font-family: var(--font-primary);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* =========================================
+   NAV BAR
+   ========================================= */
+
+.gamedev-case-study nav {
+  position: fixed;
+  top: 32px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  transition: transform 0.3s ease;
+  font-family: 'Inter', sans-serif; /* reset — don't inherit the page's Montserrat */
+}
+
+/* ===========================
+   LOGO
+=========================== */
+
+.gamedev-case-study .nav-logo {
+  position: absolute;
+  left: 0;
+  width: 17vw;
+  min-width: 150px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: none;
+  border-radius: 0 40px 40px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 36px;
+  text-decoration: none;
+}
+
+.gamedev-case-study .nav-logo img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* ===========================
+   NAVIGATION LINKS
+=========================== */
+
+.gamedev-case-study .nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  list-style: none;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 40px;
+  padding: 0 72px;
+  gap: 64px;
+  margin: 0;
+}
+
+.gamedev-case-study .nav-links li {
+  list-style: none;
+}
+
+.gamedev-case-study .nav-links a {
+  display: inline-block;
+  font-family: 'Inter', sans-serif; /* nav always uses the site font, not the page's Montserrat */
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s ease, font-weight 0.2s ease;
+}
+
+.gamedev-case-study .nav-links a:hover {
+  color: #ffffff;
+}
+
+.gamedev-case-study .nav-links a.active {
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+/* ===========================
+   HAMBURGER BUTTON
+=========================== */
+
+/* Hidden on desktop */
+.gamedev-case-study .hamburger-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.gamedev-case-study .hamburger-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 768px) {
+
+  .gamedev-case-study nav {
+    top: 16px;
+    height: 60px;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+
+  .gamedev-case-study .nav-logo {
+    position: static;
+    width: 120px;
+    min-width: auto;
+    height: 100%;
+    border-radius: 30px;
+    padding-right: 20px;
+  }
+
+  .gamedev-case-study .nav-logo img {
+    height: 28px;
+  }
+
+  .gamedev-case-study .hamburger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    z-index: 101;
+  }
+
+  .gamedev-case-study .nav-links {
+    position: fixed;
+    top: 80px;
+    right: -100%;
+    width: 260px;
+    height: calc(100vh - 80px);
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 32px;
+    padding: 40px 20px;
+    border-radius: 20px 0 0 20px;
+    transition: right 0.3s ease;
+  }
+
+  .gamedev-case-study .nav-links.active-menu {
+    right: 0;
+  }
+
+  .gamedev-case-study .nav-links a {
+    font-size: 16px;
+  }
+}
+/* =========================================
+   MAIN CONTAINER & HERO
+   ========================================= */
+.gamedev-case-study .portfolio-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0; /* Removed to allow hero to hit the very top */
+  width: 100%;
+}
+
+.gamedev-case-study .hero-section {
+  width: 100%;
+  max-width: 100%;
+  padding: 140px 8vw 60px 8vw; /* Adjusted for consistent side margins */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh; /* Forces the section to be exactly window-height */
+}
+
+.gamedev-case-study .hero-center-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: auto 0; /* Pushes this block to the exact vertical center */
+}
+
+.gamedev-case-study .hero-logo-icon { margin-bottom: 24px; }
+.gamedev-case-study .hero-logo-icon img { width: 52px; height: auto; }
+
+.gamedev-case-study .hero-title { width: 100%; text-align: center; }
+.gamedev-case-study .hero-title-image { width: 100%; max-width: 620px; height: auto; margin: 0 auto; }
+
+.gamedev-case-study .hero-desc {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gamedev-case-study .hero-desc h4 {
+  font-size: 16px; /* Increased for better legibility */
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 16px; /* Added more breathing room between title and text */
+  letter-spacing: 0.5px;
+}
+
+.gamedev-case-study .hero-desc p {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  width: 100%;
+  max-width: 1200px; /* Expanded so the second line has plenty of room to stretch */
+}
+
+/* =========================================
+   EDITORIAL TABLE (Line on Top Fix)
+   ========================================= */
+.gamedev-case-study .hero-editorial-table {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 0 4vw; /* Removed top padding so the line sits flush at the top */
+  
+  /* Turns on Flexbox so we can control the visual order */
+  display: flex;
+  flex-direction: column;
+}
+
+.gamedev-case-study .editorial-line {
+  /* MAGIC TRICK: Forces this line to ALWAYS appear at the very top, above the text */
+  order: -1; 
+  
+  display: block; 
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.4);
+  
+  /* This creates the exact breathing room pushing the text down below the line */
+  margin-bottom: 35px; 
+}
+
+
+/* 4. Keep your widened grid columns to maintain the horizontal spacing */
+.gamedev-case-study .table-grid {
+  display: grid;
+  grid-template-columns: 1fr 220px 220px 250px; 
+  gap: 30px;
+  width: 100%;
+}
+
+.gamedev-case-study .table-headers, .gamedev-case-study .table-data { 
+  padding: 0; 
+  align-items: start; 
+}
+
+.gamedev-case-study .col-head { 
+  font-size: 12px; 
+  font-weight: 700; 
+  letter-spacing: 0.15em; 
+  color: #FFFFFF; 
+  display: block;
+  margin-bottom: 18px; 
+}
+
+.gamedev-case-study .brand-cell {
+  display: flex;
+  align-items: center;
+  gap: 40px; 
+  justify-self: flex-start;
+  margin-top: 10px; 
+}
+
+.gamedev-case-study .brand-cell .footer-m-logo, .gamedev-case-study .brand-cell img {
+  height: 45px; 
+  filter: brightness(0) invert(1);
+}
+
+.gamedev-case-study .brand-cell p {
+  font-size: 13px; 
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.gamedev-case-study .list-cell ul { 
+  list-style: none; 
+  padding: 0;
+  margin: 0;
+}
+
+.gamedev-case-study .list-cell ul li {
+  font-size: 13px; 
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+  margin-bottom: 12px; 
+}
+
+.gamedev-case-study .list-cell ul li.text-white, .gamedev-case-study .list-cell ul li strong { 
+  color: #FFFFFF; 
+  font-weight: 700; 
+}
+
+.gamedev-case-study .list-cell ul li.font-bold { 
+  font-weight: 700; 
+}
+
+.gamedev-case-study .list-cell ul li.email-text { 
+  margin-top: 24px; 
+  margin-bottom: 0; 
+}
+
+/* =========================================
+   JOURNEY SECTION
+   ========================================= */
+.gamedev-case-study .journey-section {
+  position: relative;
+  width: 100%;
+  /* Increase the first value (top padding) from 12rem to something like 16rem or 18rem */
+  padding: 16rem 2rem 10rem 2rem;
+  text-align: center;
+
+  /* Change this from -180px to 0, or a slight negative/positive value depending on preference */
+  margin-top: 0;
+
+  z-index: 2;
+  overflow: visible;
+}
+
+.gamedev-case-study .journey-content { position: relative; z-index: 2; }
+
+.gamedev-case-study .journey-content h2 {
+  font-family: "Karla", sans-serif;
+  font-size: 50px; /* Scaled down to match the delicate "Your" in Figma */
+  font-weight: 700; /* Changed to 700 for bold */
+  line-height: 1.1;
+  margin-bottom: 32px; /* Increased gap between text and button */
+  letter-spacing: -5%;
+}
+
+.gamedev-case-study .journey-content h2 span {
+  display: block;
+  font-size: 200px;
+  font-weight: 600;
+  color: var(--accent-cream);
+  background: none;
+
+  /* Change this to a negative number to pull the text closer together */
+  margin-top: -15px;
+
+  letter-spacing: -2px;
+}
+
+.gamedev-case-study .btn-starts-here {
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.35); /* Matched to the crisp Figma border */
+  border-radius: 50px;
+  padding: 14px 44px;
+  font-size: 30px;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-family: "Karla", sans-serif;
+
+  /* Removed the dark background completely */
+  background: transparent;
+  backdrop-filter: none;
+
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+
+/* Optional: Add a nice hover effect so it lights up when someone mouses over it */
+.gamedev-case-study .btn-starts-here:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.gamedev-case-study .pinecone-bg {
+  position: absolute;
+  right: -1%;
+
+  /* Increased from -30% to push the image down */
+  top: -10%;
+
+  width: 420px;
+  opacity: 0.92;
+  z-index: 10;
+  filter: drop-shadow(0 30px 50px rgba(0,0,0,0.6));
+  pointer-events: none;
+}
+
+/* =========================================
+   SECTION DIVIDERS (Centered Stack Layout)
+   ========================================= */
+.gamedev-case-study .section-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1060px;
+
+  /* The third number (3.5rem) controls the space BELOW the glass line.
+     Try changing it to 1.5rem or 2rem to pull everything up! */
+  margin: 7.5rem auto 1.5rem auto;
+
+  padding: 0 20px;
+}
+
+/* 1. Make the tree bigger */
+.gamedev-case-study .tiny-tree {
+  width: 20px; /* Increased size for the big tree look */
+  height: auto;
+  margin-bottom: 12px;
+  opacity: 1;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+}
+
+.gamedev-case-study .divider-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 28px; /* The space between the lines and the text */
+}
+
+/* 2. Create the glass pill lines */
+.gamedev-case-study .divider-bar::before, .gamedev-case-study .divider-bar::after {
+  content: "";
+  flex: 1;
+  height: 2px; /* Adjusted slightly to match the reference proportion */
+
+  /* This gives the line its frosted glass body */
+  background: rgba(255, 255, 255, 0.12);
+
+  /* This creates the sharp, reflective outer rim */
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  /* This guarantees perfectly rounded ends */
+  border-radius: 20px;
+
+  /* This adds a tiny bit of internal highlight to catch the "light" */
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+/* 3. Make the text bold and prominent */
+.gamedev-case-study .divider-bar span {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 0px;
+  color: var(--text-white);
+  text-transform: uppercase;
+  white-space: nowrap; /* Prevents the text from wrapping onto a second line */
+}
+
+/* =========================================
+   BRAND PURPOSE & VISUAL IDENTITY
+   ========================================= */
+.gamedev-case-study .brand-purpose {
+  text-align: center;
+  padding: 0 20px;
+}
+
+.gamedev-case-study .brand-purpose p {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.gamedev-case-study .visual-identity {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gamedev-case-study .vi-breakdown {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  width: 100%;
+  max-width: 960px;
+  margin-bottom: 6rem;
+}
+
+.gamedev-case-study .glass-card {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  backdrop-filter: none;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.gamedev-case-study .glass-card + .glass-card::before {
+  display: none; /* This hides the vertical gradient line */
+}
+
+/* 2. Update the Pill Labels for the dark glass look */
+.gamedev-case-study .pill-label {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 40px;
+  padding: 12px 36px; /* Taller and wider padding */
+  font-size: 16px; /* Much larger text */
+  font-weight: 800; /* Bolder text to match reference */
+  letter-spacing: 0px; /* Normal letter spacing */
+  color: #FFFFFF;
+  margin-bottom: 40px;
+
+  /* Creates the dark inner glass effect */
+  background: rgba(0, 0, 0, 0.25);
+
+  /* Adds a subtle internal highlight and outer shadow for 3D depth */
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.05),
+              0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 3. Give the icons more vertical space */
+.gamedev-case-study .icon-box {
+  height: 180px; /* Increased from 120px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+/* 4. Enlarge the glass icons */
+.gamedev-case-study .icon-box img {
+  max-height: 250px; /* Increased from 100px to make them prominent */
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.3)); /* Slightly darker shadow to anchor them */
+}
+
+/* 5. Update the Description Text */
+.gamedev-case-study .vi-item p {
+  font-size: 15px; /* Larger text */
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.95); /* Brighter white instead of muted 0.7 opacity */
+  max-width: 260px; /* Allows the text to spread out slightly more */
+}
+
+.gamedev-case-study .vi-logos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  width: 100%;
+  max-width: 900px;
+  align-items: center;
+  border-top: none; /* Changed this from 1px solid to none */
+  padding-top: 5rem;
+}
+
+.gamedev-case-study .logo-display-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.gamedev-case-study .logo-display-box + .logo-display-box {
+  border-left: none; /* Changed this from 1px solid to none */
+}
+
+.gamedev-case-study .sub-label {
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  font-weight: 600;
+}
+
+.gamedev-case-study .main-logo-img {
+height: 100px;
+width: auto;
+}
+.gamedev-case-study .sec-logo-img {
+height: 100px;
+width: auto;
+}
+
+/* =========================================
+   TYPOGRAPHY
+   ========================================= */
+.gamedev-case-study .typography-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 120px; /* Creates that wide side-by-side spacing */
+  width: 100%;
+  max-width: 900px; /* Gives the text room to spread out */
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.gamedev-case-study .type-card {
+  background: transparent;
+  border: none;
+  padding: 0;
+  text-align: center;
+}
+
+/* Customizes just the labels in this section so it doesn't break your logos */
+.gamedev-case-study .type-card .sub-label {
+  font-family: var(--font-primary);
+  font-size: 25px;
+  font-weight: 300; /* Thinner, delicate look */
+  letter-spacing: 2px;
+  color: #FFFFFF;
+  margin-bottom: 24px; /* The exact vertical space between label and big text */
+}
+
+.gamedev-case-study .font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 5.5rem; /* Massively scaled up */
+  font-weight: 700;
+  color: var(--accent-cream); /* Applies the beautiful cream color */
+  letter-spacing: -1.5px; /* Pulls the letters slightly closer together */
+}
+
+.gamedev-case-study .font-karla {
+  font-family: 'Karla', sans-serif;
+  font-size: 5.5rem; /* Massively scaled up */
+  font-weight: 400;
+  color: var(--accent-cream); /* Applies the beautiful cream color */
+  letter-spacing: -1.5px; /* Pulls the letters slightly closer together */
+}
+
+/* =========================================
+   BRAND PALETTE
+   ========================================= */
+.gamedev-case-study .brand-palette {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 960px;
+  padding: 0 20px;
+}
+
+.gamedev-case-study .palette-item { text-align: center; }
+
+.gamedev-case-study .color-arch {
+  width: 100%;
+
+  /* Changes it from a tall rectangle to a wide horizontal rectangle */
+  aspect-ratio: 2.2 / 1;
+
+  /* Creates the leaf shape: Top-Left (90px), Top-Right (0), Bottom-Right (90px), Bottom-Left (0) */
+  border-radius: 90px 0 90px 0;
+
+  display: flex;
+  justify-content: center;
+
+  /* Centers the hex code right in the middle of the shape */
+  align-items: center;
+
+  padding-bottom: 0; /* Removes the old bottom padding */
+  margin-bottom: 24px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.gamedev-case-study .color-arch:hover {
+  transform: scale(1.04);
+}
+
+/* 2. Remove the old border from the black swatch */
+.gamedev-case-study .swatch-lidem {
+  background-color: #121212;
+  border: none;
+}
+.gamedev-case-study .swatch-rabii { background-color: #2D274B; }
+.gamedev-case-study .swatch-angin { background-color: #EFE4D3; }
+.gamedev-case-study .swatch-ulap  { background-color: #8C80B3; }
+
+.gamedev-case-study .hex-code.dark-text img {
+  /*
+    How this works:
+    - brightness(0) immediately forces the white image to be solid black.
+    - The invert, sepia, saturate, and hue-rotate values then mathematically shift that black into #2D274B.
+  */
+  filter: brightness(0) invert(14%) sepia(23%) saturate(2250%) hue-rotate(218deg) brightness(97%) contrast(93%);
+}
+
+/* 3. Style the text and tree icon inside the block */
+.gamedev-case-study .hex-code {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  /* Scaled up the text and changed it from monospace to match your clean primary font */
+  font-size: 18px;
+  font-weight: 700;
+  font-family: var(--font-primary);
+  color: var(--accent-cream);
+}
+
+.gamedev-case-study .hex-code.dark-text {
+  color: #121212;
+}
+
+.gamedev-case-study .hex-code img {
+  width: 16px; /* Slightly larger tree icon */
+  height: auto;
+  opacity: 1; /* Made the tree fully visible */
+}
+
+.gamedev-case-study .color-name { font-size: 14px; font-weight: 700; letter-spacing: 1px; }
+
+.gamedev-case-study .color-name span {
+  display: block;
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* =========================================
+   MOCKUPS GRID (Flush Seamless 3x3 Layout)
+   ========================================= */
+.gamedev-case-study .mockups-section {
+  width: 100%;
+  max-width: 1060px;
+  padding: 0 20px;
+  margin-bottom: 8rem;
+}
+
+.gamedev-case-study .mockup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px; /* Forms the exact uniform grid lines between mockups */
+  background-color: #1E1A38;
+  border: 1px solid var(--card-border);
+}
+
+.gamedev-case-study .mockup-wrap {
+  aspect-ratio: 1 / 1;
+  border-radius: 0; /* Flush square edges */
+  overflow: hidden;
+  background-color: #141126;
+}
+
+.gamedev-case-study .mockup-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gamedev-case-study .mockup-wrap:hover img {
+  transform: scale(1.06);
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.gamedev-case-study .portfolio-footer {
+  width: 100%;
+  height: 260px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 40px;
+  background: transparent;
+}
+
+.gamedev-case-study .footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 40px;
+}
+
+.gamedev-case-study .footer-logo-left { height: 38px; }
+.gamedev-case-study .footer-logo-right { height: 46px; }
+
+.gamedev-case-study .footer-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.gamedev-case-study .footer-center img {
+width: 25px;
+height: auto;
+opacity: 0.9;
+}
+.gamedev-case-study .footer-center p {
+  font-size: 13px; font-weight: 700; letter-spacing: 3px; }
+
+/* =========================================
+   ANIMATIONS & TRANSITIONS
+   ========================================= */
+.gamedev-case-study .fade-in {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gamedev-case-study .fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   RESPONSIVE BREAKPOINTS
+   ========================================= */
+@media (max-width: 1024px) {
+  .gamedev-case-study .desktop-split { display: none; }
+  .gamedev-case-study .table-grid { grid-template-columns: 1fr 140px 140px 190px; column-gap: 20px; }
+  .gamedev-case-study .pinecone-bg { width: 300px; }
+  .gamedev-case-study .vi-breakdown { gap: 18px; }
+  .gamedev-case-study .brand-palette { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .gamedev-case-study .typography-section { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .gamedev-case-study nav { top: 16px; height: 60px; }
+
+  .gamedev-case-study .nav-logo {
+    width: 130px;
+    min-width: 100px;
+    padding-right: 20px;
+    border-radius: 0 30px 30px 0;
+  }
+
+  .gamedev-case-study .nav-logo img { height: 28px; }
+  .gamedev-case-study .nav-links { padding: 0 30px; gap: 24px; border-radius: 30px; }
+  .gamedev-case-study .nav-links a { font-size: 10px; letter-spacing: 0.05em; }
+
+  .gamedev-case-study .portfolio-container { padding-top: 100px; }
+  .gamedev-case-study .hero-section { padding: 20px 20px 40px 20px; }
+
+  .gamedev-case-study .hero-editorial-table { margin-top: 80px; }
+  .gamedev-case-study .table-headers { display: none; }
+  .gamedev-case-study .table-grid { grid-template-columns: 1fr; row-gap: 24px; }
+  .gamedev-case-study .brand-cell { flex-direction: column; align-items: flex-start; gap: 10px; }
+
+  .gamedev-case-study .journey-section { padding: 8rem 1.5rem; margin-top: -100px; }
+  .gamedev-case-study .journey-content h2 span { font-size: 4.8rem; }
+  .gamedev-case-study .pinecone-bg { display: none; }
+
+  .gamedev-case-study .vi-breakdown { grid-template-columns: 1fr; gap: 24px; }
+  .gamedev-case-study .vi-logos { grid-template-columns: 1fr; gap: 40px; }
+  .gamedev-case-study .mockup-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
+  .gamedev-case-study .divider-bar span { font-size: 15px; }
+
+  .gamedev-case-study .footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  /* Changed from 1100px to 100% so it stretches across any screen size */
+  max-width: 2000px;
+
+  /* Increased the side padding so the logos don't touch the absolute edge of the monitor */
+  padding: 0 6vw;
+}
+}
+
+@media (max-width: 480px) {
+  .gamedev-case-study .nav-links { padding: 0 16px; gap: 12px; }
+  .gamedev-case-study .nav-links a { font-size: 8px; }
+
+  .gamedev-case-study .nav-logo {
+    width: 80px;
+    min-width: 70px;
+    padding-right: 12px;
+    border-radius: 0 20px 20px 0;
+  }
+
+  .gamedev-case-study .nav-logo img { height: 20px; }
+  .gamedev-case-study .journey-content h2 span { font-size: 3.6rem; }
+  .gamedev-case-study .mockup-grid { grid-template-columns: 1fr; }
+  .gamedev-case-study .brand-palette { grid-template-columns: 1fr 1fr; gap: 14px; }
+}
+
+/* React/Vite page isolation and fallback behavior */
+body.gamedev-body {
+  background: #141126;
+  overflow-x: hidden;
+}
+
+body.gamedev-body::before {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .gamedev-case-study nav .nav-links {
+    left: auto;
+    right: -100%;
+    top: 80px;
+    width: 260px;
+    height: calc(100vh - 80px);
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    justify-content: flex-start;
+  }
+
+  .gamedev-case-study nav .nav-links.active-menu {
+    right: 0;
+  }
+
+  .gamedev-case-study nav .nav-links a {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.1em !important;
+  }
+}
