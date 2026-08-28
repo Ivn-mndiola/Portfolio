@@ -9,6 +9,8 @@ import GameDev from './pages/case-studies/gamedev.jsx'
 import NiaPage from './pages/case-studies/NiaPage.jsx'
 import SourcePage from './pages/case-studies/SourcePage.jsx'
 import ArtlantisPage from './pages/case-studies/ArtlantisPage.jsx'
+import IllustrationPage from './pages/case-studies/IllustrationPage.jsx'
+import PhotographyPage from './pages/case-studies/PhotographyPage.jsx'
 
 export default function App() {
   return (
@@ -20,6 +22,8 @@ export default function App() {
       <Route path="/projects/nia" element={<NiaPage />} />
       <Route path="/projects/source" element={<SourcePage />} />
       <Route path="/projects/artlantis" element={<ArtlantisPage />} />
+      <Route path="/projects/illustration" element={<IllustrationPage />} />
+      <Route path="/projects/photography" element={<PhotographyPage />} />
       <Route path="/services" element={<ServicesPage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/contact" element={<ContactPage />} />

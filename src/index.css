@@ -70,3 +70,42 @@
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
+
+.illustration-case-main {
+  background: url("/assets/images/illustration/illustration-page-bg.png") top center / 100% 100% no-repeat;
+}
+
+.photography-hero {
+  background:
+    radial-gradient(
+      ellipse 62% 55% at 50% 35%,
+      #d4dc00 0%,
+      #b7d900 24%,
+      rgba(94, 210, 0, 0.92) 50%,
+      rgba(12, 174, 18, 0.48) 73%,
+      transparent 100%
+    ),
+    linear-gradient(145deg, #00643d 0%, #08b91d 35%, #24c900 56%, #00751f 76%, #001f14 100%);
+}
+
+@media (max-width: 900px) {
+  .illustration-case-main {
+    background: none;
+  }
+
+  .illustration-hero {
+    background: radial-gradient(circle at 50% 13%, #ffd51a 0%, #f6ad13 29%, #df780a 58%, #cf4a00 100%);
+  }
+
+  .illustration-panagbenga {
+    background: linear-gradient(180deg, #ffffff 0%, #ffffff 26%, #ffb537 48%, #f19c0d 72%, #744300 100%);
+  }
+
+  .illustration-cascandy {
+    background: linear-gradient(180deg, #ffffff 0%, #fffafa 24%, #d25b6d 50%, #a40018 72%, #430000 100%);
+  }
+
+  .illustration-verto {
+    background: linear-gradient(180deg, #ffffff 0%, #c8c8c8 14%, #3b3b3b 30%, #111111 45%, #000000 100%);
+  }
+}

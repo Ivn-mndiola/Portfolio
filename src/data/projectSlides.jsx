@@ -69,7 +69,7 @@ const SLIDES = [
     titleText: { subtitle: 'DIGITAL ART', title: 'ILLUSTRATIONS' },
     description:
       'a curated showcase of bespoke digital vector artworks, character designs, and dynamic environmental pieces.',
-    cta: { label: 'VIEW NOW', href: '#' },
+    cta: { label: 'VIEW NOW', href: '/projects/illustration' },
     visualRight: {
       src: '/assets/images/illustration/illustration-proj.png',
       alt: 'Panagbenga Festival Artwork',
@@ -81,7 +81,7 @@ const SLIDES = [
     titleText: { subtitle: 'SONY ZV-E10', title: 'PHOTOGRAPHY' },
     description:
       'capturing raw, authentic human moments and dramatic urban landscapes through a precise, cinematic lens.',
-    cta: { label: 'VIEW NOW', href: '#' },
+    cta: { label: 'VIEW NOW', href: '/projects/photography' },
     visualRight: {
       src: '/assets/images/photography/Photography.png',
       alt: 'Photography Portrait',

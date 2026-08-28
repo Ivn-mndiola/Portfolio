@@ -85,6 +85,13 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
           active: 'text-[#244394]',
           logo: '[filter:brightness(0)_saturate(100%)_invert(25%)_sepia(35%)_saturate(2798%)_hue-rotate(198deg)_brightness(85%)_contrast(94%)]',
         }
+    : accent === 'orange'
+      ? {
+          glass: 'bg-[rgba(216,90,0,0.05)] border-[rgba(216,90,0,0.18)]',
+          link: 'text-[#D85A00]/70 hover:text-[#D85A00]',
+          active: 'text-[#D85A00]',
+          logo: '[filter:brightness(0)_saturate(100%)_invert(39%)_sepia(93%)_saturate(2356%)_hue-rotate(8deg)_brightness(94%)_contrast(101%)]',
+        }
     : {
         glass: 'bg-[rgba(252,4,76,0.05)] border-[rgba(252,4,76,0.15)]',
         link: 'text-[rgba(252,4,76,0.6)] hover:text-[#FC044C]',
@@ -103,6 +110,8 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
       ? 'bg-[#48C1B0]'
       : accent === 'blue'
         ? 'bg-[#244394]'
+        : accent === 'orange'
+          ? 'bg-[#D85A00]'
         : 'bg-[#FC044C]'
 
   return (
