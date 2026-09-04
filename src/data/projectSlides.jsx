@@ -88,6 +88,18 @@ const SLIDES = [
       wrapClass: true,
     },
   },
+  {
+    id: 'dbfortri',
+    bg: '/assets/images/dbfortri/dbfortri-project-bg-1920.webp',
+    bgSet: {
+      oneX: '/assets/images/dbfortri/dbfortri-project-bg-1920.webp',
+      twoX: '/assets/images/dbfortri/dbfortri-project-bg-3840.webp',
+    },
+    titleGraphic: '/assets/images/dbfortri/dbfortri-project-wordmark-2x.png',
+    description:
+      'a timeless photography brand dedicated to capturing authentic stories through intentional imagery and refined visual identity.',
+    cta: { label: 'VIEW NOW', href: '/projects/dbfortri' },
+  },
 ]
 
 export default SLIDES

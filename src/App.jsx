@@ -11,6 +11,7 @@ import SourcePage from './pages/case-studies/SourcePage.jsx'
 import ArtlantisPage from './pages/case-studies/ArtlantisPage.jsx'
 import IllustrationPage from './pages/case-studies/IllustrationPage.jsx'
 import PhotographyPage from './pages/case-studies/PhotographyPage.jsx'
+import DbfortriPage from './pages/case-studies/DbfortriPage.jsx'
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
       <Route path="/projects/artlantis" element={<ArtlantisPage />} />
       <Route path="/projects/illustration" element={<IllustrationPage />} />
       <Route path="/projects/photography" element={<PhotographyPage />} />
+      <Route path="/projects/dbfortri" element={<DbfortriPage />} />
       <Route path="/services" element={<ServicesPage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/contact" element={<ContactPage />} />

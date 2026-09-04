@@ -1,20 +1,60 @@
+import { useCallback, useRef, useState } from 'react'
 import Nav from '../../components/Nav.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
+import PhotoLightbox from '../../components/PhotoLightbox.jsx'
+import { PhotographyGalleryTriptych } from '../../components/PhotographyGallery.jsx'
 import useScrollReveal from '../../hooks/useScrollReveal.js'
 
 const ASSET_ROOT = '/assets/images/photography/case-study'
 const DARK_SECTIONS = ['.photography-hero', '.photography-gallery']
 const REVEAL = 'opacity-0 translate-y-10 transition-[opacity,transform] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] will-change-[opacity,transform] data-[revealed=true]:translate-y-0 data-[revealed=true]:opacity-100'
 
-function Photo({ src, alt, className = '' }) {
+const PHOTOS = [
+  { src: 'product-left.webp', alt: 'Jo Malone Wood Sage and Sea Salt bottle on a dark surface', category: 'Product Photography', title: 'Wood Sage & Sea Salt', accent: '#FFFFFF' },
+  { src: 'product-center.webp', alt: 'Jo Malone Wood Sage and Sea Salt bottle surrounded by green leaves', category: 'Product Photography', title: 'Wood Sage & Sea Salt', accent: '#FFFFFF' },
+  { src: 'product-right.webp', alt: 'Jo Malone Wood Sage and Sea Salt bottle with greenery', category: 'Product Photography', title: 'Wood Sage & Sea Salt', accent: '#FFFFFF' },
+  { src: 'food-left.webp', alt: 'Turon served beside condensed milk', category: 'Food Photography', title: 'Turon', accent: '#F99526' },
+  { src: 'food-right.webp', alt: 'A plate of freshly cooked turon', category: 'Food Photography', title: 'Turon', accent: '#F99526' },
+  { src: 'street-tower.webp', alt: 'Our Lady of the Atonement Cathedral bell tower in Baguio City', category: 'Street Photography', title: 'Sound of Saints', accent: '#2F88D5' },
+  { src: 'street-lamp.webp', alt: 'Decorative street lamp against a blue sky', category: 'Street Photography', title: 'Sound of Saints', accent: '#2F88D5' },
+  { src: 'street-eagle.webp', alt: 'Eagle sculpture outside the cathedral', category: 'Street Photography', title: 'Sound of Saints', accent: '#2F88D5' },
+  { src: 'street-bird.webp', alt: 'Bird sculpture photographed from below', category: 'Street Photography', title: 'Sound of Saints', accent: '#2F88D5' },
+  { src: 'portrait-one.webp', alt: 'Outdoor full-body portrait in a teal jacket', category: 'Portrait Photography', title: 'DR.K', accent: '#85A760' },
+  { src: 'portrait-two.webp', alt: 'Outdoor waist-up portrait in a teal jacket', category: 'Portrait Photography', title: 'DR.K', accent: '#85A760' },
+  { src: 'portrait-three.webp', alt: 'Outdoor portrait wearing a white shirt', category: 'Portrait Photography', title: 'DR.K', accent: '#85A760' },
+  { src: 'portrait-four.webp', alt: 'Outdoor portrait wearing denim overalls', category: 'Portrait Photography', title: 'DR.K', accent: '#85A760' },
+]
+
+function photographyPhotoSource(photo) {
+  return `${ASSET_ROOT}/${photo.src}`
+}
+
+function Photo({ photo, index, onOpen, className = '', imageClassName = '' }) {
   return (
-    <img
-      src={`${ASSET_ROOT}/${src}`}
-      alt={alt}
-      loading="lazy"
-      decoding="async"
-      className={`block h-auto w-full object-cover shadow-[12px_14px_10px_rgba(0,0,0,0.24)] ${className}`}
-    />
+    <button
+      type="button"
+      className={`group relative block w-full cursor-zoom-in overflow-hidden border-0 bg-transparent p-0 text-left shadow-[12px_14px_10px_rgba(0,0,0,0.24)] outline-none transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 hover:shadow-[16px_22px_18px_rgba(0,0,0,0.34)] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-[#262626] motion-reduce:transition-none ${className}`}
+      aria-label={`Open ${photo.alt}`}
+      aria-haspopup="dialog"
+      onClick={(event) => onOpen(index, event)}
+    >
+      <img
+        src={photographyPhotoSource(photo)}
+        alt={photo.alt}
+        loading="lazy"
+        decoding="async"
+        className={`block w-full object-cover transition-[transform,filter] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.035] group-hover:brightness-110 group-focus-visible:scale-[1.035] motion-reduce:transition-none ${imageClassName || 'h-auto'}`}
+      />
+      <span className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/10 group-focus-visible:bg-black/10 motion-reduce:transition-none" aria-hidden="true" />
+      <span className="pointer-events-none absolute right-4 top-4 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full border border-white/35 bg-black/35 text-white opacity-0 shadow-lg backdrop-blur-md transition-[opacity,transform,background-color] duration-300 group-hover:translate-y-0 group-hover:bg-black/55 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 motion-reduce:transition-none" aria-hidden="true">
+        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M8 3H3v5" />
+          <path d="M16 3h5v5" />
+          <path d="M8 21H3v-5" />
+          <path d="M16 21h5v-5" />
+        </svg>
+      </span>
+    </button>
   )
 }
 
@@ -36,6 +76,26 @@ function Caption({ heading, name, children, color = '#FFFFFF' }) {
 
 export default function PhotographyPage() {
   useScrollReveal()
+  const [lightboxIndex, setLightboxIndex] = useState(null)
+  const lastTriggerRef = useRef(null)
+
+  const openLightbox = useCallback((index, event) => {
+    lastTriggerRef.current = event.currentTarget
+    setLightboxIndex(index)
+  }, [])
+
+  const closeLightbox = useCallback(() => {
+    setLightboxIndex(null)
+    window.requestAnimationFrame(() => lastTriggerRef.current?.focus())
+  }, [])
+
+  const showPreviousPhoto = useCallback(() => {
+    setLightboxIndex((current) => (current - 1 + PHOTOS.length) % PHOTOS.length)
+  }, [])
+
+  const showNextPhoto = useCallback(() => {
+    setLightboxIndex((current) => (current + 1) % PHOTOS.length)
+  }, [])
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#262626] font-questrial text-white">
@@ -83,21 +143,17 @@ export default function PhotographyPage() {
             className={`absolute inset-x-0 top-[9.48vw] flex flex-col items-center max-[900px]:relative max-[900px]:top-auto ${REVEAL}`}
             data-reveal
           >
-            <img
-              src={`${ASSET_ROOT}/jo-malone-logo.webp`}
-              alt="Jo Malone London"
-              loading="lazy"
-              decoding="async"
-              className="mb-[1.38vw] h-auto w-[10.7vw] brightness-0 invert max-[900px]:mb-10 max-[900px]:w-[180px]"
+            <PhotographyGalleryTriptych
+              photos={PHOTOS}
+              onOpen={openLightbox}
+              getPhotoSrc={photographyPhotoSource}
+              logoSrc={`${ASSET_ROOT}/jo-malone-logo.webp`}
+              logoAlt="Jo Malone London"
+              logoClassName="brightness-0 invert"
+              heading="Product Photography"
+              name="Wood Sage & Sea Salt"
+              description="Exploring product storytelling through light, texture, and composition."
             />
-            <div className="grid w-[63.28%] grid-cols-[1fr_2.253fr_1fr] items-stretch gap-[0.84vw] max-[900px]:w-full max-[900px]:max-w-[760px] max-[900px]:grid-cols-1 max-[900px]:gap-4">
-              <Photo src="product-left.webp" alt="Jo Malone Wood Sage and Sea Salt bottle on a dark surface" />
-              <Photo src="product-center.webp" alt="Jo Malone Wood Sage and Sea Salt bottle surrounded by green leaves" />
-              <Photo src="product-right.webp" alt="Jo Malone Wood Sage and Sea Salt bottle with greenery" />
-            </div>
-            <Caption heading="Product Photography" name="Wood Sage & Sea Salt">
-              Exploring product storytelling through light, texture, and composition.
-            </Caption>
           </article>
 
           <article
@@ -105,8 +161,8 @@ export default function PhotographyPage() {
             data-reveal
           >
             <div className="grid w-[58.8%] grid-cols-2 gap-[1.41vw] max-[900px]:w-full max-[900px]:max-w-[760px] max-[900px]:grid-cols-1 max-[900px]:gap-4">
-              <Photo src="food-left.webp" alt="Turon served beside condensed milk" />
-              <Photo src="food-right.webp" alt="A plate of freshly cooked turon" />
+              <Photo photo={PHOTOS[3]} index={3} onOpen={openLightbox} />
+              <Photo photo={PHOTOS[4]} index={4} onOpen={openLightbox} />
             </div>
             <Caption heading="Food Photography" name="Turon" color="#F99526">
               Sweetness that transcends generations. A love letter to the merienda.
@@ -118,11 +174,11 @@ export default function PhotographyPage() {
             data-reveal
           >
             <div className="grid w-[49.4%] grid-cols-[1fr_1fr_0.97fr] items-stretch gap-[0.62vw] max-[900px]:w-full max-[900px]:max-w-[760px] max-[900px]:grid-cols-2 max-[900px]:gap-4">
-              <Photo src="street-tower.webp" alt="Our Lady of the Atonement Cathedral bell tower in Baguio City" />
-              <Photo src="street-lamp.webp" alt="Decorative street lamp against a blue sky" />
+              <Photo photo={PHOTOS[5]} index={5} onOpen={openLightbox} />
+              <Photo photo={PHOTOS[6]} index={6} onOpen={openLightbox} />
               <div className="grid grid-rows-2 gap-[0.6vw] max-[900px]:col-span-2 max-[900px]:grid-cols-2 max-[900px]:grid-rows-1 max-[900px]:gap-4">
-                <Photo src="street-eagle.webp" alt="Eagle sculpture outside the cathedral" className="h-full" />
-                <Photo src="street-bird.webp" alt="Bird sculpture photographed from below" className="h-full" />
+                <Photo photo={PHOTOS[7]} index={7} onOpen={openLightbox} className="h-full" imageClassName="h-full" />
+                <Photo photo={PHOTOS[8]} index={8} onOpen={openLightbox} className="h-full" imageClassName="h-full" />
               </div>
             </div>
             <Caption heading="Street Photography" name="Sound of Saints" color="#2F88D5">
@@ -135,10 +191,10 @@ export default function PhotographyPage() {
             data-reveal
           >
             <div className="grid w-[66.88%] grid-cols-4 gap-[0.61vw] max-[900px]:w-full max-[900px]:max-w-[760px] max-[900px]:grid-cols-2 max-[900px]:gap-4">
-              <Photo src="portrait-one.webp" alt="Outdoor full-body portrait in a teal jacket" />
-              <Photo src="portrait-two.webp" alt="Outdoor waist-up portrait in a teal jacket" />
-              <Photo src="portrait-three.webp" alt="Outdoor portrait wearing a white shirt" />
-              <Photo src="portrait-four.webp" alt="Outdoor portrait wearing denim overalls" />
+              <Photo photo={PHOTOS[9]} index={9} onOpen={openLightbox} />
+              <Photo photo={PHOTOS[10]} index={10} onOpen={openLightbox} />
+              <Photo photo={PHOTOS[11]} index={11} onOpen={openLightbox} />
+              <Photo photo={PHOTOS[12]} index={12} onOpen={openLightbox} />
             </div>
             <Caption heading="Portrait Photography" name="DR.K" color="#85A760">
               Capturing personality and emotion through natural light and candid expression.
@@ -148,6 +204,18 @@ export default function PhotographyPage() {
           </article>
         </section>
       </main>
+
+      {lightboxIndex !== null && (
+        <PhotoLightbox
+          photos={PHOTOS}
+          index={lightboxIndex}
+          onClose={closeLightbox}
+          onPrevious={showPreviousPhoto}
+          onNext={showNextPhoto}
+          getPhotoSrc={photographyPhotoSource}
+          titleId="photography-lightbox-title"
+        />
+      )}
     </div>
   )
 }

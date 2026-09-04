@@ -71,7 +71,14 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
   }
 
   const showAccent = Boolean(darkSectionSelectors) && !isOverDark
-  const accentStyles = accent === 'teal'
+  const accentStyles = accent === 'charcoal'
+    ? {
+        glass: 'bg-[rgba(30,30,30,0.06)] border-[rgba(30,30,30,0.18)]',
+        link: 'text-[#545353]/75 hover:text-[#1E1E1E]',
+        active: 'text-[#1E1E1E]',
+        logo: 'brightness-0',
+      }
+    : accent === 'teal'
     ? {
         glass: 'bg-[rgba(72,193,176,0.05)] border-[rgba(72,193,176,0.18)]',
         link: 'text-[#48C1B0]/70 hover:text-[#48C1B0]',
@@ -106,7 +113,9 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
     : 'text-white/60 hover:text-white'
   const menuLineColor = menuOpen || !showAccent
     ? 'bg-white'
-    : accent === 'teal'
+    : accent === 'charcoal'
+      ? 'bg-[#1E1E1E]'
+      : accent === 'teal'
       ? 'bg-[#48C1B0]'
       : accent === 'blue'
         ? 'bg-[#244394]'

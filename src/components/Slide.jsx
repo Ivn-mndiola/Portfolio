@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom'
 
 export default function Slide({ slide, isActive, rosterIndex }) {
   const hasTextTitle = Boolean(slide.titleText)
+  const backgroundAsset = slide.bgSet
+    ? `image-set(url('${slide.bgSet.oneX}') 1x, url('${slide.bgSet.twoX}') 2x)`
+    : `url('${slide.bg}')`
 
   return (
     <div
@@ -11,7 +14,7 @@ export default function Slide({ slide, isActive, rosterIndex }) {
     >
       <div
         className="absolute inset-0 -z-[1] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url('${slide.bg}')` }}
+        style={{ backgroundImage: slide.bgOverlay ? `${slide.bgOverlay}, ${backgroundAsset}` : backgroundAsset }}
       />
 
       <div className="flex h-full w-full max-w-[1500px] items-center justify-between px-[8vw]">
@@ -29,9 +32,14 @@ export default function Slide({ slide, isActive, rosterIndex }) {
                 src={slide.titleGraphic}
                 alt={`${slide.id} title`}
                 className={`h-auto max-h-[200px] w-full object-contain [filter:drop-shadow(0_15px_35px_rgba(0,0,0,0.65))] ${
-                  slide.id === 'gamedev' ? 'max-w-[540px]' : 'max-w-[520px]'
+                  slide.id === 'gamedev' ? 'max-w-[540px]' : slide.id === 'dbfortri' ? 'max-w-[620px]' : 'max-w-[520px]'
                 }`}
               />
+            )}
+            {slide.titleTagline && (
+              <p className="mt-1 w-full max-w-[620px] pr-[1%] text-right text-[clamp(10px,0.78vw,15px)] font-medium uppercase tracking-[0.04em] text-white/85">
+                {slide.titleTagline}
+              </p>
             )}
             {hasTextTitle && (
               <>
