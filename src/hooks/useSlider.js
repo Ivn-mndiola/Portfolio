@@ -2,8 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 
 const TRANSITION_MS = 650
 
-export default function useSlider(total) {
-  const [current, setCurrent] = useState(0)
+export default function useSlider(total, initialCurrent = 0) {
+  const [current, setCurrent] = useState(initialCurrent)
   const isAnimatingRef = useRef(false)
 
   const goTo = useCallback(

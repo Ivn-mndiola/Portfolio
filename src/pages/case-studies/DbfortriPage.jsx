@@ -1,12 +1,10 @@
-import { useCallback, useRef, useState } from 'react'
 import Nav from '../../components/Nav.jsx'
+import { Lightbox, Caption, PhotoTriptych, usePhotoViewer } from '../../components/PhotoGallery.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
-import PhotoLightbox from '../../components/PhotoLightbox.jsx'
-import { PhotographyGalleryTriptych } from '../../components/PhotographyGallery.jsx'
 import useScrollReveal from '../../hooks/useScrollReveal.js'
 
 const ASSET_ROOT = '/assets/images/dbfortri'
-const DARK_SECTIONS = ['.dbfortri-hero']
+const DARK_SECTIONS = ['.dbfortri-hero', '.dbfortri-gallery']
 const REVEAL = 'opacity-0 translate-y-10 transition-[opacity,transform] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] will-change-[opacity,transform] data-[revealed=true]:translate-y-0 data-[revealed=true]:opacity-100'
 
 const PHOTOS = [
@@ -20,9 +18,13 @@ const PHOTOS = [
   { id: 8, alt: 'Full-length garden portrait of Ashley Yvonne in a blush eighteenth-birthday gown' },
 ].map((photo) => ({
   ...photo,
+  src: photoSource(photo, 1600),
+  fullSrc: photoSource(photo, 2400),
+  srcSet: `${photoSource(photo, 1600)} ${[1, 5].includes(photo.id) ? 1600 : 1066}w, ${photoSource(photo, 2400)} ${[1, 5].includes(photo.id) ? 2400 : 1600}w`,
+  sizes: '(max-width: 900px) calc(100vw - 40px), 34vw',
   category: 'Portrait Photography',
   title: 'Ashley Yvonne — Eighteen',
-  accent: '#EBEAE8',
+  accent: '#FFFFFF',
 }))
 
 const VALUES = [
@@ -38,31 +40,35 @@ function photoSource(photo, size) {
   return `${ASSET_ROOT}/dbfortri-photo-${String(photo.id).padStart(2, '0')}-${size}.webp`
 }
 
-function dbfortriFullPhotoSource(photo) {
-  return photoSource(photo, 2400)
-}
+function GalleryCarousel() {
+  const viewer = usePhotoViewer(PHOTOS.length)
+  const previousIndex = (viewer.index - 1 + PHOTOS.length) % PHOTOS.length
+  const nextIndex = (viewer.index + 1) % PHOTOS.length
 
-function dbfortriGalleryPhotoSource(photo) {
-  return photoSource(photo, 1600)
-}
-
-function PhotographyCarousel({ onOpen }) {
   return (
-    <div className="flex flex-col items-center">
-      <PhotographyGalleryTriptych
-        photos={PHOTOS}
-        indexes={[1, 0, 2]}
-        onOpen={onOpen}
-        getPhotoSrc={dbfortriGalleryPhotoSource}
-        logoSrc={`${ASSET_ROOT}/dbfortri-logo-black.png`}
-        logoAlt="DBFortri"
-        logoClassName="!w-[clamp(160px,13vw,250px)]"
-        heading="Portrait Photography"
-        name="Ashley Yvonne — Eighteen"
-        description="A timeless portrait series created to preserve an important milestone with intention."
-        color="#1E1E1E"
-      />
-    </div>
+    <>
+      <div className="flex flex-col items-center font-questrial text-white" role="region" aria-label="DBFortri photography gallery">
+        <PhotoTriptych
+          photos={PHOTOS}
+          indices={[previousIndex, viewer.index, nextIndex]}
+          onOpen={viewer.open}
+          cropPreviews
+        />
+        <Caption heading="Portrait Photography" name="Ashley Yvonne — Eighteen">
+          A timeless portrait series created to preserve an important milestone with intention.
+        </Caption>
+      </div>
+
+      {viewer.isOpen && (
+        <Lightbox
+          photos={PHOTOS}
+          index={viewer.index}
+          onClose={viewer.close}
+          onPrevious={viewer.previous}
+          onNext={viewer.next}
+        />
+      )}
+    </>
   )
 }
 
@@ -79,26 +85,6 @@ function BrandValue({ title, copy }) {
 
 export default function DbfortriPage() {
   useScrollReveal()
-  const [lightboxIndex, setLightboxIndex] = useState(null)
-  const lastTriggerRef = useRef(null)
-
-  const openLightbox = useCallback((index, event) => {
-    lastTriggerRef.current = event.currentTarget
-    setLightboxIndex(index)
-  }, [])
-
-  const closeLightbox = useCallback(() => {
-    setLightboxIndex(null)
-    window.requestAnimationFrame(() => lastTriggerRef.current?.focus())
-  }, [])
-
-  const showPreviousPhoto = useCallback(() => {
-    setLightboxIndex((current) => (current - 1 + PHOTOS.length) % PHOTOS.length)
-  }, [])
-
-  const showNextPhoto = useCallback(() => {
-    setLightboxIndex((current) => (current + 1) % PHOTOS.length)
-  }, [])
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#EBEAE8] font-inter text-[#2D2D2D]">
@@ -107,7 +93,7 @@ export default function DbfortriPage() {
       <main className="dbfortri-case-main">
         <header className="dbfortri-hero relative h-[65.68vw] min-h-[760px] overflow-hidden text-white max-[900px]:flex max-[900px]:h-auto max-[900px]:min-h-[900px] max-[900px]:flex-col max-[900px]:items-center max-[900px]:px-6 max-[900px]:pb-12 max-[900px]:pt-36">
           <div className={`absolute left-1/2 top-[21.5%] w-[39.55%] -translate-x-1/2 max-[900px]:relative max-[900px]:left-auto max-[900px]:top-auto max-[900px]:mt-10 max-[900px]:w-full max-[900px]:max-w-[650px] max-[900px]:translate-x-0 ${REVEAL}`} data-reveal>
-            <img src={`${ASSET_ROOT}/dbfortri-wordmark.svg`} alt="DBFortri" className="w-full" />
+            <img src={`${ASSET_ROOT}/dbfortri-wordmark-vector.svg`} alt="DBFortri" className="w-full" />
             <p className="absolute bottom-[6.5%] right-[0.5%] text-[clamp(10px,0.84vw,16px)] font-medium uppercase tracking-[0.01em] text-[#DCDADC] max-[900px]:bottom-[2%] max-[900px]:right-[2%] max-[900px]:text-[10px]">
               Formed to be timeless.
             </p>
@@ -133,8 +119,7 @@ export default function DbfortriPage() {
 
         <section className="dbfortri-paper relative h-[86.25vw] min-h-[820px] text-center max-[900px]:h-auto max-[900px]:min-h-0 max-[900px]:px-6 max-[900px]:py-24">
           <div className={`absolute left-1/2 top-[10.15%] w-[24.74%] -translate-x-1/2 max-[900px]:relative max-[900px]:left-auto max-[900px]:top-auto max-[900px]:mx-auto max-[900px]:w-full max-[900px]:max-w-[475px] max-[900px]:translate-x-0 ${REVEAL}`} data-reveal>
-            <p className="mb-4 text-[clamp(10px,0.78vw,15px)] font-medium uppercase tracking-[0.04em]">Est. 2026</p>
-            <img src={`${ASSET_ROOT}/dbfortri-black-wordmark.svg`} alt="DBFortri — Formed to be timeless" className="w-full" loading="lazy" decoding="async" />
+            <img src={`${ASSET_ROOT}/dbfortri-black-wordmark-vector.svg`} alt="DBFortri — Formed to be timeless" className="w-full" loading="lazy" decoding="async" />
           </div>
 
           <article className={`absolute left-1/2 top-[35.33%] w-[44.38%] -translate-x-1/2 max-[900px]:relative max-[900px]:left-auto max-[900px]:top-auto max-[900px]:mt-20 max-[900px]:w-full max-[900px]:translate-x-0 ${REVEAL}`} data-reveal>
@@ -213,7 +198,7 @@ export default function DbfortriPage() {
           <article className={`absolute left-[15.8%] top-[11%] w-[39%] text-center max-[900px]:relative max-[900px]:left-auto max-[900px]:top-auto max-[900px]:w-full ${REVEAL}`} data-reveal>
             <div className="flex items-center justify-center gap-[1.4vw] max-[900px]:flex-col max-[900px]:gap-4">
               <h2 className="font-jakarta text-[clamp(27px,2.3vw,44px)] font-extrabold leading-none tracking-[-0.055em]">The Story Behind</h2>
-              <img src={`${ASSET_ROOT}/dbfortri-logo-black.png`} alt="DBFortri" loading="lazy" decoding="async" className="w-[clamp(150px,12.3vw,236px)]" />
+              <img src={`${ASSET_ROOT}/dbfortri-logo-black-vector.svg`} alt="DBFortri" loading="lazy" decoding="async" className="w-[clamp(150px,12.3vw,236px)]" />
             </div>
             <p className="mx-auto mt-[2.2vw] max-w-[760px] text-[clamp(11px,0.78vw,15px)] leading-[1.35] max-[900px]:mt-7 max-[900px]:text-sm">
               dbfortri was created with a simple belief that meaningful moments<br className="max-[900px]:hidden" /> deserve to be preserved with intention.<br />Every photograph is crafted to remain relevant long after trends have passed,<br className="max-[900px]:hidden" /> becoming a timeless visual memory.
@@ -239,13 +224,15 @@ export default function DbfortriPage() {
           />
         </section>
 
-        <section className="dbfortri-paper relative h-[44.43vw] min-h-[620px] px-0 max-[900px]:h-auto max-[900px]:min-h-0 max-[900px]:px-5 max-[900px]:pb-20 max-[900px]:pt-12">
-          <div className={`absolute inset-x-0 top-0 max-[900px]:relative ${REVEAL}`} data-reveal>
-            <PhotographyCarousel onOpen={openLightbox} />
+        <section className="dbfortri-paper relative h-[44.43vw] min-h-[620px] px-0 max-[900px]:h-auto max-[900px]:min-h-0 max-[900px]:pb-20">
+          <div className="dbfortri-gallery absolute inset-x-0 top-0 bg-[#262626] py-[2vw] max-[900px]:relative max-[900px]:px-5 max-[900px]:py-12">
+            <div className={REVEAL} data-reveal>
+              <GalleryCarousel />
+            </div>
           </div>
 
           <img
-            src={`${ASSET_ROOT}/dbfortri-footer-logo.svg`}
+            src={`${ASSET_ROOT}/dbfortri-footer-logo-vector.svg`}
             alt="DBFortri — Formed to be timeless"
             loading="lazy"
             decoding="async"
@@ -254,21 +241,6 @@ export default function DbfortriPage() {
           />
         </section>
       </main>
-
-      {lightboxIndex !== null && (
-        <>
-          <div className="fixed inset-0 z-[299] bg-black" aria-hidden="true" />
-          <PhotoLightbox
-            photos={PHOTOS}
-            index={lightboxIndex}
-            onClose={closeLightbox}
-            onPrevious={showPreviousPhoto}
-            onNext={showNextPhoto}
-            getPhotoSrc={dbfortriFullPhotoSource}
-            titleId="dbfortri-lightbox-title"
-          />
-        </>
-      )}
     </div>
   )
 }

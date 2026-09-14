@@ -1,8 +1,6 @@
-import { useCallback, useRef, useState } from 'react'
 import Nav from '../../components/Nav.jsx'
+import { Photo, Lightbox, Caption, PhotoTriptych, usePhotoViewer } from '../../components/PhotoGallery.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
-import PhotoLightbox from '../../components/PhotoLightbox.jsx'
-import { PhotographyGalleryTriptych } from '../../components/PhotographyGallery.jsx'
 import useScrollReveal from '../../hooks/useScrollReveal.js'
 
 const ASSET_ROOT = '/assets/images/photography/case-study'
@@ -23,79 +21,12 @@ const PHOTOS = [
   { src: 'portrait-two.webp', alt: 'Outdoor waist-up portrait in a teal jacket', category: 'Portrait Photography', title: 'DR.K', accent: '#85A760' },
   { src: 'portrait-three.webp', alt: 'Outdoor portrait wearing a white shirt', category: 'Portrait Photography', title: 'DR.K', accent: '#85A760' },
   { src: 'portrait-four.webp', alt: 'Outdoor portrait wearing denim overalls', category: 'Portrait Photography', title: 'DR.K', accent: '#85A760' },
-]
-
-function photographyPhotoSource(photo) {
-  return `${ASSET_ROOT}/${photo.src}`
-}
-
-function Photo({ photo, index, onOpen, className = '', imageClassName = '' }) {
-  return (
-    <button
-      type="button"
-      className={`group relative block w-full cursor-zoom-in overflow-hidden border-0 bg-transparent p-0 text-left shadow-[12px_14px_10px_rgba(0,0,0,0.24)] outline-none transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 hover:shadow-[16px_22px_18px_rgba(0,0,0,0.34)] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-[#262626] motion-reduce:transition-none ${className}`}
-      aria-label={`Open ${photo.alt}`}
-      aria-haspopup="dialog"
-      onClick={(event) => onOpen(index, event)}
-    >
-      <img
-        src={photographyPhotoSource(photo)}
-        alt={photo.alt}
-        loading="lazy"
-        decoding="async"
-        className={`block w-full object-cover transition-[transform,filter] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.035] group-hover:brightness-110 group-focus-visible:scale-[1.035] motion-reduce:transition-none ${imageClassName || 'h-auto'}`}
-      />
-      <span className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/10 group-focus-visible:bg-black/10 motion-reduce:transition-none" aria-hidden="true" />
-      <span className="pointer-events-none absolute right-4 top-4 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full border border-white/35 bg-black/35 text-white opacity-0 shadow-lg backdrop-blur-md transition-[opacity,transform,background-color] duration-300 group-hover:translate-y-0 group-hover:bg-black/55 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 motion-reduce:transition-none" aria-hidden="true">
-        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M8 3H3v5" />
-          <path d="M16 3h5v5" />
-          <path d="M8 21H3v-5" />
-          <path d="M16 21h5v-5" />
-        </svg>
-      </span>
-    </button>
-  )
-}
-
-function Caption({ heading, name, children, color = '#FFFFFF' }) {
-  return (
-    <div className="mt-[2.5vw] text-center max-[900px]:mt-8" style={{ color }}>
-      <h2 className="text-[clamp(12px,0.68vw,13px)] font-semibold uppercase tracking-[0.32em] max-[900px]:text-sm">
-        {heading}
-      </h2>
-      <h3 className="mt-[1.65vw] text-[clamp(13px,0.78vw,15px)] font-semibold leading-none max-[900px]:mt-6 max-[900px]:text-base">
-        {name}
-      </h3>
-      <p className="mx-auto mt-1 max-w-[720px] text-[clamp(11px,0.67vw,13px)] leading-[1.35] max-[900px]:mt-2 max-[900px]:max-w-xl max-[900px]:text-sm">
-        {children}
-      </p>
-    </div>
-  )
-}
+].map((photo) => ({ ...photo, src: `${ASSET_ROOT}/${photo.src}` }))
 
 export default function PhotographyPage() {
   useScrollReveal()
-  const [lightboxIndex, setLightboxIndex] = useState(null)
-  const lastTriggerRef = useRef(null)
-
-  const openLightbox = useCallback((index, event) => {
-    lastTriggerRef.current = event.currentTarget
-    setLightboxIndex(index)
-  }, [])
-
-  const closeLightbox = useCallback(() => {
-    setLightboxIndex(null)
-    window.requestAnimationFrame(() => lastTriggerRef.current?.focus())
-  }, [])
-
-  const showPreviousPhoto = useCallback(() => {
-    setLightboxIndex((current) => (current - 1 + PHOTOS.length) % PHOTOS.length)
-  }, [])
-
-  const showNextPhoto = useCallback(() => {
-    setLightboxIndex((current) => (current + 1) % PHOTOS.length)
-  }, [])
+  const viewer = usePhotoViewer(PHOTOS.length)
+  const openLightbox = viewer.open
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#262626] font-questrial text-white">
@@ -143,17 +74,17 @@ export default function PhotographyPage() {
             className={`absolute inset-x-0 top-[9.48vw] flex flex-col items-center max-[900px]:relative max-[900px]:top-auto ${REVEAL}`}
             data-reveal
           >
-            <PhotographyGalleryTriptych
-              photos={PHOTOS}
-              onOpen={openLightbox}
-              getPhotoSrc={photographyPhotoSource}
-              logoSrc={`${ASSET_ROOT}/jo-malone-logo.webp`}
-              logoAlt="Jo Malone London"
-              logoClassName="brightness-0 invert"
-              heading="Product Photography"
-              name="Wood Sage & Sea Salt"
-              description="Exploring product storytelling through light, texture, and composition."
+            <img
+              src={`${ASSET_ROOT}/jo-malone-logo.webp`}
+              alt="Jo Malone London"
+              loading="lazy"
+              decoding="async"
+              className="mb-[1.38vw] h-auto w-[10.7vw] brightness-0 invert max-[900px]:mb-10 max-[900px]:w-[180px]"
             />
+            <PhotoTriptych photos={PHOTOS} indices={[0, 1, 2]} onOpen={openLightbox} />
+            <Caption heading="Product Photography" name="Wood Sage & Sea Salt">
+              Exploring product storytelling through light, texture, and composition.
+            </Caption>
           </article>
 
           <article
@@ -205,15 +136,13 @@ export default function PhotographyPage() {
         </section>
       </main>
 
-      {lightboxIndex !== null && (
-        <PhotoLightbox
+      {viewer.isOpen && (
+        <Lightbox
           photos={PHOTOS}
-          index={lightboxIndex}
-          onClose={closeLightbox}
-          onPrevious={showPreviousPhoto}
-          onNext={showNextPhoto}
-          getPhotoSrc={photographyPhotoSource}
-          titleId="photography-lightbox-title"
+          index={viewer.index}
+          onClose={viewer.close}
+          onPrevious={viewer.previous}
+          onNext={viewer.next}
         />
       )}
     </div>

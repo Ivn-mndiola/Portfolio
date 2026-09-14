@@ -95,7 +95,9 @@ const SLIDES = [
       oneX: '/assets/images/dbfortri/dbfortri-project-bg-1920.webp',
       twoX: '/assets/images/dbfortri/dbfortri-project-bg-3840.webp',
     },
-    titleGraphic: '/assets/images/dbfortri/dbfortri-project-wordmark-2x.png',
+    bgOverlay: 'linear-gradient(180deg, rgba(30,30,30,0.26) 0%, rgba(30,30,30,0.6) 68%, rgba(18,18,18,0.82) 100%)',
+    titleGraphic: '/assets/images/dbfortri/dbfortri-wordmark-vector.svg',
+    titleTagline: 'FORMED TO BE TIMELESS.',
     description:
       'a timeless photography brand dedicated to capturing authentic stories through intentional imagery and refined visual identity.',
     cta: { label: 'VIEW NOW', href: '/projects/dbfortri' },

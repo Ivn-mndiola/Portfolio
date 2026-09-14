@@ -1,12 +1,38 @@
+import { useEffect } from 'react'
 import Nav from '../components/Nav.jsx'
 import Slide from '../components/Slide.jsx'
 import SLIDES from '../data/projectSlides.jsx'
 import useSlider from '../hooks/useSlider.js'
 import useRosterCycle from '../hooks/useRosterCycle.js'
 
+const SELECTED_PROJECT_KEY = 'iverson-portfolio:selected-project'
+let lastSelectedProjectId = null
+
+function restoreSelectedProject() {
+  let projectId = lastSelectedProjectId
+  try {
+    projectId = window.sessionStorage.getItem(SELECTED_PROJECT_KEY) || projectId
+  } catch {
+    // Keep returning to the selected project when browser storage is blocked.
+  }
+
+  // Use the stable project ID so reordering slides won't select another project.
+  const index = SLIDES.findIndex((slide) => slide.id === projectId)
+  return index >= 0 ? index : 0
+}
+
 export default function ProjectsPage() {
   const total = SLIDES.length
-  const { current, goPrev, goNext } = useSlider(total)
+  const { current, goPrev, goNext } = useSlider(total, restoreSelectedProject)
+
+  useEffect(() => {
+    lastSelectedProjectId = SLIDES[current].id
+    try {
+      window.sessionStorage.setItem(SELECTED_PROJECT_KEY, lastSelectedProjectId)
+    } catch {
+      // The in-memory selection still survives navigation within this visit.
+    }
+  }, [current])
 
   const danesSlideIndex = SLIDES.findIndex((s) => s.id === 'danes')
   const rosterCount = SLIDES[danesSlideIndex]?.roster?.length ?? 0

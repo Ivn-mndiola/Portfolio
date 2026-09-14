@@ -1,73 +1,111 @@
 import Nav from '../../components/Nav.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
+import useScrollReveal from '../../hooks/useScrollReveal.js'
 
-const DARK_SECTIONS = ['.hero-section', '.gateway-dark-zone', '.nia-dark-section', '.bg-terminal-mockup']
+const DARK_SECTIONS = ['.nia-hero', '.nia-gateway-dark', '.nia-terminal-section']
+const REVEAL = 'opacity-0 translate-y-10 transition-[opacity,transform] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] will-change-[opacity,transform] data-[revealed=true]:translate-y-0 data-[revealed=true]:opacity-100'
+const TEAL = '#48C1B0'
 
-const TIMELINE =
-  "relative isolate ml-[12vw] mr-auto max-w-[1100px] pl-[60px] [--timeline-color:#E6E8E9] before:pointer-events-none before:absolute before:left-[-1.5px] before:top-0 before:w-[3px] before:rounded-b-full before:bg-[var(--timeline-color)] before:content-[''] after:pointer-events-none after:absolute after:bottom-0 after:left-[-1.5px] after:w-[3px] after:bg-[var(--timeline-color)] after:content-[''] max-[900px]:ml-[5vw] max-[900px]:mr-[5vw] max-[900px]:pl-8"
-const TIMELINE_ITEM =
-  "relative grid grid-cols-[1fr_1.2fr] gap-[50px] pb-[120px] before:pointer-events-none before:absolute before:bottom-2 before:left-[-61.5px] before:top-[30px] before:w-[3px] before:rounded-full before:bg-[var(--timeline-color)] before:content-[''] last:before:bottom-0 max-[900px]:grid-cols-1 max-[900px]:gap-8 max-[900px]:before:left-[-33.5px] max-[600px]:pb-20"
-const LEFT_COLUMN =
-  '[&_h3]:mb-3 [&_h3]:font-montserrat [&_h3]:text-[26px] [&_h3]:font-medium [&_p]:mb-[15px] [&_p]:text-[15px] [&_p]:font-light [&_p]:leading-relaxed'
-const WAYFINDING_CARD =
-  'rounded-[18px] border border-white/30 bg-[linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_100%)] p-3.5 shadow-[0_15px_25px_rgba(0,0,0,0.15)] backdrop-blur-xl'
+const COPY_BLOCK =
+  'absolute z-10 text-left text-[#48C1B0] [&_h2]:mb-4 [&_h2]:font-montserrat [&_h2]:text-[clamp(18px,1.35vw,26px)] [&_h2]:font-medium [&_h2]:leading-[1.15] [&_p]:text-[clamp(10px,0.78vw,15px)] [&_p]:font-light [&_p]:leading-[1.45]'
 
-function Marker({ tone = 'teal' }) {
-  const markerAsset = {
-    teal: 'NIA-ARROW.svg',
-    white: 'NIA-WHT-ARROW.svg',
-    dark: 'NIA-BLACK-ARROW.svg',
-  }[tone]
-
+function TimelineRail({ color = TEAL, markers = [] }) {
   return (
-    <img
-      src={`/assets/images/nia/${markerAsset}`}
-      alt="Marker"
-      className="absolute -left-[60px] top-0.5 z-10 h-auto w-[22px] -translate-x-1/2 max-[900px]:-left-8"
-    />
-  )
-}
+    <div className="pointer-events-none absolute bottom-0 left-[13.17%] top-0 z-[4]">
+      <span className="absolute bottom-0 left-0 top-0 w-[2px] -translate-x-1/2" style={{ backgroundColor: color }} />
+      {markers.map(({ top, tone = 'teal' }) => {
+        const asset = tone === 'white'
+          ? 'NIA-WHT-ARROW.svg'
+          : tone === 'dark'
+            ? 'NIA-BLACK-ARROW.svg'
+            : 'NIA-ARROW.svg'
 
-function WayfindingCard({ src, alt }) {
-  return (
-    <div className={WAYFINDING_CARD}>
-      <img src={src} alt={alt} className="block h-auto w-full overflow-hidden rounded-[10px]" />
+        return (
+          <img
+            key={`${top}-${tone}`}
+            src={`/assets/images/nia/${asset}`}
+            alt=""
+            className="absolute left-0 h-auto w-[20px] -translate-x-1/2"
+            style={{ top }}
+          />
+        )
+      })}
     </div>
   )
 }
 
 function Feature({ title, label, children }) {
   return (
-    <div className="mb-10 flex items-start gap-[15px]">
-      <img src="/assets/images/nia/NIA-ARROW.svg" alt="" className="mt-0.5 h-[22px] w-[22px]" />
+    <div className="mb-[clamp(28px,2.6vw,50px)] flex items-start gap-4">
+      <img src="/assets/images/nia/NIA-ARROW.svg" alt="" className="mt-1 h-auto w-5 shrink-0" />
       <div>
-        <h4 className="font-montserrat text-[22px] font-medium leading-none text-[#48C1B0]">{title}</h4>
-        <span className="mb-2.5 mt-[5px] block text-[11px] font-bold uppercase tracking-[0.15em] text-[#48C1B0]/50">{label}</span>
-        <p className="m-0 text-[15px] font-light text-[#48C1B0]/95">{children}</p>
+        <h3 className="font-montserrat text-[clamp(17px,1.15vw,22px)] font-medium leading-none text-[#48C1B0]">{title}</h3>
+        <span className="mb-2 mt-1.5 block text-[clamp(8px,0.58vw,11px)] font-bold uppercase tracking-[0.15em] text-[#48C1B0]/55">{label}</span>
+        <p className="max-w-[430px] text-[clamp(10px,0.78vw,15px)] font-light leading-[1.45] text-[#48C1B0]">{children}</p>
       </div>
     </div>
   )
 }
 
-export default function NiaPage() {
+function GlassSign({ src, alt }) {
   return (
-    <div className="overflow-x-hidden bg-white font-karla text-[#333333]">
+    <div className="rounded-[18px] border border-white/35 bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.08))] p-[clamp(8px,0.8vw,15px)] shadow-[0_16px_34px_rgba(0,0,0,0.16)] backdrop-blur-xl">
+      <img src={src} alt={alt} className="block h-auto w-full rounded-[10px]" />
+    </div>
+  )
+}
+
+function TypographySpecimen({ name, fontClassName, badges, sizeClassName }) {
+  return (
+    <div className="flex h-[clamp(70px,5.4vw,104px)] items-center justify-between gap-5 overflow-hidden rounded-[18px] border border-white/30 bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.07))] px-[clamp(18px,1.45vw,28px)] shadow-[0_14px_28px_rgba(0,0,0,0.13)] backdrop-blur-xl">
+      <span className={`min-w-0 overflow-hidden text-ellipsis whitespace-nowrap font-normal leading-none text-white ${fontClassName} ${sizeClassName}`}>{name}</span>
+      <span className="flex shrink-0 flex-col gap-1">
+        {badges.map((badge) => (
+          <span key={badge} className="rounded bg-[#48C1B0] px-2.5 py-1 text-center text-[clamp(7px,0.48vw,9px)] font-bold tracking-[0.04em] text-white">
+            {badge}
+          </span>
+        ))}
+      </span>
+    </div>
+  )
+}
+
+export default function NiaPage() {
+  useScrollReveal()
+
+  return (
+    <div className="overflow-x-hidden bg-white font-inter text-[#333333]">
       <Nav active="/projects" darkSectionSelectors={DARK_SECTIONS} accent="teal" />
 
-      <header className="hero-section bg-[linear-gradient(180deg,#48C1B0_0%,#168475_60%,#001512_100%)] px-[8vw] pb-[50px] pt-[180px] text-center text-white">
-        <div className="mx-auto flex max-w-[900px] flex-col items-center">
-          <img src="/assets/images/nia/NIA-NAME-LOGO.svg" alt="New Ilocos Airport Logo" className="mb-[91px] w-full max-w-[400px]" />
-          <p className="mb-[60px] text-[15px] leading-[1.8] text-white/95 [&_strong]:font-bold">
-            NEW ILOCOS AIRPORT is a <strong>branding</strong> and <strong>wayfinding concept</strong> for a contemporary regional gateway,
-            designed to <strong>enhance</strong> the passenger experience through <strong>clarity, movement</strong>, and <strong>seamless navigation</strong>.
-            Built on <strong>principles of efficiency</strong> and <strong>connectivity</strong>, the visual identity combines a structured
-            information system with a modern design language that reflects the airport&rsquo;s role as a key transportation hub while reinforcing a strong
-            sense of regional character and place.
-          </p>
-        </div>
+      <header
+        className="nia-hero relative flex min-h-[65.82vw] flex-col items-center overflow-hidden px-[8vw] pb-[60px] pt-[11.85vw] text-center text-white"
+        style={{
+          background:
+            'radial-gradient(ellipse 58% 42% at 50% -4%, rgba(204,229,225,0.88) 0%, rgba(123,203,193,0.72) 42%, transparent 74%), linear-gradient(180deg, #52C2B3 0%, #43B9AA 42%, #005248 100%)',
+        }}
+      >
+        <img
+          src="/assets/images/nia/NIA-NAME-LOGO.svg"
+          alt="New Ilocos Airport"
+          className={`mb-[5.95vw] h-auto w-[20.78vw] shrink-0 ${REVEAL}`}
+          data-reveal
+        />
 
+        <p
+          className={`mb-20 w-[44vw] shrink-0 text-center text-[clamp(9px,0.68vw,13px)] leading-[1.45] text-white/95 [&_strong]:font-bold [&_strong]:text-white ${REVEAL}`}
+          data-reveal
+        >
+          <strong>NEW ILOCOS AIRPORT</strong> is a branding and wayfinding concept for a contemporary regional gateway,
+          designed to enhance the passenger experience through clarity, movement, and seamless navigation. Built on
+          principles of efficiency and connectivity, the visual identity combines a structured information system with a
+          modern design language that reflects the airport&rsquo;s role as a key transportation hub while reinforcing a strong
+          sense of regional character and place.
+        </p>
+
+        {/* Match the Danes metadata container and let the hero grow with its rows. */}
         <CaseStudyMeta
-          className="mx-auto w-[calc(100%_-_8vw)] max-w-[1560px]"
+          className={`mb-10 mt-auto w-[calc(100%_-_8vw)] max-w-[1560px] ${REVEAL}`}
+          dataReveal
           projectLine1="Conceptual Project"
           projectLine2="for New Ilocos Airport 2026"
           scope={['Logo', 'Brand Identity', 'Layout Design', 'Mockups']}
@@ -75,172 +113,201 @@ export default function NiaPage() {
         />
       </header>
 
-      <section className="relative bg-[linear-gradient(180deg,#48C1B0_0%,#48C1B0_30%,#FFFFFF_85%)] pt-[60px] text-center">
-        <div aria-hidden="true" className="gateway-dark-zone pointer-events-none absolute inset-x-0 top-0 h-[58%]" />
-        <h2 className="relative z-[2] mb-[50px] font-montserrat text-[clamp(3rem,6vw,5rem)] font-bold text-white [text-shadow:0_4px_15px_rgba(0,0,0,0.1)]">A Gateway to the North</h2>
-        <img src="/assets/images/nia/NIA-AIRPLANE.svg" alt="Airplane" className="relative z-[2] mx-auto w-full max-w-[900px]" />
+      <section
+        className="nia-gateway-dark relative h-[33.49vw] overflow-hidden text-center"
+        style={{
+          background:
+            'linear-gradient(180deg, #48C1B0 0%, #48C1B0 49%, rgba(72,193,176,0.72) 60%, rgba(255,255,255,0.9) 82%, #FFFFFF 100%)',
+        }}
+      >
+        <h1
+          className={`absolute left-1/2 top-[16.5%] z-[3] -translate-x-1/2 whitespace-nowrap font-montserrat text-[clamp(32px,4.15vw,80px)] font-bold leading-none text-white [text-shadow:0_5px_18px_rgba(0,0,0,0.08)] ${REVEAL}`}
+          data-reveal
+        >
+          A Gateway to the North
+        </h1>
+        <img
+          src="/assets/images/nia/NIA-AIRPLANE.svg"
+          alt="Airplane approaching New Ilocos Airport"
+          className={`absolute left-1/2 top-[36%] z-[2] h-auto w-[62%] -translate-x-1/2 ${REVEAL}`}
+          data-reveal
+        />
       </section>
 
-      <section className="bg-white">
-        <div className={`${TIMELINE} pb-[60px] pt-[60px] before:h-[52px] after:h-[60px]`}>
-          <div className={TIMELINE_ITEM}>
-            <Marker />
-            <div className={`${LEFT_COLUMN} [&_h3]:text-[#48C1B0] [&_p]:text-[#48C1B0]/95`}>
-              <h3>Branding &amp; Wayfinding Concept</h3>
-              <p className="!text-lg">Project: New Ilocos Airport<br />Scope: Brand Identity &amp; Wayfinding<br />Type: Concept Project</p>
-              <p className="!mt-[45px]">A modern airport identity designed to emphasize clarity,<br />movement, and regional connection through a structured visual system.</p>
-            </div>
-            <div className="mt-[215px] max-[900px]:mt-0">
-              <Feature title="Clarity" label="Precision">High-contrast, bold strokes and generous spacing.</Feature>
-              <Feature title="Flow" label="Movement">The curve rhythm that connects the three letters.</Feature>
-              <Feature title="Efficiency" label="Connectivity">The use of mirrored modules (N and A share the same geometry).</Feature>
-            </div>
-          </div>
+      <section className="relative h-[119.4vw] overflow-hidden bg-white">
+        <TimelineRail markers={[{ top: '1.8%' }, { top: '29.1%' }, { top: '47.2%' }, { top: '69.5%' }]} />
 
-          <div className={TIMELINE_ITEM}>
-            <Marker />
-            <div className={`${LEFT_COLUMN} [&_h3]:text-[#48C1B0] [&_p]:text-[#48C1B0]/95`}>
-              <h3>Brand Idea</h3>
-              <p>A contemporary regional gateway<br />built on clarity, flow, and efficiency.</p>
-              <p className="!mt-[45px] !text-lg">Keywords: Movement, Connectivity, Precision and Calm efficiency</p>
-            </div>
-            <div />
-          </div>
+        <article className={`${COPY_BLOCK} left-[18.45%] top-[2.5%] w-[34%] ${REVEAL}`} data-reveal>
+          <h2>Branding &amp; Wayfinding Concept</h2>
+          <p className="!font-normal">
+            Project: New Ilocos Airport<br />
+            Scope: Brand Identity &amp; Wayfinding<br />
+            Type: Concept Project
+          </p>
+          <p className="!mt-[clamp(26px,2.3vw,44px)]">
+            A modern airport identity designed to emphasize clarity,<br />
+            movement, and regional connection through a structured visual system.
+          </p>
+        </article>
 
-          <div className={TIMELINE_ITEM}>
-            <Marker />
-            <div className={`${LEFT_COLUMN} [&_h3]:text-[#48C1B0] [&_p]:text-[#48C1B0]/95`}>
-              <h3>Logo System</h3>
-              <p>The NIA symbol represents pathways and motion,<br />designed to scale across signage, digital interfaces,<br />and large environments.</p>
-            </div>
-            <img src="/assets/images/nia/NIA-LOGO-SYSTEM.svg" alt="Logo System" className="h-auto w-[125%] max-[900px]:w-full" />
-          </div>
-
-          <div className={`${TIMELINE_ITEM} pb-[100px]`}>
-            <Marker />
-            <div className={`${LEFT_COLUMN} [&_h3]:text-[#48C1B0] [&_p]:text-[#48C1B0]/95`}>
-              <h3>Logo Construction</h3>
-              <p>Built on a modular grid to ensure balance,<br />consistency, and reliability across all applications.</p>
-            </div>
-            <div />
-            <div className="col-span-full mt-[100px] flex w-full flex-col items-center text-center">
-              <h3 className="mb-[50px] font-montserrat text-2xl font-semibold text-[#48C1B0]">Logo Concept</h3>
-              <img src="/assets/images/nia/NIA-LOGO-CONCEPT.svg" alt="Logo Concept Grid" className="h-auto w-full max-w-[900px]" />
-            </div>
-          </div>
+        <div className={`absolute left-[60.5%] top-[12.6%] z-10 w-[31%] ${REVEAL}`} data-reveal>
+          <Feature title="Clarity" label="Precision">High-contrast, bold strokes and generous spacing.</Feature>
+          <Feature title="Flow" label="Movement">The curve rhythm that connects the three letters.</Feature>
+          <Feature title="Efficiency" label="Connectivity">The use of mirrored modules&mdash;N and A share the same geometry.</Feature>
         </div>
-      </section>
 
-      <section className="nia-dark-section bg-[#8A8B8F] text-white">
-        <div className={`${TIMELINE} [--timeline-color:white] pb-[60px] pt-[60px] before:h-[52px] after:h-[60px]`}>
-          <div className={TIMELINE_ITEM}>
-            <Marker tone="white" />
-            <div className={`${LEFT_COLUMN} [&_h3]:text-white [&_p]:text-white/95`}>
-              <h3>Color &amp; Typography</h3>
-              <div className="mt-5 flex flex-col gap-5">
-                <div className="flex items-center justify-between gap-5 overflow-hidden rounded-[18px] border border-white/30 bg-[linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_100%)] px-7 py-[18px] shadow-[0_15px_25px_rgba(0,0,0,0.15)] backdrop-blur-[18px]">
-                  <h2 className="min-w-0 overflow-hidden text-ellipsis whitespace-nowrap font-questrial text-[75px] font-normal leading-none text-white max-[600px]:text-4xl">Sansation</h2>
-                  <div className="flex shrink-0 flex-col items-stretch justify-center gap-1">
-                    <span className="rounded bg-[#48C1B0] px-3 py-1 text-center font-questrial text-[10px] font-bold tracking-[0.03em] text-white">REGULAR</span>
-                    <span className="rounded bg-[#48C1B0] px-3 py-1 text-center font-questrial text-[10px] font-bold tracking-[0.03em] text-white">BOLD</span>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between gap-5 overflow-hidden rounded-[18px] border border-white/30 bg-[linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_100%)] px-7 py-[18px] shadow-[0_15px_25px_rgba(0,0,0,0.15)] backdrop-blur-[18px]">
-                  <h2 className="min-w-0 overflow-hidden text-ellipsis whitespace-nowrap font-bahnschrift text-[62px] font-normal leading-none text-white max-[600px]:text-4xl">Bahnschrift</h2>
-                  <div className="flex shrink-0 flex-col items-stretch justify-center gap-1">
-                    {['REGULAR', 'BOLD', 'CONDENSED'].map((badge) => <span className="rounded bg-[#48C1B0] px-3 py-1 text-center font-bahnschrift text-[10px] font-bold tracking-[0.03em] text-white" key={badge}>{badge}</span>)}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <img src="/assets/images/nia/NIA-COLORS.svg" alt="Color Palette: Finn White, Charcoal, Raven White, Nia Teal" className="mx-auto block h-auto w-[130%] max-w-none max-[900px]:w-full" />
-          </div>
+        <article className={`${COPY_BLOCK} left-[18.45%] top-[28.7%] w-[34%] ${REVEAL}`} data-reveal>
+          <h2>Brand Idea</h2>
+          <p>A contemporary regional gateway<br />built on clarity, flow, and efficiency.</p>
+          <p className="!mt-[clamp(24px,2.1vw,40px)] !font-normal">
+            Keywords: Movement, Connectivity, Precision and Calm efficiency
+          </p>
+        </article>
 
-          <div className={`${TIMELINE_ITEM} pb-[100px]`}>
-            <Marker tone="white" />
-            <div className={`${LEFT_COLUMN} [&_h3]:text-white [&_p]:text-white/95`}>
-              <h3>Wayfinding System</h3>
-              <p>Wayfinding Principles</p>
-              <ul className="mb-[15px] list-disc pl-5 text-[15px] font-light leading-[1.8] text-white/90">
-                <li>High contrast</li><li>Minimal wording</li><li>Clear hierarchy</li><li>Consistent placement</li>
-              </ul>
-              <p>Designed to improve passenger flow and reduce confusion.</p>
-            </div>
-            <div className="flex w-[125%] flex-col gap-5 max-[900px]:w-full">
-              <WayfindingCard src="/assets/images/nia/NIA-SIGN-DEPART1.svg" alt="Wayfinding Signage — Gate M1 and Exit R3" />
-              <WayfindingCard src="/assets/images/nia/NIA-SIGN-DEPART2.svg" alt="Wayfinding Signage — Gate M1 and Exit R3" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-terminal-mockup bg-[url('/assets/images/nia/NIA-TERMINAL.jpg')] bg-cover bg-top bg-no-repeat">
-        <div className={`${TIMELINE} [--timeline-color:white] pb-[350px] pt-[150px] before:h-[142px] after:h-[350px]`}>
-          <div className={`${TIMELINE_ITEM} pt-[60px]`}>
-            <Marker tone="white" />
-            <div className={`${LEFT_COLUMN} text-white`}>
-              <h3 className="!mt-[200px] !text-white">Mockup |<br />Wayfinding Signage</h3>
-              <p className="!text-white">Directional and gate information system</p>
-              <div className="mt-[100px] flex w-full max-w-[480px] flex-col gap-5">
-                <WayfindingCard src="/assets/images/nia/NIA-GATE1.svg" alt="Wayfinding Signage — Gate M1" />
-                <WayfindingCard src="/assets/images/nia/NIA-EXIT.svg" alt="Wayfinding Signage — Exit R3" />
-              </div>
-            </div>
-            <div />
-          </div>
-          <div className={`${TIMELINE_ITEM} mt-[250px] pb-[100px]`}>
-            <Marker tone="dark" />
-            <div className={LEFT_COLUMN}>
-              <h3>Mockup |<br />Terminal Environmental Graphics</h3>
-              <p>Large-scale identity applications</p>
-            </div>
-            <div />
-          </div>
-        </div>
-      </section>
-
-      <section className="relative z-10 min-h-[1150px] overflow-visible bg-white max-[900px]:min-h-0">
-        <div className="absolute left-[12vw] top-0 z-[2] h-[392px] w-[3px] rounded-b-full bg-[#48C1B0] max-[900px]:left-[5vw]" />
-        <div className="absolute bottom-0 left-[12vw] top-[428px] z-[2] w-[3px] rounded-t-full bg-[#48C1B0] max-[900px]:left-[5vw]" />
+        <article className={`${COPY_BLOCK} left-[18.45%] top-[47%] w-[31%] ${REVEAL}`} data-reveal>
+          <h2>Logo System</h2>
+          <p>
+            The NIA symbol represents pathways and motion,<br />
+            designed to scale across signage, digital interfaces,<br />
+            and large environments.
+          </p>
+        </article>
 
         <img
-          src="/assets/images/nia/NIA-ARROW.svg"
-          alt="Marker"
-          className="absolute left-[12vw] top-[400px] z-[6] h-auto w-[22px] -translate-x-1/2 max-[900px]:left-[5vw]"
+          src="/assets/images/nia/NIA-LOGO-SYSTEM.svg"
+          alt="New Ilocos Airport logo system"
+          className={`absolute left-[54.2%] top-[41.7%] z-[6] h-auto w-[38.1%] ${REVEAL}`}
+          data-reveal
         />
 
-        <div className="absolute left-[calc(12vw_+_100px)] top-[220px] z-[5] w-[650px] max-[1200px]:left-[calc(12vw_+_70px)] max-[1200px]:w-[500px] max-[900px]:relative max-[900px]:left-auto max-[900px]:top-auto max-[900px]:w-auto max-[900px]:pb-10 max-[900px]:pl-[calc(5vw_+_40px)] max-[900px]:pr-6 max-[900px]:pt-32">
-          <img
-            src="/assets/images/nia/NIA-ID-LOGO.svg"
-            alt="New Ilocos Airport"
-            className="mb-[58px] w-[195px] max-[600px]:mb-10 max-[600px]:w-[150px]"
-          />
-          <h3 className="mb-6 font-montserrat text-[36px] font-semibold leading-[1.12] tracking-[-0.3px] text-[#48C1B0] max-[1200px]:text-[32px] max-[600px]:text-[28px]">
-            Mockup |<br />Staff Identification System
-          </h3>
-          <p className="m-0 text-[22px] font-light text-[#48C1B0] max-[1200px]:text-lg max-[600px]:text-sm">Operational and security credentials</p>
+        <article className={`${COPY_BLOCK} left-[18.45%] top-[69.2%] w-[35%] ${REVEAL}`} data-reveal>
+          <h2>Logo Construction</h2>
+          <p>
+            Built on a modular grid to ensure balance,<br />
+            consistency, and reliability across all applications.
+          </p>
+        </article>
+
+        <h2
+          className={`absolute left-[55%] top-[78.1%] z-10 -translate-x-1/2 font-montserrat text-[clamp(18px,1.25vw,24px)] font-medium text-[#48C1B0] ${REVEAL}`}
+          data-reveal
+        >
+          Logo Concept
+        </h2>
+        <img
+          src="/assets/images/nia/NIA-LOGO-CONCEPT.svg"
+          alt="NIA logo construction concepts"
+          className={`absolute left-[19.5%] top-[82.1%] z-[6] h-auto w-[61.5%] ${REVEAL}`}
+          data-reveal
+        />
+      </section>
+
+      <section className="nia-dark-section relative h-[64.2vw] overflow-hidden bg-[#969696] text-white">
+        <TimelineRail color="#FFFFFF" markers={[{ top: '8.1%', tone: 'white' }, { top: '62.4%', tone: 'white' }]} />
+
+        <article className={`absolute left-[18.45%] top-[7.5%] z-10 w-[35.6%] ${REVEAL}`} data-reveal>
+          <h2 className="mb-[clamp(22px,1.7vw,32px)] font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium text-white">Color &amp; Typography</h2>
+          <div className="flex flex-col gap-[clamp(12px,0.9vw,18px)]">
+            <TypographySpecimen
+              name="Sansation"
+              fontClassName="font-questrial"
+              sizeClassName="text-[clamp(42px,3.9vw,75px)]"
+              badges={['REGULAR', 'BOLD']}
+            />
+            <TypographySpecimen
+              name="Bahnschrift"
+              fontClassName="font-bahnschrift"
+              sizeClassName="text-[clamp(38px,3.25vw,62px)]"
+              badges={['REGULAR', 'BOLD', 'CONDENSED']}
+            />
+          </div>
+        </article>
+
+        <img
+          src="/assets/images/nia/NIA-COLORS.svg"
+          alt="New Ilocos Airport colors"
+          className={`absolute left-[55.2%] top-[7.1%] z-[6] h-auto w-[37.4%] ${REVEAL}`}
+          data-reveal
+        />
+
+        <article className={`absolute left-[18.45%] top-[61.8%] z-10 w-[32%] text-white ${REVEAL}`} data-reveal>
+          <h2 className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium">Wayfinding System</h2>
+          <p className="mb-2 text-[clamp(10px,0.78vw,15px)] font-light">Wayfinding Principles</p>
+          <ul className="mb-4 list-disc pl-5 text-[clamp(10px,0.78vw,15px)] font-light leading-[1.45]">
+            <li>High contrast</li>
+            <li>Minimal wording</li>
+            <li>Clear hierarchy</li>
+            <li>Consistent placement</li>
+          </ul>
+          <p className="text-[clamp(10px,0.78vw,15px)] font-light leading-[1.45]">Designed to improve passenger flow and reduce confusion.</p>
+        </article>
+
+        <div className={`absolute left-[54.6%] top-[64.5%] z-[6] flex w-[37.2%] flex-col gap-[clamp(15px,1.15vw,22px)] ${REVEAL}`} data-reveal>
+          <GlassSign src="/assets/images/nia/NIA-SIGN-DEPART1.svg" alt="NIA directional signage" />
+          <GlassSign src="/assets/images/nia/NIA-SIGN-DEPART2.svg" alt="NIA departures signage" />
         </div>
+      </section>
+
+      <section className="nia-terminal-section relative h-[84.3vw] overflow-hidden text-white">
+        <img
+          src="/assets/images/nia/NIA-TERMINAL.png"
+          alt="New Ilocos Airport terminal and wayfinding system"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
+        <TimelineRail color="#FFFFFF" markers={[{ top: '14.5%', tone: 'white' }, { top: '63.4%', tone: 'dark' }]} />
+
+        <article className={`absolute left-[18.45%] top-[14%] z-10 w-[31%] ${REVEAL}`} data-reveal>
+          <h2 className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium leading-[1.15] text-white">
+            Mockup |<br />Wayfinding Signage
+          </h2>
+          <p className="text-[clamp(10px,0.78vw,15px)] font-light leading-[1.45] text-white">Directional and gate information system</p>
+        </article>
+
+        <div className={`absolute left-[18.45%] top-[31.2%] z-[8] flex w-[29.4%] flex-col gap-[clamp(18px,1.3vw,25px)] ${REVEAL}`} data-reveal>
+          <GlassSign src="/assets/images/nia/NIA-GATE1.svg" alt="NIA gate M1 sign" />
+          <GlassSign src="/assets/images/nia/NIA-EXIT.svg" alt="NIA exit R3 sign" />
+        </div>
+
+        <article className={`absolute left-[18.45%] top-[63%] z-10 w-[32%] text-[#111111] ${REVEAL}`} data-reveal>
+          <h2 className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium leading-[1.15]">
+            Mockup |<br />Terminal Environmental Graphics
+          </h2>
+          <p className="text-[clamp(10px,0.78vw,15px)] font-light leading-[1.45]">Large-scale identity applications</p>
+        </article>
+      </section>
+
+      <section className="relative h-[105.8vw] overflow-hidden bg-[#EDF1EF] text-[#48C1B0]">
+        <div
+          aria-hidden="true"
+          className="absolute -inset-[4%] scale-110 bg-[url('/assets/images/nia/NIA-TERMINAL.png')] bg-cover bg-[center_78%] bg-no-repeat opacity-[0.22] blur-[24px] saturate-50"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-white/62" />
+        <div className="absolute left-[13.17%] top-0 z-[4] h-[42%] w-[2px] -translate-x-1/2 bg-[#48C1B0]" />
+        <img src="/assets/images/nia/NIA-ARROW.svg" alt="" className="absolute left-[13.17%] top-[15.2%] z-[7] h-auto w-5 -translate-x-1/2" />
 
         <img
           src="/assets/images/nia/NIA-ID.svg"
-          alt="Staff ID Card Mockup"
-          className="pointer-events-none absolute left-[12vw] top-[-220px] z-[3] h-auto w-[min(1298px,88vw)] max-w-none max-[900px]:relative max-[900px]:left-auto max-[900px]:top-auto max-[900px]:mx-auto max-[900px]:block max-[900px]:w-full max-[900px]:max-w-[700px]"
+          alt="New Ilocos Airport staff identification and lanyard"
+          className={`absolute left-[22.5%] top-[-7.8%] z-[5] h-auto w-[56%] max-w-none ${REVEAL}`}
+          data-reveal
         />
-      </section>
 
-      <footer className="relative min-h-svh overflow-hidden bg-[#EDF1EF] text-center text-[#48C1B0]">
-        <div
-          aria-hidden="true"
-          className="absolute -inset-8 scale-110 bg-[url('/assets/images/nia/NIA-TERMINAL.jpg')] bg-cover bg-[center_58%] bg-no-repeat opacity-[0.32] blur-[22px] saturate-50"
-        />
-        <div aria-hidden="true" className="absolute inset-0 bg-white/55" />
+        <article className={`absolute left-[18.45%] top-[14.4%] z-[8] w-[31%] ${REVEAL}`} data-reveal>
+          <img src="/assets/images/nia/NIA-ID-LOGO.svg" alt="New Ilocos Airport" className="mb-[clamp(30px,3vw,58px)] h-auto w-[clamp(125px,10.2vw,195px)]" />
+          <h2 className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium leading-[1.15]">
+            Mockup |<br />Staff Identification System
+          </h2>
+          <p className="text-[clamp(10px,0.78vw,15px)] font-light leading-[1.45]">Operational and security credentials</p>
+        </article>
+
         <img
           src="/assets/images/nia/NIA-FOOTER.svg"
           alt="New Ilocos Airport — A Gateway to the North"
-          className="absolute left-1/2 top-[20%] z-[2] h-auto w-[clamp(145px,16vw,205px)] -translate-x-1/2"
+          className={`absolute left-1/2 top-[68.3%] z-[7] h-auto w-[12.2%] -translate-x-1/2 ${REVEAL}`}
+          data-reveal
         />
-        <span className="absolute bottom-[16%] left-1/2 z-[2] -translate-x-1/2 font-bahnschrift text-sm font-bold">2026</span>
-      </footer>
+        <span className="absolute bottom-[8.2%] left-1/2 z-[7] -translate-x-1/2 font-bahnschrift text-[clamp(9px,0.72vw,14px)] font-bold">2026</span>
+      </section>
     </div>
   )
 }
