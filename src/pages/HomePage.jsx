@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
 import ClientLogos from '../components/ClientLogos.jsx'
@@ -17,28 +16,20 @@ export default function HomePage() {
   const anim = useHeroAnimation()
   const navigate = useNavigate()
 
-  useEffect(() => {
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.body.style.overflow = previousOverflow
-    }
-  }, [])
-
   function handleCtaClick(e) {
     e.preventDefault()
     navigate('/projects')
   }
 
   return (
-    <div className="relative h-screen overflow-hidden bg-[#071030] text-white">
+    <div className="home-page relative h-screen overflow-hidden bg-[#071030] text-white">
       <div className="absolute inset-0 bg-[url('/assets/images/HOME-HERO-BG.jpg')] bg-cover bg-center" />
       <Nav active="/" />
 
-      <section className="relative flex h-screen items-center justify-center overflow-hidden" id="hero">
-        <div className="absolute top-1/2 z-[1] w-full -translate-y-1/2 text-center max-md:top-[40%] max-md:flex max-md:flex-col max-md:items-center">
+      <section className="home-hero relative flex h-screen items-center justify-center overflow-hidden" id="hero">
+        <div className="home-title absolute top-1/2 z-[1] w-full -translate-y-1/2 text-center max-md:top-[40%] max-md:flex max-md:flex-col max-md:items-center">
           <p
-            className="absolute left-[27%] top-[-15px] font-questrial text-[25px] font-semibold tracking-[0.02em] max-md:static max-md:mb-2.5"
+            className="home-greeting absolute left-[27%] top-[-15px] font-questrial text-[25px] font-semibold tracking-[0.02em] max-md:static max-md:mb-2.5"
             style={revealStyle(anim.delay1)}
           >
             Hello, I'm
@@ -50,7 +41,7 @@ export default function HomePage() {
             IVERSON
           </h1>
           <p
-            className="absolute bottom-[-40px] right-[23%] whitespace-nowrap font-questrial text-[25px] font-semibold tracking-[0.02em] max-md:static max-md:mt-2.5"
+            className="home-role absolute bottom-[-40px] right-[23%] whitespace-nowrap font-questrial text-[25px] font-semibold tracking-[0.02em] max-md:static max-md:mt-2.5"
             style={revealStyle(anim.delay1)}
           >
             Creative Designer
@@ -58,7 +49,7 @@ export default function HomePage() {
         </div>
 
         <div
-          className="pointer-events-none absolute bottom-[-15vh] z-[2] flex h-[95vh] justify-center"
+          className="home-portrait pointer-events-none absolute bottom-[-15vh] z-[2] flex h-[95vh] justify-center"
           style={revealStyle(anim.delay2, { distance: 140, duration: 1200 })}
         >
           <img
@@ -69,7 +60,7 @@ export default function HomePage() {
         </div>
 
         <div
-          className="absolute bottom-1/4 z-[3]"
+          className="home-cta absolute bottom-1/4 z-[3]"
           style={revealStyle(anim.delay3, { distance: 48 })}
         >
           <a

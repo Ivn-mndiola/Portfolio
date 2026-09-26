@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './Nav.css'
 
 const LINKS = [
   { label: 'HOME', to: '/' },
@@ -20,15 +21,50 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
   const [isOverDark, setIsOverDark] = useState(true)
   const navigate = useNavigate()
   const navRef = useRef(null)
+  const menuButtonRef = useRef(null)
+
+  useEffect(() => {
+    const compact = window.matchMedia('(max-width: 1100px)')
+    const onResize = () => { if (!compact.matches) setMenuOpen(false) }
+    compact.addEventListener('change', onResize)
+    return () => compact.removeEventListener('change', onResize)
+  }, [])
+
+  useEffect(() => {
+    if (!menuOpen) return
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    function onTab(event) {
+      if (event.key !== 'Tab') return
+      const controls = Array.from(navRef.current?.querySelectorAll('a, button') ?? [])
+      const first = controls[0]
+      const last = controls[controls.length - 1]
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last?.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first?.focus()
+      }
+    }
+    document.addEventListener('keydown', onTab)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', onTab)
+    }
+  }, [menuOpen])
 
   // Close menu on Escape key
   useEffect(() => {
     function onKeyDown(e) {
-      if (e.key === 'Escape') setMenuOpen(false)
+      if (e.key === 'Escape' && menuOpen) {
+        setMenuOpen(false)
+        menuButtonRef.current?.focus()
+      }
     }
     document.addEventListener('keydown', onKeyDown)
     return () => document.removeEventListener('keydown', onKeyDown)
-  }, [])
+  }, [menuOpen])
 
   // Scroll-tint: only runs when a page opts in via darkSectionSelectors.
   // State resets naturally on unmount — no manual DOM cleanup needed.
@@ -126,11 +162,13 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
   return (
     <nav
       ref={navRef}
-      className="fixed inset-x-0 top-8 z-[100] flex h-20 items-center justify-center bg-transparent p-0 font-inter max-[900px]:top-4 max-[900px]:justify-end max-[900px]:pr-4"
+      data-menu-open={menuOpen}
+      aria-label="Main navigation"
+      className="site-nav fixed inset-x-0 top-8 z-[100] flex h-20 items-center justify-center bg-transparent p-0 font-inter max-[900px]:top-4 max-[900px]:justify-end max-[900px]:pr-4"
     >
       <a
         href="/"
-        className={`absolute left-0 flex h-full w-[17vw] min-w-[150px] items-center justify-end rounded-r-[40px] border border-l-0 pr-9 no-underline backdrop-blur-2xl max-md:w-20 max-md:min-w-20 max-md:pr-4 ${glassColor}`}
+        className={`site-nav-logo absolute left-0 flex h-full w-[17vw] min-w-[150px] items-center justify-end rounded-r-[40px] border border-l-0 pr-9 no-underline backdrop-blur-2xl max-md:w-20 max-md:min-w-20 max-md:pr-4 ${glassColor}`}
         aria-label="Iverson logo"
         onClick={(e) => handleNavClick(e, '/')}
       >
@@ -146,7 +184,10 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
       </a>
 
       <button
-        className={`absolute right-6 z-[200] hidden h-12 w-12 cursor-pointer flex-col items-center justify-center gap-[5px] rounded-full border backdrop-blur-2xl transition-colors hover:bg-white/10 max-[900px]:flex ${glassColor}`}
+        ref={menuButtonRef}
+        type="button"
+        aria-controls="nav-links"
+        className={`site-nav-toggle absolute right-6 z-[200] hidden h-12 w-12 cursor-pointer flex-col items-center justify-center gap-[5px] rounded-full border backdrop-blur-2xl transition-colors hover:bg-white/10 max-[900px]:flex ${glassColor}`}
         id="mobile-menu-btn"
         aria-label="Toggle menu"
         aria-expanded={menuOpen}
@@ -158,7 +199,7 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
       </button>
 
       <ul
-        className={`flex h-full list-none items-center gap-16 rounded-[40px] border px-[72px] backdrop-blur-2xl max-[900px]:fixed max-[900px]:inset-0 max-[900px]:h-screen max-[900px]:w-screen max-[900px]:flex-col max-[900px]:justify-center max-[900px]:gap-10 max-[900px]:rounded-none max-[900px]:border-0 max-[900px]:bg-[rgba(3,7,18,0.95)] max-[900px]:px-0 max-[900px]:transition-all max-[900px]:duration-[400ms] ${glassColor} ${
+        className={`site-nav-links flex h-full list-none items-center gap-16 rounded-[40px] border px-[72px] backdrop-blur-2xl max-[900px]:fixed max-[900px]:inset-0 max-[900px]:h-screen max-[900px]:w-screen max-[900px]:flex-col max-[900px]:justify-center max-[900px]:gap-10 max-[900px]:rounded-none max-[900px]:border-0 max-[900px]:bg-[rgba(3,7,18,0.95)] max-[900px]:px-0 max-[900px]:transition-all max-[900px]:duration-[400ms] ${glassColor} ${
           menuOpen
             ? 'max-[900px]:visible max-[900px]:translate-y-0 max-[900px]:opacity-100'
             : 'max-[900px]:invisible max-[900px]:-translate-y-5 max-[900px]:opacity-0'
@@ -169,6 +210,7 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
           <li key={link.to}>
             <a
               href={link.to}
+              aria-current={active === link.to ? 'page' : undefined}
               className={`inline-block bg-transparent p-0 text-sm font-normal uppercase tracking-[0.1em] no-underline transition-colors max-[900px]:text-2xl max-[900px]:font-bold max-[900px]:tracking-[0.12em] max-[900px]:text-white/60 max-[900px]:hover:text-white ${
                 active === link.to
                   ? showAccent

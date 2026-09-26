@@ -36,7 +36,7 @@ export default function DanesPage() {
   )
 
   return (
-    <div className="overflow-x-hidden bg-white font-inter text-[#23252A]">
+    <div className="danes-case-page overflow-x-hidden bg-white font-inter text-[#23252A]">
       <Nav active="/projects" darkSectionSelectors={DARK_SECTIONS} />
 
       <header className="cs-hero relative flex min-h-[80vh] flex-col items-center bg-[linear-gradient(180deg,#630521_0%,#1a0209_100%)] px-[8vw] pb-[60px] pt-[180px] text-center text-white">
@@ -123,13 +123,13 @@ export default function DanesPage() {
         <h2 className={`${HEADING} ${REVEAL}`} data-reveal>
           Team Logo
         </h2>
-        <div className={`flex items-end justify-center gap-20 max-[900px]:flex-col max-[900px]:items-center max-[900px]:gap-10 ${REVEAL}`} data-reveal>
+        <div className={`flex w-full items-end justify-center gap-20 max-[900px]:flex-col max-[900px]:items-center max-[900px]:gap-10 ${REVEAL}`} data-reveal>
           <div className="flex flex-col items-center">
-            <img src="/assets/images/danes/RED-DANES-1.png" alt="Main Logo" className="mb-5 h-auto max-w-[250px]" />
+            <img src="/assets/images/danes/RED-DANES-1.png" alt="Main Logo" className="mb-5 h-auto w-full max-w-[450px]" />
             <span className="text-sm font-bold uppercase tracking-[0.05em] text-[#FC044C]">Main Logo</span>
           </div>
           <div className="flex flex-col items-center">
-            <img src="/assets/images/danes/RED-DANES-2.png" alt="Icon Logo" className="mb-5 h-auto max-w-[250px]" />
+            <img src="/assets/images/danes/RED-DANES-2.png" alt="Icon Logo" className="mb-5 h-auto w-full max-w-[450px]" />
             <span className="text-sm font-bold uppercase tracking-[0.05em] text-[#FC044C]">Icon Logo</span>
           </div>
         </div>
@@ -154,12 +154,12 @@ export default function DanesPage() {
       </section>
 
       <section className={`${SECTION} w-full pb-10`}>
-        <h2 className={`mb-10 font-urbanist text-[42px] font-extrabold uppercase tracking-[0.05em] text-[#FC044C] ${REVEAL}`} data-reveal>
+        <h2 className={`mb-10 font-urbanist text-[42px] max-sm:text-[28px] font-extrabold uppercase tracking-[0.05em] text-[#FC044C] ${REVEAL}`} data-reveal>
           TEAM COLOR AND TYPOGRAPHY
         </h2>
 
         <div className={`mx-auto flex w-full max-w-[1000px] justify-center shadow-[0_8px_24px_rgba(0,0,0,0.1)] max-[900px]:flex-wrap ${REVEAL}`} data-reveal>
-          <div className="flex flex-1 flex-col max-[900px]:mb-6 max-[900px]:min-w-[50%]">
+          <div className="danes-swatch min-w-0 flex flex-1 flex-col max-[900px]:mb-6 max-[900px]:min-w-[50%]">
             <div className="mb-3 font-urbanist text-xl font-extrabold uppercase tracking-[0.06em] text-[#BBBBBF]">
               MISTED SILVER
             </div>
@@ -168,7 +168,7 @@ export default function DanesPage() {
               <span className="font-gill text-[34px] font-normal tracking-[0.03em]">BBBBBF</span>
             </div>
           </div>
-          <div className="flex flex-1 flex-col max-[900px]:mb-6 max-[900px]:min-w-[50%]">
+          <div className="danes-swatch min-w-0 flex flex-1 flex-col max-[900px]:mb-6 max-[900px]:min-w-[50%]">
             <div className="mb-3 font-urbanist text-xl font-extrabold uppercase tracking-[0.06em] text-[#FC044C]">
               HOT MAGENTA RED
             </div>
@@ -177,7 +177,7 @@ export default function DanesPage() {
               <span className="font-gill text-[34px] font-normal tracking-[0.03em]">FC044C</span>
             </div>
           </div>
-          <div className="flex flex-1 flex-col max-[900px]:mb-6 max-[900px]:min-w-[50%]">
+          <div className="danes-swatch min-w-0 flex flex-1 flex-col max-[900px]:mb-6 max-[900px]:min-w-[50%]">
             <div className="mb-3 font-urbanist text-xl font-extrabold uppercase tracking-[0.06em] text-[#23252A]">
               DANES BLACK
             </div>
@@ -186,7 +186,7 @@ export default function DanesPage() {
               <span className="font-gill text-[34px] font-normal tracking-[0.03em]">23252A</span>
             </div>
           </div>
-          <div className="flex flex-1 flex-col max-[900px]:mb-6 max-[900px]:min-w-[50%]">
+          <div className="danes-swatch min-w-0 flex flex-1 flex-col max-[900px]:mb-6 max-[900px]:min-w-[50%]">
             <div className="mb-3 font-urbanist text-xl font-extrabold uppercase tracking-[0.06em] text-[#FC044C]">
               FROSTED PEARL
             </div>
@@ -256,15 +256,15 @@ export default function DanesPage() {
 
       <section className="mockup-slider-section flex w-screen max-w-none flex-col items-start bg-[#23252A] px-[8vw] py-[100px]">
         <div className={`mb-10 flex w-full items-center justify-between max-[600px]:flex-col max-[600px]:items-start max-[600px]:gap-5 ${REVEAL}`} data-reveal>
-          <h2 className="font-urbanist text-[42px] font-extrabold uppercase tracking-[0.02em] text-white">Mockups</h2>
+          <h2 className="font-urbanist text-[42px] max-sm:text-[28px] font-extrabold uppercase tracking-[0.02em] text-white">Mockups</h2>
 
           <div className="flex gap-4">
-            <button className={ROUND_BUTTON} aria-label="Previous" onClick={mockupPrev}>
+            <button type="button" className={ROUND_BUTTON} aria-label="Previous mockup" aria-controls="danes-mockup-track" onClick={mockupPrev}>
               <svg className="h-[22px] w-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M15 18l-6-6 6-6" />
               </svg>
             </button>
-            <button className={ROUND_BUTTON} aria-label="Next" onClick={mockupNext}>
+            <button type="button" className={ROUND_BUTTON} aria-label="Next mockup" aria-controls="danes-mockup-track" onClick={mockupNext}>
               <svg className="h-[22px] w-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M9 18l6-6-6-6" />
               </svg>
@@ -273,9 +273,9 @@ export default function DanesPage() {
         </div>
 
         <div className={`w-full overflow-hidden ${REVEAL}`} data-reveal>
-          <div className="mockup-track flex gap-6 overflow-x-auto pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" ref={mockupTrackRef}>
+          <div id="danes-mockup-track" className="mockup-track flex gap-6 overflow-x-auto pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" ref={mockupTrackRef}>
             {MOCKUPS.map((m) => (
-              <div className="mockup-card flex aspect-[4/5] min-w-[280px] basis-[calc(25%_-_18px)] shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:-translate-y-2 max-[900px]:basis-[calc(50%_-_12px)] max-[600px]:basis-[85%]" key={m.n}>
+              <div className="mockup-card flex aspect-[4/5] min-w-0 basis-[calc(25%_-_18px)] shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:-translate-y-2 max-[900px]:basis-[calc(50%_-_12px)] max-[600px]:basis-full" key={m.n}>
                 <img src={m.src} alt={`Mockup ${m.n}`} className="h-full w-full object-cover" />
               </div>
             ))}
@@ -284,7 +284,7 @@ export default function DanesPage() {
       </section>
 
       <section className="social-carousel-section flex w-screen max-w-none flex-col items-center overflow-hidden bg-[#23252A] pb-20 pt-[100px]">
-        <div className={`relative mb-10 flex w-full items-center justify-center px-[8vw] ${REVEAL}`} data-reveal>
+        <div className={`danes-social-heading relative mb-10 flex w-full items-center justify-center px-[8vw] ${REVEAL}`} data-reveal>
           <h2 className={`${HEADING} mb-0`}>Social Media</h2>
           <div className="absolute right-[8vw] flex gap-3.5">
             <button className="flex h-[52px] w-[52px] cursor-pointer items-center justify-center rounded-full border-[1.5px] border-white/25 bg-white/[0.08] text-white backdrop-blur-lg transition duration-200 hover:scale-[1.06] hover:border-[#FC044C] hover:bg-[#FC044C]" aria-label="Previous" onClick={socialPrev}>

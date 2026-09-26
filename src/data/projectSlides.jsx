@@ -16,12 +16,12 @@ const SLIDES = [
     ),
     cta: { label: 'VIEW NOW', href: '/projects/danes' },
     roster: [
-      { src: '/assets/images/danes/P1.png', alt: 'Henjie', key: 'henjie' },
-      { src: '/assets/images/danes/P2.png', alt: 'Noah', key: 'noah' },
-      { src: '/assets/images/danes/P3.png', alt: 'Sean Dale', key: 'sean-dale' },
-      { src: '/assets/images/danes/P4.png', alt: 'Tristan', key: 'tristan' },
-      { src: '/assets/images/danes/P5.png', alt: 'Vince', key: 'vince' },
-      { src: '/assets/images/danes/P6.png', alt: 'Iver', key: 'iver' },
+      { src: '/assets/images/danes/P1.png', alt: 'Henjie', key: 'henjie', mobileOffset: '-20.3%' },
+      { src: '/assets/images/danes/P2.png', alt: 'Noah', key: 'noah', mobileOffset: '-5%' },
+      { src: '/assets/images/danes/P3.png', alt: 'Sean Dale', key: 'sean-dale', mobileOffset: '-12.5%' },
+      { src: '/assets/images/danes/P4.png', alt: 'Tristan', key: 'tristan', mobileOffset: '6%' },
+      { src: '/assets/images/danes/P5.png', alt: 'Vince', key: 'vince', mobileOffset: '0%' },
+      { src: '/assets/images/danes/P6.png', alt: 'Iver', key: 'iver', mobileOffset: '-12.3%' },
     ],
   },
   {
@@ -41,6 +41,8 @@ const SLIDES = [
   {
     id: 'nia',
     bg: '/assets/images/nia/NIA-BG.jpg',
+    mobileArtwork: { src: '/assets/images/nia/NIA-AIRPLANE.svg', alt: 'New Ilocos Airport aircraft', kind: 'cutout', width: 1098, height: 369 },
+    mobileBackground: 'radial-gradient(ellipse at 48% 48%, #60c9bf 0%, transparent 46%), linear-gradient(160deg, #57b9b1, #146f67 48%, #031c21 90%)',
     smallIcon: '/assets/images/nia/nia-icon.png',
     titleGraphic: '/assets/images/nia/NIA-PROJECT-NAME.png',
     description:
@@ -50,6 +52,8 @@ const SLIDES = [
   {
     id: 'source',
     bg: '/assets/images/source/SOURCE-BG.jpg',
+    mobileArtwork: { src: '/assets/images/source/SOURCE-BG.jpg', alt: 'Source team outside the store', kind: 'scene', width: 1920, height: 905 },
+    mobileBackground: 'linear-gradient(160deg, #667fb6, #203b78 46%, #030b20 86%)',
     titleGraphic: '/assets/images/source/SOURCE-PROJ.png',
     description:
       'a Baguio City-based destination for premium PC components, gaming peripherals, and expert hardware support.',

@@ -1,19 +1,34 @@
+import { useRef } from 'react'
 import Nav from '../../components/Nav.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
-import useScrollReveal from '../../hooks/useScrollReveal.js'
+import useNiaScroll from '../../hooks/useNiaScroll.js'
+import './NiaPage.css'
 
 const DARK_SECTIONS = ['.nia-hero', '.nia-gateway-dark', '.nia-terminal-section']
-const REVEAL = 'opacity-0 translate-y-10 transition-[opacity,transform] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] will-change-[opacity,transform] data-[revealed=true]:translate-y-0 data-[revealed=true]:opacity-100'
+const REVEAL = 'nia-reveal'
 const TEAL = '#48C1B0'
 
 const COPY_BLOCK =
   'absolute z-10 text-left text-[#48C1B0] [&_h2]:mb-4 [&_h2]:font-montserrat [&_h2]:text-[clamp(18px,1.35vw,26px)] [&_h2]:font-medium [&_h2]:leading-[1.15] [&_p]:text-[clamp(10px,0.78vw,15px)] [&_p]:font-light [&_p]:leading-[1.45]'
 
-function TimelineRail({ color = TEAL, markers = [] }) {
+function TimelineRail({ color = TEAL, markers = [], startAtFirst = false, end = '100%' }) {
+  // A real-width rail prevents Tailwind's max-width: 100% image reset from
+  // collapsing arrows inside an otherwise zero-width absolute container.
+  const stops = markers.map((marker, index) => `var(--nia-stop-${index}, ${marker.top})`)
+  const boundaries = ['0%', ...stops, end]
+  const segments = boundaries.slice(0, -1).map((point, index) => ({
+    top: index === 0 ? point : `calc(${point} + 16px)`,
+    bottom: index === markers.length
+      ? `calc(100% - ${end})`
+      : `calc(100% - ${boundaries[index + 1]} + 16px)`,
+  })).filter((segment, index) => !startAtFirst || index > 0)
+
   return (
-    <div className="pointer-events-none absolute bottom-0 left-[13.17%] top-0 z-[4]">
-      <span className="absolute bottom-0 left-0 top-0 w-[2px] -translate-x-1/2" style={{ backgroundColor: color }} />
-      {markers.map(({ top, tone = 'teal' }) => {
+    <div className="nia-timeline" aria-hidden="true" style={{ '--nia-track-color': color }}>
+      <div className="nia-timeline-track">
+        {segments.map((style, index) => <span className="nia-timeline-segment" key={index} style={style} />)}
+      </div>
+      {markers.map(({ target, tone = 'teal' }, index) => {
         const asset = tone === 'white'
           ? 'NIA-WHT-ARROW.svg'
           : tone === 'dark'
@@ -21,13 +36,9 @@ function TimelineRail({ color = TEAL, markers = [] }) {
             : 'NIA-ARROW.svg'
 
         return (
-          <img
-            key={`${top}-${tone}`}
-            src={`/assets/images/nia/${asset}`}
-            alt=""
-            className="absolute left-0 h-auto w-[20px] -translate-x-1/2"
-            style={{ top }}
-          />
+          <span key={target} className="nia-timeline-marker" data-nia-target={target} style={{ top: stops[index] }}>
+            <img src={`/assets/images/nia/${asset}`} alt="" width="20" height="18" />
+          </span>
         )
       })}
     </div>
@@ -36,7 +47,7 @@ function TimelineRail({ color = TEAL, markers = [] }) {
 
 function Feature({ title, label, children }) {
   return (
-    <div className="mb-[clamp(28px,2.6vw,50px)] flex items-start gap-4">
+    <div className={`mb-[clamp(28px,2.6vw,50px)] flex items-start gap-4 ${REVEAL}`} data-reveal>
       <img src="/assets/images/nia/NIA-ARROW.svg" alt="" className="mt-1 h-auto w-5 shrink-0" />
       <div>
         <h3 className="font-montserrat text-[clamp(17px,1.15vw,22px)] font-medium leading-none text-[#48C1B0]">{title}</h3>
@@ -57,7 +68,7 @@ function GlassSign({ src, alt }) {
 
 function TypographySpecimen({ name, fontClassName, badges, sizeClassName }) {
   return (
-    <div className="flex h-[clamp(70px,5.4vw,104px)] items-center justify-between gap-5 overflow-hidden rounded-[18px] border border-white/30 bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.07))] px-[clamp(18px,1.45vw,28px)] shadow-[0_14px_28px_rgba(0,0,0,0.13)] backdrop-blur-xl">
+    <div className="nia-type-specimen flex h-[clamp(70px,5.4vw,104px)] items-center justify-between gap-5 overflow-hidden rounded-[18px] border border-white/30 bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.07))] px-[clamp(18px,1.45vw,28px)] shadow-[0_14px_28px_rgba(0,0,0,0.13)] backdrop-blur-xl">
       <span className={`min-w-0 overflow-hidden text-ellipsis whitespace-nowrap font-normal leading-none text-white ${fontClassName} ${sizeClassName}`}>{name}</span>
       <span className="flex shrink-0 flex-col gap-1">
         {badges.map((badge) => (
@@ -71,10 +82,11 @@ function TypographySpecimen({ name, fontClassName, badges, sizeClassName }) {
 }
 
 export default function NiaPage() {
-  useScrollReveal()
+  const pageRef = useRef(null)
+  useNiaScroll(pageRef)
 
   return (
-    <div className="overflow-x-hidden bg-white font-inter text-[#333333]">
+    <div ref={pageRef} className="nia-case-page overflow-x-hidden bg-white font-inter text-[#333333]">
       <Nav active="/projects" darkSectionSelectors={DARK_SECTIONS} accent="teal" />
 
       <header
@@ -134,11 +146,16 @@ export default function NiaPage() {
         />
       </section>
 
-      <section className="relative h-[119.4vw] overflow-hidden bg-white">
-        <TimelineRail markers={[{ top: '1.8%' }, { top: '29.1%' }, { top: '47.2%' }, { top: '69.5%' }]} />
+      <section className="nia-brand-section relative h-[119.4vw] overflow-hidden bg-white">
+        <TimelineRail startAtFirst markers={[
+          { target: 'concept', top: '2.5%' },
+          { target: 'brand-idea', top: '28.7%' },
+          { target: 'logo-system', top: '47%' },
+          { target: 'logo-construction', top: '69.2%' },
+        ]} />
 
         <article className={`${COPY_BLOCK} left-[18.45%] top-[2.5%] w-[34%] ${REVEAL}`} data-reveal>
-          <h2>Branding &amp; Wayfinding Concept</h2>
+          <h2 data-nia-anchor="concept">Branding &amp; Wayfinding Concept</h2>
           <p className="!font-normal">
             Project: New Ilocos Airport<br />
             Scope: Brand Identity &amp; Wayfinding<br />
@@ -150,14 +167,14 @@ export default function NiaPage() {
           </p>
         </article>
 
-        <div className={`absolute left-[60.5%] top-[12.6%] z-10 w-[31%] ${REVEAL}`} data-reveal>
+        <div className="absolute left-[60.5%] top-[12.6%] z-10 w-[31%]">
           <Feature title="Clarity" label="Precision">High-contrast, bold strokes and generous spacing.</Feature>
           <Feature title="Flow" label="Movement">The curve rhythm that connects the three letters.</Feature>
           <Feature title="Efficiency" label="Connectivity">The use of mirrored modules&mdash;N and A share the same geometry.</Feature>
         </div>
 
         <article className={`${COPY_BLOCK} left-[18.45%] top-[28.7%] w-[34%] ${REVEAL}`} data-reveal>
-          <h2>Brand Idea</h2>
+          <h2 data-nia-anchor="brand-idea">Brand Idea</h2>
           <p>A contemporary regional gateway<br />built on clarity, flow, and efficiency.</p>
           <p className="!mt-[clamp(24px,2.1vw,40px)] !font-normal">
             Keywords: Movement, Connectivity, Precision and Calm efficiency
@@ -165,7 +182,7 @@ export default function NiaPage() {
         </article>
 
         <article className={`${COPY_BLOCK} left-[18.45%] top-[47%] w-[31%] ${REVEAL}`} data-reveal>
-          <h2>Logo System</h2>
+          <h2 data-nia-anchor="logo-system">Logo System</h2>
           <p>
             The NIA symbol represents pathways and motion,<br />
             designed to scale across signage, digital interfaces,<br />
@@ -181,7 +198,7 @@ export default function NiaPage() {
         />
 
         <article className={`${COPY_BLOCK} left-[18.45%] top-[69.2%] w-[35%] ${REVEAL}`} data-reveal>
-          <h2>Logo Construction</h2>
+          <h2 data-nia-anchor="logo-construction">Logo Construction</h2>
           <p>
             Built on a modular grid to ensure balance,<br />
             consistency, and reliability across all applications.
@@ -203,10 +220,13 @@ export default function NiaPage() {
       </section>
 
       <section className="nia-dark-section relative h-[64.2vw] overflow-hidden bg-[#969696] text-white">
-        <TimelineRail color="#FFFFFF" markers={[{ top: '8.1%', tone: 'white' }, { top: '62.4%', tone: 'white' }]} />
+        <TimelineRail color="#FFFFFF" markers={[
+          { target: 'typography', top: '7.5%', tone: 'white' },
+          { target: 'wayfinding', top: '61.8%', tone: 'white' },
+        ]} />
 
         <article className={`absolute left-[18.45%] top-[7.5%] z-10 w-[35.6%] ${REVEAL}`} data-reveal>
-          <h2 className="mb-[clamp(22px,1.7vw,32px)] font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium text-white">Color &amp; Typography</h2>
+          <h2 data-nia-anchor="typography" className="mb-[clamp(22px,1.7vw,32px)] font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium text-white">Color &amp; Typography</h2>
           <div className="flex flex-col gap-[clamp(12px,0.9vw,18px)]">
             <TypographySpecimen
               name="Sansation"
@@ -231,7 +251,7 @@ export default function NiaPage() {
         />
 
         <article className={`absolute left-[18.45%] top-[61.8%] z-10 w-[32%] text-white ${REVEAL}`} data-reveal>
-          <h2 className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium">Wayfinding System</h2>
+          <h2 data-nia-anchor="wayfinding" className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium">Wayfinding System</h2>
           <p className="mb-2 text-[clamp(10px,0.78vw,15px)] font-light">Wayfinding Principles</p>
           <ul className="mb-4 list-disc pl-5 text-[clamp(10px,0.78vw,15px)] font-light leading-[1.45]">
             <li>High contrast</li>
@@ -254,10 +274,13 @@ export default function NiaPage() {
           alt="New Ilocos Airport terminal and wayfinding system"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
-        <TimelineRail color="#FFFFFF" markers={[{ top: '14.5%', tone: 'white' }, { top: '63.4%', tone: 'dark' }]} />
+        <TimelineRail color="#FFFFFF" markers={[
+          { target: 'signage-mockup', top: '14%', tone: 'white' },
+          { target: 'terminal-mockup', top: '63%', tone: 'dark' },
+        ]} />
 
         <article className={`absolute left-[18.45%] top-[14%] z-10 w-[31%] ${REVEAL}`} data-reveal>
-          <h2 className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium leading-[1.15] text-white">
+          <h2 data-nia-anchor="signage-mockup" className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium leading-[1.15] text-white">
             Mockup |<br />Wayfinding Signage
           </h2>
           <p className="text-[clamp(10px,0.78vw,15px)] font-light leading-[1.45] text-white">Directional and gate information system</p>
@@ -269,21 +292,20 @@ export default function NiaPage() {
         </div>
 
         <article className={`absolute left-[18.45%] top-[63%] z-10 w-[32%] text-[#111111] ${REVEAL}`} data-reveal>
-          <h2 className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium leading-[1.15]">
+          <h2 data-nia-anchor="terminal-mockup" className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium leading-[1.15]">
             Mockup |<br />Terminal Environmental Graphics
           </h2>
           <p className="text-[clamp(10px,0.78vw,15px)] font-light leading-[1.45]">Large-scale identity applications</p>
         </article>
       </section>
 
-      <section className="relative h-[105.8vw] overflow-hidden bg-[#EDF1EF] text-[#48C1B0]">
+      <section className="nia-staff-section relative h-[105.8vw] overflow-hidden bg-[#EDF1EF] text-[#48C1B0]">
         <div
           aria-hidden="true"
           className="absolute -inset-[4%] scale-110 bg-[url('/assets/images/nia/NIA-TERMINAL.png')] bg-cover bg-[center_78%] bg-no-repeat opacity-[0.22] blur-[24px] saturate-50"
         />
         <div aria-hidden="true" className="absolute inset-0 bg-white/62" />
-        <div className="absolute left-[13.17%] top-0 z-[4] h-[42%] w-[2px] -translate-x-1/2 bg-[#48C1B0]" />
-        <img src="/assets/images/nia/NIA-ARROW.svg" alt="" className="absolute left-[13.17%] top-[15.2%] z-[7] h-auto w-5 -translate-x-1/2" />
+        <TimelineRail end="42%" markers={[{ target: 'staff-mockup', top: '21%' }]} />
 
         <img
           src="/assets/images/nia/NIA-ID.svg"
@@ -294,7 +316,7 @@ export default function NiaPage() {
 
         <article className={`absolute left-[18.45%] top-[14.4%] z-[8] w-[31%] ${REVEAL}`} data-reveal>
           <img src="/assets/images/nia/NIA-ID-LOGO.svg" alt="New Ilocos Airport" className="mb-[clamp(30px,3vw,58px)] h-auto w-[clamp(125px,10.2vw,195px)]" />
-          <h2 className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium leading-[1.15]">
+          <h2 data-nia-anchor="staff-mockup" className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium leading-[1.15]">
             Mockup |<br />Staff Identification System
           </h2>
           <p className="text-[clamp(10px,0.78vw,15px)] font-light leading-[1.45]">Operational and security credentials</p>

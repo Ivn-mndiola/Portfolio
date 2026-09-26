@@ -38,12 +38,12 @@ export default function CaseStudyMeta({
 
   return (
     <div
-      className={`grid w-full grid-cols-[1fr_220px_220px_250px] gap-[30px] border-t pt-[35px] text-left max-[900px]:grid-cols-2 max-[600px]:grid-cols-1 ${fontClassName} ${className}`}
+      className={`case-study-meta grid w-full grid-cols-[1fr_220px_220px_250px] gap-[30px] border-t pt-[35px] text-left max-[900px]:grid-cols-2 max-[600px]:grid-cols-1 ${fontClassName} ${className}`}
       data-reveal={dataReveal ? '' : undefined}
       style={{ color: colors.text, borderColor: colors.border }}
     >
       <div
-        className="flex items-center gap-10 max-[900px]:col-span-2 max-[900px]:border-b max-[900px]:pb-5 max-[600px]:col-span-1"
+        className="case-study-meta-brand flex items-center gap-10 max-[900px]:col-span-2 max-[900px]:border-b max-[900px]:pb-5 max-[600px]:col-span-1"
         style={{ borderColor: colors.mobileBorder }}
       >
         <img

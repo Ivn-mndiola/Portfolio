@@ -43,10 +43,10 @@ export default function ProjectsPage() {
   const totalLabel = String(total).padStart(2, '0')
 
   return (
-    <div className="h-screen overflow-hidden bg-[#030712] font-inter text-white">
+    <div className="projects-page relative h-screen overflow-hidden bg-[#030712] font-inter text-white">
       <Nav active="/projects" />
 
-      <main className="relative h-screen w-screen">
+      <main className="projects-viewport relative h-screen w-screen">
         {SLIDES.map((slide, i) => (
           <Slide
             key={slide.id}
@@ -58,7 +58,7 @@ export default function ProjectsPage() {
       </main>
 
       <button
-        className="absolute left-[3.5vw] top-1/2 z-10 flex h-14 w-14 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-white/5 text-white backdrop-blur-2xl transition-all duration-300 hover:scale-[1.06] hover:border-white/50 hover:bg-white/[0.18] motion-reduce:transition-none max-[900px]:left-3"
+        className="projects-prev absolute left-[3.5vw] top-1/2 z-10 flex h-14 w-14 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-white/5 text-white backdrop-blur-2xl transition-all duration-300 hover:scale-[1.06] hover:border-white/50 hover:bg-white/[0.18] motion-reduce:transition-none max-[900px]:left-3"
         aria-label="Previous Project"
         onClick={goPrev}
       >
@@ -67,7 +67,7 @@ export default function ProjectsPage() {
         </svg>
       </button>
       <button
-        className="absolute right-[3.5vw] top-1/2 z-10 flex h-14 w-14 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-white/5 text-white backdrop-blur-2xl transition-all duration-300 hover:scale-[1.06] hover:border-white/50 hover:bg-white/[0.18] motion-reduce:transition-none max-[900px]:right-3"
+        className="projects-next absolute right-[3.5vw] top-1/2 z-10 flex h-14 w-14 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-white/5 text-white backdrop-blur-2xl transition-all duration-300 hover:scale-[1.06] hover:border-white/50 hover:bg-white/[0.18] motion-reduce:transition-none max-[900px]:right-3"
         aria-label="Next Project"
         onClick={goNext}
       >
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
         </svg>
       </button>
 
-      <div className="absolute bottom-10 left-[8vw] z-10 flex items-center gap-4 max-[900px]:bottom-6 max-[900px]:left-1/2 max-[900px]:-translate-x-1/2">
+      <div className="projects-tracker absolute bottom-10 left-[8vw] z-10 flex items-center gap-4 max-[900px]:bottom-6 max-[900px]:left-1/2 max-[900px]:-translate-x-1/2">
         <div className="relative h-0.5 w-[140px] overflow-hidden bg-white/15">
           <div className="absolute inset-y-0 left-0 bg-white transition-[width] duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] motion-reduce:transition-none" style={{ width: `${pct}%` }} />
         </div>

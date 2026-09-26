@@ -1,0 +1,148 @@
+/* Only About opts into this layout. The document is the single scroll area. */
+.about-layout {
+  position: relative;
+  max-width: 1920px;
+  min-height: 100svh;
+  margin-inline: auto;
+  color: #fdfdfd;
+}
+
+.about-portrait {
+  position: fixed;
+  bottom: 0;
+  left: max(1.3vw, calc((100vw - 1920px) / 2 + 25px));
+  width: min(36.5vw, calc((100svh - 144px) * 0.8213), 700px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.about-portrait img { display: block; width: 100%; height: auto; }
+
+.about-scroll-content {
+  position: relative;
+  width: 42.3%;
+  margin-left: 39.4%;
+  padding-top: clamp(184px, 10vw, 192px);
+  padding-bottom: 100px;
+}
+
+.about-introduction { padding-inline: min(2.65vw, 51px); }
+.about-introduction h1 {
+  margin-bottom: 16px;
+  text-align: right;
+  font-size: clamp(88px, 7.8vw, 150px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.07em;
+}
+.about-biography { font-size: clamp(16px, 0.94vw, 18px); line-height: 1.25; }
+.about-biography p + p { margin-top: 26px; }
+.about-biography-lead { text-align: justify; font-weight: 600; }
+
+.about-divider {
+  height: 3px;
+  margin-block: 64px;
+  border: 1px solid rgb(253 253 253 / 20%);
+  border-radius: 999px;
+  background: rgb(253 253 253 / 10%);
+}
+
+.about-history { padding-inline: min(2vw, 40px) 0; }
+.about-section-title {
+  margin-bottom: 18px;
+  font-size: clamp(28px, 2vw, 38px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+.about-history-row {
+  display: grid;
+  grid-template-columns: 34% minmax(0, 1fr);
+  gap: 20px;
+  font-size: clamp(15px, 0.94vw, 18px);
+  line-height: 1.15;
+}
+.about-history-row h3 { font-weight: 600; letter-spacing: -0.035em; }
+.about-address { color: rgb(253 253 253 / 80%); font-size: 10px; line-height: 1.15; }
+.about-role { margin-top: 9px; letter-spacing: -0.035em; }
+.about-detail { font-size: 12px; line-height: 1.12; color: rgb(253 253 253 / 85%); }
+.about-experience { margin-top: 84px; }
+.about-freelance { margin-top: 52px; }
+.about-freelance .about-detail { margin-top: 28px; }
+
+.about-tools {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: end;
+  gap: 12px;
+  margin-top: 68px;
+  margin-left: min(1.25vw, 24px);
+}
+.about-tools section { min-width: 0; }
+.about-tools .about-section-title { padding-left: 16px; }
+.about-software-list, .about-equipment-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 68px;
+  padding-inline: 10px;
+  border-radius: 12px;
+  background: rgb(253 253 253 / 20%);
+  box-shadow: 0 5px 8px rgb(0 0 0 / 25%);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.about-software-list { gap: 5px; }
+.about-software-list li { flex: 1; min-width: 0; }
+.about-software-list img { display: block; width: 100%; max-width: 50px; height: auto; margin-inline: auto; }
+.about-equipment-title { margin-bottom: 18px; text-align: center; font-size: 12px; line-height: 1.15; }
+.about-equipment-list { gap: 20px; padding-inline: 20px; }
+.about-equipment-list li:first-child { width: 58%; }
+.about-equipment-list li:last-child { width: 28%; }
+.about-equipment-list img { display: block; width: 100%; height: auto; }
+
+@media (min-width: 1001px) and (max-width: 1440px) {
+  .about-scroll-content { width: 52%; margin-left: 41%; }
+  .about-introduction { padding-inline: 24px; }
+  .about-address { font-size: 11px; }
+  .about-detail { font-size: 13px; line-height: 1.25; }
+  .about-history { padding-left: 24px; }
+  .about-tools { margin-left: 12px; }
+}
+
+@media (max-width: 1000px) {
+  .about-layout { padding: 136px 24px 0; }
+  .about-portrait {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    display: block;
+    width: min(64vw, 300px);
+    margin-inline: auto;
+    margin-bottom: 32px;
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  }
+  .about-scroll-content { width: 100%; max-width: 760px; margin-inline: auto; padding-top: 0; padding-bottom: 64px; }
+  .about-introduction { padding: 0; }
+  .about-introduction h1 { text-align: left; font-size: clamp(72px, 13vw, 112px); }
+  .about-biography { font-size: 16px; line-height: 1.5; }
+  .about-biography-lead { text-align: left; }
+  .about-divider { margin-block: 40px; }
+  .about-history, .about-tools { padding: 0; margin-left: 0; }
+  .about-address { font-size: 12px; line-height: 1.35; }
+  .about-detail { font-size: 14px; line-height: 1.4; }
+  .about-history-row { line-height: 1.4; }
+  .about-experience, .about-tools { margin-top: 48px; }
+  .about-freelance { margin-top: 36px; }
+  .about-freelance .about-detail { margin-top: 12px; }
+}
+
+@media (max-width: 600px) {
+  .about-history-row { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .about-tools { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .about-tools .about-section-title { padding-left: 0; }
+  .about-equipment-title { text-align: left; font-size: 14px; }
+  .about-equipment-list { justify-content: center; gap: 32px; }
+  .about-equipment-list li:first-child { max-width: 160px; }
+  .about-equipment-list li:last-child { max-width: 80px; }
+}

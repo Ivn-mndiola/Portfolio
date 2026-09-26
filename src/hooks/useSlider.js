@@ -24,6 +24,7 @@ export default function useSlider(total, initialCurrent = 0) {
   // Keyboard navigation
   useEffect(() => {
     function onKeyDown(e) {
+      if (document.querySelector('.site-nav[data-menu-open="true"]')) return
       if (e.key === 'ArrowLeft') goPrev()
       if (e.key === 'ArrowRight') goNext()
     }
@@ -34,12 +35,17 @@ export default function useSlider(total, initialCurrent = 0) {
   // Touch swipe
   useEffect(() => {
     let touchStartX = 0
+    let touchStartY = 0
+    let canSwipe = false
     function onTouchStart(e) {
       touchStartX = e.changedTouches[0].clientX
+      touchStartY = e.changedTouches[0].clientY
+      canSwipe = Boolean(e.target.closest('.projects-viewport')) && !document.querySelector('.site-nav[data-menu-open="true"]')
     }
     function onTouchEnd(e) {
       const dx = e.changedTouches[0].clientX - touchStartX
-      if (Math.abs(dx) > 48) {
+      const dy = e.changedTouches[0].clientY - touchStartY
+      if (canSwipe && Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.2) {
         dx < 0 ? goNext() : goPrev()
       }
     }

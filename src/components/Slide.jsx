@@ -8,23 +8,28 @@ export default function Slide({ slide, isActive, rosterIndex }) {
 
   return (
     <div
-      className={`absolute inset-0 z-[1] flex items-center justify-center transition-[opacity,visibility] duration-[650ms] ease-[cubic-bezier(0.4,0,0.2,1)] [backface-visibility:hidden] ${
+      data-project={slide.id}
+      data-active={isActive}
+      data-has-visual={Boolean(slide.mobileArtwork || slide.visualRight || slide.roster)}
+      style={slide.mobileBackground ? { '--project-mobile-background': slide.mobileBackground } : undefined}
+      aria-hidden={!isActive}
+      className={`project-slide absolute inset-0 z-[1] flex items-center justify-center transition-[opacity,visibility] duration-[650ms] ease-[cubic-bezier(0.4,0,0.2,1)] [backface-visibility:hidden] ${
         isActive ? 'visible z-[2] opacity-100' : 'invisible opacity-0'
       }`}
     >
       <div
-        className="absolute inset-0 -z-[1] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: slide.bgOverlay ? `${slide.bgOverlay}, ${backgroundAsset}` : backgroundAsset }}
+        className="project-slide-background absolute inset-0 -z-[1] bg-cover bg-center bg-no-repeat"
+        style={{ '--project-background': slide.bgOverlay ? `${slide.bgOverlay}, ${backgroundAsset}` : backgroundAsset }}
       />
 
-      <div className="flex h-full w-full max-w-[1500px] items-center justify-between px-[8vw]">
-        <div className="z-[3] mt-[100px] grid h-[70vh] w-full max-w-[680px] grid-rows-[1.2fr_auto_0.8fr] items-center justify-items-center gap-6">
-          <div className="row-start-1 flex h-full w-full flex-col items-center justify-end self-end">
+      <div className="project-slide-content flex h-full w-full max-w-[1500px] items-center justify-between px-[8vw]">
+        <div className="project-slide-stack z-[3] mt-[100px] grid h-[70vh] w-full max-w-[680px] grid-rows-[1.2fr_auto_0.8fr] items-center justify-items-center gap-6">
+          <div className="project-slide-title row-start-1 flex h-full w-full flex-col items-center justify-end self-end">
             {slide.smallIcon && (
               <img
                 src={slide.smallIcon}
                 alt=""
-                className="mb-8 h-auto w-[75px] brightness-0 invert"
+                className="project-slide-icon mb-8 h-auto w-[75px] brightness-0 invert"
               />
             )}
             {slide.titleGraphic && (
@@ -55,20 +60,27 @@ export default function Slide({ slide, isActive, rosterIndex }) {
 
           <Link
             to={slide.cta.href}
-            className="row-start-2 m-0 inline-block rounded border-[1.5px] border-white/30 bg-white/[0.06] px-14 py-4 text-[13px] font-bold tracking-[0.24em] text-white no-underline backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white/20 hover:shadow-[0_10px_25px_rgba(0,0,0,0.3)] motion-reduce:transition-none"
+            tabIndex={isActive ? 0 : -1}
+            className="project-slide-cta row-start-2 m-0 inline-block rounded border-[1.5px] border-white/30 bg-white/[0.06] px-14 py-4 text-[13px] font-bold tracking-[0.24em] text-white no-underline backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white/20 hover:shadow-[0_10px_25px_rgba(0,0,0,0.3)] motion-reduce:transition-none"
           >
             {slide.cta.label}
           </Link>
 
-          <div className="row-start-3 flex h-full w-full flex-col items-center justify-start self-start">
+          <div className="project-slide-description row-start-3 flex h-full w-full flex-col items-center justify-start self-start">
             <p className={`mt-[90px] max-w-[580px] text-center text-sm leading-[1.75] text-white/65 [&_strong]:font-semibold [&_strong]:text-white ${slide.id === 'danes' ? 'whitespace-nowrap' : ''}`}>
               {slide.description}
             </p>
           </div>
         </div>
 
+        {slide.mobileArtwork && (
+          <div className="project-slide-artwork" data-kind={slide.mobileArtwork.kind}>
+            <img src={slide.mobileArtwork.src} alt={slide.mobileArtwork.alt} width={slide.mobileArtwork.width} height={slide.mobileArtwork.height} />
+          </div>
+        )}
+
         {slide.visualRight && !slide.visualRight.wrapClass && (
-          <div className="relative z-[2] flex h-[80vh] w-1/2 items-center justify-end">
+          <div className="project-slide-visual relative z-[2] flex h-[80vh] w-1/2 items-center justify-end">
             <img
               src={slide.visualRight.src}
               alt={slide.visualRight.alt}
@@ -78,7 +90,7 @@ export default function Slide({ slide, isActive, rosterIndex }) {
         )}
 
         {slide.visualRight && slide.visualRight.wrapClass && (
-          <div className="relative z-[2] flex h-[80vh] w-1/2 items-center justify-end">
+          <div className="project-slide-visual relative z-[2] flex h-[80vh] w-1/2 items-center justify-end">
             <div>
               <img
                 src={slide.visualRight.src}
@@ -90,12 +102,13 @@ export default function Slide({ slide, isActive, rosterIndex }) {
         )}
 
         {slide.roster && (
-          <div className="pointer-events-none absolute inset-0 z-[2] h-screen w-screen">
+          <div className="project-slide-roster pointer-events-none absolute inset-0 z-[2] h-screen w-screen">
             {slide.roster.map((face, i) => (
               <img
                 key={face.key}
                 src={face.src}
                 alt={face.alt}
+                style={{ '--portrait-offset': face.mobileOffset }}
                 className={`absolute bottom-[-1vh] right-0 h-[98vh] w-auto max-w-none object-contain object-right-bottom [backface-visibility:hidden] [filter:drop-shadow(0_25px_60px_rgba(0,0,0,0.95))] transition-[opacity,visibility] duration-[850ms] ease-in-out motion-reduce:transition-none ${
                   i === rosterIndex ? 'visible opacity-100' : 'invisible opacity-0'
                 }`}

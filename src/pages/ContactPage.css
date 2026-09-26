@@ -1,0 +1,160 @@
+/* Only Contact opts into this layout. The document is the single scroll area. */
+.contact-layout {
+  position: relative;
+  max-width: 1920px;
+  min-height: 100svh;
+  margin-inline: auto;
+  color: #fdfdfd;
+}
+
+.contact-portrait {
+  position: fixed;
+  bottom: 0;
+  left: max(1.3vw, calc((100vw - 1920px) / 2 + 25px));
+  width: min(36.5vw, calc((100svh - 144px) * 0.8213), 700px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.contact-portrait img { display: block; width: 100%; height: auto; }
+
+.contact-scroll-content {
+  position: relative;
+  width: 42.3%;
+  margin-left: 39.4%;
+  padding-top: clamp(184px, 10vw, 192px);
+  padding-bottom: 100px;
+}
+
+.contact-introduction { padding-inline: min(2.65vw, 51px); }
+.contact-introduction h1 {
+  margin-bottom: 16px;
+  text-align: right;
+  font-size: clamp(88px, 7.8vw, 150px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.07em;
+}
+.contact-biography { font-size: clamp(16px, 0.94vw, 18px); line-height: 1.25; }
+.contact-biography p + p { margin-top: 26px; }
+.contact-biography-lead { text-align: justify; font-weight: 600; }
+
+.contact-divider {
+  height: 3px;
+  margin-block: 64px;
+  border: 1px solid rgb(253 253 253 / 20%);
+  border-radius: 999px;
+  background: rgb(253 253 253 / 10%);
+}
+
+.contact-history { padding-inline: min(2vw, 40px) 0; }
+.contact-section-title {
+  margin-bottom: 18px;
+  font-size: clamp(28px, 2vw, 38px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+.contact-history-row {
+  display: grid;
+  grid-template-columns: 34% minmax(0, 1fr);
+  gap: 20px;
+  font-size: clamp(15px, 0.94vw, 18px);
+  line-height: 1.15;
+}
+.contact-history-row h3 { font-weight: 600; letter-spacing: -0.035em; }
+.contact-address { color: rgb(253 253 253 / 80%); font-size: 10px; line-height: 1.15; }
+.contact-role { margin-top: 9px; letter-spacing: -0.035em; }
+.contact-detail { font-size: 12px; line-height: 1.12; color: rgb(253 253 253 / 85%); }
+.contact-experience { margin-top: 84px; }
+.contact-freelance { margin-top: 52px; }
+.contact-freelance .contact-detail { margin-top: 28px; }
+
+.contact-tools {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: end;
+  gap: 12px;
+  margin-top: 68px;
+  margin-left: min(1.25vw, 24px);
+}
+.contact-tools section { min-width: 0; }
+.contact-tools .contact-section-title { padding-left: 16px; }
+.contact-software-list, .contact-equipment-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 68px;
+  padding-inline: 10px;
+  border-radius: 12px;
+  background: rgb(253 253 253 / 20%);
+  box-shadow: 0 5px 8px rgb(0 0 0 / 25%);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.contact-software-list { gap: 5px; }
+.contact-software-list li { flex: 1; min-width: 0; }
+.contact-software-list img { display: block; width: 100%; max-width: 50px; height: auto; margin-inline: auto; }
+.contact-equipment-title { margin-bottom: 18px; text-align: center; font-size: 12px; line-height: 1.15; }
+.contact-equipment-list { gap: 20px; padding-inline: 20px; }
+.contact-equipment-list li:first-child { width: 58%; }
+.contact-equipment-list li:last-child { width: 28%; }
+.contact-equipment-list img { display: block; width: 100%; height: auto; }
+
+.contact-enquiry {
+  margin-top: 96px;
+  padding-top: 48px;
+  border-top: 1px solid rgb(253 253 253 / 25%);
+  scroll-margin-top: 144px;
+}
+.contact-enquiry h2 { font-size: clamp(36px, 3.1vw, 60px); font-weight: 400; line-height: 1.1; letter-spacing: -0.055em; }
+.contact-enquiry header p { margin-top: 16px; font-size: 16px; line-height: 1.4; }
+.contact-enquiry header p + p { margin-top: 8px; font-size: 14px; }
+.contact-enquiry form { margin-top: 30px; }
+
+@media (min-width: 1001px) and (max-width: 1440px) {
+  .contact-scroll-content { width: 52%; margin-left: 41%; }
+  .contact-introduction { padding-inline: 24px; }
+  .contact-address { font-size: 11px; }
+  .contact-detail { font-size: 13px; line-height: 1.25; }
+  .contact-history { padding-left: 24px; }
+  .contact-tools { margin-left: 12px; }
+}
+
+@media (max-width: 1000px) {
+  .contact-layout { padding: 136px 24px 0; }
+  .contact-portrait {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    display: block;
+    width: min(64vw, 300px);
+    margin-inline: auto;
+    margin-bottom: 32px;
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  }
+  .contact-scroll-content { width: 100%; max-width: 760px; margin-inline: auto; padding-top: 0; padding-bottom: 64px; }
+  .contact-introduction { padding: 0; }
+  .contact-introduction h1 { text-align: left; font-size: clamp(72px, 13vw, 112px); }
+  .contact-biography { font-size: 16px; line-height: 1.5; }
+  .contact-biography-lead { text-align: left; }
+  .contact-divider { margin-block: 40px; }
+  .contact-history, .contact-tools { padding: 0; margin-left: 0; }
+  .contact-address { font-size: 12px; line-height: 1.35; }
+  .contact-detail { font-size: 14px; line-height: 1.4; }
+  .contact-history-row { line-height: 1.4; }
+  .contact-experience, .contact-tools { margin-top: 48px; }
+  .contact-freelance { margin-top: 36px; }
+  .contact-freelance .contact-detail { margin-top: 12px; }
+  .contact-enquiry { margin-top: 56px; padding-top: 36px; scroll-margin-top: 120px; }
+}
+
+@media (max-width: 600px) {
+  .contact-history-row { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .contact-tools { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .contact-tools .contact-section-title { padding-left: 0; }
+  .contact-equipment-title { text-align: left; font-size: 14px; }
+  .contact-equipment-list { justify-content: center; gap: 32px; }
+  .contact-equipment-list li:first-child { max-width: 160px; }
+  .contact-equipment-list li:last-child { max-width: 80px; }
+}

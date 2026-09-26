@@ -1,0 +1,26 @@
+/* Scoped to the three interior pages; existing pages keep their styles. */
+@font-face {
+  font-family: "Interior Questrial";
+  src: url("/assets/fonts/questrial-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+.interior-page { font-family: "Interior Questrial", "Questrial", sans-serif; }
+.interior-page :where(a, button, input, textarea):focus-visible { outline: 2px solid #fdfdfd; outline-offset: 5px; }
+.interior-page :where(input, textarea):focus-visible { outline-color: #aadfff; }
+.interior-page .service-number { color: transparent; -webkit-text-stroke: 1px rgba(253, 253, 253, 0.5); }
+.interior-page .interior-glass {
+  border: 1px solid rgba(253, 253, 253, 0.28);
+  background: linear-gradient(130deg, rgba(255, 255, 255, 0.23), rgba(165, 190, 250, 0.23));
+  box-shadow: inset 0 0 18px rgba(225, 239, 255, 0.08), 0 10px 22px rgba(0, 18, 56, 0.13);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.interior-page .interior-enter { animation: interior-enter 650ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes interior-enter {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .interior-page .interior-enter { animation: none; }
+}

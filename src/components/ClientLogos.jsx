@@ -1,6 +1,7 @@
 const LOGOS = [
   { src: '/assets/images/danes/danes-icon.png', alt: 'DS', className: 'h-[60px]' },
   { src: '/assets/images/danes/danes-main.png', alt: 'DANES MAIN', className: 'h-10' },
+  { src: '/assets/images/dbfortri/dbfortri-logo-black-vector.svg', alt: 'dbfortri', className: 'h-[60px]' },
   { src: '/assets/images/nia/nia-icon.png', alt: 'NIA', className: 'h-[33px]' },
   { src: '/assets/images/nia/nia-main.png', alt: 'NIA MAIN', className: 'h-[33px]' },
   { src: '/assets/images/gamedev/game-dev-icon.png', alt: 'GAME DEV', className: 'h-10' },
@@ -15,7 +16,7 @@ export default function ClientLogos({ visible }) {
 
   return (
     <footer
-      className={`pointer-events-none absolute bottom-10 left-1/2 z-10 w-[60vw] max-w-[900px] -translate-x-1/2 overflow-hidden transition-opacity duration-[1500ms] [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)] max-md:bottom-5 max-md:w-[90vw] ${visible ? 'opacity-50' : 'opacity-0'}`}
+      className={`home-client-logos pointer-events-none absolute bottom-10 left-1/2 z-10 w-[60vw] max-w-[900px] -translate-x-1/2 overflow-hidden transition-opacity duration-[1500ms] [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)] max-md:bottom-5 max-md:w-[90vw] ${visible ? 'opacity-50' : 'opacity-0'}`}
     >
       <div className="flex w-max animate-marquee items-center">
         {doubled.map((logo, i) => (
