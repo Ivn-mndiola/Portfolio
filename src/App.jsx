@@ -1,4 +1,6 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import useBrowserTheme from './hooks/useBrowserTheme.js'
+import SLIDES from './data/projectSlides.jsx'
 import HomePage from './pages/HomePage.jsx'
 import ProjectsPage from './pages/ProjectsPage.jsx'
 import ServicesPage from './pages/ServicesPage.jsx'
@@ -14,6 +16,14 @@ import PhotographyPage from './pages/case-studies/PhotographyPage.jsx'
 import DbfortriPage from './pages/case-studies/DbfortriPage.jsx'
 
 export default function App() {
+  const pathname = useLocation().pathname.replace(/\/+$/, '') || '/'
+  const project = SLIDES.find((slide) => slide.cta.href === pathname)
+  const isInteriorPage = ['/services', '/about', '/contact'].includes(pathname)
+  // The carousel supplies its live slide color; other routes supply their own.
+  useBrowserTheme(pathname === '/projects'
+    ? null
+    : project?.caseStudyThemeColor ?? (isInteriorPage ? '#061735' : '#071030'))
+
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />

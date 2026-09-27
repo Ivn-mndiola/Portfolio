@@ -1,11 +1,15 @@
 // Config-driven slide data for the Projects slider.
 // Each slide points at image assets under /public/assets/images/<folder>/
 // bg: full-bleed background image
+// themeColor: solid project color for the browser chrome and overscroll canvas
+// caseStudyThemeColor: the case study's own opening background
 // Titles are either a graphic (logo/wordmark image) or text (subtitle + main title)
 
 const SLIDES = [
   {
     id: 'danes',
+    themeColor: '#DA0442',
+    caseStudyThemeColor: '#630521',
     bg: '/assets/images/danes/ds-background.jpg',
     titleGraphic: '/assets/images/danes/DANES-PROJECT-LOGO.png',
     description: (
@@ -26,6 +30,8 @@ const SLIDES = [
   },
   {
     id: 'gamedev',
+    themeColor: '#736CB3',
+    caseStudyThemeColor: '#141126',
     bg: '/assets/images/gamedev/GAME-DEV-BG.jpg',
     smallIcon: '/assets/images/gamedev/game-dev-icon.png',
     titleGraphic: '/assets/images/gamedev/GAME-DEV-PROJECT.png',
@@ -40,6 +46,8 @@ const SLIDES = [
   },
   {
     id: 'nia',
+    themeColor: '#57B9B1',
+    caseStudyThemeColor: '#52C2B3',
     bg: '/assets/images/nia/NIA-BG.jpg',
     mobileArtwork: { src: '/assets/images/nia/NIA-AIRPLANE.svg', alt: 'New Ilocos Airport aircraft', kind: 'cutout', width: 1098, height: 369 },
     mobileBackground: 'radial-gradient(ellipse at 48% 48%, #60c9bf 0%, transparent 46%), linear-gradient(160deg, #57b9b1, #146f67 48%, #031c21 90%)',
@@ -51,6 +59,8 @@ const SLIDES = [
   },
   {
     id: 'source',
+    themeColor: '#667FB6',
+    caseStudyThemeColor: '#233F91',
     bg: '/assets/images/source/SOURCE-BG.jpg',
     mobileArtwork: { src: '/assets/images/source/SOURCE-BG.jpg', alt: 'Source team outside the store', kind: 'scene', width: 1920, height: 905 },
     mobileBackground: 'linear-gradient(160deg, #667fb6, #203b78 46%, #030b20 86%)',
@@ -61,6 +71,8 @@ const SLIDES = [
   },
   {
     id: 'artlantis',
+    themeColor: '#02C6F2',
+    caseStudyThemeColor: '#02C6F2',
     bg: '/assets/images/artlantis/ARTLANTIS-BG.jpg',
     titleGraphic: '/assets/images/artlantis/ARTLANTIS-PROJ.png',
     description:
@@ -69,6 +81,8 @@ const SLIDES = [
   },
   {
     id: 'illustration',
+    themeColor: '#EDB113',
+    caseStudyThemeColor: '#F6AD13',
     bg: '/assets/images/illustration/ILLUSTRATION-BG.jpg',
     titleText: { subtitle: 'DIGITAL ART', title: 'ILLUSTRATIONS' },
     description:
@@ -81,6 +95,8 @@ const SLIDES = [
   },
   {
     id: 'photography',
+    themeColor: '#ABC400',
+    caseStudyThemeColor: '#262626',
     bg: '/assets/images/photography/PHOTOGRAPHY-BG.jpg',
     titleText: { subtitle: 'SONY ZV-E10', title: 'PHOTOGRAPHY' },
     description:
@@ -94,6 +110,8 @@ const SLIDES = [
   },
   {
     id: 'dbfortri',
+    themeColor: '#737373',
+    caseStudyThemeColor: '#A2A2A2',
     bg: '/assets/images/dbfortri/dbfortri-project-bg-1920.webp',
     bgSet: {
       oneX: '/assets/images/dbfortri/dbfortri-project-bg-1920.webp',

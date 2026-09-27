@@ -1,6 +1,13 @@
 @import "tailwindcss";
 @import "./responsive.css";
 
+/* Safari uses the page canvas around its toolbars and during overscroll.
+   Keep both surfaces in sync with the current route or project slide. */
+html,
+body {
+  background-color: var(--browser-theme-color, #071030);
+}
+
 @font-face {
   font-family: "Gill Sans MT Condensed";
   src: url("/assets/fonts/gill-sans-mt-condensed.ttf") format("truetype");

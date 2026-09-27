@@ -4,6 +4,7 @@ import Slide from '../components/Slide.jsx'
 import SLIDES from '../data/projectSlides.jsx'
 import useSlider from '../hooks/useSlider.js'
 import useRosterCycle from '../hooks/useRosterCycle.js'
+import useBrowserTheme from '../hooks/useBrowserTheme.js'
 
 const SELECTED_PROJECT_KEY = 'iverson-portfolio:selected-project'
 let lastSelectedProjectId = null
@@ -24,6 +25,8 @@ function restoreSelectedProject() {
 export default function ProjectsPage() {
   const total = SLIDES.length
   const { current, goPrev, goNext } = useSlider(total, restoreSelectedProject)
+  const activeSlide = SLIDES[current]
+  useBrowserTheme(activeSlide.themeColor)
 
   useEffect(() => {
     lastSelectedProjectId = SLIDES[current].id
@@ -43,7 +46,7 @@ export default function ProjectsPage() {
   const totalLabel = String(total).padStart(2, '0')
 
   return (
-    <div className="projects-page relative h-screen overflow-hidden bg-[#030712] font-inter text-white">
+    <div className="projects-page relative h-screen overflow-hidden font-inter text-white" style={{ backgroundColor: activeSlide.themeColor }}>
       <Nav active="/projects" />
 
       <main className="projects-viewport relative h-screen w-screen">
