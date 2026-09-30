@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import CaseStudyDescription from './CaseStudyDescription.jsx'
 
 export default function Slide({ slide, isActive, rosterIndex }) {
   const hasTextTitle = Boolean(slide.titleText)
@@ -67,9 +68,9 @@ export default function Slide({ slide, isActive, rosterIndex }) {
           </Link>
 
           <div className="project-slide-description row-start-3 flex h-full w-full flex-col items-center justify-start self-start">
-            <p className={`mt-[90px] max-w-[580px] text-center text-sm leading-[1.75] text-white/65 [&_strong]:font-semibold [&_strong]:text-white ${slide.id === 'danes' ? 'whitespace-nowrap' : ''}`}>
+            <CaseStudyDescription className={`mt-[90px] max-w-[580px] text-center text-white/65 [&_strong]:text-white ${slide.id === 'danes' ? 'whitespace-nowrap' : ''}`}>
               {slide.description}
-            </p>
+            </CaseStudyDescription>
           </div>
         </div>
 

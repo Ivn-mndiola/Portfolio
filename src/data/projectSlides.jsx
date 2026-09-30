@@ -53,8 +53,13 @@ const SLIDES = [
     mobileBackground: 'radial-gradient(ellipse at 48% 48%, #60c9bf 0%, transparent 46%), linear-gradient(160deg, #57b9b1, #146f67 48%, #031c21 90%)',
     smallIcon: '/assets/images/nia/nia-icon.png',
     titleGraphic: '/assets/images/nia/NIA-PROJECT-NAME.png',
-    description:
-      'empowering regional agricultural infrastructure through robust development and sustainable water management systems.',
+    description: (
+      <>
+        a modern airport identity emphasizing <strong>clarity</strong>,{' '}
+        <strong>movement</strong>, and <strong>regional connection</strong> through a
+        structured visual system.
+      </>
+    ),
     cta: { label: 'VIEW NOW', href: '/projects/nia' },
   },
   {
@@ -65,8 +70,13 @@ const SLIDES = [
     mobileArtwork: { src: '/assets/images/source/SOURCE-BG.jpg', alt: 'Source team outside the store', kind: 'scene', width: 1920, height: 905 },
     mobileBackground: 'linear-gradient(160deg, #667fb6, #203b78 46%, #030b20 86%)',
     titleGraphic: '/assets/images/source/SOURCE-PROJ.png',
-    description:
-      'a Baguio City-based destination for premium PC components, gaming peripherals, and expert hardware support.',
+    description: (
+      <>
+        a Baguio City hub for premium PC parts and peripherals offering{' '}
+        <strong>high-performance components, expert advice, and affordable builds</strong>{' '}
+        to help you elevate your game from the Cordilleras.
+      </>
+    ),
     cta: { label: 'VIEW NOW', href: '/projects/source' },
   },
   {
@@ -75,8 +85,13 @@ const SLIDES = [
     caseStudyThemeColor: '#02C6F2',
     bg: '/assets/images/artlantis/ARTLANTIS-BG.jpg',
     titleGraphic: '/assets/images/artlantis/ARTLANTIS-PROJ.png',
-    description:
-      'an immersive creative exploration pushing the boundaries of modern visual storytelling and conceptual artistry.',
+    description: (
+      <>
+        a conceptual character duo featuring <strong>Chanty a cutesy pencil fish</strong>,
+        and <strong>Sharky a sleek sharpener</strong> inspired companion that embodies
+        contrast through playful charm and sharp design.
+      </>
+    ),
     cta: { label: 'VIEW NOW', href: '/projects/artlantis' },
   },
   {
@@ -85,8 +100,13 @@ const SLIDES = [
     caseStudyThemeColor: '#F6AD13',
     bg: '/assets/images/illustration/ILLUSTRATION-BG.jpg',
     titleText: { subtitle: 'DIGITAL ART', title: 'ILLUSTRATIONS' },
-    description:
-      'a curated showcase of bespoke digital vector artworks, character designs, and dynamic environmental pieces.',
+    description: (
+      <>
+        a collection of digital illustrations exploring expressive{' '}
+        <strong>visuals</strong>, <strong>storytelling</strong>, and{' '}
+        <strong>creative concepts</strong> through bold and detailed artwork.
+      </>
+    ),
     cta: { label: 'VIEW NOW', href: '/projects/illustration' },
     visualRight: {
       src: '/assets/images/illustration/illustration-proj.png',
@@ -99,8 +119,13 @@ const SLIDES = [
     caseStudyThemeColor: '#262626',
     bg: '/assets/images/photography/PHOTOGRAPHY-BG.jpg',
     titleText: { subtitle: 'SONY ZV-E10', title: 'PHOTOGRAPHY' },
-    description:
-      'capturing raw, authentic human moments and dramatic urban landscapes through a precise, cinematic lens.',
+    description: (
+      <>
+        a photography series capturing real world <strong>moments</strong>,{' '}
+        <strong>moods</strong>, and <strong>compositions</strong> through a creative
+        and cinematic perspective.
+      </>
+    ),
     cta: { label: 'VIEW NOW', href: '/projects/photography' },
     visualRight: {
       src: '/assets/images/photography/Photography.png',
@@ -120,8 +145,12 @@ const SLIDES = [
     bgOverlay: 'linear-gradient(180deg, rgba(30,30,30,0.26) 0%, rgba(30,30,30,0.6) 68%, rgba(18,18,18,0.82) 100%)',
     titleGraphic: '/assets/images/dbfortri/dbfortri-wordmark-vector.svg',
     titleTagline: 'FORMED TO BE TIMELESS.',
-    description:
-      'a timeless photography brand dedicated to capturing authentic stories through intentional imagery and refined visual identity.',
+    description: (
+      <>
+        A timeless photography brand dedicated to <strong>capturing authentic stories</strong>{' '}
+        through intentional <strong>imagery and refined visual identity</strong>.
+      </>
+    ),
     cta: { label: 'VIEW NOW', href: '/projects/dbfortri' },
   },
 ]

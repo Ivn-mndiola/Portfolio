@@ -65,7 +65,7 @@
  .project-slide-title>p{max-width:360px;font-size:12px;}
  .project-slide-cta{grid-area:cta;z-index:3;padding:14px 32px;min-height:48px;font-size:12px;letter-spacing:.18em;}
  .project-slide-description{grid-area:description;z-index:3;height:auto;max-width:460px;}
- .project-slide-description p{margin:0;white-space:normal;line-height:1.65;color:#ffffffc4;text-wrap:pretty;}
+ .project-slide-description p{margin:0;white-space:normal;color:#ffffffc4;text-wrap:pretty;}
  .project-slide-visual,.project-slide-roster,.project-slide-artwork{
   grid-area:visual;position:relative;inset:auto;display:flex;align-items:center;justify-content:center;
   width:100%;max-width:660px;height:100%;min-height:220px;min-width:0;opacity:1;pointer-events:none;
@@ -113,7 +113,6 @@
  .project-slide[data-project="danes"] .project-slide-title>img{max-width:min(70vw,270px);}
  .project-slide[data-project="nia"] .project-slide-title>img:not(.project-slide-icon){max-width:min(72vw,240px);}
  .project-slide[data-project="source"] .project-slide-title>img{max-width:min(65vw,240px);max-height:138px;}
- .project-slide-description p{font-size:13px;}
 }
 /* A short, wide viewport uses two columns instead of squeezing a poster. */
 @media(min-width:1000px) and (max-width:1200px),(min-width:768px) and (max-height:700px){
@@ -125,7 +124,6 @@
  .project-slide-title h2{font-size:clamp(28px,4vw,48px);}
  .project-slide-artwork[data-kind="scene"]{width:100%;min-height:250px;max-height:min(420px,44vw);align-self:center;}
  .project-slide-roster img{max-height:100%;}
- .project-slide-description p{font-size:13px;}
  .project-slide-visual img{max-height:300px;}
 }
 @media(hover:none){.photo-open-hint{opacity:1;translate:0;}}
@@ -149,20 +147,20 @@
 }
 @media(max-width:1200px){
  :is(.source-hero,.artlantis-hero,.photography-hero,.illustration-hero,.dbfortri-hero){min-height:100svh;padding-top:136px;}
- :is(.source-hero,.artlantis-hero,.photography-hero,.illustration-hero,.dbfortri-hero)>p{font-size:15px;line-height:1.6;}
+ .artlantis-hero>p:not(.case-study-description){font-size:15px;line-height:1.6;}
  :is(.source-hero,.artlantis-hero,.photography-hero,.illustration-hero,.dbfortri-hero)>div:last-child{padding-top:56px;}
  :is(.illustration-hero,.photography-hero) h1{font-size:clamp(32px,9vw,76px);overflow-wrap:normal;}
  .source-case-page main>section:not(.source-hero)>[data-reveal]{max-width:720px;margin-inline:auto;}
  .source-case-page main>section>div>.source-liquid-glass{max-width:600px;}
  .source-case-page main>section>div>.source-liquid-glass:last-child{max-width:560px;}
- .source-case-page .source-liquid-glass p{font-size:14px;line-height:1.5;}
+ .source-case-page .source-liquid-glass p:not(.case-study-description){font-size:14px;line-height:1.5;}
  .source-case-page .source-liquid-glass h2{font-size:clamp(32px,7vw,62px);}
  .source-case-page main>section:not(.source-hero)>div>span{font-size:11px;}
  .artlantis-case-page main>section:not(.artlantis-hero)>div[data-reveal]{max-width:700px;margin-inline:auto;}
- .artlantis-case-page main>section:not(.artlantis-hero) p{font-size:15px;line-height:1.6;}
+ .artlantis-case-page main>section:not(.artlantis-hero) p:not(.case-study-description){font-size:15px;line-height:1.6;}
  .photo-triptych{max-width:760px;}
  .dbfortri-paper article{max-width:760px;margin-inline:auto;}
- .dbfortri-paper p{font-size:15px;line-height:1.5;}
+ .dbfortri-paper p:not(.case-study-description){font-size:15px;line-height:1.5;}
  .dbfortri-gallery{margin-inline:0;}
  .dbfortri-mobile-mockups{grid-template-columns:minmax(0,1fr);align-items:center;gap:24px;max-width:1100px;margin-inline:auto;padding:32px 16px;}
  .dbfortri-mobile-mockup{display:block;width:100%;max-width:620px;height:auto;margin-inline:auto;overflow:hidden;}
@@ -174,7 +172,7 @@
  .gamedev-case-study .gamedev-identity-card{padding-inline:20px;}
  .danes-case-page .cs-hero{padding:136px 6vw 48px;}
  .danes-case-page .cs-hero>img{max-width:430px;}
- .danes-case-page .cs-hero>p{margin-bottom:48px;font-size:14px;}
+ .danes-case-page .cs-hero>p{margin-bottom:48px;}
  .danes-social-heading{flex-direction:column;gap:24px;}
  .danes-social-heading>div{position:relative;right:auto;}
  .danes-social-heading>h2{margin-bottom:0;}
@@ -256,4 +254,11 @@
  .photo-thumbnail{height:auto;align-self:center;}
  .photo-thumbnail>img{height:auto;object-fit:contain;scale:1;}
  .gamedev-case-study img[src*="/gamedev/F"]{object-fit:contain;scale:1;}
+}
+
+/* Give the shared description type room above the desktop metadata. */
+@media (min-width: 1201px) and (max-width: 1400px) {
+ .source-hero>.case-study-description{top:44%;width:78%;max-width:900px;}
+ .artlantis-hero>.case-study-description{top:46%;width:80%;max-width:800px;}
+ .dbfortri-hero>.case-study-description{top:48%;width:70%;max-width:800px;}
 }

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
+import CaseStudyDescription from './CaseStudyDescription.jsx'
 
 // Both case studies use the same click, navigation, and focus behavior.
 export function usePhotoViewer(photoCount) {
@@ -222,9 +223,9 @@ export function Caption({ heading, name, children, color = '#FFFFFF' }) {
       <h3 className="mt-[1.65vw] text-[clamp(13px,0.78vw,15px)] font-semibold leading-none max-[1200px]:mt-6 max-[1200px]:text-base">
         {name}
       </h3>
-      <p className="mx-auto mt-1 max-w-[720px] text-[clamp(11px,0.67vw,13px)] leading-[1.35] max-[1200px]:mt-2 max-[1200px]:max-w-xl max-[1200px]:text-sm">
+      <CaseStudyDescription className="mx-auto mt-1 max-w-[720px] max-[1200px]:mt-2 max-[1200px]:max-w-xl">
         {children}
-      </p>
+      </CaseStudyDescription>
     </div>
   )
 }

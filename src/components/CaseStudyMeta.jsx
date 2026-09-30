@@ -19,7 +19,6 @@ export default function CaseStudyMeta({
   contactName = 'Iverson Mendiola',
   contactRole = 'Graphic Designer',
   contactEmail = 'IVM.CREATIVES@GMAIL.COM',
-  fontClassName = 'font-inter',
   tone = 'white',
   className = '',
   dataReveal = false,
@@ -38,7 +37,7 @@ export default function CaseStudyMeta({
 
   return (
     <div
-      className={`case-study-meta grid w-full grid-cols-[1fr_220px_220px_250px] gap-[30px] border-t pt-[35px] text-left max-[900px]:grid-cols-2 max-[600px]:grid-cols-1 ${fontClassName} ${className}`}
+      className={`case-study-meta grid w-full grid-cols-[1fr_220px_220px_250px] gap-[30px] border-t pt-[35px] text-left max-[900px]:grid-cols-2 max-[600px]:grid-cols-1 font-inter ${className}`}
       data-reveal={dataReveal ? '' : undefined}
       style={{ color: colors.text, borderColor: colors.border }}
     >

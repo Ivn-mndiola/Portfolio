@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import Nav from '../../components/Nav.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
+import CaseStudyDescription from '../../components/CaseStudyDescription.jsx'
 
 const MOCKUPS = Array.from({ length: 9 }, (_, index) => ({
   n: index + 1,
@@ -42,7 +43,7 @@ function IdentityCard({ label, image, alt, children }) {
       <div className="mb-8 flex h-[180px] w-full items-center justify-center">
         <BrandMark src={image} alt={alt} className="aspect-square w-full max-w-[250px]" />
       </div>
-      <p className="max-w-[260px] text-[15px] font-light leading-normal tracking-normal">{children}</p>
+      <CaseStudyDescription className="max-w-[260px]">{children}</CaseStudyDescription>
     </div>
   )
 }
@@ -93,10 +94,10 @@ export default function GameDev() {
             </h1>
             <div className="mt-10 flex flex-col items-center">
               <h4 className="mb-4 text-center text-base font-bold tracking-normal">Level Up Your Future in Game Development</h4>
-              <p className="w-full max-w-[1200px] text-center text-[15px] font-normal leading-relaxed">
+              <CaseStudyDescription className="w-full max-w-[1200px] text-center">
                 Explore the world of game development in the Philippines through an interactive visual career guide designed for aspiring developers in
                 <br className="max-lg:hidden" /> Baguio City. Discover career paths, industry insights, essential skills, and opportunities to help you start your journey in the game industry.
-              </p>
+              </CaseStudyDescription>
             </div>
           </div>
 
@@ -122,7 +123,7 @@ export default function GameDev() {
 
         <SectionDivider id="purpose">BRAND PURPOSE</SectionDivider>
         <section className={`${FADE} px-5 text-center`}>
-          <p className="text-base font-light leading-[1.8]">To empower aspiring game developers in Baguio City with accessible, visually engaging,<br className="max-lg:hidden" /> and career-relevant information about the Philippine game development industry.</p>
+          <CaseStudyDescription className="">To empower aspiring game developers in Baguio City with accessible, visually engaging,<br className="max-lg:hidden" /> and career-relevant information about the Philippine game development industry.</CaseStudyDescription>
         </section>
 
         <SectionDivider>VISUAL IDENTITY | LOGO</SectionDivider>

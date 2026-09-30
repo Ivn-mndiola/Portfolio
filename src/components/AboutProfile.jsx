@@ -31,6 +31,14 @@ export default function AboutProfile() {
 
         <section aria-labelledby="about-experience-title" className="about-experience">
           <h2 id="about-experience-title" className="about-section-title">EXPERIENCE</h2>
+          <div className="about-history-row about-dbfortri">
+            <p>Jul 2026 - Present</p>
+            <div>
+              <h3 className="about-dbfortri-name">dbfortri</h3>
+              <p className="about-role">Creative Director, Brand Identity Designer And Photographer</p>
+              <p className="about-detail">Creative direction, brand identity, photography, and graphic design focused on developing cohesive visual solutions for clients.</p>
+            </div>
+          </div>
           <div className="about-history-row">
             <p>Jan 2025 - Apr 2025</p>
             <div>
@@ -44,6 +52,7 @@ export default function AboutProfile() {
             <p>Jan 2024 - Present</p>
             <div>
               <h3>FREELANCE ARTIST</h3>
+              <p className="about-role">Graphic Designer | Illustrator</p>
               <p className="about-detail">Designed brand visuals, layouts, and illustrations for digital and print applications, combining creativity with strategic visual communication.</p>
             </div>
           </div>

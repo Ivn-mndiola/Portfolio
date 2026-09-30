@@ -67,8 +67,8 @@
 .about-role { margin-top: 9px; letter-spacing: -0.035em; }
 .about-detail { font-size: 12px; line-height: 1.12; color: rgb(253 253 253 / 85%); }
 .about-experience { margin-top: 84px; }
-.about-freelance { margin-top: 52px; }
-.about-freelance .about-detail { margin-top: 28px; }
+.about-experience .about-history-row + .about-history-row { margin-top: 52px; }
+.about-history-row .about-dbfortri-name { font-weight: 700; }
 
 .about-tools {
   display: grid;
@@ -133,8 +133,7 @@
   .about-detail { font-size: 14px; line-height: 1.4; }
   .about-history-row { line-height: 1.4; }
   .about-experience, .about-tools { margin-top: 48px; }
-  .about-freelance { margin-top: 36px; }
-  .about-freelance .about-detail { margin-top: 12px; }
+  .about-experience .about-history-row + .about-history-row { margin-top: 36px; }
 }
 
 @media (max-width: 600px) {

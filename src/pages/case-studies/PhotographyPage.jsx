@@ -1,6 +1,7 @@
 import Nav from '../../components/Nav.jsx'
 import { Photo, Lightbox, Caption, PhotoTriptych, usePhotoViewer } from '../../components/PhotoGallery.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
+import CaseStudyDescription from '../../components/CaseStudyDescription.jsx'
 import useScrollReveal from '../../hooks/useScrollReveal.js'
 
 const ASSET_ROOT = '/assets/images/photography/case-study'
@@ -47,14 +48,14 @@ export default function PhotographyPage() {
             </h1>
           </div>
 
-          <p
-            className={`absolute left-1/2 top-[50.5%] w-[48%] -translate-x-1/2 text-center text-[clamp(9px,0.67vw,13px)] leading-[1.45] text-white/95 max-[1200px]:relative max-[1200px]:left-auto max-[1200px]:top-auto max-[1200px]:mt-10 max-[1200px]:w-full max-[1200px]:max-w-2xl max-[1200px]:translate-x-0 max-[1200px]:text-sm ${REVEAL}`}
+          <CaseStudyDescription
+            className={`absolute left-1/2 top-[50.5%] w-[48%] -translate-x-1/2 text-center text-white/95 max-[1200px]:relative max-[1200px]:left-auto max-[1200px]:top-auto max-[1200px]:mt-10 max-[1200px]:w-full max-[1200px]:max-w-2xl max-[1200px]:translate-x-0 ${REVEAL}`}
             data-reveal
           >
-            A cinematic photography series captured using the <strong className="font-semibold">Sony ZV-E10</strong>, exploring real-world moments through light, mood, and composition.
+            A cinematic photography series captured using the <strong>Sony ZV-E10</strong>, exploring real-world moments through light, mood, and composition.
             <br />
             Each frame is guided by a storytelling-driven approach that focuses on atmosphere and visual emotion.
-          </p>
+          </CaseStudyDescription>
 
           <div className="absolute inset-x-0 bottom-[7.5%] px-[8vw] max-[1200px]:relative max-[1200px]:inset-auto max-[1200px]:mt-auto max-[1200px]:w-full max-[1200px]:px-0 max-[1200px]:pt-16">
             <CaseStudyMeta

@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import Nav from '../../components/Nav.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
+import CaseStudyDescription from '../../components/CaseStudyDescription.jsx'
 import useScrollReveal from '../../hooks/useScrollReveal.js'
 import useMockupCarousel from '../../hooks/useMockupCarousel.js'
 import useSocialCarousel from '../../hooks/useSocialCarousel.js'
@@ -46,7 +47,7 @@ export default function DanesPage() {
           className={`mb-10 w-full max-w-[500px] [filter:drop-shadow(0_15px_30px_rgba(0,0,0,0.5))] ${REVEAL}`}
           data-reveal
         />
-        <p className={`mb-20 max-w-[800px] text-[13px] leading-[1.8] text-white/80 [&_strong]:font-bold [&_strong]:text-white ${REVEAL}`} data-reveal>
+        <CaseStudyDescription className={`mb-20 max-w-[800px] text-white/80 [&_strong]:text-white ${REVEAL}`} data-reveal>
           <strong>DANES Esports</strong> is a modern competitive gaming organization built
           on <strong>discipline, precision, and fearless execution.</strong> In an industry
           crowded with aggressive mascots and chaotic visuals, the goal was to design a
@@ -62,7 +63,7 @@ export default function DanesPage() {
           A custom wordmark paired with a flexible <strong>DS monogram</strong> ensures
           strong recognition across digital platforms, apparel, and gaming peripherals. The
           result is a clean yet aggressive brand system designed to perform at every scale.
-        </p>
+        </CaseStudyDescription>
 
         <CaseStudyMeta
           className={`mb-10 mt-auto w-[calc(100%_-_8vw)] max-w-[1560px] ${REVEAL}`}
@@ -75,10 +76,10 @@ export default function DanesPage() {
       </header>
 
       <section className={`${SECTION} pb-0`}>
-        <p className={`mb-10 max-w-[900px] text-base leading-relaxed [&_strong]:font-bold [&_strong]:text-[#FC044C] ${REVEAL}`} data-reveal>
+        <CaseStudyDescription className={`mb-10 max-w-[900px] [&_strong]:text-[#FC044C] ${REVEAL}`} data-reveal>
           <strong>We are,</strong> a modern esports organization blending Sharp discipline,
           precision, and fearlessness with contemporary gaming culture.
-        </p>
+        </CaseStudyDescription>
         <img
           src="/assets/images/danes/DANES-FULL-ROSTER.png"
           alt="Cut Through the Meta Roster Banner"
@@ -94,27 +95,27 @@ export default function DanesPage() {
         <div className={`grid w-full max-w-[1200px] grid-cols-4 gap-10 text-left max-[900px]:grid-cols-2 max-[600px]:grid-cols-1 ${REVEAL}`} data-reveal>
           <div className="[&_h3]:mb-3 [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-[#FC044C] [&_p]:text-sm [&_p]:leading-relaxed [&_strong]:font-bold">
             <h3>Resilience</h3>
-            <p>
+            <CaseStudyDescription>
               unshakable <strong>focus</strong> under pressure.
-            </p>
+            </CaseStudyDescription>
           </div>
           <div className="[&_h3]:mb-3 [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-[#FC044C] [&_p]:text-sm [&_p]:leading-relaxed [&_strong]:font-bold">
             <h3>Unity</h3>
-            <p>
+            <CaseStudyDescription>
               strength through <strong>coordinated</strong> teamwork.
-            </p>
+            </CaseStudyDescription>
           </div>
           <div className="[&_h3]:mb-3 [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-[#FC044C] [&_p]:text-sm [&_p]:leading-relaxed [&_strong]:font-bold">
             <h3>Precision</h3>
-            <p>
+            <CaseStudyDescription>
               exacting gameplay and <strong>communication</strong>.
-            </p>
+            </CaseStudyDescription>
           </div>
           <div className="[&_h3]:mb-3 [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-[#FC044C] [&_p]:text-sm [&_p]:leading-relaxed [&_strong]:font-bold">
             <h3>Honor</h3>
-            <p>
+            <CaseStudyDescription>
               compete hard. <strong>win clean</strong>.
-            </p>
+            </CaseStudyDescription>
           </div>
         </div>
       </section>
@@ -144,13 +145,13 @@ export default function DanesPage() {
           <div className="h-1.5 flex-1 -translate-y-0.5 rounded-[10px] bg-[#FC044C] shadow-[0_4px_8px_rgba(0,0,0,0.22)] max-[600px]:h-[3px] max-[600px]:w-full max-[600px]:flex-none" />
         </div>
 
-        <p className={`mx-auto max-w-[720px] text-sm leading-[1.65] [&_strong]:font-bold [&_strong]:text-[#FC044C] ${REVEAL}`} data-reveal>
+        <CaseStudyDescription className={`mx-auto max-w-[720px] [&_strong]:text-[#FC044C] ${REVEAL}`} data-reveal>
           Represents <strong>intensity, precision, and modern energy.</strong> It
           signals <strong>sharp</strong> decision-making, high competitiveness, and
           a <strong>bold</strong>, tech-driven identity. This color stands out as a
           powerful accent: <strong>fast, fearless,</strong> and{' '}
           <strong>unmistakably aggressive.</strong>
-        </p>
+        </CaseStudyDescription>
       </section>
 
       <section className={`${SECTION} w-full pb-10`}>
@@ -208,14 +209,14 @@ export default function DanesPage() {
       </div>
 
       <section className={`${SECTION} pt-0`}>
-        <p className={`max-w-[800px] text-sm leading-relaxed [&_strong]:text-[#FC044C] ${REVEAL}`} data-reveal>
+        <CaseStudyDescription className={`max-w-[800px] [&_strong]:text-[#FC044C] ${REVEAL}`} data-reveal>
           <strong>Gill Sans MT Condensed</strong> and <strong>Urbanist</strong> form
           a <strong>clean, modern</strong> typographic system. Gill Sans
           adds <strong>energy and focus</strong>, while Urbanist
           provides <strong>clarity and balance</strong>, creating
           a <strong>professional, readable</strong>, and{' '}
           <strong>contemporary hierarchy</strong>.
-        </p>
+        </CaseStudyDescription>
       </section>
 
       <section className={SECTION}>

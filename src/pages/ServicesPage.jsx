@@ -15,7 +15,7 @@ const SERVICES = [
 
 export default function ServicesPage() {
   return (
-    <InteriorPage active="/services" title="Services">
+    <InteriorPage active="/services" title="Services" fixedBackground>
       <main id="page-content" className="mx-auto max-w-[1920px] pb-[min(4.8vw,92px)] pt-[min(11.25vw,216px)] max-[1000px]:px-6 max-[1000px]:pb-20 max-[1000px]:pt-40">
         <h1 className="interior-enter mb-[min(4.17vw,80px)] text-center text-[clamp(58px,6.15vw,118px)] font-normal leading-none tracking-[-0.065em] max-[1000px]:mb-14">What I Do</h1>
         <ol aria-label="Creative services" className="mx-auto flex w-[50%] flex-col gap-[min(1.35vw,26px)] max-[1000px]:w-full max-[1000px]:max-w-[640px] max-[1000px]:gap-5">

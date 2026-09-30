@@ -1,6 +1,7 @@
 import Nav from '../../components/Nav.jsx'
 import { Lightbox, Caption, PhotoTriptych, usePhotoViewer } from '../../components/PhotoGallery.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
+import CaseStudyDescription from '../../components/CaseStudyDescription.jsx'
 import useScrollReveal from '../../hooks/useScrollReveal.js'
 
 const ASSET_ROOT = '/assets/images/dbfortri'
@@ -78,7 +79,7 @@ function BrandValue({ title, copy }) {
       <h3 className="font-jakarta text-[clamp(24px,2.05vw,40px)] font-extrabold leading-none tracking-[-0.045em] text-[#1E1E1E] max-[1200px]:text-3xl">
         {title}
       </h3>
-      <p className="mt-2 text-[clamp(11px,1.02vw,20px)] leading-tight text-[#2D2D2D] max-[1200px]:text-sm">{copy}</p>
+      <CaseStudyDescription className="mt-2 text-[#2D2D2D]">{copy}</CaseStudyDescription>
     </div>
   )
 }
@@ -101,21 +102,21 @@ export default function DbfortriPage() {
       <Nav active="/projects" darkSectionSelectors={DARK_SECTIONS} accent="charcoal" />
 
       <main className="dbfortri-case-main">
-        <header className="dbfortri-hero relative h-[65.68vw] min-h-[760px] overflow-hidden text-white max-[1200px]:flex max-[1200px]:h-auto max-[1200px]:min-h-[900px] max-[1200px]:flex-col max-[1200px]:items-center max-[1200px]:px-6 max-[1200px]:pb-12 max-[1200px]:pt-36">
-          <div className={`absolute left-1/2 top-[21.5%] w-[39.55%] -translate-x-1/2 max-[1200px]:relative max-[1200px]:left-auto max-[1200px]:top-auto max-[1200px]:mt-10 max-[1200px]:w-full max-[1200px]:max-w-[650px] max-[1200px]:translate-x-0 ${REVEAL}`} data-reveal>
+        <header className="dbfortri-hero relative h-[65.68vw] min-h-[760px] overflow-hidden text-white max-[1201px]:flex max-[1201px]:h-auto max-[1201px]:min-h-[900px] max-[1201px]:flex-col max-[1201px]:items-center max-[1201px]:px-6 max-[1201px]:pb-12 max-[1201px]:pt-36">
+          <div className={`absolute left-1/2 top-[21.5%] w-[39.55%] -translate-x-1/2 max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-10 max-[1201px]:w-full max-[1201px]:max-w-[650px] max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
             <img src={`${ASSET_ROOT}/dbfortri-wordmark-vector.svg`} alt="DBFortri" className="w-full" />
-            <p className="absolute bottom-[6.5%] right-[0.5%] text-[clamp(10px,0.84vw,16px)] font-medium uppercase tracking-[0.01em] text-[#DCDADC] max-[1200px]:bottom-[2%] max-[1200px]:right-[2%] max-[1200px]:text-[10px]">
+            <p className="absolute bottom-[6.5%] right-[0.5%] text-[clamp(10px,0.84vw,16px)] font-medium uppercase tracking-[0.01em] text-[#DCDADC] max-[1201px]:bottom-[2%] max-[1201px]:right-[2%] max-[1201px]:text-[10px]">
               Formed to be timeless.
             </p>
           </div>
 
-          <p className={`absolute left-1/2 top-[52.6%] w-[43.86%] -translate-x-1/2 text-center text-[clamp(9px,0.68vw,13px)] leading-[1.35] text-white/90 max-[1200px]:relative max-[1200px]:left-auto max-[1200px]:top-auto max-[1200px]:mt-10 max-[1200px]:w-full max-[1200px]:max-w-2xl max-[1200px]:translate-x-0 max-[1200px]:text-sm ${REVEAL}`} data-reveal>
-            A refined photography brand dedicated to capturing authentic stories through intentional composition, meaningful storytelling, and timeless visual craftsmanship. Inspired by the philosophy <strong className="font-semibold text-white">“Formed to be Timeless,”</strong> every image is thoughtfully created to preserve genuine moments with elegance, emotion, and lasting impact.
-          </p>
+          <CaseStudyDescription className={`absolute left-1/2 top-[52.6%] w-[43.86%] -translate-x-1/2 text-center text-white/90 max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-10 max-[1201px]:w-full max-[1201px]:max-w-2xl max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
+            A refined photography brand dedicated to capturing authentic stories through intentional composition, meaningful storytelling, and timeless visual craftsmanship. Inspired by the philosophy <strong className="text-white">“Formed to be Timeless,”</strong> every image is thoughtfully created to preserve genuine moments with elegance, emotion, and lasting impact.
+          </CaseStudyDescription>
 
-          <div className="absolute inset-x-0 bottom-[7.5%] max-[1200px]:relative max-[1200px]:inset-auto max-[1200px]:mt-auto max-[1200px]:w-full max-[1200px]:pt-16">
+          <div className="absolute inset-x-0 bottom-[7.5%] max-[1201px]:relative max-[1201px]:inset-auto max-[1201px]:mt-auto max-[1201px]:w-full max-[1201px]:pt-16">
             <CaseStudyMeta
-              className={`mx-auto w-[calc(100%_-_8vw)] max-w-[1560px] max-[1200px]:w-full ${REVEAL}`}
+              className={`mx-auto w-[calc(100%_-_8vw)] max-w-[1560px] max-[1201px]:w-full ${REVEAL}`}
               dataReveal
               tone="ivory"
               projectLine1="Visuals and Brand Identity"
@@ -134,23 +135,23 @@ export default function DbfortriPage() {
 
           <article className={`absolute left-1/2 top-[35.33%] w-[44.38%] -translate-x-1/2 max-[1200px]:relative max-[1200px]:left-auto max-[1200px]:top-auto max-[1200px]:mt-20 max-[1200px]:w-full max-[1200px]:translate-x-0 ${REVEAL}`} data-reveal>
             <h2 className="font-jakarta text-[clamp(25px,1.74vw,34px)] font-extrabold lowercase tracking-[-0.05em]">about</h2>
-            <p className="mx-auto mt-[1.25vw] max-w-[850px] text-[clamp(11px,0.78vw,15px)] leading-[1.35] max-[1200px]:mt-5 max-[1200px]:text-sm">
+            <CaseStudyDescription className="mx-auto mt-[1.25vw] max-w-[850px] max-[1200px]:mt-5">
               <strong className="font-bold">dbfortri</strong> is a photography service dedicated to creating <strong className="font-bold">timeless imagery</strong> through intentional storytelling.<br className="max-[1200px]:hidden" /> Every session is approached with <strong className="font-bold">creativity, authenticity, and precision</strong> to preserve life’s most meaningful moments.
-            </p>
+            </CaseStudyDescription>
           </article>
 
           <article className={`absolute left-1/2 top-[54.17%] w-[43.91%] -translate-x-1/2 max-[1200px]:relative max-[1200px]:left-auto max-[1200px]:top-auto max-[1200px]:mt-20 max-[1200px]:w-full max-[1200px]:translate-x-0 ${REVEAL}`} data-reveal>
             <h2 className="font-jakarta text-[clamp(25px,1.74vw,34px)] font-extrabold lowercase tracking-[-0.05em]">our purpose</h2>
-            <p className="mx-auto mt-[1.55vw] max-w-[850px] text-[clamp(11px,0.78vw,15px)] leading-[1.45] max-[1200px]:mt-5 max-[1200px]:text-sm">
+            <CaseStudyDescription className="mx-auto mt-[1.55vw] max-w-[850px] max-[1200px]:mt-5">
               We believe photographs should do more than document a moment,<br className="max-[1200px]:hidden" /> they should <strong className="font-bold">preserve emotions, relationships, and memories</strong><br className="max-[1200px]:hidden" /> that remain meaningful for years to come.<br /><br />Every frame is <strong className="font-bold">formed with intention</strong> and created to stand the test of time.
-            </p>
+            </CaseStudyDescription>
           </article>
 
           <article className={`absolute left-1/2 top-[75.6%] w-[42.29%] -translate-x-1/2 max-[1200px]:relative max-[1200px]:left-auto max-[1200px]:top-auto max-[1200px]:mt-20 max-[1200px]:w-full max-[1200px]:translate-x-0 ${REVEAL}`} data-reveal>
             <h2 className="font-jakarta text-[clamp(24px,1.82vw,35px)] font-extrabold uppercase tracking-[-0.04em]">Formed to be timeless.</h2>
-            <p className="mx-auto mt-[1.3vw] max-w-[820px] text-[clamp(11px,0.78vw,15px)] leading-[1.45] max-[1200px]:mt-5 max-[1200px]:text-sm">
+            <CaseStudyDescription className="mx-auto mt-[1.3vw] max-w-[820px] max-[1200px]:mt-5">
               Photography is formed by <strong className="font-bold">light</strong>, shaped by <strong className="font-bold">perspective</strong>, and preserved<br className="max-[1200px]:hidden" /> through <strong className="font-bold">craftsmanship</strong>.<br /><br />Our philosophy is simple:<br />create photographs that never feel outdated.
-            </p>
+            </CaseStudyDescription>
           </article>
         </section>
 
@@ -210,9 +211,9 @@ export default function DbfortriPage() {
               <h2 className="font-jakarta text-[clamp(27px,2.3vw,44px)] font-extrabold leading-none tracking-[-0.055em]">The Story Behind</h2>
               <img src={`${ASSET_ROOT}/dbfortri-logo-black-vector.svg`} alt="DBFortri" loading="lazy" decoding="async" className="w-[clamp(150px,12.3vw,236px)]" />
             </div>
-            <p className="mx-auto mt-[2.2vw] max-w-[760px] text-[clamp(11px,0.78vw,15px)] leading-[1.35] max-[1200px]:mt-7 max-[1200px]:text-sm">
+            <CaseStudyDescription className="mx-auto mt-[2.2vw] max-w-[760px] max-[1200px]:mt-7">
               dbfortri was created with a simple belief that meaningful moments<br className="max-[1200px]:hidden" /> deserve to be preserved with intention.<br />Every photograph is crafted to remain relevant long after trends have passed,<br className="max-[1200px]:hidden" /> becoming a timeless visual memory.
-            </p>
+            </CaseStudyDescription>
             <p className="mt-[5.8vw] text-[clamp(13px,1.25vw,24px)] font-medium uppercase tracking-[0.02em] max-[1200px]:mt-12">Formed to be timeless.</p>
           </article>
 

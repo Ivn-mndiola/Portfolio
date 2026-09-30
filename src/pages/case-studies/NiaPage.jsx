@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import Nav from '../../components/Nav.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
+import CaseStudyDescription from '../../components/CaseStudyDescription.jsx'
 import useNiaScroll from '../../hooks/useNiaScroll.js'
 import './NiaPage.css'
 
@@ -52,7 +53,7 @@ function Feature({ title, label, children }) {
       <div>
         <h3 className="font-montserrat text-[clamp(17px,1.15vw,22px)] font-medium leading-none text-[#48C1B0]">{title}</h3>
         <span className="mb-2 mt-1.5 block text-[clamp(8px,0.58vw,11px)] font-bold uppercase tracking-[0.15em] text-[#48C1B0]/55">{label}</span>
-        <p className="max-w-[430px] text-[clamp(10px,0.78vw,15px)] font-light leading-[1.45] text-[#48C1B0]">{children}</p>
+        <CaseStudyDescription className="max-w-[430px] text-[#48C1B0]">{children}</CaseStudyDescription>
       </div>
     </div>
   )
@@ -103,8 +104,8 @@ export default function NiaPage() {
           data-reveal
         />
 
-        <p
-          className={`mb-20 w-[44vw] shrink-0 text-center text-[clamp(9px,0.68vw,13px)] leading-[1.45] text-white/95 [&_strong]:font-bold [&_strong]:text-white ${REVEAL}`}
+        <CaseStudyDescription
+          className={`mb-20 w-[44vw] shrink-0 text-center text-white/95 [&_strong]:text-white ${REVEAL}`}
           data-reveal
         >
           <strong>NEW ILOCOS AIRPORT</strong> is a branding and wayfinding concept for a contemporary regional gateway,
@@ -112,7 +113,7 @@ export default function NiaPage() {
           principles of efficiency and connectivity, the visual identity combines a structured information system with a
           modern design language that reflects the airport&rsquo;s role as a key transportation hub while reinforcing a strong
           sense of regional character and place.
-        </p>
+        </CaseStudyDescription>
 
         {/* Match the Danes metadata container and let the hero grow with its rows. */}
         <CaseStudyMeta
@@ -156,15 +157,15 @@ export default function NiaPage() {
 
         <article className={`${COPY_BLOCK} left-[18.45%] top-[2.5%] w-[34%] ${REVEAL}`} data-reveal>
           <h2 data-nia-anchor="concept">Branding &amp; Wayfinding Concept</h2>
-          <p className="!font-normal">
+          <CaseStudyDescription className="">
             Project: New Ilocos Airport<br />
             Scope: Brand Identity &amp; Wayfinding<br />
             Type: Concept Project
-          </p>
-          <p className="!mt-[clamp(26px,2.3vw,44px)]">
+          </CaseStudyDescription>
+          <CaseStudyDescription className="!mt-[clamp(26px,2.3vw,44px)]">
             A modern airport identity designed to emphasize clarity,<br />
             movement, and regional connection through a structured visual system.
-          </p>
+          </CaseStudyDescription>
         </article>
 
         <div className="absolute left-[60.5%] top-[12.6%] z-10 w-[31%]">
@@ -175,19 +176,19 @@ export default function NiaPage() {
 
         <article className={`${COPY_BLOCK} left-[18.45%] top-[28.7%] w-[34%] ${REVEAL}`} data-reveal>
           <h2 data-nia-anchor="brand-idea">Brand Idea</h2>
-          <p>A contemporary regional gateway<br />built on clarity, flow, and efficiency.</p>
-          <p className="!mt-[clamp(24px,2.1vw,40px)] !font-normal">
+          <CaseStudyDescription>A contemporary regional gateway<br />built on clarity, flow, and efficiency.</CaseStudyDescription>
+          <CaseStudyDescription className="!mt-[clamp(24px,2.1vw,40px)]">
             Keywords: Movement, Connectivity, Precision and Calm efficiency
-          </p>
+          </CaseStudyDescription>
         </article>
 
         <article className={`${COPY_BLOCK} left-[18.45%] top-[47%] w-[31%] ${REVEAL}`} data-reveal>
           <h2 data-nia-anchor="logo-system">Logo System</h2>
-          <p>
+          <CaseStudyDescription>
             The NIA symbol represents pathways and motion,<br />
             designed to scale across signage, digital interfaces,<br />
             and large environments.
-          </p>
+          </CaseStudyDescription>
         </article>
 
         <img
@@ -199,10 +200,10 @@ export default function NiaPage() {
 
         <article className={`${COPY_BLOCK} left-[18.45%] top-[69.2%] w-[35%] ${REVEAL}`} data-reveal>
           <h2 data-nia-anchor="logo-construction">Logo Construction</h2>
-          <p>
+          <CaseStudyDescription>
             Built on a modular grid to ensure balance,<br />
             consistency, and reliability across all applications.
-          </p>
+          </CaseStudyDescription>
         </article>
 
         <h2
@@ -252,14 +253,14 @@ export default function NiaPage() {
 
         <article className={`absolute left-[18.45%] top-[61.8%] z-10 w-[32%] text-white ${REVEAL}`} data-reveal>
           <h2 data-nia-anchor="wayfinding" className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium">Wayfinding System</h2>
-          <p className="mb-2 text-[clamp(10px,0.78vw,15px)] font-light">Wayfinding Principles</p>
-          <ul className="mb-4 list-disc pl-5 text-[clamp(10px,0.78vw,15px)] font-light leading-[1.45]">
+          <CaseStudyDescription className="mb-2">Wayfinding Principles</CaseStudyDescription>
+          <ul className="case-study-description mb-4 list-disc pl-5">
             <li>High contrast</li>
             <li>Minimal wording</li>
             <li>Clear hierarchy</li>
             <li>Consistent placement</li>
           </ul>
-          <p className="text-[clamp(10px,0.78vw,15px)] font-light leading-[1.45]">Designed to improve passenger flow and reduce confusion.</p>
+          <CaseStudyDescription className="">Designed to improve passenger flow and reduce confusion.</CaseStudyDescription>
         </article>
 
         <div className={`absolute left-[54.6%] top-[64.5%] z-[6] flex w-[37.2%] flex-col gap-[clamp(15px,1.15vw,22px)] ${REVEAL}`} data-reveal>
@@ -283,7 +284,7 @@ export default function NiaPage() {
           <h2 data-nia-anchor="signage-mockup" className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium leading-[1.15] text-white">
             Mockup |<br />Wayfinding Signage
           </h2>
-          <p className="text-[clamp(10px,0.78vw,15px)] font-light leading-[1.45] text-white">Directional and gate information system</p>
+          <CaseStudyDescription className="text-white">Directional and gate information system</CaseStudyDescription>
         </article>
 
         <div className={`absolute left-[18.45%] top-[31.2%] z-[8] flex w-[29.4%] flex-col gap-[clamp(18px,1.3vw,25px)] ${REVEAL}`} data-reveal>
@@ -295,7 +296,7 @@ export default function NiaPage() {
           <h2 data-nia-anchor="terminal-mockup" className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium leading-[1.15]">
             Mockup |<br />Terminal Environmental Graphics
           </h2>
-          <p className="text-[clamp(10px,0.78vw,15px)] font-light leading-[1.45]">Large-scale identity applications</p>
+          <CaseStudyDescription className="">Large-scale identity applications</CaseStudyDescription>
         </article>
       </section>
 
@@ -319,7 +320,7 @@ export default function NiaPage() {
           <h2 data-nia-anchor="staff-mockup" className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium leading-[1.15]">
             Mockup |<br />Staff Identification System
           </h2>
-          <p className="text-[clamp(10px,0.78vw,15px)] font-light leading-[1.45]">Operational and security credentials</p>
+          <CaseStudyDescription className="">Operational and security credentials</CaseStudyDescription>
         </article>
 
         <img
