@@ -1,3 +1,4 @@
+import ResponsiveImage from './ResponsiveImage.jsx'
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import CaseStudyDescription from './CaseStudyDescription.jsx'
@@ -39,7 +40,7 @@ export function Photo({ photo, index, onOpen, className = '', imageClassName = '
       aria-haspopup="dialog"
       onClick={(event) => onOpen(index, event)}
     >
-      <img
+      <ResponsiveImage
         src={photo.src}
         srcSet={photo.srcSet}
         sizes={photo.sizes}
@@ -216,14 +217,14 @@ export function Lightbox({ photos, index, onClose, onPrevious, onNext }) {
 
 export function Caption({ heading, name, children, color = '#FFFFFF' }) {
   return (
-    <div className="mt-[2.5vw] text-center max-[1200px]:mt-8" style={{ color }}>
-      <h2 className="text-[clamp(12px,0.68vw,13px)] font-semibold uppercase tracking-[0.32em] max-[1200px]:text-sm">
+    <div className="mt-[2.5vw] text-center max-[1201px]:mt-8" style={{ color }}>
+      <h2 className="text-[clamp(12px,0.68vw,13px)] font-semibold uppercase tracking-[0.32em] max-[1201px]:text-sm">
         {heading}
       </h2>
-      <h3 className="mt-[1.65vw] text-[clamp(13px,0.78vw,15px)] font-semibold leading-none max-[1200px]:mt-6 max-[1200px]:text-base">
+      <h3 className="mt-[1.65vw] text-[clamp(13px,0.78vw,15px)] font-semibold leading-none max-[1201px]:mt-6 max-[1201px]:text-base">
         {name}
       </h3>
-      <CaseStudyDescription className="mx-auto mt-1 max-w-[720px] max-[1200px]:mt-2 max-[1200px]:max-w-xl">
+      <CaseStudyDescription className="mx-auto mt-1 max-w-[720px] max-[1201px]:mt-2 max-[1201px]:max-w-xl">
         {children}
       </CaseStudyDescription>
     </div>
@@ -233,7 +234,7 @@ export function Caption({ heading, name, children, color = '#FFFFFF' }) {
 // The same three-image layout is used by Photography and DBFortri.
 export function PhotoTriptych({ photos, indices, onOpen, cropPreviews = false }) {
   return (
-    <div className="photo-triptych grid w-[63.28%] grid-cols-[1fr_2.253fr_1fr] items-stretch gap-[0.84vw] max-[1200px]:w-full max-[1200px]:max-w-[760px] max-[1200px]:grid-cols-1 max-[1200px]:gap-4">
+    <div className="photo-triptych grid w-[63.28%] grid-cols-[1fr_2.253fr_1fr] items-stretch gap-[0.84vw] max-[1201px]:w-full max-[1201px]:max-w-[760px] max-[1201px]:grid-cols-1 max-[1201px]:gap-4">
       {indices.map((index, position) => (
         <Photo
           key={position}

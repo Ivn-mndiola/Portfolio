@@ -53,7 +53,7 @@ export default function ContactPage() {
 
   return (
     <InteriorPage active="/contact" title="Contact">
-      <main id="page-content" className="mx-auto flex min-h-screen max-w-[1920px] flex-col items-center px-6 pb-16 pt-[clamp(176px,11vw,211px)] text-center max-[1000px]:pb-12 max-[1000px]:pt-44">
+      <main id="page-content" className="mx-auto flex min-h-screen max-w-[1920px] flex-col items-center px-6 pb-16 pt-[clamp(176px,11vw,211px)] text-center max-[1001px]:pb-12 max-[1001px]:pt-44">
         <header className="interior-enter w-full">
           <h1 className="text-[clamp(52px,6.35vw,122px)] font-normal leading-[1.05] tracking-[-0.065em] max-[600px]:text-[clamp(48px,10.7vw,64px)]">Let’s work together.</h1>
           <p className="mx-auto mt-8 max-w-[960px] text-[clamp(15px,0.94vw,18px)] font-semibold leading-snug tracking-[-0.025em] max-[600px]:mt-7">Feel free to send a message through the contact form or reach out directly at <a className="break-words underline-offset-4 hover:underline" href={GMAIL_COMPOSE} target="_blank" rel="noopener noreferrer">{EMAIL}</a></p>

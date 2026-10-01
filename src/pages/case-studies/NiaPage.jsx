@@ -1,3 +1,4 @@
+import ResponsiveImage from '../../components/ResponsiveImage.jsx'
 import { useRef } from 'react'
 import Nav from '../../components/Nav.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
@@ -38,7 +39,7 @@ function TimelineRail({ color = TEAL, markers = [], startAtFirst = false, end = 
 
         return (
           <span key={target} className="nia-timeline-marker" data-nia-target={target} style={{ top: stops[index] }}>
-            <img src={`/assets/images/nia/${asset}`} alt="" width="20" height="18" />
+            <ResponsiveImage src={`/assets/images/nia/${asset}`} alt="" width="20" height="18" />
           </span>
         )
       })}
@@ -49,7 +50,7 @@ function TimelineRail({ color = TEAL, markers = [], startAtFirst = false, end = 
 function Feature({ title, label, children }) {
   return (
     <div className={`mb-[clamp(28px,2.6vw,50px)] flex items-start gap-4 ${REVEAL}`} data-reveal>
-      <img src="/assets/images/nia/NIA-ARROW.svg" alt="" className="mt-1 h-auto w-5 shrink-0" />
+      <ResponsiveImage src="/assets/images/nia/NIA-ARROW.svg" alt="" className="mt-1 h-auto w-5 shrink-0" />
       <div>
         <h3 className="font-montserrat text-[clamp(17px,1.15vw,22px)] font-medium leading-none text-[#48C1B0]">{title}</h3>
         <span className="mb-2 mt-1.5 block text-[clamp(8px,0.58vw,11px)] font-bold uppercase tracking-[0.15em] text-[#48C1B0]/55">{label}</span>
@@ -62,7 +63,7 @@ function Feature({ title, label, children }) {
 function GlassSign({ src, alt }) {
   return (
     <div className="rounded-[18px] border border-white/35 bg-[linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.08))] p-[clamp(8px,0.8vw,15px)] shadow-[0_16px_34px_rgba(0,0,0,0.16)] backdrop-blur-xl">
-      <img src={src} alt={alt} className="block h-auto w-full rounded-[10px]" />
+      <ResponsiveImage src={src} alt={alt} className="block h-auto w-full rounded-[10px]" />
     </div>
   )
 }
@@ -97,8 +98,9 @@ export default function NiaPage() {
             'radial-gradient(ellipse 58% 42% at 50% -4%, rgba(204,229,225,0.88) 0%, rgba(123,203,193,0.72) 42%, transparent 74%), linear-gradient(180deg, #52C2B3 0%, #43B9AA 42%, #005248 100%)',
         }}
       >
-        <img
+        <ResponsiveImage
           src="/assets/images/nia/NIA-NAME-LOGO.svg"
+          loading="eager" fetchPriority="high"
           alt="New Ilocos Airport"
           className={`mb-[5.95vw] h-auto w-[20.78vw] shrink-0 ${REVEAL}`}
           data-reveal
@@ -139,7 +141,7 @@ export default function NiaPage() {
         >
           A Gateway to the North
         </h1>
-        <img
+        <ResponsiveImage
           src="/assets/images/nia/NIA-AIRPLANE.svg"
           alt="Airplane approaching New Ilocos Airport"
           className={`absolute left-1/2 top-[36%] z-[2] h-auto w-[62%] -translate-x-1/2 ${REVEAL}`}
@@ -191,7 +193,7 @@ export default function NiaPage() {
           </CaseStudyDescription>
         </article>
 
-        <img
+        <ResponsiveImage
           src="/assets/images/nia/NIA-LOGO-SYSTEM.svg"
           alt="New Ilocos Airport logo system"
           className={`absolute left-[54.2%] top-[41.7%] z-[6] h-auto w-[38.1%] ${REVEAL}`}
@@ -212,7 +214,7 @@ export default function NiaPage() {
         >
           Logo Concept
         </h2>
-        <img
+        <ResponsiveImage
           src="/assets/images/nia/NIA-LOGO-CONCEPT.svg"
           alt="NIA logo construction concepts"
           className={`absolute left-[19.5%] top-[82.1%] z-[6] h-auto w-[61.5%] ${REVEAL}`}
@@ -244,7 +246,7 @@ export default function NiaPage() {
           </div>
         </article>
 
-        <img
+        <ResponsiveImage
           src="/assets/images/nia/NIA-COLORS.svg"
           alt="New Ilocos Airport colors"
           className={`absolute left-[55.2%] top-[7.1%] z-[6] h-auto w-[37.4%] ${REVEAL}`}
@@ -270,7 +272,7 @@ export default function NiaPage() {
       </section>
 
       <section className="nia-terminal-section relative h-[84.3vw] overflow-hidden text-white">
-        <img
+        <ResponsiveImage
           src="/assets/images/nia/NIA-TERMINAL.png"
           alt="New Ilocos Airport terminal and wayfinding system"
           className="absolute inset-0 h-full w-full object-cover object-center"
@@ -303,12 +305,12 @@ export default function NiaPage() {
       <section className="nia-staff-section relative h-[105.8vw] overflow-hidden bg-[#EDF1EF] text-[#48C1B0]">
         <div
           aria-hidden="true"
-          className="absolute -inset-[4%] scale-110 bg-[url('/assets/images/nia/NIA-TERMINAL.png')] bg-cover bg-[center_78%] bg-no-repeat opacity-[0.22] blur-[24px] saturate-50"
+          className="absolute -inset-[4%] scale-110 bg-[url('/assets/optimized/nia/NIA-TERMINAL-1280.webp')] bg-cover bg-[center_78%] bg-no-repeat opacity-[0.22] blur-[24px] saturate-50"
         />
         <div aria-hidden="true" className="absolute inset-0 bg-white/62" />
         <TimelineRail end="42%" markers={[{ target: 'staff-mockup', top: '21%' }]} />
 
-        <img
+        <ResponsiveImage
           src="/assets/images/nia/NIA-ID.svg"
           alt="New Ilocos Airport staff identification and lanyard"
           className={`absolute left-[22.5%] top-[-7.8%] z-[5] h-auto w-[56%] max-w-none ${REVEAL}`}
@@ -316,14 +318,14 @@ export default function NiaPage() {
         />
 
         <article className={`absolute left-[18.45%] top-[14.4%] z-[8] w-[31%] ${REVEAL}`} data-reveal>
-          <img src="/assets/images/nia/NIA-ID-LOGO.svg" alt="New Ilocos Airport" className="mb-[clamp(30px,3vw,58px)] h-auto w-[clamp(125px,10.2vw,195px)]" />
+          <ResponsiveImage src="/assets/images/nia/NIA-ID-LOGO.svg" alt="New Ilocos Airport" className="mb-[clamp(30px,3vw,58px)] h-auto w-[clamp(125px,10.2vw,195px)]" />
           <h2 data-nia-anchor="staff-mockup" className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium leading-[1.15]">
             Mockup |<br />Staff Identification System
           </h2>
           <CaseStudyDescription className="">Operational and security credentials</CaseStudyDescription>
         </article>
 
-        <img
+        <ResponsiveImage
           src="/assets/images/nia/NIA-FOOTER.svg"
           alt="New Ilocos Airport — A Gateway to the North"
           className={`absolute left-1/2 top-[68.3%] z-[7] h-auto w-[12.2%] -translate-x-1/2 ${REVEAL}`}

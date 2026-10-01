@@ -1,27 +1,25 @@
 import { useEffect } from 'react'
 
-// Adds/removes a 'visible' class on every [data-reveal] element in the
-// document as it scrolls into view. Mirrors the original vanilla-JS
-// revealOnScroll behavior (100px trigger offset from viewport bottom).
+// Observe each reveal once, without measuring every element on every scroll.
 export default function useScrollReveal(deps = []) {
   useEffect(() => {
-    const reveals = document.querySelectorAll('[data-reveal]')
-
-    function revealOnScroll() {
-      const windowHeight = window.innerHeight
-      const elementVisible = 100
-      reveals.forEach((el) => {
-        const elementTop = el.getBoundingClientRect().top
-        if (elementTop < windowHeight - elementVisible) {
-          el.dataset.revealed = 'true'
+    const elements = document.querySelectorAll('[data-reveal]')
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+      elements.forEach((element) => { element.dataset.revealed = 'true' })
+      return
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(({ target, isIntersecting }) => {
+        if (isIntersecting) {
+          target.dataset.revealed = 'true'
+          observer.unobserve(target)
         }
       })
-    }
-
-    window.addEventListener('scroll', revealOnScroll)
-    revealOnScroll()
-
-    return () => window.removeEventListener('scroll', revealOnScroll)
+    }, { rootMargin: '0px 0px -100px 0px' })
+    elements.forEach((element) => {
+      if (element.dataset.revealed !== 'true') observer.observe(element)
+    })
+    return () => observer.disconnect()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps)
 }

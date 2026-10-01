@@ -1,3 +1,4 @@
+import ResponsiveImage from '../components/ResponsiveImage.jsx'
 import { useNavigate } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
 import ClientLogos from '../components/ClientLogos.jsx'
@@ -52,10 +53,10 @@ export default function HomePage() {
           className="home-portrait pointer-events-none absolute bottom-[-15vh] z-[2] flex h-[95vh] justify-center"
           style={revealStyle(anim.delay2, { distance: 140, duration: 1200 })}
         >
-          <img
+          <ResponsiveImage loading="eager" fetchPriority="high"
             src="/assets/images/iver.png"
             alt="Iverson Mendiola"
-            className="h-full origin-bottom scale-[1.15] object-cover [filter:drop-shadow(0_20px_40px_rgba(0,0,0,0.7))] [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)]"
+            className="h-full w-auto origin-bottom scale-[1.15] object-cover [filter:drop-shadow(0_20px_40px_rgba(0,0,0,0.7))] [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)]"
           />
         </div>
 

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./fonts.css";
 @import "./responsive.css";
 
 /* Safari uses the page canvas around its toolbars and during overscroll.
@@ -81,7 +82,7 @@ body {
 }
 
 .illustration-case-main {
-  background: url("/assets/images/illustration/illustration-page-bg.png") top center / 100% 100% no-repeat;
+  background: image-set(url("/assets/images/illustration/illustration-page-bg-2060.webp") 1x, url("/assets/images/illustration/illustration-page-bg-2060.webp") 2x) top center / 100% 100% no-repeat;
 }
 
 .photography-hero {

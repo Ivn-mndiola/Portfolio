@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from 'react'
+import ResponsiveImage from '../../components/ResponsiveImage.jsx'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Nav from '../../components/Nav.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
 import CaseStudyDescription from '../../components/CaseStudyDescription.jsx'
@@ -35,19 +36,25 @@ function ArrowIcon({ direction }) {
 export default function SourcePage() {
   const [currentPost, setCurrentPost] = useState(0)
   const [carouselPaused, setCarouselPaused] = useState(false)
+  const [carouselVisible, setCarouselVisible] = useState(false)
+  const [previousPost, setPreviousPost] = useState(null)
+  const carouselRef = useRef(null)
 
   useScrollReveal([currentPost])
 
   const goPrevious = useCallback(() => {
-    setCurrentPost((current) => (current - 1 + SOCIAL_POSTS.length) % SOCIAL_POSTS.length)
-  }, [])
+    setPreviousPost(currentPost)
+    setCurrentPost((currentPost - 1 + SOCIAL_POSTS.length) % SOCIAL_POSTS.length)
+  }, [currentPost])
 
   const goNext = useCallback(() => {
-    setCurrentPost((current) => (current + 1) % SOCIAL_POSTS.length)
-  }, [])
+    setPreviousPost(currentPost)
+    setCurrentPost((currentPost + 1) % SOCIAL_POSTS.length)
+  }, [currentPost])
 
   useEffect(() => {
     function onKeyDown(event) {
+      if (document.querySelector('.site-nav[data-menu-open="true"]') || event.target.closest('input, textarea, select')) return
       if (event.key === 'ArrowLeft') goPrevious()
       if (event.key === 'ArrowRight') goNext()
     }
@@ -57,26 +64,39 @@ export default function SourcePage() {
   }, [goNext, goPrevious])
 
   useEffect(() => {
-    if (carouselPaused) return undefined
-    const timer = window.setInterval(goNext, 6000)
+    const observer = new IntersectionObserver(([entry]) => setCarouselVisible(entry.isIntersecting))
+    if (carouselRef.current) observer.observe(carouselRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setPreviousPost(null), 500)
+    return () => window.clearTimeout(timer)
+  }, [currentPost])
+
+  useEffect(() => {
+    if (carouselPaused || !carouselVisible || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const timer = window.setInterval(() => { if (!document.hidden) goNext() }, 6000)
     return () => window.clearInterval(timer)
-  }, [carouselPaused, goNext])
+  }, [carouselPaused, carouselVisible, goNext])
 
   return (
     <div className="source-case-page questrial-regular relative min-h-screen overflow-x-hidden bg-[#233F91] text-white">
       <Nav active="/projects" darkSectionSelectors={DARK_SECTIONS} accent="blue" />
 
-      <img
-        src="/assets/images/source/source-bg-main.png"
+      <picture aria-hidden="true">
+          <source media="(min-width: 1201px)" srcSet="/assets/images/source/source-bg-main-1920.webp 1920w, /assets/images/source/source-bg-main-3840.webp 3840w" sizes="100vw" />
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/%3E"
         alt=""
         aria-hidden="true"
         fetchPriority="high"
         className="pointer-events-none absolute inset-x-0 top-0 z-0 hidden h-auto w-full select-none min-[1201px]:block"
-      />
+       width="3840" height="7776" />
+        </picture>
 
       <main className="relative z-10">
         <section className="source-hero relative h-[65.7vw] bg-transparent max-[1201px]:flex max-[1201px]:h-auto max-[1201px]:min-h-svh max-[1201px]:flex-col max-[1201px]:items-center max-[1201px]:bg-[linear-gradient(145deg,#98A8D0_0%,#24428F_55%,#020710_100%)] max-[1201px]:px-6 max-[1201px]:pb-12 max-[1201px]:pt-36">
-          <img
+          <ResponsiveImage loading="eager" fetchPriority="high"
             src="/assets/images/source/SOURCE-PROJ.png"
             alt="Source"
             className={`absolute left-1/2 top-[18.5%] w-[30vw] -translate-x-1/2 object-contain drop-shadow-[0_14px_14px_rgba(0,0,0,0.25)] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:w-full max-[1201px]:max-w-[430px] max-[1201px]:translate-x-0 ${REVEAL}`}
@@ -103,15 +123,15 @@ export default function SourcePage() {
           <div className="source-brand-dark-nav pointer-events-none absolute inset-x-0 top-0 h-[58%] max-[1201px]:h-[52%]" aria-hidden="true" />
 
           <div className={`absolute left-[18.35%] top-[9.3%] flex h-[21.5%] w-[39.2%] items-center justify-center rounded-[4vw] border border-white/30 bg-white/[0.12] shadow-[0_18px_40px_rgba(8,23,70,0.16)] backdrop-blur-xl max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:h-auto max-[1201px]:w-full max-[1201px]:rounded-[32px] max-[1201px]:px-8 max-[1201px]:py-12 ${REVEAL}`} data-reveal>
-            <img src="/assets/images/source/SOURCE-PROJ.png" alt="Source main logo" className="w-[58%] drop-shadow-[0_10px_10px_rgba(0,0,0,0.3)] max-[1201px]:w-full max-[1201px]:max-w-[360px]" />
+            <ResponsiveImage src="/assets/images/source/SOURCE-PROJ.png" alt="Source main logo" className="w-[58%] drop-shadow-[0_10px_10px_rgba(0,0,0,0.3)] max-[1201px]:w-full max-[1201px]:max-w-[360px]" />
             <span className="absolute bottom-[10%] right-[8%] text-[clamp(7px,0.62vw,12px)] text-white/90">Main Logo</span>
           </div>
 
           <div className={`absolute left-[18.35%] top-[32.53%] flex h-[21.5%] w-[39.2%] items-center justify-center gap-[1.8vw] rounded-[4vw] border border-white/30 bg-white/[0.12] px-[3vw] shadow-[0_18px_40px_rgba(8,23,70,0.16)] backdrop-blur-xl max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:h-auto max-[1201px]:w-full max-[1201px]:flex-wrap max-[1201px]:gap-4 max-[1201px]:rounded-[32px] max-[1201px]:px-5 max-[1201px]:py-10 ${REVEAL}`} data-reveal>
             <span className="absolute right-[8%] top-[11%] text-[clamp(7px,0.62vw,12px)] text-white/90">ICONS</span>
             {MINI_LOGOS.map((logo) => (
-              <div key={logo.src} className="flex aspect-square w-[18%] items-center justify-center rounded-[1.5vw] border border-white/40 bg-white/15 p-[0.8vw] shadow-[0_8px_20px_rgba(8,23,70,0.15)] max-[1201px]:w-[calc(50%-0.5rem)] max-[1201px]:max-w-[120px] max-[1201px]:rounded-2xl max-[1201px]:p-2">
-                <img src={logo.src} alt={logo.alt} className="h-full w-full rounded-[1vw] object-cover max-[1201px]:rounded-xl" />
+              <div key={logo.src} className="flex aspect-square w-[18%] items-center justify-center rounded-[1.5vw] border border-white/40 bg-white/15 p-[0.8vw] shadow-[0_8px_20px_rgba(8,23,70,0.15)] max-[1201px]:w-[calc(50%_-_0.5rem)] max-[1201px]:max-w-[120px] max-[1201px]:rounded-2xl max-[1201px]:p-2">
+                <ResponsiveImage src={logo.src} alt={logo.alt} className="h-full w-full rounded-[1vw] object-cover max-[1201px]:rounded-xl" />
               </div>
             ))}
           </div>
@@ -123,7 +143,7 @@ export default function SourcePage() {
               <p className="mt-[1vw] font-questrial text-[clamp(22px,2.09vw,40px)] leading-none max-[1201px]:mt-5">Questrial</p>
               <span className="font-questrial text-[clamp(7px,0.63vw,12px)] uppercase">Secondary Font</span>
             </div>
-            <img
+            <ResponsiveImage
               src="/assets/images/source/source-color.svg"
               alt="Source color palette: 1E3A8A, 0F172A, 3A3A3A, and FFFFFF"
               className="block h-auto w-full"
@@ -136,14 +156,14 @@ export default function SourcePage() {
             <CaseStudyDescription className="mx-auto mt-[1vw] max-w-[28vw] max-[1201px]:mt-3 max-[1201px]:max-w-sm">Discover premium PC hardware,<br />gaming peripherals, and expert support at SOURCE.</CaseStudyDescription>
           </div>
 
-          <img
+          <ResponsiveImage
             src="/assets/images/source/source-character-cutout.png"
             alt="Source team member"
             className={`absolute bottom-0 left-[49.5%] z-10 w-[24.5%] max-[1201px]:relative max-[1201px]:bottom-auto max-[1201px]:left-auto max-[1201px]:mx-auto max-[1201px]:block max-[1201px]:w-full max-[1201px]:max-w-[430px] ${REVEAL}`}
             data-reveal
           />
 
-          <img src="/assets/images/source/source-blue-logo.png" alt="Source" className={`absolute bottom-[2.1%] left-[38%] z-20 w-[9%] max-[1201px]:relative max-[1201px]:bottom-auto max-[1201px]:left-auto max-[1201px]:mx-auto max-[1201px]:mb-8 max-[1201px]:w-[130px] ${REVEAL}`} data-reveal />
+          <ResponsiveImage src="/assets/images/source/source-blue-logo.png" alt="Source" className={`absolute bottom-[2.1%] left-[38%] z-20 w-[9%] max-[1201px]:relative max-[1201px]:bottom-auto max-[1201px]:left-auto max-[1201px]:mx-auto max-[1201px]:mb-8 max-[1201px]:w-[130px] ${REVEAL}`} data-reveal />
         </section>
 
         <section className="relative h-[55.77vw] bg-transparent max-[1201px]:h-auto max-[1201px]:space-y-10 max-[1201px]:bg-[linear-gradient(180deg,#EEF2FA_0%,#244394_42%,#244394_100%)] max-[1201px]:px-5 max-[1201px]:py-16">
@@ -153,18 +173,22 @@ export default function SourcePage() {
             <div
               className={`source-liquid-glass flex w-[39vw] max-w-[560px] shrink-0 flex-col items-center rounded-[clamp(32px,4.1vw,58px)] px-[clamp(32px,2.9vw,42px)] py-[clamp(38px,3.5vw,50px)] max-[1201px]:w-full max-[1201px]:max-w-none max-[1201px]:rounded-[32px] max-[1201px]:p-6 ${REVEAL}`}
               data-reveal
+              ref={carouselRef}
+              onFocus={() => setCarouselPaused(true)}
+              onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setCarouselPaused(false) }}
               onMouseEnter={() => setCarouselPaused(true)}
               onMouseLeave={() => setCarouselPaused(false)}
             >
               <div className="relative aspect-[1177/1377] w-full" aria-live="polite">
                 <div className="absolute inset-0 overflow-hidden bg-[#0F172A] shadow-[0_12px_25px_rgba(0,0,0,0.25)]">
-                  {SOCIAL_POSTS.map((post, index) => (
-                    <img
+                  {SOCIAL_POSTS.map((post, index) => (index === currentPost || index === previousPost) && (
+                    <ResponsiveImage
                       key={post.src}
                       src={post.src}
                       alt={post.alt}
+                      aria-hidden={index !== currentPost}
                       className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-500 motion-reduce:transition-none ${
-                        index === currentPost ? 'scale-100 opacity-100' : 'pointer-events-none scale-[1.015] opacity-0'
+                        index === currentPost ? 'source-post-active scale-100 opacity-100' : 'pointer-events-none scale-[1.015] opacity-0'
                       }`}
                     />
                   ))}
@@ -186,7 +210,7 @@ export default function SourcePage() {
             </div>
 
             <div className={`source-liquid-glass flex min-h-[clamp(270px,21.45vw,310px)] w-[33vw] max-w-[480px] shrink-0 flex-col items-center justify-center rounded-[clamp(26px,1.98vw,31px)] px-[clamp(33px,3.08vw,46px)] py-8 text-center max-[1201px]:h-auto max-[1201px]:w-full max-[1201px]:max-w-none max-[1201px]:rounded-[26px] max-[1201px]:px-6 max-[1201px]:py-12 ${REVEAL}`} data-reveal>
-              <img src="/assets/images/source/source-main.png" alt="Source" className="mb-[clamp(9px,0.83vw,12px)] w-[13%] max-[1201px]:mb-2 max-[1201px]:w-[56px]" />
+              <ResponsiveImage src="/assets/images/source/source-main.png" alt="Source" className="mb-[clamp(9px,0.83vw,12px)] w-[13%] max-[1201px]:mb-2 max-[1201px]:w-[56px]" />
               <h2 className="whitespace-nowrap font-bahnschrift text-[clamp(42px,4.29vw,62px)] font-bold leading-none tracking-[-0.055em] max-[1201px]:text-[clamp(36px,7vw,62px)]">Social Media</h2>
               <p className="mt-[clamp(10px,0.99vw,14px)] font-questrial text-[clamp(12px,1.08vw,15px)] leading-none max-[1201px]:mt-3 max-[1201px]:text-sm">Marketing Design</p>
               <CaseStudyDescription className="mt-[clamp(15px,1.65vw,23px)] text-white/95 max-[1201px]:mt-6">

@@ -80,7 +80,6 @@
  .nia-staff-section>:not(.nia-timeline):not([aria-hidden="true"]){position:relative;inset:auto;width:100%;translate:none;}
  .nia-case-page :is(.nia-brand-section,.nia-dark-section,.nia-terminal-section,.nia-staff-section) :is(p,ul):not(.case-study-description){font-size:15px;line-height:1.6;}
  .nia-case-page article h2{font-size:clamp(22px,3vw,28px);line-height:1.2;}
- .nia-brand-section article br{display:none;}
  .nia-brand-section>h2{text-align:center;}
  .nia-brand-section [data-reveal]>div>span{font-size:11px;}
  .nia-type-specimen{height:auto;min-height:90px;padding:18px;gap:16px;}

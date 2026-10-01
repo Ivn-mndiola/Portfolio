@@ -1,0 +1,308 @@
+{
+  "/assets/images/HOME-HERO-BG.jpg": {
+    "width": 2400,
+    "height": 1095,
+    "src": "/assets/optimized/HOME-HERO-BG-640.webp",
+    "srcSet": "/assets/optimized/HOME-HERO-BG-640.webp 640w, /assets/optimized/HOME-HERO-BG-1280.webp 1280w, /assets/optimized/HOME-HERO-BG-1920.webp 1920w"
+  },
+  "/assets/images/artlantis/artlantis-charly-poster.jpg": {
+    "width": 3240,
+    "height": 4050,
+    "src": "/assets/optimized/artlantis/artlantis-charly-poster-640.webp",
+    "srcSet": "/assets/optimized/artlantis/artlantis-charly-poster-640.webp 640w, /assets/optimized/artlantis/artlantis-charly-poster-1280.webp 1280w, /assets/optimized/artlantis/artlantis-charly-poster-1920.webp 1920w"
+  },
+  "/assets/images/artlantis/artlantis-duo-cutout.png": {
+    "width": 1672,
+    "height": 941,
+    "src": "/assets/optimized/artlantis/artlantis-duo-cutout-640.webp",
+    "srcSet": "/assets/optimized/artlantis/artlantis-duo-cutout-640.webp 640w, /assets/optimized/artlantis/artlantis-duo-cutout-1280.webp 1280w, /assets/optimized/artlantis/artlantis-duo-cutout-1672.webp 1672w"
+  },
+  "/assets/images/artlantis/artlantis-duo-poster.jpg": {
+    "width": 3264,
+    "height": 4074,
+    "src": "/assets/optimized/artlantis/artlantis-duo-poster-640.webp",
+    "srcSet": "/assets/optimized/artlantis/artlantis-duo-poster-640.webp 640w, /assets/optimized/artlantis/artlantis-duo-poster-1280.webp 1280w, /assets/optimized/artlantis/artlantis-duo-poster-1920.webp 1920w"
+  },
+  "/assets/images/artlantis/artlantis-sharky-poster.jpg": {
+    "width": 3240,
+    "height": 4050,
+    "src": "/assets/optimized/artlantis/artlantis-sharky-poster-640.webp",
+    "srcSet": "/assets/optimized/artlantis/artlantis-sharky-poster-640.webp 640w, /assets/optimized/artlantis/artlantis-sharky-poster-1280.webp 1280w, /assets/optimized/artlantis/artlantis-sharky-poster-1920.webp 1920w"
+  },
+  "/assets/images/danes/DANES-FULL-ROSTER.png": {
+    "width": 1920,
+    "height": 681,
+    "src": "/assets/optimized/danes/DANES-FULL-ROSTER-640.webp",
+    "srcSet": "/assets/optimized/danes/DANES-FULL-ROSTER-640.webp 640w, /assets/optimized/danes/DANES-FULL-ROSTER-1280.webp 1280w, /assets/optimized/danes/DANES-FULL-ROSTER-1920.webp 1920w"
+  },
+  "/assets/images/danes/DANES-PROJECT-LOGO.png": {
+    "width": 1200,
+    "height": 648,
+    "src": "/assets/optimized/danes/DANES-PROJECT-LOGO-640.webp",
+    "srcSet": "/assets/optimized/danes/DANES-PROJECT-LOGO-640.webp 640w, /assets/optimized/danes/DANES-PROJECT-LOGO-1200.webp 1200w"
+  },
+  "/assets/images/danes/LOGO-STUDIES.png": {
+    "width": 2000,
+    "height": 796,
+    "src": "/assets/optimized/danes/LOGO-STUDIES-640.webp",
+    "srcSet": "/assets/optimized/danes/LOGO-STUDIES-640.webp 640w, /assets/optimized/danes/LOGO-STUDIES-1280.webp 1280w, /assets/optimized/danes/LOGO-STUDIES-1920.webp 1920w"
+  },
+  "/assets/images/danes/P1.png": {
+    "width": 1400,
+    "height": 1337,
+    "src": "/assets/optimized/danes/P1-640.webp",
+    "srcSet": "/assets/optimized/danes/P1-640.webp 640w, /assets/optimized/danes/P1-1280.webp 1280w, /assets/optimized/danes/P1-1400.webp 1400w"
+  },
+  "/assets/images/danes/P2.png": {
+    "width": 1400,
+    "height": 1337,
+    "src": "/assets/optimized/danes/P2-640.webp",
+    "srcSet": "/assets/optimized/danes/P2-640.webp 640w, /assets/optimized/danes/P2-1280.webp 1280w, /assets/optimized/danes/P2-1400.webp 1400w"
+  },
+  "/assets/images/danes/P3.png": {
+    "width": 1400,
+    "height": 1337,
+    "src": "/assets/optimized/danes/P3-640.webp",
+    "srcSet": "/assets/optimized/danes/P3-640.webp 640w, /assets/optimized/danes/P3-1280.webp 1280w, /assets/optimized/danes/P3-1400.webp 1400w"
+  },
+  "/assets/images/danes/P4.png": {
+    "width": 1400,
+    "height": 1337,
+    "src": "/assets/optimized/danes/P4-640.webp",
+    "srcSet": "/assets/optimized/danes/P4-640.webp 640w, /assets/optimized/danes/P4-1280.webp 1280w, /assets/optimized/danes/P4-1400.webp 1400w"
+  },
+  "/assets/images/danes/P5.png": {
+    "width": 1400,
+    "height": 1337,
+    "src": "/assets/optimized/danes/P5-640.webp",
+    "srcSet": "/assets/optimized/danes/P5-640.webp 640w, /assets/optimized/danes/P5-1280.webp 1280w, /assets/optimized/danes/P5-1400.webp 1400w"
+  },
+  "/assets/images/danes/P6.png": {
+    "width": 1400,
+    "height": 1337,
+    "src": "/assets/optimized/danes/P6-640.webp",
+    "srcSet": "/assets/optimized/danes/P6-640.webp 640w, /assets/optimized/danes/P6-1280.webp 1280w, /assets/optimized/danes/P6-1400.webp 1400w"
+  },
+  "/assets/images/danes/SOCIAL-MEDIA-2.jpg": {
+    "width": 1200,
+    "height": 1500,
+    "src": "/assets/optimized/danes/SOCIAL-MEDIA-2-640.webp",
+    "srcSet": "/assets/optimized/danes/SOCIAL-MEDIA-2-640.webp 640w, /assets/optimized/danes/SOCIAL-MEDIA-2-1200.webp 1200w"
+  },
+  "/assets/images/danes/SOCIAL-MEDIA-6.jpg": {
+    "width": 1200,
+    "height": 1500,
+    "src": "/assets/optimized/danes/SOCIAL-MEDIA-6-640.webp",
+    "srcSet": "/assets/optimized/danes/SOCIAL-MEDIA-6-640.webp 640w, /assets/optimized/danes/SOCIAL-MEDIA-6-1200.webp 1200w"
+  },
+  "/assets/images/danes/TEAM-UNIFORM.png": {
+    "width": 2000,
+    "height": 884,
+    "src": "/assets/optimized/danes/TEAM-UNIFORM-640.webp",
+    "srcSet": "/assets/optimized/danes/TEAM-UNIFORM-640.webp 640w, /assets/optimized/danes/TEAM-UNIFORM-1280.webp 1280w, /assets/optimized/danes/TEAM-UNIFORM-1920.webp 1920w"
+  },
+  "/assets/images/dbfortri/dbfortri-paper-texture.jpg": {
+    "width": 3840,
+    "height": 3712,
+    "src": "/assets/optimized/dbfortri/dbfortri-paper-texture-640.webp",
+    "srcSet": "/assets/optimized/dbfortri/dbfortri-paper-texture-640.webp 640w, /assets/optimized/dbfortri/dbfortri-paper-texture-1280.webp 1280w, /assets/optimized/dbfortri/dbfortri-paper-texture-1920.webp 1920w"
+  },
+  "/assets/images/dbfortri/dbfortri-project-bg-3840.webp": {
+    "width": 3840,
+    "height": 1818,
+    "src": "/assets/optimized/dbfortri/dbfortri-project-bg-3840-640.webp",
+    "srcSet": "/assets/optimized/dbfortri/dbfortri-project-bg-3840-640.webp 640w, /assets/optimized/dbfortri/dbfortri-project-bg-3840-1280.webp 1280w, /assets/optimized/dbfortri/dbfortri-project-bg-3840-1920.webp 1920w"
+  },
+  "/assets/images/gamedev/BG-PHGDE.jpg": {
+    "width": 1920,
+    "height": 4717,
+    "src": "/assets/optimized/gamedev/BG-PHGDE-640.webp",
+    "srcSet": "/assets/optimized/gamedev/BG-PHGDE-640.webp 640w, /assets/optimized/gamedev/BG-PHGDE-1280.webp 1280w, /assets/optimized/gamedev/BG-PHGDE-1920.webp 1920w"
+  },
+  "/assets/images/gamedev/GAME-DEV-PROJECT.png": {
+    "width": 1589,
+    "height": 477,
+    "src": "/assets/optimized/gamedev/GAME-DEV-PROJECT-640.webp",
+    "srcSet": "/assets/optimized/gamedev/GAME-DEV-PROJECT-640.webp 640w, /assets/optimized/gamedev/GAME-DEV-PROJECT-1280.webp 1280w, /assets/optimized/gamedev/GAME-DEV-PROJECT-1589.webp 1589w"
+  },
+  "/assets/images/gamedev/pinecone.png": {
+    "width": 531,
+    "height": 685,
+    "src": "/assets/optimized/gamedev/pinecone-531.webp",
+    "srcSet": "/assets/optimized/gamedev/pinecone-531.webp 531w"
+  },
+  "/assets/images/illustration/cascandy-showcase.png": {
+    "width": 2602,
+    "height": 1222,
+    "src": "/assets/optimized/illustration/cascandy-showcase-640.webp",
+    "srcSet": "/assets/optimized/illustration/cascandy-showcase-640.webp 640w, /assets/optimized/illustration/cascandy-showcase-1280.webp 1280w, /assets/optimized/illustration/cascandy-showcase-1920.webp 1920w"
+  },
+  "/assets/images/illustration/flame-footer.png": {
+    "width": 4615,
+    "height": 637,
+    "src": "/assets/optimized/illustration/flame-footer-640.webp",
+    "srcSet": "/assets/optimized/illustration/flame-footer-640.webp 640w, /assets/optimized/illustration/flame-footer-1280.webp 1280w, /assets/optimized/illustration/flame-footer-1920.webp 1920w"
+  },
+  "/assets/images/illustration/illustration-proj.jpg": {
+    "width": 1400,
+    "height": 1157,
+    "src": "/assets/optimized/illustration/illustration-proj-640.webp",
+    "srcSet": "/assets/optimized/illustration/illustration-proj-640.webp 640w, /assets/optimized/illustration/illustration-proj-1280.webp 1280w, /assets/optimized/illustration/illustration-proj-1400.webp 1400w"
+  },
+  "/assets/images/illustration/illustration-proj.png": {
+    "width": 1400,
+    "height": 1157,
+    "src": "/assets/optimized/illustration/illustration-proj-640.webp",
+    "srcSet": "/assets/optimized/illustration/illustration-proj-640.webp 640w, /assets/optimized/illustration/illustration-proj-1280.webp 1280w, /assets/optimized/illustration/illustration-proj-1400.webp 1400w"
+  },
+  "/assets/images/illustration/panagbenga-showcase.png": {
+    "width": 2436,
+    "height": 1177,
+    "src": "/assets/optimized/illustration/panagbenga-showcase-640.webp",
+    "srcSet": "/assets/optimized/illustration/panagbenga-showcase-640.webp 640w, /assets/optimized/illustration/panagbenga-showcase-1280.webp 1280w, /assets/optimized/illustration/panagbenga-showcase-1920.webp 1920w"
+  },
+  "/assets/images/illustration/verto-catalog.png": {
+    "width": 740,
+    "height": 1094,
+    "src": "/assets/optimized/illustration/verto-catalog-640.webp",
+    "srcSet": "/assets/optimized/illustration/verto-catalog-640.webp 640w, /assets/optimized/illustration/verto-catalog-740.webp 740w"
+  },
+  "/assets/images/illustration/verto-stickers-v1.png": {
+    "width": 3960,
+    "height": 496,
+    "src": "/assets/optimized/illustration/verto-stickers-v1-640.webp",
+    "srcSet": "/assets/optimized/illustration/verto-stickers-v1-640.webp 640w, /assets/optimized/illustration/verto-stickers-v1-1280.webp 1280w, /assets/optimized/illustration/verto-stickers-v1-1920.webp 1920w"
+  },
+  "/assets/images/illustration/verto-stickers-v2.png": {
+    "width": 3960,
+    "height": 610,
+    "src": "/assets/optimized/illustration/verto-stickers-v2-640.webp",
+    "srcSet": "/assets/optimized/illustration/verto-stickers-v2-640.webp 640w, /assets/optimized/illustration/verto-stickers-v2-1280.webp 1280w, /assets/optimized/illustration/verto-stickers-v2-1920.webp 1920w"
+  },
+  "/assets/images/interior/portrait-1800.webp": {
+    "width": 1800,
+    "height": 2192,
+    "src": "/assets/optimized/interior/portrait-1800-640.webp",
+    "srcSet": "/assets/optimized/interior/portrait-1800-640.webp 640w, /assets/optimized/interior/portrait-1800-1280.webp 1280w, /assets/optimized/interior/portrait-1800-1800.webp 1800w"
+  },
+  "/assets/images/interior/portrait-2400.webp": {
+    "width": 2400,
+    "height": 2922,
+    "src": "/assets/optimized/interior/portrait-2400-640.webp",
+    "srcSet": "/assets/optimized/interior/portrait-2400-640.webp 640w, /assets/optimized/interior/portrait-2400-1280.webp 1280w, /assets/optimized/interior/portrait-2400-1920.webp 1920w"
+  },
+  "/assets/images/iver.png": {
+    "width": 1400,
+    "height": 1769,
+    "src": "/assets/optimized/iver-640.webp",
+    "srcSet": "/assets/optimized/iver-640.webp 640w, /assets/optimized/iver-1280.webp 1280w, /assets/optimized/iver-1400.webp 1400w"
+  },
+  "/assets/images/nia/NIA-BG.png": {
+    "width": 1920,
+    "height": 905,
+    "src": "/assets/optimized/nia/NIA-BG-640.webp",
+    "srcSet": "/assets/optimized/nia/NIA-BG-640.webp 640w, /assets/optimized/nia/NIA-BG-1280.webp 1280w, /assets/optimized/nia/NIA-BG-1920.webp 1920w"
+  },
+  "/assets/images/nia/NIA-TERMINAL.jpg": {
+    "width": 2400,
+    "height": 2030,
+    "src": "/assets/optimized/nia/NIA-TERMINAL-640.webp",
+    "srcSet": "/assets/optimized/nia/NIA-TERMINAL-640.webp 640w, /assets/optimized/nia/NIA-TERMINAL-1280.webp 1280w, /assets/optimized/nia/NIA-TERMINAL-1920.webp 1920w"
+  },
+  "/assets/images/nia/NIA-TERMINAL.png": {
+    "width": 2880,
+    "height": 2436,
+    "src": "/assets/optimized/nia/NIA-TERMINAL-640.webp",
+    "srcSet": "/assets/optimized/nia/NIA-TERMINAL-640.webp 640w, /assets/optimized/nia/NIA-TERMINAL-1280.webp 1280w, /assets/optimized/nia/NIA-TERMINAL-1920.webp 1920w"
+  },
+  "/assets/images/photography/Photography.jpg": {
+    "width": 1400,
+    "height": 1427,
+    "src": "/assets/optimized/photography/Photography-640.webp",
+    "srcSet": "/assets/optimized/photography/Photography-640.webp 640w, /assets/optimized/photography/Photography-1280.webp 1280w, /assets/optimized/photography/Photography-1400.webp 1400w"
+  },
+  "/assets/images/photography/Photography.png": {
+    "width": 1400,
+    "height": 1427,
+    "src": "/assets/optimized/photography/Photography-640.webp",
+    "srcSet": "/assets/optimized/photography/Photography-640.webp 640w, /assets/optimized/photography/Photography-1280.webp 1280w, /assets/optimized/photography/Photography-1400.webp 1400w"
+  },
+  "/assets/images/source/SOURCE-BG.jpg": {
+    "width": 1920,
+    "height": 905,
+    "src": "/assets/optimized/source/SOURCE-BG-640.webp",
+    "srcSet": "/assets/optimized/source/SOURCE-BG-640.webp 640w, /assets/optimized/source/SOURCE-BG-1280.webp 1280w, /assets/optimized/source/SOURCE-BG-1920.webp 1920w"
+  },
+  "/assets/images/source/source-case-bg.jpg": {
+    "width": 1011,
+    "height": 2048,
+    "src": "/assets/optimized/source/source-case-bg-640.webp",
+    "srcSet": "/assets/optimized/source/source-case-bg-640.webp 640w, /assets/optimized/source/source-case-bg-1011.webp 1011w"
+  },
+  "/assets/images/source/source-character-cutout.png": {
+    "width": 519,
+    "height": 867,
+    "src": "/assets/optimized/source/source-character-cutout-519.webp",
+    "srcSet": "/assets/optimized/source/source-character-cutout-519.webp 519w"
+  },
+  "/assets/images/source/source-character.jpg": {
+    "width": 519,
+    "height": 867,
+    "src": "/assets/optimized/source/source-character-519.webp",
+    "srcSet": "/assets/optimized/source/source-character-519.webp 519w"
+  },
+  "/assets/images/source/source-social-01-pulsar.jpg": {
+    "width": 1177,
+    "height": 1377,
+    "src": "/assets/optimized/source/source-social-01-pulsar-640.webp",
+    "srcSet": "/assets/optimized/source/source-social-01-pulsar-640.webp 640w, /assets/optimized/source/source-social-01-pulsar-1177.webp 1177w"
+  },
+  "/assets/images/source/source-social-02-hyperx.jpg": {
+    "width": 1177,
+    "height": 1377,
+    "src": "/assets/optimized/source/source-social-02-hyperx-640.webp",
+    "srcSet": "/assets/optimized/source/source-social-02-hyperx-640.webp 640w, /assets/optimized/source/source-social-02-hyperx-1177.webp 1177w"
+  },
+  "/assets/images/source/source-social-03-msi.jpg": {
+    "width": 1177,
+    "height": 1377,
+    "src": "/assets/optimized/source/source-social-03-msi-640.webp",
+    "srcSet": "/assets/optimized/source/source-social-03-msi-640.webp 640w, /assets/optimized/source/source-social-03-msi-1177.webp 1177w"
+  },
+  "/assets/images/source/source-social-04-ttracing.jpg": {
+    "width": 1177,
+    "height": 1377,
+    "src": "/assets/optimized/source/source-social-04-ttracing-640.webp",
+    "srcSet": "/assets/optimized/source/source-social-04-ttracing-640.webp 640w, /assets/optimized/source/source-social-04-ttracing-1177.webp 1177w"
+  },
+  "/assets/images/source/source-social-05-steelseries.jpg": {
+    "width": 1177,
+    "height": 1377,
+    "src": "/assets/optimized/source/source-social-05-steelseries-640.webp",
+    "srcSet": "/assets/optimized/source/source-social-05-steelseries-640.webp 640w, /assets/optimized/source/source-social-05-steelseries-1177.webp 1177w"
+  },
+  "/assets/images/source/source-social-06-acer.jpg": {
+    "width": 1177,
+    "height": 1377,
+    "src": "/assets/optimized/source/source-social-06-acer-640.webp",
+    "srcSet": "/assets/optimized/source/source-social-06-acer-640.webp 640w, /assets/optimized/source/source-social-06-acer-1177.webp 1177w"
+  },
+  "/assets/images/source/source-social-07-rtx.jpg": {
+    "width": 1177,
+    "height": 1377,
+    "src": "/assets/optimized/source/source-social-07-rtx-640.webp",
+    "srcSet": "/assets/optimized/source/source-social-07-rtx-640.webp 640w, /assets/optimized/source/source-social-07-rtx-1177.webp 1177w"
+  },
+  "/assets/images/source/source-social-08-razer.jpg": {
+    "width": 1177,
+    "height": 1377,
+    "src": "/assets/optimized/source/source-social-08-razer-640.webp",
+    "srcSet": "/assets/optimized/source/source-social-08-razer-640.webp 640w, /assets/optimized/source/source-social-08-razer-1177.webp 1177w"
+  },
+  "/assets/images/source/source-social-09-kingston.jpg": {
+    "width": 1177,
+    "height": 1377,
+    "src": "/assets/optimized/source/source-social-09-kingston-640.webp",
+    "srcSet": "/assets/optimized/source/source-social-09-kingston-640.webp 640w, /assets/optimized/source/source-social-09-kingston-1177.webp 1177w"
+  }
+}

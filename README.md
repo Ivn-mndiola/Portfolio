@@ -1,100 +1,36 @@
-# Version 61 — DBFortri logo in the home hero
+# Iverson Portfolio — v72
 
-The home hero's scrolling client-logo row now includes the existing DBFortri vector wordmark, with the same monochrome styling and seamless loop as the other logos. The home entrance animation, About layout, Contact Gmail form, and case studies are preserved.
+React, Vite, and Tailwind portfolio with thirteen routes and eight case studies.
 
-# Version 60 — Apply the new layout to About
+## Run locally
 
-The supplied layout belongs to **About**. About now has the fixed blue background and desktop portrait, with biography, education, experience, software, and equipment scrolling beside it. On narrow screens the portrait stacks above the text while the background stays fixed.
-
-Contact is restored exactly to its v58 layout and Gmail form behavior. The new About layout contains no contact form. Navigation highlights the correct page. Existing case studies, services, assets, and dependency versions are preserved.
-
-# Version 59 — Fixed Contact background and scrolling profile
-
-Contact now follows the two supplied SAMPLE references: a stationary blue background and desktop portrait, with a live-text biography, education, experience, software, and equipment column that scrolls normally. The Gmail enquiry form remains beneath the profile. Service enquiry links jump directly to that form.
-
-The background stays fixed at all sizes. On smaller screens the portrait stacks above the text at a bounded size so it does not cover the content or form. Contact uses scoped layout rules in `src/pages/ContactPage.css`; About, Services, case studies, original images, and the existing Gmail draft controls are preserved.
-
-# Version 58 — Contact opens Gmail
-
-Submitting Contact validates the email and message, then opens Gmail in a new tab with `ivm.creatives@gmail.com`, the subject, name, reply email, selected service (when present), and message filled in. The visitor signs in if needed and clicks **Send** inside Gmail. The website does not send an email automatically or need Gmail credentials.
-
-The form keeps the entered details. **Open Gmail again**, **Copy message**, and **View email draft** provide fallbacks if the new tab is blocked. Editing a field clears the previous prepared draft so the next submission uses the latest details. Existing About portrait sizing and all other pages and assets are preserved.
-
-# Version 57 — Balanced About portrait
-
-The About portrait now stays within its own left column, with a maximum desktop width of 700px (about 40% smaller than v56 at 1920px). It is aligned beside the biography, with a soft bottom fade into the page background. On narrower layouts the portrait is limited to 400px and 80% of the content width. Image resolution, text, navigation, and other pages are unchanged.
-
-# Version 56 — Smaller interior-page layouts
-
-The About portrait, large headings, software/equipment graphics, service cards, and Contact form are approximately 10–15% smaller. Spacing and page height are reduced along with the content. Image files retain their original v55 resolution. Existing case studies, navigation, animations, and form behavior are unchanged.
-
-# Version 55 — About, Services, and Contact
-
-- About follows the supplied portrait, biography, education, experience, software, and equipment layout. The Education graduation-cap icon is omitted.
-- Services includes all nine services. Selecting a service opens Contact with that service included in the enquiry.
-- Contact validates email and message fields, then opens a prefilled draft in the visitor’s email app. The visitor sends that draft. Copy message and View email draft are provided as fallbacks. Automatic email delivery would require a separately configured backend or email service.
-- The supplied PNGs are served as WebP, with multiple resolutions for the background and portrait, and lossless software/equipment graphics. Questrial is self-hosted with its license included.
-- Existing home animations, case studies, gallery previews, project selection memory, shared navigation, PH Game Dev #FDFDFD text, and dependency versions are preserved from v54.
-- The broader site-wide media-query review remains for the final pass. These three pages include narrow-screen layouts and reduced-motion support.
-
-# Iverson Portfolio — Vite + React
-
-React/Vite portfolio styled with Tailwind CSS utility classes.
-
-## Setup
+Use Node.js 20.19 or newer.
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-## Tailwind setup
+Create the production build with `npm run build`. Preview it with `npm run preview`.
+Deploy the generated `dist` folder to a host with an SPA fallback to `index.html`, so direct links such as `/projects/artlantis` work.
 
-Tailwind CSS 4 is integrated through the official Vite plugin. `src/index.css`
-imports Tailwind and defines only the project fonts and marquee theme token.
+## Responsive layout updates
 
-All layout, color, typography, responsive, hover, and animation styling now
-lives in JSX utility classes. The four page-specific legacy stylesheets were
-removed.
+- Phone home layout keeps the greeting, portrait, project link, and logo row separate. Short landscape screens have their own compact composition.
+- On smaller screens, Projects has a scrolling preview above a persistent control bar. Text stays clear of the controls, and switching projects resets the preview scroll.
+- Case studies reflow into readable vertical stories. Breakpoints meet at the same screen widths; smaller galleries show complete artwork.
+- Services keeps its stationary background while cards scroll. Service descriptions and Contact fields have more room on phones and tablets.
+- Bright Illustration, Photography, and NIA sections have clearer description contrast.
+- Case-study and project descriptions use the shared **Inter, 14px, line-height 1.8** setting. The requested Artlantis text, bold names, freelance role, Game Dev title color, and supplied Verto PNGs remain included.
 
-## Project features
+## Loading improvements
 
-- **Routing**: `pages/case-studies/projects.html`, `pages/services.html`, etc. are now
-  React Router routes (`/projects`, `/services`, `/about`, `/contact`) handled by
-  `react-router-dom`. About, Services, and Contact are implemented in version 55.
-- **Nav / hamburger menu**: `assets/js/script.js`'s DOM manipulation
-  (`classList.toggle('active-menu')`, Escape-key handling) is now React state
-  in `src/components/Nav.jsx`.
-- **Hero load animation**: the staged `setTimeout` reveal (fade-in logos at
-  100ms, text at 300ms, portrait at 900ms, CTA at 1600ms) is managed by
-  `src/hooks/useHeroAnimation.js` and Tailwind transition utilities.
-- **Client logos marquee**: turned into a `LOGOS` array mapped twice (for the
-  seamless loop) in `src/components/ClientLogos.jsx`, instead of hand-duplicated
-  `<img>` tags in HTML.
-- **Case studies**: Danes, New Ilocos Airport, and Philippine Game Dev Experience
-  are responsive React pages styled entirely with Tailwind utilities.
+- Routes load their code when opened. Projects mounts the selected and outgoing slides for its fade instead of downloading all eight posters upfront.
+- `ResponsiveImage.jsx` selects WebP previews from `src/data/imageVariants.json` and defers below-fold images. Raster originals remain in `public/assets/images`; photo viewers keep their full-resolution sources.
+- Desktop-only Source and Artlantis backgrounds use responsive pictures and do not download on phones. Interior backgrounds use smaller responsive previews.
+- Embedded NIA SVG photos are compressed while vector paths and filters remain intact.
+- The existing font families are self-hosted under `public/assets/fonts`, with licenses included. Google Fonts connections are no longer required.
+- Scroll reveals use IntersectionObserver; navigation tint measurements are limited to one frame. Normal entrance animations stay enabled, with reduced-motion support.
+- Source rotates designs only while its carousel is visible, and mounts only its current and outgoing designs.
 
-## Assets
-
-All portfolio images and local fonts are included under `public/assets/`.
-Vite serves this folder from the site root, so the JSX references assets using
-paths such as `/assets/images/logo.png`.
-
-## Structure
-
-```
-src/
-  main.jsx              # React root + BrowserRouter
-  App.jsx               # Route definitions
-  components/
-    Nav.jsx              # Nav + hamburger menu
-    ClientLogos.jsx       # Marquee footer
-  hooks/
-    useHeroAnimation.js   # Staged entrance animation timing
-  pages/
-    HomePage.jsx           # Hero section (from index.html)
-    ProjectsPage.jsx        # Full-screen project slider
-    ServicesPage.jsx        # Placeholder
-    AboutPage.jsx            # Placeholder
-    ContactPage.jsx           # Placeholder
-```
+See `VALIDATION.md` for the browser checks and their limits.

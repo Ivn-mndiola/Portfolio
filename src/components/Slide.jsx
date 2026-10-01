@@ -1,3 +1,4 @@
+import ResponsiveImage from './ResponsiveImage.jsx'
 import { Link } from 'react-router-dom'
 import CaseStudyDescription from './CaseStudyDescription.jsx'
 
@@ -27,16 +28,19 @@ export default function Slide({ slide, isActive, rosterIndex }) {
         <div className="project-slide-stack z-[3] mt-[100px] grid h-[70vh] w-full max-w-[680px] grid-rows-[1.2fr_auto_0.8fr] items-center justify-items-center gap-6">
           <div className="project-slide-title row-start-1 flex h-full w-full flex-col items-center justify-end self-end">
             {slide.smallIcon && (
-              <img
+              <ResponsiveImage loading="eager"
                 src={slide.smallIcon}
                 alt=""
                 className="project-slide-icon mb-8 h-auto w-[75px] brightness-0 invert"
               />
             )}
             {slide.titleGraphic && (
-              <img
+              <ResponsiveImage loading="eager"
                 src={slide.titleGraphic}
                 alt={`${slide.id} title`}
+                style={slide.id === 'gamedev'
+                  ? { filter: 'brightness(0) invert(0.9921568627) drop-shadow(0 15px 35px rgba(0,0,0,0.65))' }
+                  : undefined}
                 className={`h-auto max-h-[200px] w-full object-contain [filter:drop-shadow(0_15px_35px_rgba(0,0,0,0.65))] ${
                   slide.id === 'gamedev' ? 'max-w-[540px]' : slide.id === 'dbfortri' ? 'max-w-[620px]' : 'max-w-[520px]'
                 }`}
@@ -76,13 +80,13 @@ export default function Slide({ slide, isActive, rosterIndex }) {
 
         {slide.mobileArtwork && (
           <div className="project-slide-artwork" data-kind={slide.mobileArtwork.kind}>
-            <img src={slide.mobileArtwork.src} alt={slide.mobileArtwork.alt} width={slide.mobileArtwork.width} height={slide.mobileArtwork.height} />
+            <ResponsiveImage loading="eager" src={slide.mobileArtwork.src} alt={slide.mobileArtwork.alt} width={slide.mobileArtwork.width} height={slide.mobileArtwork.height} />
           </div>
         )}
 
         {slide.visualRight && !slide.visualRight.wrapClass && (
           <div className="project-slide-visual relative z-[2] flex h-[80vh] w-1/2 items-center justify-end">
-            <img
+            <ResponsiveImage loading="eager"
               src={slide.visualRight.src}
               alt={slide.visualRight.alt}
               className="max-h-[88vh] w-[200%] max-w-[620px] translate-x-[120px] rotate-[-12deg] scale-[1.02] object-contain [filter:drop-shadow(-20px_30px_45px_rgba(0,0,0,0.65))] transition-[transform,filter] duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
@@ -93,7 +97,7 @@ export default function Slide({ slide, isActive, rosterIndex }) {
         {slide.visualRight && slide.visualRight.wrapClass && (
           <div className="project-slide-visual relative z-[2] flex h-[80vh] w-1/2 items-center justify-end">
             <div>
-              <img
+              <ResponsiveImage loading="eager"
                 src={slide.visualRight.src}
                 alt={slide.visualRight.alt}
                 className="max-h-[76vh] max-w-full object-contain [filter:drop-shadow(0_20px_50px_rgba(0,0,0,0.7))]"
@@ -105,7 +109,7 @@ export default function Slide({ slide, isActive, rosterIndex }) {
         {slide.roster && (
           <div className="project-slide-roster pointer-events-none absolute inset-0 z-[2] h-screen w-screen">
             {slide.roster.map((face, i) => (
-              <img
+              <ResponsiveImage loading="eager"
                 key={face.key}
                 src={face.src}
                 alt={face.alt}

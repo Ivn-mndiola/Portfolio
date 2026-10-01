@@ -71,13 +71,12 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
   useEffect(() => {
     if (!darkSectionSelectors || darkSectionSelectors.length === 0) return
 
-    function onScroll() {
+    let frame = null
+    const sections = darkSectionSelectors.flatMap((selector) => Array.from(document.querySelectorAll(selector)))
+    function updateTint() {
+      frame = null
       const nav = navRef.current
       if (!nav) return
-
-      const sections = darkSectionSelectors
-        .flatMap((sel) => Array.from(document.querySelectorAll(sel)))
-        .filter(Boolean)
 
       const navRect = nav.getBoundingClientRect()
       const navCenter = navRect.top + navRect.height / 2
@@ -93,10 +92,16 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
       setIsOverDark(overDark)
     }
 
-    document.addEventListener('scroll', onScroll)
-    onScroll()
+    function onScroll() { if (frame === null) frame = requestAnimationFrame(updateTint) }
+    document.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    updateTint()
 
-    return () => document.removeEventListener('scroll', onScroll)
+    return () => {
+      document.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      if (frame !== null) cancelAnimationFrame(frame)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [darkSectionSelectors])
 

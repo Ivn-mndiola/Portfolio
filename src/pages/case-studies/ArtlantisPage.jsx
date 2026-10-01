@@ -1,3 +1,4 @@
+import ResponsiveImage from '../../components/ResponsiveImage.jsx'
 import Nav from '../../components/Nav.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
 import CaseStudyDescription from '../../components/CaseStudyDescription.jsx'
@@ -34,20 +35,22 @@ export default function ArtlantisPage() {
       <Nav active="/projects" darkSectionSelectors={DARK_SECTIONS} accent="blue" />
 
       <main className="relative min-[1201px]:h-[240.52vw]">
-        <img
-          src="/assets/images/artlantis/artlantis-page-bg.png"
+        <picture aria-hidden="true">
+          <source media="(min-width: 1201px)" srcSet="/assets/images/artlantis/artlantis-page-bg-1920.webp 1920w, /assets/images/artlantis/artlantis-page-bg-3840.webp 3840w" sizes="100vw" />
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/%3E"
           alt=""
           aria-hidden="true"
           fetchPriority="high"
           className="pointer-events-none absolute inset-x-0 top-0 z-0 hidden h-auto w-full select-none min-[1201px]:block"
-        />
+         width="3840" height="9236" />
+        </picture>
 
         <section className="artlantis-hero relative z-10 h-[65.55vw] text-white max-[1201px]:flex max-[1201px]:h-auto max-[1201px]:min-h-svh max-[1201px]:flex-col max-[1201px]:items-center max-[1201px]:bg-[linear-gradient(rgba(0,88,155,0.12),rgba(0,102,173,0.32)),url('/assets/images/artlantis/ARTLANTIS-BG.jpg')] max-[1201px]:bg-cover max-[1201px]:bg-center max-[1201px]:px-6 max-[1201px]:pb-12 max-[1201px]:pt-36">
           <p className={`absolute left-1/2 top-[18.4%] -translate-x-1/2 whitespace-nowrap text-[clamp(10px,0.9vw,17px)] uppercase tracking-[0.08em] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:translate-x-0 max-[1201px]:text-xs ${REVEAL}`} data-reveal>
             Conceptual Character Design
           </p>
 
-          <img
+          <ResponsiveImage loading="eager" fetchPriority="high"
             src="/assets/images/artlantis/ARTLANTIS-PROJ.png"
             alt="Artlantis Duo"
             className={`absolute left-1/2 top-[23.2%] w-[39%] -translate-x-1/2 object-contain drop-shadow-[0_9px_8px_rgba(0,49,97,0.2)] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-5 max-[1201px]:w-full max-[1201px]:max-w-[560px] max-[1201px]:translate-x-0 ${REVEAL}`}
@@ -85,7 +88,7 @@ export default function ArtlantisPage() {
             </CaseStudyDescription>
           </div>
 
-          <img
+          <ResponsiveImage
             src="/assets/images/artlantis/artlantis-duo-poster.jpg"
             alt="Artlantis Duo character poster"
             className={`absolute left-[23.35%] top-[16.3%] w-[26.1%] shadow-[-3.6vw_2vw_1vw_-0.4vw_rgba(30,35,40,0.48),0_0.4vw_0.6vw_rgba(0,49,75,0.25)] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mx-auto max-[1201px]:mt-16 max-[1201px]:w-full max-[1201px]:max-w-[430px] ${REVEAL}`}
@@ -93,7 +96,7 @@ export default function ArtlantisPage() {
           />
 
           <div className={`absolute left-[60.2%] top-[19.2%] w-[25%] text-center max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-10 max-[1201px]:w-full ${REVEAL}`} data-reveal>
-            <img src="/assets/images/artlantis/ARTLANTIS-PROJ.png" alt="Artlantis Duo" className="mx-auto mb-[2.2vw] w-[33%] max-[1201px]:mb-8 max-[1201px]:w-[150px]" />
+            <ResponsiveImage src="/assets/images/artlantis/ARTLANTIS-PROJ.png" alt="Artlantis Duo" className="mx-auto mb-[2.2vw] w-[33%] max-[1201px]:mb-8 max-[1201px]:w-[150px]" />
             <h2 className="text-[clamp(20px,1.45vw,28px)] font-bold">About Their Dynamic</h2>
             <CaseStudyDescription className="mt-[2vw] max-[1201px]:mt-7">Sharky sees Chanty as prey.<br />Chanty sees Sharky as a friend.</CaseStudyDescription>
             <CaseStudyDescription className="mt-[1.2vw] max-[1201px]:mt-4">
@@ -102,7 +105,7 @@ export default function ArtlantisPage() {
             <CaseStudyDescription className="mt-[1.5vw] not-italic text-[#0C69AE] max-[1201px]:mt-8">“One thinks it’s hunting season. <span style={{ color: CHARLY_TEXT }}>The other thinks it’s friendship time.”</span></CaseStudyDescription>
           </div>
 
-          <img
+          <ResponsiveImage
             src="/assets/images/artlantis/artlantis-sharky-poster.jpg"
             alt="Sharky character poster"
             className={`absolute left-[23.35%] top-[40.9%] w-[26.1%] shadow-[0_14px_16px_rgba(20,54,74,0.25)] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mx-auto max-[1201px]:mt-20 max-[1201px]:w-full max-[1201px]:max-w-[430px] ${REVEAL}`}
@@ -119,7 +122,7 @@ export default function ArtlantisPage() {
             </CaseStudyDescription>
           </div>
 
-          <img
+          <ResponsiveImage
             src="/assets/images/artlantis/artlantis-charly-poster.jpg"
             alt="Chanty character poster"
             className={`absolute left-[23.35%] top-[61.35%] w-[26.1%] shadow-[0_14px_16px_rgba(83,46,102,0.24)] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mx-auto max-[1201px]:mt-20 max-[1201px]:w-full max-[1201px]:max-w-[430px] ${REVEAL}`}
@@ -143,9 +146,9 @@ export default function ArtlantisPage() {
                 <span className="absolute bottom-[-2%] left-[13%] h-[13%] w-[42%] rounded-[50%] bg-black/30 blur-[clamp(3px,0.35vw,7px)]" />
                 <span className="absolute bottom-[4%] right-[-2%] h-[12%] w-[58%] rounded-[50%] bg-black/30 blur-[clamp(3px,0.35vw,7px)]" />
               </div>
-              <img src="/assets/images/artlantis/artlantis-duo-cutout.png" alt="Sharky and Chanty" className="relative z-10 w-full" />
+              <ResponsiveImage src="/assets/images/artlantis/artlantis-duo-cutout.png" alt="Sharky and Chanty" className="relative z-10 w-full" />
             </div>
-            <img src="/assets/images/artlantis/ARTLANTIS-PROJ.png" alt="Artlantis Duo" className="mt-[3vw] w-[27%] max-[1201px]:mt-10 max-[1201px]:w-[140px]" />
+            <ResponsiveImage src="/assets/images/artlantis/ARTLANTIS-PROJ.png" alt="Artlantis Duo" className="mt-[3vw] w-[27%] max-[1201px]:mt-10 max-[1201px]:w-[140px]" />
           </div>
         </section>
       </main>

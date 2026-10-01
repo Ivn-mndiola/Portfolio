@@ -1,22 +1,24 @@
+import { lazy, Suspense, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import useBrowserTheme from './hooks/useBrowserTheme.js'
 import SLIDES from './data/projectSlides.jsx'
 import HomePage from './pages/HomePage.jsx'
-import ProjectsPage from './pages/ProjectsPage.jsx'
-import ServicesPage from './pages/ServicesPage.jsx'
-import AboutPage from './pages/AboutPage.jsx'
-import ContactPage from './pages/ContactPage.jsx'
-import DanesPage from './pages/case-studies/DanesPage.jsx'
-import GameDev from './pages/case-studies/gamedev.jsx'
-import NiaPage from './pages/case-studies/NiaPage.jsx'
-import SourcePage from './pages/case-studies/SourcePage.jsx'
-import ArtlantisPage from './pages/case-studies/ArtlantisPage.jsx'
-import IllustrationPage from './pages/case-studies/IllustrationPage.jsx'
-import PhotographyPage from './pages/case-studies/PhotographyPage.jsx'
-import DbfortriPage from './pages/case-studies/DbfortriPage.jsx'
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage.jsx'))
+const ServicesPage = lazy(() => import('./pages/ServicesPage.jsx'))
+const AboutPage = lazy(() => import('./pages/AboutPage.jsx'))
+const ContactPage = lazy(() => import('./pages/ContactPage.jsx'))
+const DanesPage = lazy(() => import('./pages/case-studies/DanesPage.jsx'))
+const GameDev = lazy(() => import('./pages/case-studies/gamedev.jsx'))
+const NiaPage = lazy(() => import('./pages/case-studies/NiaPage.jsx'))
+const SourcePage = lazy(() => import('./pages/case-studies/SourcePage.jsx'))
+const ArtlantisPage = lazy(() => import('./pages/case-studies/ArtlantisPage.jsx'))
+const IllustrationPage = lazy(() => import('./pages/case-studies/IllustrationPage.jsx'))
+const PhotographyPage = lazy(() => import('./pages/case-studies/PhotographyPage.jsx'))
+const DbfortriPage = lazy(() => import('./pages/case-studies/DbfortriPage.jsx'))
 
 export default function App() {
   const pathname = useLocation().pathname.replace(/\/+$/, '') || '/'
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
   const project = SLIDES.find((slide) => slide.cta.href === pathname)
   const isInteriorPage = ['/services', '/about', '/contact'].includes(pathname)
   // The carousel supplies its live slide color; other routes supply their own.
@@ -25,6 +27,7 @@ export default function App() {
     : project?.caseStudyThemeColor ?? (isInteriorPage ? '#061735' : '#071030'))
 
   return (
+    <Suspense fallback={<main className="grid min-h-svh place-items-center bg-[#071030] font-inter text-white" aria-live="polite" aria-busy="true"><p>Loading…</p></main>}>
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/projects" element={<ProjectsPage />} />
@@ -40,5 +43,6 @@ export default function App() {
       <Route path="/about" element={<AboutPage />} />
       <Route path="/contact" element={<ContactPage />} />
     </Routes>
+    </Suspense>
   )
 }

@@ -24,11 +24,12 @@ function restoreSelectedProject() {
 
 export default function ProjectsPage() {
   const total = SLIDES.length
-  const { current, goPrev, goNext } = useSlider(total, restoreSelectedProject)
+  const { current, previous, goPrev, goNext } = useSlider(total, restoreSelectedProject)
   const activeSlide = SLIDES[current]
   useBrowserTheme(activeSlide.themeColor)
 
   useEffect(() => {
+    document.querySelector('.projects-viewport')?.scrollTo(0, 0)
     lastSelectedProjectId = SLIDES[current].id
     try {
       window.sessionStorage.setItem(SELECTED_PROJECT_KEY, lastSelectedProjectId)
@@ -46,11 +47,11 @@ export default function ProjectsPage() {
   const totalLabel = String(total).padStart(2, '0')
 
   return (
-    <div className="projects-page relative h-screen overflow-hidden font-inter text-white" style={{ backgroundColor: activeSlide.themeColor }}>
+    <div className="projects-page relative h-screen overflow-hidden font-inter text-white" style={{ backgroundColor: activeSlide.themeColor, '--project-theme': activeSlide.themeColor }}>
       <Nav active="/projects" />
 
-      <main className="projects-viewport relative h-screen w-screen">
-        {SLIDES.map((slide, i) => (
+      <main className="projects-viewport relative h-screen w-screen" tabIndex={0} aria-label="Project previews">
+        {SLIDES.map((slide, i) => (i === current || i === previous) && (
           <Slide
             key={slide.id}
             slide={slide}

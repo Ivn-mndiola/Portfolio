@@ -1,18 +1,24 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-const TRANSITION_MS = 650
+export const TRANSITION_MS = 650
 
 export default function useSlider(total, initialCurrent = 0) {
   const [current, setCurrent] = useState(initialCurrent)
+  const [previous, setPrevious] = useState(null)
   const isAnimatingRef = useRef(false)
+  const timerRef = useRef(null)
+
+  useEffect(() => () => clearTimeout(timerRef.current), [])
 
   const goTo = useCallback(
     (next) => {
       if (isAnimatingRef.current || next === current) return
       isAnimatingRef.current = true
+      setPrevious(current)
       setCurrent(next)
-      setTimeout(() => {
+      timerRef.current = setTimeout(() => {
         isAnimatingRef.current = false
+        setPrevious(null)
       }, TRANSITION_MS)
     },
     [current]
@@ -57,5 +63,5 @@ export default function useSlider(total, initialCurrent = 0) {
     }
   }, [goNext, goPrev])
 
-  return { current, goTo, goPrev, goNext }
+  return { current, previous, goTo, goPrev, goNext }
 }

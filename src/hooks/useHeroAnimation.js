@@ -11,6 +11,10 @@ export default function useHeroAnimation() {
   })
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setVisible({ fade: true, delay1: true, delay2: true, delay3: true })
+      return
+    }
     const timers = [
       setTimeout(() => setVisible((v) => ({ ...v, fade: true })), 100),
       setTimeout(() => setVisible((v) => ({ ...v, delay1: true })), 300),

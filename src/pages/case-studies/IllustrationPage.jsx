@@ -1,3 +1,4 @@
+import ResponsiveImage from '../../components/ResponsiveImage.jsx'
 import Nav from '../../components/Nav.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
 import CaseStudyDescription from '../../components/CaseStudyDescription.jsx'
@@ -46,7 +47,7 @@ export default function IllustrationPage() {
 
         <section className="illustration-panagbenga relative flex min-h-[44.4vw] flex-col items-center overflow-hidden pb-[3vw] pt-[6.88vw] text-[#5d3a07] max-[1201px]:flex max-[1201px]:h-auto max-[1201px]:flex-col max-[1201px]:items-center max-[1201px]:px-5 max-[1201px]:pb-14 max-[1201px]:pt-16">
           <div className="illustration-dark-nav pointer-events-none absolute inset-x-0 bottom-0 top-[48%]" aria-hidden="true" />
-          <img
+          <ResponsiveImage
             src="/assets/images/illustration/panagbenga-showcase.png"
             alt="Panagbenga Festival digital illustration and mockups"
             className={`relative w-[64.2%] object-contain drop-shadow-[0_12px_12px_rgba(84,43,0,0.2)] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:w-full max-[1201px]:max-w-[860px] max-[1201px]:translate-x-0 ${REVEAL}`}
@@ -59,7 +60,7 @@ export default function IllustrationPage() {
 
         <section className="illustration-cascandy relative flex min-h-[44.4vw] flex-col items-center overflow-hidden pb-[3vw] pt-[6.26vw] text-[#5b0010] max-[1201px]:flex max-[1201px]:h-auto max-[1201px]:flex-col max-[1201px]:items-center max-[1201px]:px-5 max-[1201px]:pb-14 max-[1201px]:pt-16">
           <div className="illustration-dark-nav pointer-events-none absolute inset-x-0 bottom-0 top-[48%]" aria-hidden="true" />
-          <img
+          <ResponsiveImage
             src="/assets/images/illustration/cascandy-showcase.png"
             alt="Cascandy Valorant and Supreme commissioned fan art"
             className={`relative w-[66.6%] translate-x-[2.2vw] object-contain drop-shadow-[0_12px_12px_rgba(76,0,8,0.18)] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:w-full max-[1201px]:max-w-[900px] max-[1201px]:translate-x-0 ${REVEAL}`}
@@ -72,7 +73,7 @@ export default function IllustrationPage() {
 
         <section className="illustration-verto relative h-[44.4vw] min-[1201px]:min-h-[680px] overflow-hidden text-white max-[1201px]:flex max-[1201px]:h-auto max-[1201px]:flex-col max-[1201px]:items-center max-[1201px]:px-5 max-[1201px]:pb-32 max-[1201px]:pt-16">
           <div className="illustration-dark-nav pointer-events-none absolute inset-x-0 bottom-0 top-[38%]" aria-hidden="true" />
-          <img
+          <ResponsiveImage
             src="/assets/images/illustration/verto-catalog.png"
             alt="Verto street food merchandise catalog"
             className={`absolute left-[18.3%] top-[14.7%] w-[19.5%] object-contain drop-shadow-[8px_10px_5px_rgba(0,0,0,0.32)] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:w-[72%] max-[1201px]:max-w-[390px] ${REVEAL}`}
@@ -80,16 +81,16 @@ export default function IllustrationPage() {
           />
 
           <div className={`absolute inset-0 max-[1201px]:relative max-[1201px]:inset-auto max-[1201px]:mt-12 max-[1201px]:flex max-[1201px]:w-full max-[1201px]:max-w-[560px] max-[1201px]:items-start max-[1201px]:justify-between ${REVEAL}`} data-reveal>
-            <img src="/assets/images/illustration/verto-logo.png" alt="Verto merchandise catalog" className="absolute left-[60.5%] top-[16%] w-[10.5%] object-contain drop-shadow-[0_6px_3px_rgba(0,0,0,0.25)] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:w-[47%]" />
-            <img src="/assets/images/illustration/street-food-edition.png" alt="Street Food Edition" className="absolute left-[84%] top-[24.1%] w-[6.3%] object-contain drop-shadow-[0_6px_3px_rgba(0,0,0,0.2)] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-3 max-[1201px]:w-[30%]" />
+            <ResponsiveImage src="/assets/images/illustration/verto-logo.png" alt="Verto merchandise catalog" className="absolute left-[60.5%] top-[16%] w-[10.5%] object-contain drop-shadow-[0_6px_3px_rgba(0,0,0,0.25)] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:w-[47%]" />
+            <ResponsiveImage src="/assets/images/illustration/street-food-edition.png" alt="Street Food Edition" className="absolute left-[84%] top-[24.1%] w-[6.3%] object-contain drop-shadow-[0_6px_3px_rgba(0,0,0,0.2)] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-3 max-[1201px]:w-[30%]" />
           </div>
 
           <div className={`absolute left-[39.2%] top-[36.8%] w-[51.7%] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-10 max-[1201px]:w-full ${REVEAL}`} data-reveal>
-            <img src="/assets/images/illustration/verto-stickers-v1.png" alt="Verto street food sticker pack version one" width="3960" height="496" className="block h-auto w-full object-contain" />
+            <ResponsiveImage src="/assets/images/illustration/verto-stickers-v1.png" alt="Verto street food sticker pack version one" width="3960" height="496" className="block h-auto w-full object-contain" />
           </div>
 
           <div className={`absolute left-[39.2%] top-[51.9%] w-[51.7%] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-4 max-[1201px]:w-full ${REVEAL}`} data-reveal>
-            <img src="/assets/images/illustration/verto-stickers-v2.png" alt="Verto street food sticker pack version two" width="3960" height="610" className="block h-auto w-full object-contain" />
+            <ResponsiveImage src="/assets/images/illustration/verto-stickers-v2.png" alt="Verto street food sticker pack version two" width="3960" height="610" className="block h-auto w-full object-contain" />
           </div>
 
           <CaseStudyDescription className={`absolute top-[calc(51.9%_+_7.97vw_+_32px)] left-[64.6%] w-[51.7%] -translate-x-1/2 text-center max-[1201px]:relative max-[1201px]:top-auto max-[1201px]:left-auto max-[1201px]:mt-9 max-[1201px]:w-full max-[1201px]:max-w-2xl max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>

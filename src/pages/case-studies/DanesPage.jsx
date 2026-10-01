@@ -1,3 +1,4 @@
+import ResponsiveImage from '../../components/ResponsiveImage.jsx'
 import { useRef } from 'react'
 import Nav from '../../components/Nav.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
@@ -41,7 +42,7 @@ export default function DanesPage() {
       <Nav active="/projects" darkSectionSelectors={DARK_SECTIONS} />
 
       <header className="cs-hero relative flex min-h-[80vh] flex-col items-center bg-[linear-gradient(180deg,#630521_0%,#1a0209_100%)] px-[8vw] pb-[60px] pt-[180px] text-center text-white">
-        <img
+        <ResponsiveImage loading="eager" fetchPriority="high"
           src="/assets/images/danes/DANES-PROJECT-LOGO.png"
           alt="Danes Esports"
           className={`mb-10 w-full max-w-[500px] [filter:drop-shadow(0_15px_30px_rgba(0,0,0,0.5))] ${REVEAL}`}
@@ -80,7 +81,7 @@ export default function DanesPage() {
           <strong>We are,</strong> a modern esports organization blending Sharp discipline,
           precision, and fearlessness with contemporary gaming culture.
         </CaseStudyDescription>
-        <img
+        <ResponsiveImage
           src="/assets/images/danes/DANES-FULL-ROSTER.png"
           alt="Cut Through the Meta Roster Banner"
           className={`block h-auto w-screen max-w-none ${REVEAL}`}
@@ -126,11 +127,11 @@ export default function DanesPage() {
         </h2>
         <div className={`flex w-full items-end justify-center gap-20 max-[900px]:flex-col max-[900px]:items-center max-[900px]:gap-10 ${REVEAL}`} data-reveal>
           <div className="flex flex-col items-center">
-            <img src="/assets/images/danes/RED-DANES-1.png" alt="Main Logo" className="mb-5 h-auto w-full max-w-[450px]" />
+            <ResponsiveImage src="/assets/images/danes/RED-DANES-1.png" alt="Main Logo" className="mb-5 h-auto w-full max-w-[450px]" />
             <span className="text-sm font-bold uppercase tracking-[0.05em] text-[#FC044C]">Main Logo</span>
           </div>
           <div className="flex flex-col items-center">
-            <img src="/assets/images/danes/RED-DANES-2.png" alt="Icon Logo" className="mb-5 h-auto w-full max-w-[450px]" />
+            <ResponsiveImage src="/assets/images/danes/RED-DANES-2.png" alt="Icon Logo" className="mb-5 h-auto w-full max-w-[450px]" />
             <span className="text-sm font-bold uppercase tracking-[0.05em] text-[#FC044C]">Icon Logo</span>
           </div>
         </div>
@@ -223,7 +224,7 @@ export default function DanesPage() {
         <h2 className={`${HEADING} ${REVEAL}`} data-reveal>
           Logo Studies
         </h2>
-        <img
+        <ResponsiveImage
           src="/assets/images/danes/LOGO-STUDIES.png"
           alt="Logo Studies Breakdown"
           className={`block h-auto w-screen max-w-none ${REVEAL}`}
@@ -235,7 +236,7 @@ export default function DanesPage() {
         <h2 className={`${HEADING} ${REVEAL}`} data-reveal>
           Team Uniform
         </h2>
-        <img
+        <ResponsiveImage
           src="/assets/images/danes/TEAM-UNIFORM.png"
           alt="Team Uniforms"
           className={`block h-auto w-screen max-w-none ${REVEAL}`}
@@ -277,7 +278,7 @@ export default function DanesPage() {
           <div id="danes-mockup-track" className="mockup-track flex gap-6 overflow-x-auto pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" ref={mockupTrackRef}>
             {MOCKUPS.map((m) => (
               <div className="mockup-card flex aspect-[4/5] min-w-0 basis-[calc(25%_-_18px)] shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:-translate-y-2 max-[900px]:basis-[calc(50%_-_12px)] max-[600px]:basis-full" key={m.n}>
-                <img src={m.src} alt={`Mockup ${m.n}`} className="h-full w-full object-cover" />
+                <ResponsiveImage src={m.src} alt={`Mockup ${m.n}`} className="h-full w-full object-cover" />
               </div>
             ))}
           </div>
@@ -310,7 +311,7 @@ export default function DanesPage() {
                   key={post.n}
                   data-active="false"
                 >
-                  <img src={post.src} alt={`Post ${post.n}`} className="block h-auto w-full rounded-[10px]" />
+                  <ResponsiveImage src={post.src} alt={`Post ${post.n}`} className="block h-auto w-full rounded-[10px]" />
                 </div>
               ))}
             </div>

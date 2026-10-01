@@ -1,3 +1,4 @@
+import ResponsiveImage from '../../components/ResponsiveImage.jsx'
 import { useEffect } from 'react'
 import Nav from '../../components/Nav.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
@@ -74,7 +75,10 @@ export default function GameDev() {
       { threshold: 0.15, rootMargin: '0px 0px -50px 0px' },
     )
 
-    fadeElements.forEach((element) => observer.observe(element))
+    fadeElements.forEach((element) => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) element.dataset.revealed = 'true'
+      else observer.observe(element)
+    })
     return () => {
       observer.disconnect()
       document.title = previousTitle
@@ -118,7 +122,7 @@ export default function GameDev() {
             </h2>
             <div className="inline-block cursor-pointer rounded-full border border-white/35 bg-transparent px-11 py-3.5 font-karla text-[30px] font-bold tracking-normal transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:bg-white/10">Starts Here!</div>
           </div>
-          <img src="/assets/images/gamedev/pinecone.png" alt="Pinecone" className="pointer-events-none absolute right-[-1%] top-[-10%] z-10 w-[420px] opacity-[0.92] [filter:drop-shadow(0_30px_50px_rgba(0,0,0,0.6))] max-lg:w-[300px] max-md:hidden" />
+          <ResponsiveImage src="/assets/images/gamedev/pinecone.png" alt="Pinecone" className="pointer-events-none absolute right-[-1%] top-[-10%] z-10 w-[420px] opacity-[0.92] [filter:drop-shadow(0_30px_50px_rgba(0,0,0,0.6))] max-lg:w-[300px] max-md:hidden" />
         </section>
 
         <SectionDivider id="purpose">BRAND PURPOSE</SectionDivider>
@@ -170,7 +174,7 @@ export default function GameDev() {
           <div className="grid grid-cols-3 gap-1.5 border border-white/[0.08] bg-[#1E1A38] max-md:grid-cols-2 max-md:gap-1 max-[480px]:grid-cols-1">
             {MOCKUPS.map((mockup) => (
               <div className="aspect-square overflow-hidden bg-[#141126]" key={mockup.n}>
-                <img src={mockup.src} alt={`Mockup ${mockup.n}`} loading="lazy" className="block h-full w-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.06]" />
+                <ResponsiveImage src={mockup.src} alt={`Mockup ${mockup.n}`} loading="lazy" className="block h-full w-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.06]" />
               </div>
             ))}
           </div>
