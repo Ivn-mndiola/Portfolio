@@ -11,7 +11,7 @@ const REVEAL = 'nia-reveal'
 const TEAL = '#48C1B0'
 
 const COPY_BLOCK =
-  'absolute z-10 text-left text-[#48C1B0] [&_h2]:mb-4 [&_h2]:font-montserrat [&_h2]:text-[clamp(18px,1.35vw,26px)] [&_h2]:font-medium [&_h2]:leading-[1.15] [&_p]:text-[clamp(10px,0.78vw,15px)] [&_p]:font-light [&_p]:leading-[1.45]'
+  'absolute z-10 text-left text-[#48C1B0] [&_h2]:mb-4 [&_h2]:font-sansation [&_h2]:text-[clamp(18px,1.35vw,26px)] [&_h2]:font-bold [&_h2]:leading-[1.15] [&_p]:text-[clamp(10px,0.78vw,15px)] [&_p]:font-normal [&_p]:leading-[1.45]'
 
 function TimelineRail({ color = TEAL, markers = [], startAtFirst = false, end = '100%' }) {
   // A real-width rail prevents Tailwind's max-width: 100% image reset from
@@ -52,8 +52,8 @@ function Feature({ title, label, children }) {
     <div className={`mb-[clamp(28px,2.6vw,50px)] flex items-start gap-4 ${REVEAL}`} data-reveal>
       <ResponsiveImage src="/assets/images/nia/NIA-ARROW.svg" alt="" className="mt-1 h-auto w-5 shrink-0" />
       <div>
-        <h3 className="font-montserrat text-[clamp(17px,1.15vw,22px)] font-medium leading-none text-[#48C1B0]">{title}</h3>
-        <span className="mb-2 mt-1.5 block text-[clamp(8px,0.58vw,11px)] font-bold uppercase tracking-[0.15em] text-[#48C1B0]/55">{label}</span>
+        <h3 className="case-study-title text-[clamp(17px,1.15vw,22px)] font-bold leading-none text-[#48C1B0]">{title}</h3>
+        <span className="mb-2 mt-1.5 block case-study-label text-[clamp(8px,0.58vw,11px)] uppercase tracking-[0.15em] text-[#48C1B0]/55">{label}</span>
         <CaseStudyDescription className="max-w-[430px] text-[#48C1B0]">{children}</CaseStudyDescription>
       </div>
     </div>
@@ -72,9 +72,9 @@ function TypographySpecimen({ name, fontClassName, badges, sizeClassName }) {
   return (
     <div className="nia-type-specimen flex h-[clamp(70px,5.4vw,104px)] items-center justify-between gap-5 overflow-hidden rounded-[18px] border border-white/30 bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.07))] px-[clamp(18px,1.45vw,28px)] shadow-[0_14px_28px_rgba(0,0,0,0.13)] backdrop-blur-xl">
       <span className={`min-w-0 overflow-hidden text-ellipsis whitespace-nowrap font-normal leading-none text-white ${fontClassName} ${sizeClassName}`}>{name}</span>
-      <span className="flex shrink-0 flex-col gap-1">
+      <span className={`flex shrink-0 flex-col gap-1 ${fontClassName}`}>
         {badges.map((badge) => (
-          <span key={badge} className="rounded bg-[#48C1B0] px-2.5 py-1 text-center text-[clamp(7px,0.48vw,9px)] font-bold tracking-[0.04em] text-white">
+          <span key={badge} className={`rounded bg-[#48C1B0] px-2.5 py-1 text-center text-[clamp(7px,0.48vw,9px)] tracking-[0.04em] text-white ${badge === 'BOLD' ? 'font-bold' : 'font-normal'} ${badge === 'CONDENSED' ? '[font-stretch:75%]' : ''}`}>
             {badge}
           </span>
         ))}
@@ -88,7 +88,7 @@ export default function NiaPage() {
   useNiaScroll(pageRef)
 
   return (
-    <div ref={pageRef} className="nia-case-page overflow-x-hidden bg-white font-inter text-[#333333]">
+    <div ref={pageRef} className="nia-case-page overflow-x-hidden bg-white font-sansation text-[#333333]">
       <Nav active="/projects" darkSectionSelectors={DARK_SECTIONS} accent="teal" />
 
       <header
@@ -106,7 +106,7 @@ export default function NiaPage() {
           data-reveal
         />
 
-        <CaseStudyDescription
+        <CaseStudyDescription variant="intro"
           className={`mb-20 w-[44vw] shrink-0 text-center text-white/95 [&_strong]:text-white ${REVEAL}`}
           data-reveal
         >
@@ -136,7 +136,7 @@ export default function NiaPage() {
         }}
       >
         <h1
-          className={`absolute left-1/2 top-[16.5%] z-[3] -translate-x-1/2 whitespace-nowrap font-montserrat text-[clamp(32px,4.15vw,80px)] font-bold leading-none text-white [text-shadow:0_5px_18px_rgba(0,0,0,0.08)] ${REVEAL}`}
+          className={`absolute left-1/2 top-[16.5%] z-[3] -translate-x-1/2 whitespace-nowrap case-study-title text-[clamp(32px,4.15vw,80px)] font-bold leading-none text-white [text-shadow:0_5px_18px_rgba(0,0,0,0.08)] ${REVEAL}`}
           data-reveal
         >
           A Gateway to the North
@@ -158,7 +158,7 @@ export default function NiaPage() {
         ]} />
 
         <article className={`${COPY_BLOCK} left-[18.45%] top-[2.5%] w-[34%] ${REVEAL}`} data-reveal>
-          <h2 data-nia-anchor="concept">Branding &amp; Wayfinding Concept</h2>
+          <h2 className="case-study-title" data-nia-anchor="concept">Branding &amp; Wayfinding Concept</h2>
           <CaseStudyDescription className="">
             Project: New Ilocos Airport<br />
             Scope: Brand Identity &amp; Wayfinding<br />
@@ -177,7 +177,7 @@ export default function NiaPage() {
         </div>
 
         <article className={`${COPY_BLOCK} left-[18.45%] top-[28.7%] w-[34%] ${REVEAL}`} data-reveal>
-          <h2 data-nia-anchor="brand-idea">Brand Idea</h2>
+          <h2 className="case-study-title" data-nia-anchor="brand-idea">Brand Idea</h2>
           <CaseStudyDescription>A contemporary regional gateway<br />built on clarity, flow, and efficiency.</CaseStudyDescription>
           <CaseStudyDescription className="!mt-[clamp(24px,2.1vw,40px)]">
             Keywords: Movement, Connectivity, Precision and Calm efficiency
@@ -185,7 +185,7 @@ export default function NiaPage() {
         </article>
 
         <article className={`${COPY_BLOCK} left-[18.45%] top-[47%] w-[31%] ${REVEAL}`} data-reveal>
-          <h2 data-nia-anchor="logo-system">Logo System</h2>
+          <h2 className="case-study-title" data-nia-anchor="logo-system">Logo System</h2>
           <CaseStudyDescription>
             The NIA symbol represents pathways and motion,<br />
             designed to scale across signage, digital interfaces,<br />
@@ -201,7 +201,7 @@ export default function NiaPage() {
         />
 
         <article className={`${COPY_BLOCK} left-[18.45%] top-[69.2%] w-[35%] ${REVEAL}`} data-reveal>
-          <h2 data-nia-anchor="logo-construction">Logo Construction</h2>
+          <h2 className="case-study-title" data-nia-anchor="logo-construction">Logo Construction</h2>
           <CaseStudyDescription>
             Built on a modular grid to ensure balance,<br />
             consistency, and reliability across all applications.
@@ -209,7 +209,7 @@ export default function NiaPage() {
         </article>
 
         <h2
-          className={`absolute left-[55%] top-[78.1%] z-10 -translate-x-1/2 font-montserrat text-[clamp(18px,1.25vw,24px)] font-medium text-[#48C1B0] ${REVEAL}`}
+          className={`absolute left-[55%] top-[78.1%] z-10 -translate-x-1/2 case-study-title text-[clamp(18px,1.25vw,24px)] font-bold text-[#48C1B0] ${REVEAL}`}
           data-reveal
         >
           Logo Concept
@@ -229,11 +229,11 @@ export default function NiaPage() {
         ]} />
 
         <article className={`absolute left-[18.45%] top-[7.5%] z-10 w-[35.6%] ${REVEAL}`} data-reveal>
-          <h2 data-nia-anchor="typography" className="mb-[clamp(22px,1.7vw,32px)] font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium text-white">Color &amp; Typography</h2>
+          <h2 data-nia-anchor="typography" className="mb-[clamp(22px,1.7vw,32px)] case-study-title text-[clamp(18px,1.35vw,26px)] font-bold text-white">Color &amp; Typography</h2>
           <div className="flex flex-col gap-[clamp(12px,0.9vw,18px)]">
             <TypographySpecimen
               name="Sansation"
-              fontClassName="font-questrial"
+              fontClassName="font-sansation"
               sizeClassName="text-[clamp(42px,3.9vw,75px)]"
               badges={['REGULAR', 'BOLD']}
             />
@@ -254,7 +254,7 @@ export default function NiaPage() {
         />
 
         <article className={`absolute left-[18.45%] top-[61.8%] z-10 w-[32%] text-white ${REVEAL}`} data-reveal>
-          <h2 data-nia-anchor="wayfinding" className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium">Wayfinding System</h2>
+          <h2 data-nia-anchor="wayfinding" className="mb-4 case-study-title text-[clamp(18px,1.35vw,26px)] font-medium">Wayfinding System</h2>
           <CaseStudyDescription className="mb-2">Wayfinding Principles</CaseStudyDescription>
           <ul className="case-study-description mb-4 list-disc pl-5">
             <li>High contrast</li>
@@ -283,7 +283,7 @@ export default function NiaPage() {
         ]} />
 
         <article className={`absolute left-[18.45%] top-[14%] z-10 w-[31%] ${REVEAL}`} data-reveal>
-          <h2 data-nia-anchor="signage-mockup" className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium leading-[1.15] text-white">
+          <h2 data-nia-anchor="signage-mockup" className="mb-4 case-study-title text-[clamp(18px,1.35vw,26px)] font-bold leading-[1.15] text-white">
             Mockup |<br />Wayfinding Signage
           </h2>
           <CaseStudyDescription className="text-white">Directional and gate information system</CaseStudyDescription>
@@ -295,7 +295,7 @@ export default function NiaPage() {
         </div>
 
         <article className={`absolute left-[18.45%] top-[63%] z-10 w-[32%] text-[#111111] ${REVEAL}`} data-reveal>
-          <h2 data-nia-anchor="terminal-mockup" className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium leading-[1.15]">
+          <h2 data-nia-anchor="terminal-mockup" className="mb-4 case-study-title text-[clamp(18px,1.35vw,26px)] font-bold leading-[1.15]">
             Mockup |<br />Terminal Environmental Graphics
           </h2>
           <CaseStudyDescription className="">Large-scale identity applications</CaseStudyDescription>
@@ -319,7 +319,7 @@ export default function NiaPage() {
 
         <article className={`absolute left-[18.45%] top-[14.4%] z-[8] w-[31%] ${REVEAL}`} data-reveal>
           <ResponsiveImage src="/assets/images/nia/NIA-ID-LOGO.svg" alt="New Ilocos Airport" className="mb-[clamp(30px,3vw,58px)] h-auto w-[clamp(125px,10.2vw,195px)]" />
-          <h2 data-nia-anchor="staff-mockup" className="mb-4 font-montserrat text-[clamp(18px,1.35vw,26px)] font-medium leading-[1.15]">
+          <h2 data-nia-anchor="staff-mockup" className="mb-4 case-study-title text-[clamp(18px,1.35vw,26px)] font-bold leading-[1.15]">
             Mockup |<br />Staff Identification System
           </h2>
           <CaseStudyDescription className="">Operational and security credentials</CaseStudyDescription>

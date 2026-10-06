@@ -148,7 +148,7 @@ export function Lightbox({ photos, index, onClose, onPrevious, onNext }) {
   // covers the viewport, including navigation, at any page scroll position.
   return createPortal(
     <div
-      className="photo-lightbox fixed inset-0 z-[300] isolate flex touch-pan-y overscroll-contain font-questrial text-white items-center justify-center bg-black px-16 py-20 max-[600px]:px-12 max-[600px]:py-24"
+      className="photo-lightbox fixed inset-0 z-[300] isolate flex touch-pan-y overscroll-contain font-urbanist text-white items-center justify-center bg-black px-16 py-20 max-[600px]:px-12 max-[600px]:py-24"
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
@@ -217,11 +217,11 @@ export function Lightbox({ photos, index, onClose, onPrevious, onNext }) {
 
 export function Caption({ heading, name, children, color = '#FFFFFF' }) {
   return (
-    <div className="mt-[2.5vw] text-center max-[1201px]:mt-8" style={{ color }}>
-      <h2 className="text-[clamp(12px,0.68vw,13px)] font-semibold uppercase tracking-[0.32em] max-[1201px]:text-sm">
+    <div className="photo-caption mt-[2.5vw] font-urbanist text-center max-[1201px]:mt-8" style={{ color }}>
+      <h2 className="photo-caption-label text-[clamp(12px,0.68vw,13px)] uppercase tracking-[0.32em] max-[1201px]:text-sm">
         {heading}
       </h2>
-      <h3 className="mt-[1.65vw] text-[clamp(13px,0.78vw,15px)] font-semibold leading-none max-[1201px]:mt-6 max-[1201px]:text-base">
+      <h3 className="mt-[1.65vw] text-[clamp(13px,0.78vw,15px)] font-bold leading-none max-[1201px]:mt-6 max-[1201px]:text-base">
         {name}
       </h3>
       <CaseStudyDescription className="mx-auto mt-1 max-w-[720px] max-[1201px]:mt-2 max-[1201px]:max-w-xl">

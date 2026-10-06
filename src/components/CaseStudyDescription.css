@@ -1,5 +1,5 @@
 .case-study-description {
-  font-family: var(--font-inter);
+  font-family: var(--case-description-font, var(--font-urbanist));
   font-size: 14px;
   font-weight: 400;
   line-height: 1.8;

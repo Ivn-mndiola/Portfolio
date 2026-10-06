@@ -31,7 +31,7 @@ export default function ArtlantisPage() {
   useScrollReveal()
 
   return (
-    <div className="artlantis-case-page relative min-h-screen overflow-x-hidden bg-white font-questrial text-[#0877B7]">
+    <div className="artlantis-case-page relative min-h-screen overflow-x-hidden bg-white font-urbanist text-[#0877B7]">
       <Nav active="/projects" darkSectionSelectors={DARK_SECTIONS} accent="blue" />
 
       <main className="relative min-[1201px]:h-[240.52vw]">
@@ -46,7 +46,7 @@ export default function ArtlantisPage() {
         </picture>
 
         <section className="artlantis-hero relative z-10 h-[65.55vw] text-white max-[1201px]:flex max-[1201px]:h-auto max-[1201px]:min-h-svh max-[1201px]:flex-col max-[1201px]:items-center max-[1201px]:bg-[linear-gradient(rgba(0,88,155,0.12),rgba(0,102,173,0.32)),url('/assets/images/artlantis/ARTLANTIS-BG.jpg')] max-[1201px]:bg-cover max-[1201px]:bg-center max-[1201px]:px-6 max-[1201px]:pb-12 max-[1201px]:pt-36">
-          <p className={`absolute left-1/2 top-[18.4%] -translate-x-1/2 whitespace-nowrap text-[clamp(10px,0.9vw,17px)] uppercase tracking-[0.08em] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:translate-x-0 max-[1201px]:text-xs ${REVEAL}`} data-reveal>
+          <p className={`absolute left-1/2 top-[18.4%] -translate-x-1/2 case-study-label whitespace-nowrap text-[clamp(10px,0.9vw,17px)] uppercase tracking-[0.08em] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:translate-x-0 max-[1201px]:text-xs ${REVEAL}`} data-reveal>
             Conceptual Character Design
           </p>
 
@@ -57,12 +57,13 @@ export default function ArtlantisPage() {
             data-reveal
           />
 
-          <CaseStudyDescription className={`absolute left-1/2 top-[50.5%] w-[45%] -translate-x-1/2 text-center text-white/95 max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-10 max-[1201px]:w-full max-[1201px]:max-w-2xl max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
+          <CaseStudyDescription variant="intro" className={`absolute left-1/2 top-[50.5%] w-[45%] -translate-x-1/2 text-center text-white/95 max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-10 max-[1201px]:w-full max-[1201px]:max-w-2xl max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
             Developed during my internship as an Assistant Graphic Artist, <strong>Chanty</strong> and <strong>Sharky</strong> are a <strong>conceptual character duo</strong> inspired by everyday stationery elements. The project explores visual contrast through the playful personality of <strong>Chanty</strong>, a pencil fish, and the sleek, sharp design of <strong>Sharky</strong>, a sharpener-inspired companion. Through simplified forms and expressive character design, the duo creates a cohesive visual identity that balances creativity and functionality.
           </CaseStudyDescription>
 
           <div className="absolute inset-x-0 bottom-[7.5%] px-[8vw] max-[1201px]:relative max-[1201px]:inset-auto max-[1201px]:mt-auto max-[1201px]:w-full max-[1201px]:px-0 max-[1201px]:pt-16">
             <CaseStudyMeta
+              fontClassName="font-ui-questrial"
               className={`mx-auto w-[calc(100%_-_8vw)] max-w-[1560px] max-[1201px]:w-full ${REVEAL}`}
               dataReveal
               projectLine1="Conceptual Character Design"
@@ -73,13 +74,13 @@ export default function ArtlantisPage() {
           </div>
         </section>
 
-        <section className="relative z-10 h-[174.97vw] max-[1201px]:h-auto max-[1201px]:bg-white max-[1201px]:px-5 max-[1201px]:py-20">
+        <section className="artlantis-character-layout relative z-10 h-[174.97vw] max-[1201px]:h-auto max-[1201px]:bg-white max-[1201px]:px-5 max-[1201px]:py-20">
           {/* The first diagonal panel is separate from the exported background. */}
           <div aria-hidden="true" className="pointer-events-none absolute left-0 top-[13.75%] h-[23.6%] w-[49.45%] drop-shadow-[0_0.5vw_0.3vw_rgba(0,0,0,0.3)] max-[1201px]:hidden">
             <div className="h-full w-full bg-[linear-gradient(90deg,#026DA2_0%,#01C4EF_48%,#24E0FF_100%)] [clip-path:polygon(0_0,100%_10.5%,100%_89.5%,0_100%)]" />
           </div>
           <div className={`absolute left-1/2 top-[3%] w-[65%] max-w-[850px] -translate-x-1/2 text-center max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:w-full max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
-            <h2 className="text-[clamp(24px,1.65vw,32px)] font-bold">Introduction</h2>
+            <h2 className="case-study-title text-[clamp(24px,1.65vw,32px)]">Introduction</h2>
             <CaseStudyDescription className="mt-[1.2vw] max-[1201px]:mt-5">
               During his internship as an Artist, Graphic Artist, and Illustrator, Iverson Mendiola was entrusted with developing Chanty and Sharky—a playful underwater character duo that later became official mascots. As one of his earliest character-design projects, the experience created an opportunity to explore illustration, visual storytelling, and character development within a professional creative environment.
             </CaseStudyDescription>
@@ -97,8 +98,8 @@ export default function ArtlantisPage() {
 
           <div className={`absolute left-[60.2%] top-[19.2%] w-[25%] text-center max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-10 max-[1201px]:w-full ${REVEAL}`} data-reveal>
             <ResponsiveImage src="/assets/images/artlantis/ARTLANTIS-PROJ.png" alt="Artlantis Duo" className="mx-auto mb-[2.2vw] w-[33%] max-[1201px]:mb-8 max-[1201px]:w-[150px]" />
-            <h2 className="text-[clamp(20px,1.45vw,28px)] font-bold">About Their Dynamic</h2>
-            <CaseStudyDescription className="mt-[2vw] max-[1201px]:mt-7">Sharky sees Chanty as prey.<br />Chanty sees Sharky as a friend.</CaseStudyDescription>
+            <h2 className="case-study-title text-[clamp(20px,1.45vw,28px)]">About Their Dynamic</h2>
+            <CaseStudyDescription className="mt-[2vw] max-[1201px]:mt-7"><strong>Sharky sees Chanty as prey.<br />Chanty sees Sharky as a friend.</strong></CaseStudyDescription>
             <CaseStudyDescription className="mt-[1.2vw] max-[1201px]:mt-4">
               This creates a lighthearted chase dynamic where tension and comedy collide. Sharky tries to be intimidating, while Chanty calmly treats him like a new companion. Their encounters reveal a playful loop of misunderstanding in the ocean depths.
             </CaseStudyDescription>

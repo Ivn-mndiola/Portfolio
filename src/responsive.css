@@ -296,8 +296,8 @@
 @media(max-width:600px){
  .interior-page ol[aria-label="Creative services"]{max-width:480px;}
  .interior-page ol[aria-label="Creative services"] a{border-radius:28px;}
- .interior-page ol[aria-label="Creative services"] a>div:first-child{width:20%;padding-inline:6px;}
- .interior-page ol[aria-label="Creative services"] a>div:last-child{min-width:0;padding:20px 16px;}
+ .interior-page ol[aria-label="Creative services"] a>div:first-child{width:auto;padding-inline:0;}
+ .interior-page ol[aria-label="Creative services"] a>div:last-child{min-width:0;padding:20px 4px;}
  .interior-page #page-content>h1{margin-bottom:40px;}
 }
 /* Compact landscape keeps the opening artwork below the navigation. */
@@ -338,4 +338,78 @@
  .project-slide-title>img:not(.project-slide-icon){max-height:120px;}
  .project-slide-visual,.project-slide-roster,.project-slide-artwork{min-height:160px;}
  .project-slide-visual img{max-height:210px;}
+}
+
+/* Case studies: fluid spacing and tablet compositions, without scaled copy. */
+@media(max-width:1200px){
+ :is(.source-hero,.artlantis-hero,.photography-hero,.illustration-hero,.dbfortri-hero,.nia-hero,.cs-hero){
+  min-height:0;padding-top:clamp(112px,14vw,144px);padding-bottom:48px;
+ }
+ :is(.source-hero,.artlantis-hero,.photography-hero,.illustration-hero,.dbfortri-hero)>div:last-child{margin-top:0;padding-top:48px;}
+ .case-study-description{max-width:min(100%,680px);text-wrap:pretty;}
+ .case-study-meta{row-gap:28px;}
+ .case-study-meta a{overflow-wrap:anywhere;}
+ .photography-gallery{padding-block:64px;}
+ .photography-gallery>article+article{margin-top:64px;}
+ .illustration-case-main>section:not(.illustration-hero){padding-block:48px;}
+ .illustration-verto .case-study-description{margin-top:28px;}
+ .dbfortri-paper{padding-block:64px;}
+ .dbfortri-paper article+article{margin-top:48px;}
+ .dbfortri-type-scale{max-width:760px;margin-inline:auto;}
+ .gamedev-case-study header{min-height:0;}
+ .gamedev-case-study header .case-study-description{margin-inline:auto;}
+ .gamedev-case-study #journey{padding-block:64px;}
+ .gamedev-case-study main>div[id]{margin-top:64px;}
+ .gamedev-case-study main>section{min-width:0;max-width:100%;}
+ .gamedev-case-study main>section h2{overflow-wrap:anywhere;}
+ .nia-case-page article{max-width:720px;}
+ .nia-case-page :is(.nia-brand-section,.nia-dark-section,.nia-terminal-section,.nia-staff-section){gap:32px;}
+}
+@media(min-width:701px) and (max-width:1200px){
+ .danes-case-page section>.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;}
+ .source-brand-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;padding-inline:6vw;}
+ .source-brand-layout>[data-reveal]{margin:0!important;max-width:none!important;}
+ .source-brand-layout>div[data-reveal]:nth-child(2){grid-column:1;}
+ .source-brand-layout>div[data-reveal]:nth-child(3){grid-column:1;}
+ .source-brand-layout>div[data-reveal]:nth-child(4){grid-column:2;grid-row:1/3;justify-content:center;}
+ .source-brand-layout>div[data-reveal]:nth-child(5){grid-column:1;align-self:center;}
+ .source-brand-layout>img[data-reveal]{grid-column:2;max-width:360px!important;justify-self:center;}
+ .source-brand-layout>img:last-child{grid-column:1/-1;width:130px;justify-self:center;}
+ .artlantis-character-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:56px 40px;padding-inline:8vw;}
+ .artlantis-character-layout>[data-reveal]{margin-top:0!important;max-width:none!important;}
+ .artlantis-character-layout>div[data-reveal]:nth-child(2){grid-column:1/-1;}
+ .artlantis-character-layout>div[data-reveal]:last-child{grid-column:1/-1;max-width:480px!important;}
+ .artlantis-character-layout>img{width:100%;max-width:430px!important;}
+ .photography-food-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+ .dbfortri-values{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px;max-width:760px;margin-inline:auto;}
+ .gamedev-values{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+ .gamedev-values .gamedev-identity-card{padding:24px 12px;}
+ .gamedev-values .gamedev-identity-card>div:first-child{padding-inline:20px;font-size:14px;}
+ .nia-case-page :is(.nia-brand-section,.nia-dark-section,.nia-terminal-section,.nia-staff-section)>img{max-width:820px;margin-inline:auto;}
+}
+@media(max-width:700px){
+ .case-study-meta{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px;}
+ .case-study-meta>:last-child{grid-column:1/-1;}
+ .case-study-meta-brand{padding-bottom:20px;}
+ .artlantis-character-layout{padding-block:48px;}
+ .artlantis-character-layout>img[data-reveal]{margin-top:48px;max-width:360px;}
+ .artlantis-character-layout>div[data-reveal]{margin-top:28px;}
+ .artlantis-character-layout>div[data-reveal]:nth-child(2){margin-top:0;}
+ .artlantis-character-layout>div[data-reveal]:last-child{margin-top:48px;}
+ .source-brand-layout{padding-top:48px;}
+ .source-brand-layout>div[data-reveal]{padding-inline:24px;}
+ .danes-case-page section{padding-inline:24px;padding-block:48px;}
+ .gamedev-case-study main>section{padding-inline:20px;}
+ .gamedev-case-study main>section h2{font-size:clamp(32px,9vw,48px);}
+ .gamedev-case-study .gamedev-identity-card{padding-block:24px;}
+ .gamedev-case-study .gamedev-identity-card>div:first-child{margin-bottom:24px;}
+ .nia-case-page :is(.nia-brand-section,.nia-dark-section,.nia-terminal-section,.nia-staff-section){padding:48px 20px 48px 52px;}
+ .nia-case-page .nia-timeline{left:24px;}
+ /* Wide sticker sheets stay readable and can be swiped without moving the page. */
+ .verto-sticker-row{overflow-x:auto;overscroll-behavior-x:contain;padding-block:8px;scrollbar-width:thin;}
+ .verto-sticker-row>img{width:680px;min-width:680px;max-width:none;}
+}
+.verto-sticker-row:focus-visible{outline:2px solid currentColor;outline-offset:4px;}
+@media(max-width:1200px){
+ .nia-case-page .nia-staff-section>img[alt^="New Ilocos Airport —"]{width:150px;max-width:150px;}
 }

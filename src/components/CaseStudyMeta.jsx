@@ -1,7 +1,7 @@
 function MetaList({ title, items }) {
   return (
     <div className="[&_h4]:mb-[18px] [&_h4]:text-xs [&_h4]:font-bold [&_h4]:uppercase [&_h4]:tracking-[0.15em] [&_li]:mb-3 [&_li]:text-[13px] [&_li]:leading-normal [&_li]:text-current [&_li]:opacity-90">
-      <h4>{title}</h4>
+      <h4 className="case-study-meta-label">{title}</h4>
       <ul className="m-0 list-none p-0">
         {items.map((item) => (
           <li key={item}>{item}</li>
@@ -19,6 +19,7 @@ export default function CaseStudyMeta({
   contactName = 'Iverson Mendiola',
   contactRole = 'Graphic Designer',
   contactEmail = 'IVM.CREATIVES@GMAIL.COM',
+  fontClassName = 'font-ui-inter',
   tone = 'white',
   className = '',
   dataReveal = false,
@@ -37,7 +38,7 @@ export default function CaseStudyMeta({
 
   return (
     <div
-      className={`case-study-meta grid w-full grid-cols-[1fr_220px_220px_250px] gap-[30px] border-t pt-[35px] text-left max-[900px]:grid-cols-2 max-[600px]:grid-cols-1 font-inter ${className}`}
+      className={`case-study-meta grid w-full grid-cols-[1fr_220px_220px_250px] gap-[30px] border-t pt-[35px] text-left max-[900px]:grid-cols-2 max-[600px]:grid-cols-1 ${fontClassName} ${className}`}
       data-reveal={dataReveal ? '' : undefined}
       style={{ color: colors.text, borderColor: colors.border }}
     >
@@ -61,7 +62,7 @@ export default function CaseStudyMeta({
       <MetaList title="Programs" items={programs} />
 
       <div className="[&_h4]:mb-[18px] [&_h4]:text-xs [&_h4]:font-bold [&_h4]:uppercase [&_h4]:tracking-[0.15em] [&_p]:mb-3 [&_p]:text-[13px] [&_p]:leading-normal [&_p]:text-current [&_p]:opacity-90 [&_strong]:font-bold [&_strong]:text-current">
-        <h4>Contact</h4>
+        <h4 className="case-study-meta-label">Contact</h4>
         <p>
           <strong>{contactName}</strong>
           <br />

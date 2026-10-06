@@ -169,7 +169,7 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
       ref={navRef}
       data-menu-open={menuOpen}
       aria-label="Main navigation"
-      className="site-nav fixed inset-x-0 top-8 z-[100] flex h-20 items-center justify-center bg-transparent p-0 font-inter max-[900px]:top-4 max-[900px]:justify-end max-[900px]:pr-4"
+      className="site-nav fixed inset-x-0 top-8 z-[100] flex h-20 items-center justify-center bg-transparent p-0 font-ui-inter max-[900px]:top-4 max-[900px]:justify-end max-[900px]:pr-4"
     >
       <a
         href="/"

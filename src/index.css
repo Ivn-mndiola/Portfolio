@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "./fonts.css";
+@import "./ui-fonts.css";
 @import "./responsive.css";
+@import "./typography.css";
 
 /* Safari uses the page canvas around its toolbars and during overscroll.
    Keep both surfaces in sync with the current route or project slide. */
@@ -9,20 +11,10 @@ body {
   background-color: var(--browser-theme-color, #071030);
 }
 
-@font-face {
-  font-family: "Gill Sans MT Condensed";
-  src: url("/assets/fonts/gill-sans-mt-condensed.ttf") format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Bahnschrift";
-  src: url("/assets/fonts/BAHNSCHRIFT.TTF") format("truetype");
-  font-weight: 100 900;
-  font-display: swap;
-}
-
 @theme {
+  --font-ui-inter: "Portfolio Inter", sans-serif;
+  --font-ui-oswald: "Portfolio Oswald", sans-serif;
+  --font-ui-questrial: "Portfolio Questrial", sans-serif;
   --font-inter: "Inter", sans-serif;
   --font-oswald: "Oswald", sans-serif;
   --font-questrial: "Questrial", sans-serif;
@@ -32,6 +24,10 @@ body {
   --font-gill: "Gill Sans MT Condensed", sans-serif;
   --font-bahnschrift: "Bahnschrift", sans-serif;
   --font-jakarta: "Plus Jakarta Sans", sans-serif;
+  --font-sansation: "Sansation", sans-serif;
+  --font-fugaz: "Fugaz One", sans-serif;
+  --font-zen-maru: "Zen Maru Gothic", sans-serif;
+  --font-buvera: "Buvera", "Plus Jakarta Sans", sans-serif;
   --animate-marquee: marquee 20s linear infinite;
 
   @keyframes marquee {
@@ -82,7 +78,7 @@ body {
 }
 
 .illustration-case-main {
-  background: image-set(url("/assets/images/illustration/illustration-page-bg-2060.webp") 1x, url("/assets/images/illustration/illustration-page-bg-2060.webp") 2x) top center / 100% 100% no-repeat;
+  background: url("/assets/images/illustration/illustration-page-bg.png") top center / 100% 100% no-repeat;
 }
 
 .photography-hero {

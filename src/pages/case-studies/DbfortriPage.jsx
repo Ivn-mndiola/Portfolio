@@ -77,7 +77,7 @@ function GalleryCarousel() {
 function BrandValue({ title, copy }) {
   return (
     <div className="text-center">
-      <h3 className="font-jakarta text-[clamp(24px,2.05vw,40px)] font-extrabold leading-none tracking-[-0.045em] text-[#1E1E1E] max-[1201px]:text-3xl">
+      <h3 className="case-study-label text-[clamp(24px,2.05vw,40px)] leading-none tracking-[-0.045em] text-[#1E1E1E] max-[1201px]:text-3xl">
         {title}
       </h3>
       <CaseStudyDescription className="mt-2 text-[#2D2D2D]">{copy}</CaseStudyDescription>
@@ -111,7 +111,7 @@ export default function DbfortriPage() {
             </p>
           </div>
 
-          <CaseStudyDescription className={`absolute left-1/2 top-[52.6%] w-[43.86%] -translate-x-1/2 text-center text-white/90 max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-10 max-[1201px]:w-full max-[1201px]:max-w-2xl max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
+          <CaseStudyDescription variant="intro" className={`absolute left-1/2 top-[52.6%] w-[43.86%] -translate-x-1/2 text-center text-white/90 max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-10 max-[1201px]:w-full max-[1201px]:max-w-2xl max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
             A refined photography brand dedicated to capturing authentic stories through intentional composition, meaningful storytelling, and timeless visual craftsmanship. Inspired by the philosophy <strong className="text-white">“Formed to be Timeless,”</strong> every image is thoughtfully created to preserve genuine moments with elegance, emotion, and lasting impact.
           </CaseStudyDescription>
 
@@ -135,21 +135,21 @@ export default function DbfortriPage() {
           </div>
 
           <article className={`absolute left-1/2 top-[35.33%] w-[44.38%] -translate-x-1/2 max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-20 max-[1201px]:w-full max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
-            <h2 className="font-jakarta text-[clamp(25px,1.74vw,34px)] font-extrabold lowercase tracking-[-0.05em]">about</h2>
+            <h2 className="case-study-title text-[clamp(25px,1.74vw,34px)] font-extrabold lowercase tracking-[-0.05em]">about</h2>
             <CaseStudyDescription className="mx-auto mt-[1.25vw] max-w-[850px] max-[1201px]:mt-5">
               <strong className="font-bold">dbfortri</strong> is a photography service dedicated to creating <strong className="font-bold">timeless imagery</strong> through intentional storytelling.<br className="max-[1201px]:hidden" /> Every session is approached with <strong className="font-bold">creativity, authenticity, and precision</strong> to preserve life’s most meaningful moments.
             </CaseStudyDescription>
           </article>
 
           <article className={`absolute left-1/2 top-[54.17%] w-[43.91%] -translate-x-1/2 max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-20 max-[1201px]:w-full max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
-            <h2 className="font-jakarta text-[clamp(25px,1.74vw,34px)] font-extrabold lowercase tracking-[-0.05em]">our purpose</h2>
+            <h2 className="case-study-title text-[clamp(25px,1.74vw,34px)] font-extrabold lowercase tracking-[-0.05em]">our purpose</h2>
             <CaseStudyDescription className="mx-auto mt-[1.55vw] max-w-[850px] max-[1201px]:mt-5">
               We believe photographs should do more than document a moment,<br className="max-[1201px]:hidden" /> they should <strong className="font-bold">preserve emotions, relationships, and memories</strong><br className="max-[1201px]:hidden" /> that remain meaningful for years to come.<br /><br />Every frame is <strong className="font-bold">formed with intention</strong> and created to stand the test of time.
             </CaseStudyDescription>
           </article>
 
           <article className={`absolute left-1/2 top-[75.6%] w-[42.29%] -translate-x-1/2 max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-20 max-[1201px]:w-full max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
-            <h2 className="font-jakarta text-[clamp(24px,1.82vw,35px)] font-extrabold uppercase tracking-[-0.04em]">Formed to be timeless.</h2>
+            <h2 className="font-inter text-[clamp(24px,1.82vw,35px)] font-extrabold uppercase tracking-[-0.04em]">Formed to be timeless.</h2>
             <CaseStudyDescription className="mx-auto mt-[1.3vw] max-w-[820px] max-[1201px]:mt-5">
               Photography is formed by <strong className="font-bold">light</strong>, shaped by <strong className="font-bold">perspective</strong>, and preserved<br className="max-[1201px]:hidden" /> through <strong className="font-bold">craftsmanship</strong>.<br /><br />Our philosophy is simple:<br />create photographs that never feel outdated.
             </CaseStudyDescription>
@@ -157,20 +157,20 @@ export default function DbfortriPage() {
         </section>
 
         <section className="dbfortri-paper relative h-[48.02vw] min-h-[620px] max-[1201px]:h-auto max-[1201px]:min-h-0 max-[1201px]:px-6 max-[1201px]:py-24">
-          <div className={`absolute left-1/2 top-[7%] grid w-[64%] -translate-x-1/2 grid-cols-2 gap-x-[16%] gap-y-[4.2vw] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:w-full max-[1201px]:translate-x-0 max-[1201px]:grid-cols-1 max-[1201px]:gap-10 ${REVEAL}`} data-reveal>
+          <div className={`dbfortri-values absolute left-1/2 top-[7%] grid w-[64%] -translate-x-1/2 grid-cols-2 gap-x-[16%] gap-y-[4.2vw] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:w-full max-[1201px]:translate-x-0 max-[1201px]:grid-cols-1 max-[1201px]:gap-10 ${REVEAL}`} data-reveal>
             {VALUES.map((value) => <BrandValue key={value.title} {...value} />)}
           </div>
 
           <div className="absolute left-1/2 top-[48.6%] h-px w-[67.2%] -translate-x-1/2 bg-[#545353]/70 max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:my-16 max-[1201px]:w-full max-[1201px]:translate-x-0" aria-hidden="true" />
 
           <div className={`dbfortri-type-scale absolute left-1/2 top-[58.8%] grid w-[47.8%] -translate-x-1/2 grid-cols-[0.62fr_1.65fr_1fr] items-baseline gap-x-[4.2vw] gap-y-[1.9vw] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:w-full max-[1201px]:translate-x-0 max-[1201px]:grid-cols-[0.65fr_1.4fr_1fr] max-[1201px]:gap-x-4 max-[1201px]:gap-y-7 ${REVEAL}`} data-reveal>
-            <span className="font-jakarta text-[clamp(26px,2.5vw,48px)] font-extrabold tracking-[-0.06em]">H1</span>
-            <span className="font-jakarta text-[clamp(28px,2.8vw,54px)] font-extrabold tracking-[-0.06em]">Buvera</span>
-            <span className="font-jakarta text-[clamp(24px,2.45vw,47px)] font-extrabold tracking-[-0.06em]">72–96 px</span>
+            <span className="font-buvera text-[clamp(26px,2.5vw,48px)] font-extrabold tracking-[-0.06em]">H1</span>
+            <span className="font-buvera text-[clamp(28px,2.8vw,54px)] font-extrabold tracking-[-0.06em]">Buvera</span>
+            <span className="font-buvera text-[clamp(24px,2.45vw,47px)] font-extrabold tracking-[-0.06em]">72–96 px</span>
 
-            <span className="text-[clamp(14px,1.55vw,30px)]">H2 H3</span>
+            <span className="font-jakarta text-[clamp(14px,1.55vw,30px)]">H2 H3</span>
             <span className="font-jakarta text-[clamp(14px,1.55vw,30px)]">Plus Jakarta Sans</span>
-            <span className="text-[clamp(14px,1.55vw,30px)]">40–56 px</span>
+            <span className="font-jakarta text-[clamp(14px,1.55vw,30px)]">40–56 px</span>
 
             <span className="text-[clamp(12px,1.2vw,23px)]">Body</span>
             <span className="text-[clamp(12px,1.2vw,23px)]">Inter</span>
@@ -209,7 +209,7 @@ export default function DbfortriPage() {
         <section className="dbfortri-story dbfortri-paper relative h-[41.61vw] min-h-[540px] overflow-visible max-[1201px]:h-auto max-[1201px]:min-h-0 max-[1201px]:px-6 max-[1201px]:py-24">
           <article className={`absolute left-[15.8%] top-[11%] w-[39%] text-center max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:w-full ${REVEAL}`} data-reveal>
             <div className="flex items-center justify-center gap-[1.4vw] max-[1201px]:flex-col max-[1201px]:gap-4">
-              <h2 className="font-jakarta text-[clamp(27px,2.3vw,44px)] font-extrabold leading-none tracking-[-0.055em]">The Story Behind</h2>
+              <h2 className="case-study-title text-[clamp(27px,2.3vw,44px)] font-extrabold leading-none tracking-[-0.055em]">The Story Behind</h2>
               <ResponsiveImage src={`${ASSET_ROOT}/dbfortri-logo-black-vector.svg`} alt="DBFortri" loading="lazy" decoding="async" className="w-[clamp(150px,12.3vw,236px)]" />
             </div>
             <CaseStudyDescription className="mx-auto mt-[2.2vw] max-w-[760px] max-[1201px]:mt-7">

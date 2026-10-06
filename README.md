@@ -1,3 +1,74 @@
+# Portfolio v81
+
+Services titles and descriptions now share the same horizontal center as “What I Do.” Equal space on both sides of the copy keeps it centered while the service numbers remain on the left. The layout adjusts for mobile screens, and the background stays fixed while the content scrolls.
+
+Artwork now loads from the supplied originals instead of automatically substituting smaller compressed previews. Danes Logo Studies and Team Uniform load their original 2000-pixel PNGs. NIA's project-preview logo uses the existing vector artwork. Illustration artwork, Verto sheets, Artlantis posters, and other supplied images retain their native detail. Lazy loading and the explicitly configured responsive photo galleries remain in place.
+
+Some supplied images are small originals and need higher-resolution exports for additional real detail. See `IMAGE_QUALITY.md` for dimensions and remaining source limits.
+
+The v80 lockfile fix for `source-map-js` 1.2.2 is retained. Dependency versions are unchanged in this update.
+
+Home and metadata retain the original typography restored in v79. Case-study descriptions retain their project-specific font families.
+
+## Start the site
+
+Extract the project, open a terminal in the folder containing `package.json` and `package-lock.json`, then run:
+
+```powershell
+npm ci --include=dev
+npm run dev
+```
+
+If npm reports that the esbuild install script was blocked, stop the dev command with Ctrl+C and approve that package's installed version, then rebuild it:
+
+```powershell
+npm install-scripts approve esbuild
+npm rebuild esbuild
+npm run dev
+```
+
+The approval command is for npm versions that show the install-scripts warning. It records a project-scoped approval for the installed esbuild version. No global or blanket script approval is required.
+
+Use `npm run build` for production. Older release notes below are historical; `FONT_AUDIT.md` describes the current typography.
+
+---
+
+# v77 — Supplied fonts installed
+
+All thirteen website font families now use the files provided in `fonts.zip`. Buvera Extra Bold is included, so DBFortri headings use the actual font instead of the previous fallback.
+
+The fonts are served locally as WOFF2 files. Each page retains separate font roles for descriptions, titles, labels, and metadata. Description paragraphs keep the shared 14px size and 1.8 line height. The site's existing images, layouts, animations, and Services text centering are retained.
+
+Run `npm install` and `npm run dev` to preview, or `npm run build` for production. Font declarations are in `src/fonts.css`; role assignments are in `src/typography.css`. The supplied-to-bundled font mapping is in `FONT_SOURCES.json`, and `FONT_AUDIT.md` lists the Figma roles.
+
+Older release notes below describe the project history. Their missing-Buvera notes are resolved by v77.
+
+---
+
+# v76 — Fonts by text role
+
+Case-study typography now has separate roles for opening summaries, body descriptions, section titles, project labels, and shared metadata labels. The font assignments come from the Figma text layers. Danes was rechecked against frame `2243:4` for this update.
+
+- Opening descriptions and project previews: Urbanist Regular, with Urbanist Bold/Italic emphasis.
+- Body descriptions: each case study's audited family, at the existing shared 14px size and 1.8 line height.
+- Shared metadata labels (Project Scope, Programs, Contact): Questrial Regular; metadata contents: Urbanist.
+- Titles and project labels: each project's assigned font and weight; palette labels and typography specimens retain their separate faces.
+- Danes: restored the design's bold italic emphasis and the 700 weight for the standalone Hot Magenta Red label.
+
+Font roles are centralized in `src/typography.css`. Opening summaries use `CaseStudyDescription variant="intro"`; ordinary description paragraphs use the default body variant. Do not use the description component for headings or labels. Existing responsive sizes and page layouts are retained.
+
+DBFortri still requires the Buvera Extra Bold webfont for an exact heading match. See `FONT_AUDIT.md` for the complete mapping and font setup.
+
+---
+
+# Portfolio v74 — fonts from Figma
+
+Font families now follow the linked Figma case studies, including Urbanist descriptions and metadata, Questrial navigation, Sansation NIA typography, and Fugaz One Illustration/Photography titles. Fonts are bundled locally. See FONT_AUDIT.md for the complete mapping and two remaining inputs: the Buvera Extra Bold webfont and the five general-page designs absent from this Figma file.
+
+# Portfolio v73 — responsive case studies
+
+All eight case studies now have tighter phone spacing, content-sized opening sections, and balanced tablet layouts. Source and Artlantis use two-column tablet compositions; Danes, GameDev, Photography, and DBFortri have adaptive grids; NIA has improved timeline gutters and a compact footer. Verto sticker sheets support horizontal scrolling and keyboard focus on phones while retaining the original PNG artwork. Description typography remains Inter, 14px, with a 1.8 line height.
+
 # Iverson Portfolio — v72
 
 React, Vite, and Tailwind portfolio with thirteen routes and eight case studies.

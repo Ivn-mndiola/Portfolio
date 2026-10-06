@@ -103,12 +103,13 @@ export default function SourcePage() {
             data-reveal
           />
 
-          <CaseStudyDescription className={`absolute left-1/2 top-[48%] w-[44vw] max-w-[800px] -translate-x-1/2 text-center text-white/95 max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-8 max-[1201px]:w-full max-[1201px]:max-w-2xl max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
+          <CaseStudyDescription variant="intro" className={`absolute left-1/2 top-[48%] w-[44vw] max-w-[800px] -translate-x-1/2 text-center text-white/95 max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-8 max-[1201px]:w-full max-[1201px]:max-w-2xl max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
             SOURCE is a Baguio City based hub for premium PC parts, components, and peripherals, dedicated to helping gamers, creators, and PC enthusiasts build high-performance systems with confidence. Offering authentic hardware, expert guidance, and competitive pricing, SOURCE provides everything from powerful GPUs and high-speed memory to ergonomic accessories and immersive gaming gear, making it a trusted destination for elevating your computing experience from the heart of the Cordilleras.
           </CaseStudyDescription>
 
           <div className="absolute inset-x-0 bottom-[7.8%] px-[8vw] max-[1201px]:relative max-[1201px]:inset-auto max-[1201px]:mt-auto max-[1201px]:w-full max-[1201px]:px-0 max-[1201px]:pt-16">
             <CaseStudyMeta
+              fontClassName="font-ui-questrial"
               className={`mx-auto w-[calc(100%_-_8vw)] max-w-[1560px] max-[1201px]:w-full ${REVEAL}`}
               dataReveal
               projectLine1="Visuals and Brand Identity"
@@ -119,7 +120,7 @@ export default function SourcePage() {
           </div>
         </section>
 
-        <section className="relative h-[81vw] bg-transparent max-[1201px]:h-auto max-[1201px]:space-y-6 max-[1201px]:bg-[linear-gradient(180deg,#244394_0%,#6F86B8_40%,#FFFFFF_85%,#244394_100%)] max-[1201px]:px-5 max-[1201px]:pb-0 max-[1201px]:pt-16">
+        <section className="source-brand-layout relative h-[81vw] bg-transparent max-[1201px]:h-auto max-[1201px]:space-y-6 max-[1201px]:bg-[linear-gradient(180deg,#244394_0%,#6F86B8_40%,#FFFFFF_85%,#244394_100%)] max-[1201px]:px-5 max-[1201px]:pb-0 max-[1201px]:pt-16">
           <div className="source-brand-dark-nav pointer-events-none absolute inset-x-0 top-0 h-[58%] max-[1201px]:h-[52%]" aria-hidden="true" />
 
           <div className={`absolute left-[18.35%] top-[9.3%] flex h-[21.5%] w-[39.2%] items-center justify-center rounded-[4vw] border border-white/30 bg-white/[0.12] shadow-[0_18px_40px_rgba(8,23,70,0.16)] backdrop-blur-xl max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:h-auto max-[1201px]:w-full max-[1201px]:rounded-[32px] max-[1201px]:px-8 max-[1201px]:py-12 ${REVEAL}`} data-reveal>
@@ -138,8 +139,8 @@ export default function SourcePage() {
 
           <div className={`absolute left-[58.65%] top-[9.3%] flex h-[44.73%] w-[23.16%] flex-col rounded-[4vw] border border-white/30 bg-white/[0.12] px-[3.66%] pb-0 pt-[5.35%] shadow-[0_18px_40px_rgba(8,23,70,0.16)] backdrop-blur-xl max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:h-auto max-[1201px]:w-full max-[1201px]:rounded-[32px] max-[1201px]:px-8 max-[1201px]:py-10 ${REVEAL}`} data-reveal>
             <div className="mb-[3.9vw] text-center max-[1201px]:mb-10">
-              <p className="font-bahnschrift text-[clamp(22px,1.98vw,38px)] font-semibold leading-none">Bahnschrift</p>
-              <span className="font-questrial text-[clamp(7px,0.63vw,12px)] uppercase">Logo Typography</span>
+              <p className="font-bahnschrift text-[clamp(22px,1.98vw,38px)] font-normal leading-none">Bahnschrift</p>
+              <span className="case-study-label text-[clamp(7px,0.63vw,12px)] uppercase">Logo Typography</span>
               <p className="mt-[1vw] font-questrial text-[clamp(22px,2.09vw,40px)] leading-none max-[1201px]:mt-5">Questrial</p>
               <span className="font-questrial text-[clamp(7px,0.63vw,12px)] uppercase">Secondary Font</span>
             </div>
@@ -166,7 +167,7 @@ export default function SourcePage() {
           <ResponsiveImage src="/assets/images/source/source-blue-logo.png" alt="Source" className={`absolute bottom-[2.1%] left-[38%] z-20 w-[9%] max-[1201px]:relative max-[1201px]:bottom-auto max-[1201px]:left-auto max-[1201px]:mx-auto max-[1201px]:mb-8 max-[1201px]:w-[130px] ${REVEAL}`} data-reveal />
         </section>
 
-        <section className="relative h-[55.77vw] bg-transparent max-[1201px]:h-auto max-[1201px]:space-y-10 max-[1201px]:bg-[linear-gradient(180deg,#EEF2FA_0%,#244394_42%,#244394_100%)] max-[1201px]:px-5 max-[1201px]:py-16">
+        <section className="source-social-layout relative h-[55.77vw] bg-transparent max-[1201px]:h-auto max-[1201px]:space-y-10 max-[1201px]:bg-[linear-gradient(180deg,#EEF2FA_0%,#244394_42%,#244394_100%)] max-[1201px]:px-5 max-[1201px]:py-16">
           <div className="source-social-dark-nav pointer-events-none absolute inset-x-0 bottom-0 h-[79%]" aria-hidden="true" />
 
           <div className="absolute left-1/2 top-[5%] flex -translate-x-1/2 items-center gap-[clamp(24px,2.7vw,38px)] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:w-full max-[1201px]:translate-x-0 max-[1201px]:flex-col max-[1201px]:gap-10">
@@ -211,7 +212,7 @@ export default function SourcePage() {
 
             <div className={`source-liquid-glass flex min-h-[clamp(270px,21.45vw,310px)] w-[33vw] max-w-[480px] shrink-0 flex-col items-center justify-center rounded-[clamp(26px,1.98vw,31px)] px-[clamp(33px,3.08vw,46px)] py-8 text-center max-[1201px]:h-auto max-[1201px]:w-full max-[1201px]:max-w-none max-[1201px]:rounded-[26px] max-[1201px]:px-6 max-[1201px]:py-12 ${REVEAL}`} data-reveal>
               <ResponsiveImage src="/assets/images/source/source-main.png" alt="Source" className="mb-[clamp(9px,0.83vw,12px)] w-[13%] max-[1201px]:mb-2 max-[1201px]:w-[56px]" />
-              <h2 className="whitespace-nowrap font-bahnschrift text-[clamp(42px,4.29vw,62px)] font-bold leading-none tracking-[-0.055em] max-[1201px]:text-[clamp(36px,7vw,62px)]">Social Media</h2>
+              <h2 className="case-study-title whitespace-nowrap text-[clamp(42px,4.29vw,62px)] leading-none tracking-[-0.055em] max-[1201px]:text-[clamp(36px,7vw,62px)]">Social Media</h2>
               <p className="mt-[clamp(10px,0.99vw,14px)] font-questrial text-[clamp(12px,1.08vw,15px)] leading-none max-[1201px]:mt-3 max-[1201px]:text-sm">Marketing Design</p>
               <CaseStudyDescription className="mt-[clamp(15px,1.65vw,23px)] text-white/95 max-[1201px]:mt-6">
                 A 9-post social media campaign for a tech peripherals brand, designed to highlight products and support customer engagement and purchase conversion through clear and consistent visual communication.

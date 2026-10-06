@@ -23,26 +23,26 @@ export default function HomePage() {
   }
 
   return (
-    <div className="home-page relative h-screen overflow-hidden bg-[#071030] text-white">
+    <div className="home-page font-ui-inter relative h-screen overflow-hidden bg-[#071030] text-white">
       <div className="absolute inset-0 bg-[url('/assets/images/HOME-HERO-BG.jpg')] bg-cover bg-center" />
       <Nav active="/" />
 
       <section className="home-hero relative flex h-screen items-center justify-center overflow-hidden" id="hero">
         <div className="home-title absolute top-1/2 z-[1] w-full -translate-y-1/2 text-center max-md:top-[40%] max-md:flex max-md:flex-col max-md:items-center">
           <p
-            className="home-greeting absolute left-[27%] top-[-15px] font-questrial text-[25px] font-semibold tracking-[0.02em] max-md:static max-md:mb-2.5"
+            className="home-greeting absolute left-[27%] top-[-15px] font-ui-questrial text-[25px] font-semibold tracking-[0.02em] max-md:static max-md:mb-2.5"
             style={revealStyle(anim.delay1)}
           >
             Hello, I'm
           </p>
           <h1
-            className="m-0 font-oswald text-[clamp(100px,25vw,300px)] font-bold italic uppercase leading-[0.9] tracking-[-0.01em] [text-shadow:0_10px_30px_rgba(0,0,0,0.5)]"
+            className="m-0 font-ui-oswald text-[clamp(100px,25vw,300px)] font-bold italic uppercase leading-[0.9] tracking-[-0.01em] [text-shadow:0_10px_30px_rgba(0,0,0,0.5)]"
             style={revealStyle(anim.delay1, { distance: 26, scale: 0.9 })}
           >
             IVERSON
           </h1>
           <p
-            className="home-role absolute bottom-[-40px] right-[23%] whitespace-nowrap font-questrial text-[25px] font-semibold tracking-[0.02em] max-md:static max-md:mt-2.5"
+            className="home-role absolute bottom-[-40px] right-[23%] whitespace-nowrap font-ui-questrial text-[25px] font-semibold tracking-[0.02em] max-md:static max-md:mt-2.5"
             style={revealStyle(anim.delay1)}
           >
             Creative Designer

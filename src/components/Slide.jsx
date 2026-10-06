@@ -53,10 +53,10 @@ export default function Slide({ slide, isActive, rosterIndex }) {
             )}
             {hasTextTitle && (
               <>
-                <span className="mb-[-4px] font-inter text-[13px] font-bold uppercase tracking-[0.2em] text-white/90">
+                <span className="mb-[-4px] font-montserrat text-[13px] font-bold uppercase tracking-[0.2em] text-white/90">
                   {slide.titleText.subtitle}
                 </span>
-                <h2 className="m-0 translate-x-2 font-oswald text-[85px] font-bold italic uppercase leading-none tracking-[0.02em] text-white [filter:drop-shadow(0_15px_35px_rgba(0,0,0,0.65))]">
+                <h2 className="m-0 translate-x-2 font-fugaz text-[85px] font-normal not-italic uppercase leading-none tracking-[0.02em] text-white [filter:drop-shadow(0_15px_35px_rgba(0,0,0,0.65))]">
                   {slide.titleText.title}
                 </h2>
               </>
@@ -72,7 +72,7 @@ export default function Slide({ slide, isActive, rosterIndex }) {
           </Link>
 
           <div className="project-slide-description row-start-3 flex h-full w-full flex-col items-center justify-start self-start">
-            <CaseStudyDescription className={`mt-[90px] max-w-[580px] text-center text-white/65 [&_strong]:text-white ${slide.id === 'danes' ? 'whitespace-nowrap' : ''}`}>
+            <CaseStudyDescription variant="intro" className={`mt-[90px] max-w-[580px] text-center text-white/65 [&_strong]:text-white`}>
               {slide.description}
             </CaseStudyDescription>
           </div>

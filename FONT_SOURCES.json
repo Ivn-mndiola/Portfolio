@@ -1,0 +1,328 @@
+{
+  "archive": "fonts.zip",
+  "faces": [
+    {
+      "family": "Inter",
+      "style": "normal",
+      "weight": "100 900",
+      "source": "Inter-VariableFont_opsz,wght.ttf",
+      "source_sha256": "0be2399ea925f1f83ff974764761da9860ec50742ed29a5d4c1ffd0c5c7ac3a8",
+      "output": "public/assets/fonts/inter-variable-normal.woff2",
+      "bytes": 348712,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Inter",
+      "style": "italic",
+      "weight": "100 900",
+      "source": "Inter-Italic-VariableFont_opsz,wght.ttf",
+      "source_sha256": "6136f73372fedc37b80fd1a8ec3e21734073ff17376f3672718f186779672e7a",
+      "output": "public/assets/fonts/inter-variable-italic.woff2",
+      "bytes": 385956,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Urbanist",
+      "style": "normal",
+      "weight": "100 900",
+      "source": "Urbanist[wght].ttf",
+      "source_sha256": "748362d51eb276840e9f0023cd2d98299bf709a95fb3a5ae4ffcb624c638ebb9",
+      "output": "public/assets/fonts/urbanist-variable-normal.woff2",
+      "bytes": 38640,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Urbanist",
+      "style": "italic",
+      "weight": "100 900",
+      "source": "Urbanist-Italic[wght].ttf",
+      "source_sha256": "05ac7a65decda23806d1678d44b8ef23dd656d6793555499dd79ee24c3e777ed",
+      "output": "public/assets/fonts/urbanist-variable-italic.woff2",
+      "bytes": 41228,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Plus Jakarta Sans",
+      "style": "normal",
+      "weight": "200 800",
+      "source": "PlusJakartaSans[wght].ttf",
+      "source_sha256": "89b3fb38aa0d275d7a731d0d817a4f1622b316b4d7fbdedcf02ee9099ff68bc8",
+      "output": "public/assets/fonts/plus-jakarta-sans-variable-normal.woff2",
+      "bytes": 60636,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Plus Jakarta Sans",
+      "style": "italic",
+      "weight": "200 800",
+      "source": "PlusJakartaSans-Italic[wght].ttf",
+      "source_sha256": "9529eb888668b6a3c6dd75b6341a2fc5263fb6c9e788822e6117c29dd9e8b115",
+      "output": "public/assets/fonts/plus-jakarta-sans-variable-italic.woff2",
+      "bytes": 65912,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Karla",
+      "style": "normal",
+      "weight": "400",
+      "source": "Karla-Regular.ttf",
+      "source_sha256": "2d21e82a6f3a3187689a09932ddac19011e1e36f21ea45e485589e16d90d0662",
+      "output": "public/assets/fonts/karla-regular.woff2",
+      "bytes": 7408,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Karla",
+      "style": "normal",
+      "weight": "700",
+      "source": "Karla-Bold.ttf",
+      "source_sha256": "6916f29111d92d1b90729c4e207b8f0a766ed1052301808e61ca8b83e994c1ba",
+      "output": "public/assets/fonts/karla-bold.woff2",
+      "bytes": 7860,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Karla",
+      "style": "italic",
+      "weight": "400",
+      "source": "Karla-Italic.ttf",
+      "source_sha256": "5319b5b9b6609b2270f0c4cefe191d4af1da366a3faecbc729df23172682d3f0",
+      "output": "public/assets/fonts/karla-italic.woff2",
+      "bytes": 8000,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Karla",
+      "style": "italic",
+      "weight": "700",
+      "source": "Karla-BoldItalic.ttf",
+      "source_sha256": "4e706aa0ebc0002add658353c017bd523781c52cc3adffb032d4136109c390b8",
+      "output": "public/assets/fonts/karla-bold-italic.woff2",
+      "bytes": 8880,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Montserrat",
+      "style": "normal",
+      "weight": "400",
+      "source": "Montserrat-Regular.ttf",
+      "source_sha256": "3e8abe50c44c82e2242e97d1ec8c0d385c4890cdc50447bcdb8605c81a38cfb2",
+      "output": "public/assets/fonts/montserrat-regular.woff2",
+      "bytes": 126468,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Montserrat",
+      "style": "normal",
+      "weight": "700",
+      "source": "Montserrat-Bold.ttf",
+      "source_sha256": "bc6e854971cea46b463be6f9eef4d9cd52f51cfc1fc0dd90c9d3e6483dc0ec61",
+      "output": "public/assets/fonts/montserrat-bold.woff2",
+      "bytes": 130012,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Montserrat",
+      "style": "italic",
+      "weight": "400",
+      "source": "Montserrat-Italic.ttf",
+      "source_sha256": "b8fa0ea7f433669d94d27e66ea81cc627deb71861ed9d20f53d7afa1f33ba86a",
+      "output": "public/assets/fonts/montserrat-italic.woff2",
+      "bytes": 133568,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Montserrat",
+      "style": "italic",
+      "weight": "700",
+      "source": "Montserrat-BoldItalic.ttf",
+      "source_sha256": "b4c121b337aaa977d711b6f397c5b9672d720af622555f1e3f9d3b87f2983665",
+      "output": "public/assets/fonts/montserrat-bold-italic.woff2",
+      "bytes": 136360,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Oswald",
+      "style": "normal",
+      "weight": "300",
+      "source": "Oswald-Light.ttf",
+      "source_sha256": "9b12dc881fd3f435d53692d781857933ec0da90c8f8acf29b490ef0ab852d9e3",
+      "output": "public/assets/fonts/oswald-light.woff2",
+      "bytes": 19584,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Oswald",
+      "style": "normal",
+      "weight": "400",
+      "source": "Oswald-Regular.ttf",
+      "source_sha256": "cce43fdf41f6092c71f3c1b14147e3571f3499eb85132aa6a11beb7e7316741e",
+      "output": "public/assets/fonts/oswald-regular.woff2",
+      "bytes": 21168,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Oswald",
+      "style": "normal",
+      "weight": "700",
+      "source": "Oswald-Bold.ttf",
+      "source_sha256": "fddd19f5a6d8e9f5ccf42fa3cb4542db815b05ba14c0b1cd00f484e6c1c431a1",
+      "output": "public/assets/fonts/oswald-bold.woff2",
+      "bytes": 22156,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Sansation",
+      "style": "normal",
+      "weight": "300",
+      "source": "Sansation_Light.ttf",
+      "source_sha256": "551210bb0f935e4a9d8b2bbbb88a6778b68eeb41b4739bca0aeb1a7a01b418b6",
+      "output": "public/assets/fonts/sansation-light.woff2",
+      "bytes": 18748,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Sansation",
+      "style": "normal",
+      "weight": "400",
+      "source": "Sansation_Regular.ttf",
+      "source_sha256": "c0770982633d933a09da349cf0dde6cfd70d6f9d91f1df436410c4d014a3216d",
+      "output": "public/assets/fonts/sansation-regular.woff2",
+      "bytes": 18460,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Sansation",
+      "style": "normal",
+      "weight": "700",
+      "source": "Sansation_Bold.ttf",
+      "source_sha256": "7de88c2802b829c45060c73c31e249ee4e5b34cb010e36ada3926cb229b041f8",
+      "output": "public/assets/fonts/sansation-bold.woff2",
+      "bytes": 18812,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Sansation",
+      "style": "italic",
+      "weight": "300",
+      "source": "Sansation_Light_Italic.ttf",
+      "source_sha256": "28efa1a9b8ac94f5ea896be0891ddf14fdaa5d610c6bf4d225447335127ac03e",
+      "output": "public/assets/fonts/sansation-light-italic.woff2",
+      "bytes": 19428,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Sansation",
+      "style": "italic",
+      "weight": "400",
+      "source": "Sansation_Italic.ttf",
+      "source_sha256": "ff0283298c6255ae083aad114d0d5fdcede90791da0a9a201ca010eb0dcd7137",
+      "output": "public/assets/fonts/sansation-italic.woff2",
+      "bytes": 19216,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Sansation",
+      "style": "italic",
+      "weight": "700",
+      "source": "Sansation_Bold_Italic.ttf",
+      "source_sha256": "80eaff3aac9b2c7081482c70dbcd3f3f090004b133111d3fb1369771486bac1c",
+      "output": "public/assets/fonts/sansation-bold-italic.woff2",
+      "bytes": 19476,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Questrial",
+      "style": "normal",
+      "weight": "400",
+      "source": "Questrial-Regular.ttf",
+      "source_sha256": "d68c076085a50d00449764a77b5723e860e0d4a843173e2e9b05c23fc480e5b5",
+      "output": "public/assets/fonts/questrial-regular.woff2",
+      "bytes": 64504,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Fugaz One",
+      "style": "normal",
+      "weight": "400",
+      "source": "FugazOne-Regular.ttf",
+      "source_sha256": "14fd5becce8b0ae987e44b3f9fa9e3e6c87463e9585ac15db6c8271462068a62",
+      "output": "public/assets/fonts/fugaz-one-regular.woff2",
+      "bytes": 12692,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Bahnschrift",
+      "style": "normal",
+      "weight": "300 700",
+      "source": "BAHNSCHRIFT.TTF",
+      "source_sha256": "f46e2e6fea25d84580a30d45177fd6a03bba296a50812f5494e6ff1500465493",
+      "output": "public/assets/fonts/bahnschrift-variable.woff2",
+      "bytes": 145404,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Gill Sans MT Condensed",
+      "style": "normal",
+      "weight": "400",
+      "source": "Gill Sans MT Condensed Regular/Gill Sans MT Condensed Regular.ttf",
+      "source_sha256": "3216f7d3a15d3107a457b93b5537784108c3237b3fb2d16494d8ecee0a22cbd4",
+      "output": "public/assets/fonts/gill-sans-mt-condensed.woff2",
+      "bytes": 27956,
+      "coverage": "Full source character map"
+    },
+    {
+      "family": "Zen Maru Gothic",
+      "style": "normal",
+      "weight": "500",
+      "source": "ZenMaruGothic-Medium.ttf",
+      "source_sha256": "3cfdb98a13571ede17fcc769f5093a97c38b80a7b9b2ab754a26b4d822092b3b",
+      "output": "public/assets/fonts/zen-maru-gothic-medium-latin.woff2",
+      "bytes": 13288,
+      "coverage": "Latin and Latin Extended with punctuation, currency, and arrows"
+    },
+    {
+      "family": "Zen Maru Gothic",
+      "style": "normal",
+      "weight": "700",
+      "source": "ZenMaruGothic-Bold.ttf",
+      "source_sha256": "fe24426b9c8b5523a0146a8235c8674eccf0493af354a53ec895c3596d9eb745",
+      "output": "public/assets/fonts/zen-maru-gothic-bold-latin.woff2",
+      "bytes": 13328,
+      "coverage": "Latin and Latin Extended with punctuation, currency, and arrows"
+    },
+    {
+      "family": "Buvera",
+      "style": "normal",
+      "weight": "800",
+      "source": "Buvera-ExtraBold.ttf",
+      "source_sha256": "f6164b09cd3759793aff9f56f1f75c5e7291280357372efb0e6bdba8a8517c0f",
+      "output": "public/assets/fonts/buvera-extra-bold.woff2",
+      "bytes": 35272,
+      "coverage": "Full source character map"
+    }
+  ],
+  "ui_faces": [
+    {
+      "family": "Portfolio Inter",
+      "original_family": "Inter",
+      "output": "public/assets/fonts/inter-latin-wght-normal.woff2",
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+      "source": "Original bundled UI font, retained from before the uploaded font set"
+    },
+    {
+      "family": "Portfolio Oswald",
+      "original_family": "Oswald",
+      "output": "public/assets/fonts/oswald-latin-wght-normal.woff2",
+      "sha256": "bd73278ee0c50041b91b4c03d1229e35b501637f46b6409e7da2d3a758446ea5",
+      "source": "Original bundled UI font, retained from before the uploaded font set"
+    },
+    {
+      "family": "Portfolio Questrial",
+      "original_family": "Questrial",
+      "output": "public/assets/fonts/questrial-latin.woff2",
+      "sha256": "89ccc12b1889293597ece5fe971b0bc352464a9f7ca870e4f3b473f5940a2025",
+      "source": "Original bundled UI font, retained from before the uploaded font set"
+    }
+  ]
+}

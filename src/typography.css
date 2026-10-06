@@ -1,0 +1,84 @@
+/* Case-study description families are scoped to their pages.
+   Existing heading and label styles are retained. */
+.danes-case-page {
+  --case-description-font: var(--font-urbanist);
+  --case-title-font: var(--font-urbanist);
+  --case-title-weight: 900;
+  --case-label-font: var(--font-urbanist);
+  --case-label-weight: 900;
+}
+
+.gamedev-case-study {
+  --case-description-font: var(--font-karla);
+  --case-title-font: var(--font-montserrat);
+  --case-title-weight: 700;
+  --case-label-font: var(--font-montserrat);
+  --case-label-weight: 700;
+}
+
+.nia-case-page {
+  --case-description-font: var(--font-bahnschrift);
+  --case-title-font: var(--font-sansation);
+  --case-title-weight: 700;
+  --case-label-font: var(--font-bahnschrift);
+  --case-label-weight: 400;
+}
+
+.source-case-page {
+  --case-description-font: var(--font-questrial);
+  --case-title-font: var(--font-bahnschrift);
+  --case-title-weight: 400;
+  --case-label-font: var(--font-bahnschrift);
+  --case-label-weight: 400;
+}
+
+.artlantis-case-page {
+  --case-description-font: var(--font-urbanist);
+  --case-title-font: var(--font-urbanist);
+  --case-title-weight: 700;
+  --case-label-font: var(--font-zen-maru);
+  --case-label-weight: 700;
+}
+
+.illustration-case-main {
+  --case-description-font: var(--font-urbanist);
+  --case-title-font: var(--font-fugaz);
+  --case-title-weight: 400;
+  --case-label-font: var(--font-montserrat);
+  --case-label-weight: 700;
+}
+
+.photography-case-page {
+  --case-description-font: var(--font-urbanist);
+  --case-title-font: var(--font-fugaz);
+  --case-title-weight: 400;
+  --case-label-font: var(--font-montserrat);
+  --case-label-weight: 400;
+}
+
+.dbfortri-case-main {
+  --case-description-font: var(--font-jakarta);
+  --case-title-font: var(--font-buvera);
+  --case-title-weight: 800;
+  --case-label-font: var(--font-inter);
+  --case-label-weight: 800;
+}
+
+.case-study-title {
+  font-family: var(--case-title-font, var(--font-urbanist));
+  font-weight: var(--case-title-weight, 700);
+}
+
+.case-study-label {
+  font-family: var(--case-label-font, var(--font-urbanist));
+  font-weight: var(--case-label-weight, 400);
+}
+
+/* Preserve the established gallery heading style. */
+.photo-caption-label {
+  font-family: var(--font-montserrat);
+  font-weight: 400;
+}
+
+.nia-staff-section > span { font-stretch: 75%; font-weight: 400; }
+/* Images and vector wordmarks contain their original type outlines. */

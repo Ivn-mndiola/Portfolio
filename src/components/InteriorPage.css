@@ -9,6 +9,24 @@
 .interior-page :where(a, button, input, textarea):focus-visible { outline: 2px solid #fdfdfd; outline-offset: 5px; }
 .interior-page :where(input, textarea):focus-visible { outline-color: #aadfff; }
 .interior-page .service-number { color: transparent; -webkit-text-stroke: 1px rgba(253, 253, 253, 0.5); }
+/* Equal outer columns align every service's copy with the page heading. */
+.interior-page .service-card {
+  --service-gutter: 24%;
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--service-gutter) minmax(0, 1fr) var(--service-gutter);
+}
+.interior-page .service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 var(--service-gutter);
+  background: rgb(52 63 114 / 85%);
+  transition: background-color 300ms;
+}
+.interior-page .service-card:hover::before { background: rgb(52 63 114 / 65%); }
+@media (max-width: 1001px) {
+  .interior-page .service-card { --service-gutter: clamp(52px, 14vw, 120px); }
+}
 .interior-page .interior-glass {
   border: 1px solid rgba(253, 253, 253, 0.28);
   background: linear-gradient(130deg, rgba(255, 255, 255, 0.23), rgba(165, 190, 250, 0.23));
@@ -23,4 +41,5 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .interior-page .interior-enter { animation: none; }
+  .interior-page .service-card::before { transition: none; }
 }

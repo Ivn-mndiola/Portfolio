@@ -21,15 +21,15 @@ export default function ServicesPage() {
         <ol aria-label="Creative services" className="mx-auto flex w-[50%] flex-col gap-[min(1.35vw,26px)] max-[1001px]:w-full max-[1001px]:max-w-[640px] max-[1001px]:gap-5">
           {SERVICES.map(([name, description, subtitle], index) => (
             <li key={name}>
-              <Link to={`/contact?service=${encodeURIComponent(name)}`} aria-label={`Enquire about ${name}`} className="group flex min-h-[min(6.04vw,116px)] overflow-hidden rounded-full border border-white/25 bg-white/15 text-inherit no-underline backdrop-blur-[10px] transition duration-300 hover:-translate-y-1 hover:border-white/60 hover:shadow-[0_16px_32px_rgba(0,15,55,0.25)] focus-visible:border-white motion-reduce:transform-none motion-reduce:transition-none max-[1001px]:min-h-[116px] max-[540px]:rounded-[28px]">
-                <div aria-hidden="true" className="flex w-[24%] shrink-0 items-center justify-center gap-[min(1.04vw,20px)] bg-white/5 px-4 max-[540px]:w-[23%] max-[540px]:flex-col max-[540px]:gap-0 max-[540px]:px-2">
-                  <img src="/assets/images/interior/service-star.webp" alt="" width="90" height="128" className="h-[min(2.71vw,52px)] w-[min(1.88vw,36px)] object-contain max-[1001px]:h-11 max-[1001px]:w-8 max-[540px]:h-7 max-[540px]:w-5" />
-                  <span className="service-number text-[clamp(50px,4.17vw,80px)] leading-none tracking-[-0.04em] max-[540px]:text-[40px]">{String(index + 1).padStart(2, '0')}</span>
+              <Link to={`/contact?service=${encodeURIComponent(name)}`} aria-label={`Enquire about ${name}`} className="service-card group min-h-[min(6.04vw,116px)] overflow-hidden rounded-full border border-white/25 bg-white/15 text-inherit no-underline backdrop-blur-[10px] transition duration-300 hover:-translate-y-1 hover:border-white/60 hover:shadow-[0_16px_32px_rgba(0,15,55,0.25)] focus-visible:border-white motion-reduce:transform-none motion-reduce:transition-none max-[1001px]:min-h-[116px] max-[540px]:rounded-[28px]">
+                <div aria-hidden="true" className="relative col-start-1 flex min-w-0 items-center justify-center gap-[min(1.04vw,20px)] bg-white/5 px-4 max-[768px]:flex-col max-[768px]:gap-0 max-[768px]:px-0">
+                  <img src="/assets/images/interior/service-star.webp" alt="" width="90" height="128" className="h-[min(2.71vw,52px)] w-[min(1.88vw,36px)] object-contain max-[1001px]:h-11 max-[1001px]:w-8 max-[768px]:h-7 max-[768px]:w-5" />
+                  <span className="service-number text-[clamp(50px,4.17vw,80px)] leading-none tracking-[-0.04em] max-[768px]:text-[40px]">{String(index + 1).padStart(2, '0')}</span>
                 </div>
-                <div className="flex flex-1 flex-col items-center justify-center bg-[#343f72]/85 px-6 py-3.5 text-center transition-colors group-hover:bg-[#343f72]/65 max-[540px]:px-4 max-[540px]:py-5">
-                  <h2 className="text-[clamp(22px,1.56vw,30px)] font-semibold leading-[1.1] tracking-[-0.035em] max-[540px]:text-[22px]">{name}</h2>
-                  {subtitle && <p className="mt-0.5 text-[clamp(12px,0.77vw,14.8px)] leading-tight">{subtitle}</p>}
-                  <p className="mt-1 max-w-[390px] text-[clamp(12px,0.77vw,14.8px)] leading-[1.15] max-[540px]:mt-2 max-[540px]:text-[13px] max-[540px]:leading-snug">{description}</p>
+                <div className="service-copy relative col-start-2 flex min-w-0 flex-col items-center justify-center px-6 py-3.5 text-center max-[1001px]:px-3 max-[540px]:px-1 max-[540px]:py-5">
+                  <h2 className="w-full text-center text-[clamp(22px,1.56vw,30px)] font-semibold leading-[1.1] tracking-[-0.035em] max-[540px]:text-[22px]">{name}</h2>
+                  {subtitle && <p className="mt-0.5 w-full text-center text-[clamp(12px,0.77vw,14.8px)] leading-tight">{subtitle}</p>}
+                  <p className="mx-auto mt-1 w-full max-w-[390px] text-center text-[clamp(12px,0.77vw,14.8px)] leading-[1.15] max-[540px]:mt-2 max-[540px]:text-[13px] max-[540px]:leading-snug">{description}</p>
                 </div>
               </Link>
             </li>

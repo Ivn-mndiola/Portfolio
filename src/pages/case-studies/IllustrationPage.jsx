@@ -17,19 +17,19 @@ export default function IllustrationPage() {
   useScrollReveal()
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-white font-questrial text-white">
+    <div className="relative min-h-screen overflow-x-hidden bg-white font-urbanist text-white">
       <Nav active="/projects" darkSectionSelectors={DARK_SECTIONS} accent="orange" />
 
       <main className="illustration-case-main">
         <section className="illustration-hero relative h-[65.63vw] max-[1201px]:flex max-[1201px]:min-h-svh max-[1201px]:h-auto max-[1201px]:flex-col max-[1201px]:items-center max-[1201px]:px-6 max-[1201px]:pb-12 max-[1201px]:pt-36">
           <div className={`absolute left-1/2 top-[32.2%] w-full -translate-x-1/2 text-center max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
-            <p className="text-[clamp(11px,0.8vw,16px)] font-semibold uppercase tracking-[0.04em]">Digital Art</p>
-            <h1 className="mt-[0.45vw] font-bahnschrift text-[clamp(52px,4.75vw,92px)] font-black italic uppercase leading-none tracking-[0.015em] [text-shadow:0_8px_3px_rgba(120,63,0,0.22)] max-[1201px]:mt-3 max-[1201px]:text-[clamp(44px,13vw,72px)]">
+            <p className="case-study-label text-[clamp(11px,0.8vw,16px)] uppercase tracking-[0.04em]">Digital Art</p>
+            <h1 className="mt-[0.45vw] case-study-title text-[clamp(52px,4.75vw,92px)] not-italic uppercase leading-none tracking-[0.015em] [text-shadow:0_8px_3px_rgba(120,63,0,0.22)] max-[1201px]:mt-3 max-[1201px]:text-[clamp(44px,13vw,72px)]">
               Illustrations
             </h1>
           </div>
 
-          <CaseStudyDescription className={`absolute left-1/2 top-[50.5%] w-[48%] -translate-x-1/2 text-center text-white/95 max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-10 max-[1201px]:w-full max-[1201px]:max-w-2xl max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
+          <CaseStudyDescription variant="intro" className={`absolute left-1/2 top-[50.5%] w-[48%] -translate-x-1/2 text-center text-white/95 max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-10 max-[1201px]:w-full max-[1201px]:max-w-2xl max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
             A collection of vector, digital-based illustrations exploring storytelling, character design, and conceptual expression. Each work is crafted with a focus on clean forms, composition, and visual clarity, reflecting a minimalist approach to digital illustration.
           </CaseStudyDescription>
 
@@ -85,13 +85,15 @@ export default function IllustrationPage() {
             <ResponsiveImage src="/assets/images/illustration/street-food-edition.png" alt="Street Food Edition" className="absolute left-[84%] top-[24.1%] w-[6.3%] object-contain drop-shadow-[0_6px_3px_rgba(0,0,0,0.2)] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-3 max-[1201px]:w-[30%]" />
           </div>
 
-          <div className={`absolute left-[39.2%] top-[36.8%] w-[51.7%] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-10 max-[1201px]:w-full ${REVEAL}`} data-reveal>
+          <div className={`verto-sticker-row absolute left-[39.2%] top-[36.8%] w-[51.7%] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-10 max-[1201px]:w-full ${REVEAL}`} data-reveal tabIndex={0} role="region" aria-label="Verto sticker pack version one; scroll horizontally to see the complete sheet">
             <ResponsiveImage src="/assets/images/illustration/verto-stickers-v1.png" alt="Verto street food sticker pack version one" width="3960" height="496" className="block h-auto w-full object-contain" />
           </div>
 
-          <div className={`absolute left-[39.2%] top-[51.9%] w-[51.7%] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-4 max-[1201px]:w-full ${REVEAL}`} data-reveal>
+          <div className={`verto-sticker-row absolute left-[39.2%] top-[51.9%] w-[51.7%] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-4 max-[1201px]:w-full ${REVEAL}`} data-reveal tabIndex={0} role="region" aria-label="Verto sticker pack version two; scroll horizontally to see the complete sheet">
             <ResponsiveImage src="/assets/images/illustration/verto-stickers-v2.png" alt="Verto street food sticker pack version two" width="3960" height="610" className="block h-auto w-full object-contain" />
           </div>
+
+          <p className="verto-scroll-hint hidden max-[700px]:block mt-3 text-xs text-white/70">Swipe each sticker sheet to see the full collection.</p>
 
           <CaseStudyDescription className={`absolute top-[calc(51.9%_+_7.97vw_+_32px)] left-[64.6%] w-[51.7%] -translate-x-1/2 text-center max-[1201px]:relative max-[1201px]:top-auto max-[1201px]:left-auto max-[1201px]:mt-9 max-[1201px]:w-full max-[1201px]:max-w-2xl max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
             {VERTO_DESCRIPTION}

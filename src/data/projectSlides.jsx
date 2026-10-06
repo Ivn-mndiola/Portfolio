@@ -51,8 +51,8 @@ const SLIDES = [
     bg: '/assets/images/nia/NIA-BG.jpg',
     mobileArtwork: { src: '/assets/images/nia/NIA-AIRPLANE.svg', alt: 'New Ilocos Airport aircraft', kind: 'cutout', width: 1098, height: 369 },
     mobileBackground: 'radial-gradient(ellipse at 48% 48%, #60c9bf 0%, transparent 46%), linear-gradient(160deg, #57b9b1, #146f67 48%, #031c21 90%)',
-    smallIcon: '/assets/images/nia/nia-icon.png',
-    titleGraphic: '/assets/images/nia/NIA-PROJECT-NAME.png',
+    smallIcon: '/assets/images/nia/NIA-SYMBOL.svg',
+    titleGraphic: '/assets/images/nia/NIA-MAIN-NAME.svg',
     description: (
       <>
         a modern airport identity emphasizing <strong>clarity</strong>,{' '}

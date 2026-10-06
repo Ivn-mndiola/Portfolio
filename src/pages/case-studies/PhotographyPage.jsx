@@ -31,7 +31,7 @@ export default function PhotographyPage() {
   const openLightbox = viewer.open
 
   return (
-    <div className="photography-case-page min-h-screen overflow-x-hidden bg-[#262626] font-questrial text-white">
+    <div className="photography-case-page min-h-screen overflow-x-hidden bg-[#262626] font-urbanist text-white">
       <Nav active="/projects" darkSectionSelectors={DARK_SECTIONS} />
 
       <main>
@@ -42,14 +42,14 @@ export default function PhotographyPage() {
           >
             <p className="text-[clamp(11px,0.82vw,16px)] uppercase tracking-[0.03em]">
               <span className="font-serif font-black">SONY.</span>{' '}
-              <span className="font-bahnschrift font-semibold">ZV-E10</span>
+              <span className="font-montserrat font-bold">ZV-E10</span>
             </p>
-            <h1 className="mt-[0.6vw] font-bahnschrift text-[clamp(52px,4.35vw,84px)] font-black italic uppercase leading-none tracking-[0.01em] [text-shadow:0_9px_5px_rgba(55,66,0,0.38)] max-[1201px]:mt-3 max-[1201px]:text-[clamp(46px,13vw,76px)]">
+            <h1 className="mt-[0.6vw] case-study-title text-[clamp(52px,4.35vw,84px)] not-italic uppercase leading-none tracking-[0.01em] [text-shadow:0_9px_5px_rgba(55,66,0,0.38)] max-[1201px]:mt-3 max-[1201px]:text-[clamp(46px,13vw,76px)]">
               Photography
             </h1>
           </div>
 
-          <CaseStudyDescription
+          <CaseStudyDescription variant="intro"
             className={`absolute left-1/2 top-[50.5%] w-[48%] -translate-x-1/2 text-center text-white/95 max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-10 max-[1201px]:w-full max-[1201px]:max-w-2xl max-[1201px]:translate-x-0 ${REVEAL}`}
             data-reveal
           >
@@ -93,7 +93,7 @@ export default function PhotographyPage() {
             className={`absolute inset-x-0 top-[52.29vw] flex flex-col items-center max-[1201px]:relative max-[1201px]:top-auto ${REVEAL}`}
             data-reveal
           >
-            <div className="grid w-[58.8%] grid-cols-2 gap-[1.41vw] max-[1201px]:w-full max-[1201px]:max-w-[760px] max-[1201px]:grid-cols-1 max-[1201px]:gap-4">
+            <div className="photography-food-grid grid w-[58.8%] grid-cols-2 gap-[1.41vw] max-[1201px]:w-full max-[1201px]:max-w-[760px] max-[1201px]:grid-cols-1 max-[1201px]:gap-4">
               <Photo photo={PHOTOS[3]} index={3} onOpen={openLightbox} />
               <Photo photo={PHOTOS[4]} index={4} onOpen={openLightbox} />
             </div>

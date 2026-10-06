@@ -20,7 +20,7 @@ const SOCIAL_POSTS = Array.from({ length: 6 }, (_, i) => ({
 const DARK_SECTIONS = ['.cs-hero', '.mockup-slider-section', '.social-carousel-section']
 const REVEAL = 'opacity-0 translate-y-10 transition-[opacity,transform] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] will-change-[opacity,transform] data-[revealed=true]:translate-y-0 data-[revealed=true]:opacity-100'
 const SECTION = 'flex flex-col items-center px-[8vw] py-[100px] text-center'
-const HEADING = 'mb-[60px] font-urbanist text-[32px] font-extrabold uppercase tracking-[0.05em] text-[#FC044C]'
+const HEADING = 'case-study-title mb-[60px] text-[32px] uppercase tracking-[0.05em] text-[#FC044C]'
 const ROUND_BUTTON = 'flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-transparent text-white transition-all duration-200 hover:scale-105 hover:border-[#FC044C] hover:bg-[#FC044C]'
 
 export default function DanesPage() {
@@ -38,7 +38,7 @@ export default function DanesPage() {
   )
 
   return (
-    <div className="danes-case-page overflow-x-hidden bg-white font-inter text-[#23252A]">
+    <div className="danes-case-page overflow-x-hidden bg-white font-urbanist text-[#23252A]">
       <Nav active="/projects" darkSectionSelectors={DARK_SECTIONS} />
 
       <header className="cs-hero relative flex min-h-[80vh] flex-col items-center bg-[linear-gradient(180deg,#630521_0%,#1a0209_100%)] px-[8vw] pb-[60px] pt-[180px] text-center text-white">
@@ -48,14 +48,14 @@ export default function DanesPage() {
           className={`mb-10 w-full max-w-[500px] [filter:drop-shadow(0_15px_30px_rgba(0,0,0,0.5))] ${REVEAL}`}
           data-reveal
         />
-        <CaseStudyDescription className={`mb-20 max-w-[800px] text-white/80 [&_strong]:text-white ${REVEAL}`} data-reveal>
+        <CaseStudyDescription variant="intro" className={`mb-20 max-w-[800px] text-white/80 [&_strong]:text-white ${REVEAL}`} data-reveal>
           <strong>DANES Esports</strong> is a modern competitive gaming organization built
           on <strong>discipline, precision, and fearless execution.</strong> In an industry
           crowded with aggressive mascots and chaotic visuals, the goal was to design a
           brand identity that feels <strong>sharp, controlled, and instantly recognizable.</strong>
           <br />
           <br />
-          The concept <strong>&ldquo;Cut Through the Meta&rdquo;</strong> became the
+          The concept <strong className="italic">&ldquo;Cut Through the Meta&rdquo;</strong> became the
           foundation of the identity&mdash;a mindset of <strong>breaking trends</strong> rather
           than following them. The visual system uses angular cuts, bold typography, and
           high-contrast color to communicate <strong>speed, focus, and confidence.</strong>
@@ -78,11 +78,15 @@ export default function DanesPage() {
 
       <section className={`${SECTION} pb-0`}>
         <CaseStudyDescription className={`mb-10 max-w-[900px] [&_strong]:text-[#FC044C] ${REVEAL}`} data-reveal>
-          <strong>We are,</strong> a modern esports organization blending Sharp discipline,
+          <strong className="italic">We are,</strong> a modern esports organization blending Sharp discipline,
           precision, and fearlessness with contemporary gaming culture.
         </CaseStudyDescription>
-        <ResponsiveImage
+        <img
           src="/assets/images/danes/DANES-FULL-ROSTER.png"
+          width={1920}
+          height={681}
+          loading="lazy"
+          decoding="async"
           alt="Cut Through the Meta Roster Banner"
           className={`block h-auto w-screen max-w-none ${REVEAL}`}
           data-reveal
@@ -128,11 +132,11 @@ export default function DanesPage() {
         <div className={`flex w-full items-end justify-center gap-20 max-[900px]:flex-col max-[900px]:items-center max-[900px]:gap-10 ${REVEAL}`} data-reveal>
           <div className="flex flex-col items-center">
             <ResponsiveImage src="/assets/images/danes/RED-DANES-1.png" alt="Main Logo" className="mb-5 h-auto w-full max-w-[450px]" />
-            <span className="text-sm font-bold uppercase tracking-[0.05em] text-[#FC044C]">Main Logo</span>
+            <span className="case-study-label text-sm uppercase tracking-[0.05em] text-[#FC044C]">Main Logo</span>
           </div>
           <div className="flex flex-col items-center">
             <ResponsiveImage src="/assets/images/danes/RED-DANES-2.png" alt="Icon Logo" className="mb-5 h-auto w-full max-w-[450px]" />
-            <span className="text-sm font-bold uppercase tracking-[0.05em] text-[#FC044C]">Icon Logo</span>
+            <span className="case-study-label text-sm uppercase tracking-[0.05em] text-[#FC044C]">Icon Logo</span>
           </div>
         </div>
 
@@ -140,7 +144,7 @@ export default function DanesPage() {
           <div className="h-1.5 flex-1 -translate-y-0.5 rounded-[10px] bg-[#FC044C] shadow-[0_4px_8px_rgba(0,0,0,0.22)] max-[600px]:h-[3px] max-[600px]:w-full max-[600px]:flex-none" />
           <div className="flex flex-col items-center px-1">
             <div className="mb-[7px] h-[11px] w-[76px] rounded-r-full bg-[#FC044C] [clip-path:polygon(0_0,100%_0,100%_100%,25%_100%)]" />
-            <div className="font-urbanist text-[22px] font-extrabold leading-none tracking-[0.05em] text-[#FC044C] max-[900px]:text-lg">HOT MAGENTA RED</div>
+            <div className="font-urbanist text-[22px] font-bold leading-none tracking-[0.05em] text-[#FC044C] max-[900px]:text-lg">HOT MAGENTA RED</div>
             <div className="mt-[5px] font-urbanist text-[15px] font-normal tracking-[0.08em] text-[#FC044C] max-[900px]:text-sm">FC044C</div>
           </div>
           <div className="h-1.5 flex-1 -translate-y-0.5 rounded-[10px] bg-[#FC044C] shadow-[0_4px_8px_rgba(0,0,0,0.22)] max-[600px]:h-[3px] max-[600px]:w-full max-[600px]:flex-none" />
@@ -156,13 +160,13 @@ export default function DanesPage() {
       </section>
 
       <section className={`${SECTION} w-full pb-10`}>
-        <h2 className={`mb-10 font-urbanist text-[42px] max-sm:text-[28px] font-extrabold uppercase tracking-[0.05em] text-[#FC044C] ${REVEAL}`} data-reveal>
+        <h2 className={`case-study-title mb-10 text-[42px] max-sm:text-[28px] uppercase tracking-[0.05em] text-[#FC044C] ${REVEAL}`} data-reveal>
           TEAM COLOR AND TYPOGRAPHY
         </h2>
 
         <div className={`mx-auto flex w-full max-w-[1000px] justify-center shadow-[0_8px_24px_rgba(0,0,0,0.1)] max-[900px]:flex-wrap ${REVEAL}`} data-reveal>
           <div className="danes-swatch min-w-0 flex flex-1 flex-col max-[900px]:mb-6 max-[900px]:min-w-[50%]">
-            <div className="mb-3 font-urbanist text-xl font-extrabold uppercase tracking-[0.06em] text-[#BBBBBF]">
+            <div className="mb-3 font-bahnschrift text-xl font-bold uppercase tracking-[0.06em] text-[#BBBBBF]">
               MISTED SILVER
             </div>
             <div className="relative flex h-[120px] flex-col items-center justify-center bg-[#BBBBBF] text-white">
@@ -171,7 +175,7 @@ export default function DanesPage() {
             </div>
           </div>
           <div className="danes-swatch min-w-0 flex flex-1 flex-col max-[900px]:mb-6 max-[900px]:min-w-[50%]">
-            <div className="mb-3 font-urbanist text-xl font-extrabold uppercase tracking-[0.06em] text-[#FC044C]">
+            <div className="mb-3 font-bahnschrift text-xl font-bold uppercase tracking-[0.06em] text-[#FC044C]">
               HOT MAGENTA RED
             </div>
             <div className="relative flex h-[120px] flex-col items-center justify-center bg-[#FC044C] text-white">
@@ -180,7 +184,7 @@ export default function DanesPage() {
             </div>
           </div>
           <div className="danes-swatch min-w-0 flex flex-1 flex-col max-[900px]:mb-6 max-[900px]:min-w-[50%]">
-            <div className="mb-3 font-urbanist text-xl font-extrabold uppercase tracking-[0.06em] text-[#23252A]">
+            <div className="mb-3 font-bahnschrift text-xl font-bold uppercase tracking-[0.06em] text-[#23252A]">
               DANES BLACK
             </div>
             <div className="relative flex h-[120px] flex-col items-center justify-center bg-[#23252A] text-white">
@@ -189,7 +193,7 @@ export default function DanesPage() {
             </div>
           </div>
           <div className="danes-swatch min-w-0 flex flex-1 flex-col max-[900px]:mb-6 max-[900px]:min-w-[50%]">
-            <div className="mb-3 font-urbanist text-xl font-extrabold uppercase tracking-[0.06em] text-[#FC044C]">
+            <div className="mb-3 font-bahnschrift text-xl font-bold uppercase tracking-[0.06em] text-[#FC044C]">
               FROSTED PEARL
             </div>
             <div className="relative flex h-[120px] flex-col items-center justify-center bg-[#EDEDED] text-[#FC044C]">
@@ -205,18 +209,18 @@ export default function DanesPage() {
           <span className="font-gill text-[64px] font-normal leading-none tracking-[0.02em] text-white max-[900px]:text-[40px]">Gill Sans MT Condensed</span>
         </div>
         <div className="flex w-full items-center justify-center bg-[#FC044C] py-3.5 text-center">
-          <span className="font-urbanist text-[72px] font-extrabold leading-none tracking-[0.02em] text-white max-[900px]:text-5xl">Urbanist</span>
+          <span className="font-urbanist text-[72px] font-black leading-none tracking-[0.02em] text-white max-[900px]:text-5xl">Urbanist</span>
         </div>
       </div>
 
       <section className={`${SECTION} pt-0`}>
         <CaseStudyDescription className={`max-w-[800px] [&_strong]:text-[#FC044C] ${REVEAL}`} data-reveal>
           <strong>Gill Sans MT Condensed</strong> and <strong>Urbanist</strong> form
-          a <strong>clean, modern</strong> typographic system. Gill Sans
-          adds <strong>energy and focus</strong>, while Urbanist
-          provides <strong>clarity and balance</strong>, creating
-          a <strong>professional, readable</strong>, and{' '}
-          <strong>contemporary hierarchy</strong>.
+          a <strong className="italic">clean, modern</strong> typographic system. Gill Sans
+          adds <strong className="italic">energy and focus</strong>, while Urbanist
+          provides <strong className="italic">clarity and balance</strong>, creating
+          a <strong className="italic">professional, readable</strong>, and{' '}
+          <strong className="italic">contemporary hierarchy</strong>.
         </CaseStudyDescription>
       </section>
 
@@ -243,7 +247,7 @@ export default function DanesPage() {
           data-reveal
         />
 
-        <p className={`mt-8 max-w-[800px] text-center text-[11px] uppercase leading-relaxed tracking-[0.05em] text-[#FC044C] [&_strong]:font-bold ${REVEAL}`} data-reveal>
+        <p className={`mt-8 max-w-[800px] font-questrial text-center text-[11px] uppercase leading-relaxed tracking-[0.05em] text-[#FC044C] [&_strong]:font-bold ${REVEAL}`} data-reveal>
           <strong>DISCLAIMER:</strong>
           <br />
           The logos displayed in this portfolio are used solely for educational and
@@ -258,7 +262,7 @@ export default function DanesPage() {
 
       <section className="mockup-slider-section flex w-screen max-w-none flex-col items-start bg-[#23252A] px-[8vw] py-[100px]">
         <div className={`mb-10 flex w-full items-center justify-between max-[600px]:flex-col max-[600px]:items-start max-[600px]:gap-5 ${REVEAL}`} data-reveal>
-          <h2 className="font-urbanist text-[42px] max-sm:text-[28px] font-extrabold uppercase tracking-[0.02em] text-white">Mockups</h2>
+          <h2 className="font-urbanist text-[42px] max-sm:text-[28px] font-black uppercase tracking-[0.02em] text-white">Mockups</h2>
 
           <div className="flex gap-4">
             <button type="button" className={ROUND_BUTTON} aria-label="Previous mockup" aria-controls="danes-mockup-track" onClick={mockupPrev}>
