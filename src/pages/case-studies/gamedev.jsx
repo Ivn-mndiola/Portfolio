@@ -150,7 +150,7 @@ export default function GameDev() {
         </section>
 
         <SectionDivider>TYPOGRAPHY</SectionDivider>
-        <section className={`${FADE} mx-auto grid w-full max-w-[1060px] grid-cols-2 gap-20 px-5 text-center max-lg:grid-cols-1`}>
+        <section className={`${FADE} gamedev-typography mx-auto grid w-full max-w-[1060px] grid-cols-2 gap-20 px-5 text-center max-lg:grid-cols-1`}>
           <div><p className="mb-6 text-[25px] font-normal tracking-normal">PRIMARY</p><h2 className="font-montserrat text-[clamp(48px,4.1vw,78px)] font-normal tracking-[-0.04em]">Montserrat</h2></div>
           <div><p className="mb-6 text-[25px] font-normal tracking-normal">SECONDARY</p><h2 className="font-karla text-[clamp(48px,4.1vw,78px)] font-normal tracking-[-0.04em]">Karla</h2></div>
         </section>
@@ -171,7 +171,7 @@ export default function GameDev() {
 
         <SectionDivider>MOCKUPS</SectionDivider>
         <section className={`${FADE} mb-32 w-full max-w-[1060px] px-5`}>
-          <div className="grid grid-cols-3 gap-1.5 border border-white/[0.08] bg-[#1E1A38] max-md:grid-cols-2 max-md:gap-1 max-[480px]:grid-cols-1">
+          <div className="gamedev-mockups grid grid-cols-3 gap-1.5 border border-white/[0.08] bg-[#1E1A38] max-md:grid-cols-2 max-md:gap-1 max-[480px]:grid-cols-1">
             {MOCKUPS.map((mockup) => (
               <div className="aspect-square overflow-hidden bg-[#141126]" key={mockup.n}>
                 <ResponsiveImage src={mockup.src} alt={`Mockup ${mockup.n}`} loading="lazy" className="block h-full w-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.06]" />

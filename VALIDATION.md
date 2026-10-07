@@ -1,3 +1,19 @@
+# v85: Tablet validation
+
+- Production build passed with the existing React, Vite, and Tailwind dependencies.
+- All thirteen routes were checked at 768x1024, 820x1180, 900x1100, 1000x800, 1001x800, and 1024x768, plus phone 390x844 and desktop 1920x1080: 104 route and viewport checks.
+- The checked pages had no document horizontal overflow, clipped text, missing files, or runtime page errors.
+- Final Services checks at widths 768, 820, 900, 1000, 1001, 1002, and 1024 confirmed centered headings/descriptions and consistent spacing through the former breakpoint jump.
+- Fourteen interaction groups passed at portrait and landscape tablet sizes: hamburger navigation, service enquiries, local contact-draft previews, sticky About portraits, all eight project previews, Danes pagination and mockups, Source carousel controls, and both photo viewers including focus restoration.
+- Visible tablet controls, menu links, contact fields, draft actions, and focused skip links meet the 44x44px minimum. Danes pagination retains small visible dots inside larger touch targets.
+- All eight case-study pages and project previews retained Inter descriptions at 14px with a 25.2px line height. Photography headings remain Fugaz One and the Sony label remains Montserrat.
+- Source artwork and font files are unchanged. Original image proportions, project colors, About reveals, and the v84 side arrows are retained.
+- Checks used Chromium browser emulation. Physical tablet testing was not performed.
+
+Older validation notes below describe earlier versions. The current font roles are documented in FONT_AUDIT.md.
+
+---
+
 # v77 — Supplied-font validation
 
 - Production build passed (`npm run build`, Vite 7.3.6, 77 modules).

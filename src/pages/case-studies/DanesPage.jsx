@@ -322,19 +322,18 @@ export default function DanesPage() {
           </div>
         </div>
 
-        <div className="mt-6 flex gap-2.5">
+        <div className="danes-social-pagination mt-6 flex gap-2.5">
           {SOCIAL_POSTS.map((post, i) => (
-            <div
+            <button
               key={post.n}
-              className={`h-2 w-2 cursor-pointer rounded-full transition-all duration-300 ${i === activeIndex ? 'scale-[1.3] bg-[#FC044C]' : 'bg-white/25'}`}
+              type="button"
+              className="danes-social-dot flex h-2 w-2 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               onClick={() => goToDot(i)}
-              role="button"
-              tabIndex={0}
               aria-label={`Show social post ${post.n}`}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') goToDot(i)
-              }}
-            />
+              aria-pressed={i === activeIndex}
+            >
+              <span aria-hidden="true" className={`pointer-events-none block h-2 w-2 shrink-0 rounded-full transition-all duration-300 ${i === activeIndex ? 'scale-[1.3] bg-[#FC044C]' : 'bg-white/25'}`} />
+            </button>
           ))}
         </div>
       </section>

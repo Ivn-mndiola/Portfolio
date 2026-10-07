@@ -3,6 +3,7 @@
 @import "./ui-fonts.css";
 @import "./responsive.css";
 @import "./typography.css";
+@import "./tablet.css";
 
 /* Safari uses the page canvas around its toolbars and during overscroll.
    Keep both surfaces in sync with the current route or project slide. */

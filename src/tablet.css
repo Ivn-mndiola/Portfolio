@@ -1,0 +1,127 @@
+@media (min-width: 768px) and (max-width: 1024px) {
+  :root {
+    --tablet-gutter: clamp(24px, 4vw, 40px);
+    --tablet-gap: clamp(24px, 3vw, 32px);
+  }
+
+  .site-nav .site-nav-toggle { right: max(24px, env(safe-area-inset-right)); }
+  .site-nav .site-nav-links a { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+
+  .home-page .home-title { padding-inline: var(--tablet-gutter); }
+  .home-page .home-title h1 { font-size: clamp(112px, 16vw, 164px); }
+  .projects-page { --project-arrow-inset: 24px; }
+
+  .interior-page main#page-content:not(.about-layout) { padding: 128px var(--tablet-gutter) 64px; }
+  .interior-page #page-content > h1 { font-size: clamp(64px, 8vw, 84px); margin-bottom: 40px; }
+  .interior-page ol[aria-label="Creative services"] { width: 100%; max-width: 760px; gap: 24px; }
+  .interior-page #page-content .service-card { --service-gutter: clamp(96px, 13vw, 128px); min-height: 144px; border-radius: 40px; }
+  .interior-page .service-card > div:first-child { flex-direction: column; gap: 4px; padding: 16px 0; }
+  .interior-page .service-card > div:first-child img { width: 24px; height: 34px; }
+  .interior-page .service-number { font-size: clamp(44px, 6vw, 58px); }
+  .interior-page .service-copy { padding: 20px 12px; }
+  .interior-page .service-copy h2 { font-size: clamp(22px, 2.65vw, 28px); line-height: 1.2; }
+  .interior-page .service-copy h2 ~ p:last-child { font-size: 14px; line-height: 1.5; }
+
+  .interior-page .about-layout {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.85fr) minmax(0, 1.4fr);
+    align-items: start;
+    gap: var(--tablet-gap);
+    padding: 128px var(--tablet-gutter) 64px;
+  }
+  .about-layout .about-portrait {
+    position: sticky;
+    top: 112px;
+    left: auto;
+    bottom: auto;
+    display: block;
+    width: min(100%, 340px, calc((100svh - 156px) * 0.8213));
+    margin: 0 auto;
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  }
+  .about-layout .about-scroll-content { width: 100%; min-width: 0; max-width: none; margin: 0; padding: 0; }
+  .about-layout .about-introduction { padding: 0; }
+  .about-layout .about-introduction h1 { text-align: left; font-size: clamp(72px, 8vw, 96px); }
+  .about-layout .about-biography { font-size: 16px; line-height: 1.5; }
+  .about-layout .about-biography-lead { text-align: left; }
+  .about-layout .about-divider { margin-block: 40px; }
+  .about-layout .about-history { padding: 0; }
+  .about-layout .about-section-title { font-size: clamp(26px, 3vw, 32px); line-height: 1.2; }
+  .about-layout .about-history-row { grid-template-columns: minmax(0, 1fr); gap: 8px; font-size: 16px; line-height: 1.4; }
+  .about-layout .about-history-row > p { font-size: 14px; color: rgb(253 253 253 / 80%); }
+  .about-layout .about-address { font-size: 12px; line-height: 1.4; }
+  .about-layout .about-detail { font-size: 14px; line-height: 1.5; }
+  .about-layout .about-experience { margin-top: 48px; }
+  .about-layout .about-experience .about-history-row + .about-history-row { margin-top: 32px; }
+  .about-layout .about-tools { grid-template-columns: minmax(0, 1fr); gap: 24px; margin: 48px 0 0; }
+  .about-layout .about-tools .about-section-title { padding: 0; }
+  .about-layout .about-equipment-title { text-align: left; font-size: 14px; line-height: 1.4; }
+  .about-layout .about-equipment-list { justify-content: center; gap: 32px; }
+  .about-layout .about-equipment-list li:first-child { max-width: 180px; }
+  .about-layout .about-equipment-list li:last-child { max-width: 90px; }
+
+  .interior-page > a[href="#page-content"]:focus { position: fixed; top: 24px; left: 24px; display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; }
+
+  .interior-page main#page-content > header h1 { font-size: clamp(52px, 6.4vw, 68px); }
+  .interior-page form { max-width: 760px; padding-inline: 24px; }
+  .interior-page form > .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .interior-page form > .grid > label:last-child { grid-column: 1 / -1; }
+  .interior-page :is(button, input, textarea, summary) { min-width: 44px; min-height: 44px; }
+  .interior-page main#page-content > header a,
+  .interior-page form a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
+  .interior-page form summary { padding-block: 12px; }
+
+  :is(.source-hero, .artlantis-hero, .photography-hero, .illustration-hero, .dbfortri-hero, .nia-hero) { padding-inline: var(--tablet-gutter); padding-top: 128px; }
+  .danes-case-page .cs-hero { padding: 128px var(--tablet-gutter) 48px; }
+  .danes-case-page .cs-hero > img { width: min(100%, 430px); height: auto; }
+  .danes-case-page section { padding-inline: var(--tablet-gutter); }
+  .danes-case-page section h2 { font-size: clamp(28px, 3.2vw, 34px); }
+  .danes-case-page section > .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--tablet-gap); }
+  .danes-case-page .danes-social-pagination { gap: 4px; }
+  .danes-case-page .danes-social-dot { width: 44px; height: 44px; touch-action: manipulation; }
+
+  .gamedev-case-study main > section,
+  .gamedev-case-study main > div[id] { padding-inline: var(--tablet-gutter); }
+  .gamedev-case-study .gamedev-values { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--tablet-gap); margin-bottom: 48px; }
+  .gamedev-case-study .gamedev-values > :last-child { grid-column: 1 / -1; width: 100%; max-width: 360px; justify-self: center; }
+  .gamedev-case-study .gamedev-identity-card { padding: 24px; }
+  .gamedev-case-study .gamedev-identity-card > div:nth-child(2) { height: 160px; }
+  .gamedev-case-study .gamedev-identity-card [role="img"] { max-width: 180px; }
+  .gamedev-case-study .gamedev-typography { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--tablet-gap); }
+  .gamedev-case-study .gamedev-typography h2 { font-size: clamp(36px, 4.8vw, 50px); }
+  .gamedev-case-study .gamedev-mockups { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .gamedev-case-study #journey h2 > span:last-child { font-size: clamp(64px, 10vw, 108px); }
+
+  .nia-case-page :is(.nia-brand-section, .nia-dark-section, .nia-terminal-section, .nia-staff-section) { padding: 56px var(--tablet-gutter) 56px calc(var(--tablet-gutter) + 36px); }
+  .nia-case-page .nia-timeline { left: var(--tablet-gutter); }
+  .nia-case-page :is(.nia-brand-section, .nia-dark-section, .nia-terminal-section, .nia-staff-section) > img { height: auto; object-fit: contain; }
+
+  .source-case-page .source-brand-layout { padding: 56px var(--tablet-gutter) 0; gap: var(--tablet-gap); }
+  .source-case-page .source-social-layout { padding: 56px var(--tablet-gutter); }
+  .source-case-page .source-social-content { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: var(--tablet-gap); max-width: 960px; margin: 0 auto; }
+  .source-case-page .source-social-content > .source-liquid-glass { width: 100%; max-width: none; min-height: 0; margin: 0; padding: 24px; }
+  .source-case-page .source-social-content .case-study-title { font-size: clamp(32px, 4.7vw, 48px); white-space: normal; }
+  .source-case-page .source-brand-layout > img { height: auto; object-fit: contain; }
+
+  .artlantis-case-page .artlantis-character-layout { padding: 56px var(--tablet-gutter); gap: 48px var(--tablet-gap); }
+  .artlantis-case-page .artlantis-character-layout > img { width: 100%; height: auto; object-fit: contain; }
+  .artlantis-case-page .artlantis-character-layout h2 { font-size: clamp(24px, 3vw, 32px); line-height: 1.2; }
+  .illustration-case-main > section:not(.illustration-hero) { padding-inline: var(--tablet-gutter); }
+  :is(.illustration-hero, .photography-hero) h1 { font-size: clamp(48px, 7.5vw, 76px); }
+  .illustration-case-main :is(.illustration-panagbenga, .illustration-cascandy) > img { width: 100%; height: auto; object-fit: contain; }
+
+  .photography-case-page .photography-gallery { padding-inline: var(--tablet-gutter); }
+  .photography-case-page .photography-food-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .photo-triptych { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .photo-triptych > button:nth-child(2) { grid-column: 1 / -1; grid-row: 1; width: 100%; max-width: 560px; justify-self: center; }
+  .photo-triptych > button > img,
+  .photography-case-page .photo-thumbnail > img { width: 100%; height: auto; object-fit: contain; }
+
+  .dbfortri-case-main .dbfortri-paper:not(:has(.dbfortri-gallery)) { padding-inline: var(--tablet-gutter); }
+  .dbfortri-case-main .dbfortri-values { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--tablet-gap); }
+  .dbfortri-case-main .dbfortri-mobile-mockups { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-inline: var(--tablet-gutter); gap: var(--tablet-gap); }
+  .dbfortri-case-main .dbfortri-story { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: center; gap: var(--tablet-gap); }
+  .dbfortri-case-main .dbfortri-story > img:last-child { width: 100%; max-width: 430px; height: auto; margin: 0 auto; }
+  .dbfortri-case-main .dbfortri-gallery { padding-inline: var(--tablet-gutter); }
+  .photo-lightbox { padding-inline: max(24px, env(safe-area-inset-left), env(safe-area-inset-right)); }
+}

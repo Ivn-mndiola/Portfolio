@@ -170,7 +170,7 @@ export default function SourcePage() {
         <section className="source-social-layout relative h-[55.77vw] bg-transparent max-[1201px]:h-auto max-[1201px]:space-y-10 max-[1201px]:bg-[linear-gradient(180deg,#EEF2FA_0%,#244394_42%,#244394_100%)] max-[1201px]:px-5 max-[1201px]:py-16">
           <div className="source-social-dark-nav pointer-events-none absolute inset-x-0 bottom-0 h-[79%]" aria-hidden="true" />
 
-          <div className="absolute left-1/2 top-[5%] flex -translate-x-1/2 items-center gap-[clamp(24px,2.7vw,38px)] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:w-full max-[1201px]:translate-x-0 max-[1201px]:flex-col max-[1201px]:gap-10">
+          <div className="source-social-content absolute left-1/2 top-[5%] flex -translate-x-1/2 items-center gap-[clamp(24px,2.7vw,38px)] max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:w-full max-[1201px]:translate-x-0 max-[1201px]:flex-col max-[1201px]:gap-10">
             <div
               className={`source-liquid-glass flex w-[39vw] max-w-[560px] shrink-0 flex-col items-center rounded-[clamp(32px,4.1vw,58px)] px-[clamp(32px,2.9vw,42px)] py-[clamp(38px,3.5vw,50px)] max-[1201px]:w-full max-[1201px]:max-w-none max-[1201px]:rounded-[32px] max-[1201px]:p-6 ${REVEAL}`}
               data-reveal
