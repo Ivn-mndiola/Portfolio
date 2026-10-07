@@ -1,17 +1,17 @@
-# Typography correction — v79
+# Typography correction: v83
 
-Home and project metadata use their original typography again. The extra case-study heading and label changes from v78 have been reverted. The latest font changes are limited to case-study descriptions, including opening summaries and the DBFortri gallery description.
+All case-study descriptions use Inter, including opening summaries, body copy, project-preview descriptions, and gallery descriptions. Photography uses Fugaz One for its title and project-preview title, matching Illustrations. Its camera label and gallery headings use Montserrat. The camera label reads “SONY ZV-E10” without a dot.
 
 | Case-study description | Font |
 | --- | --- |
-| Danes | Urbanist |
-| Philippine GameDev | Karla |
-| NIA | Bahnschrift |
-| Source | Questrial |
-| Artlantis | Urbanist |
-| Illustration | Urbanist |
-| Photography | Urbanist |
-| DBFortri | Plus Jakarta Sans |
+| Danes | Inter |
+| Philippine GameDev | Inter |
+| NIA | Inter |
+| Source | Inter |
+| Artlantis | Inter |
+| Illustration | Inter |
+| Photography | Inter |
+| DBFortri | Inter |
 
 Descriptions retain the shared 14px size and 1.8 line height, with the existing bold and italic emphasis.
 

@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 // Toggles a `.nav-red` class on the <nav> element while its vertical
 // center overlaps designated dark-background sections (hero, mockups, social).
-// Only meant to run on pages that want this behavior — always cleans up
+// Only meant to run on pages that want this behavior: always cleans up
 // the class on unmount so it never leaks onto other routes' nav.
 export default function useNavColorToggle(darkSectionSelectors = []) {
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function useNavColorToggle(darkSectionSelectors = []) {
 
     return () => {
       document.removeEventListener('scroll', onScroll)
-      // Always reset — otherwise the class sticks around on the shared
+      // Always reset: otherwise the class sticks around on the shared
       // <nav> DOM node when navigating to a page that doesn't use this hook.
       if (nav) nav.classList.remove('nav-red')
     }

@@ -82,7 +82,7 @@ export default function ArtlantisPage() {
           <div className={`absolute left-1/2 top-[3%] w-[65%] max-w-[850px] -translate-x-1/2 text-center max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:w-full max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
             <h2 className="case-study-title text-[clamp(24px,1.65vw,32px)]">Introduction</h2>
             <CaseStudyDescription className="mt-[1.2vw] max-[1201px]:mt-5">
-              During his internship as an Artist, Graphic Artist, and Illustrator, Iverson Mendiola was entrusted with developing Chanty and Sharky—a playful underwater character duo that later became official mascots. As one of his earliest character-design projects, the experience created an opportunity to explore illustration, visual storytelling, and character development within a professional creative environment.
+              During his internship as an Artist, Graphic Artist, and Illustrator, Iverson Mendiola was entrusted with developing Chanty and Sharky, a playful underwater character duo that later became official mascots. As one of his earliest character-design projects, the experience created an opportunity to explore illustration, visual storytelling, and character development within a professional creative environment.
             </CaseStudyDescription>
             <CaseStudyDescription className="mt-[1.2vw] max-[1201px]:mt-4">
               Guided by experimental sketches and iterative refinement, the initial concepts became memorable characters with distinct identities and values. Seeing the project evolve from sketches into recognized mascots became an important milestone in his creative journey.

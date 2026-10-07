@@ -25,7 +25,7 @@ const PHOTOS = [
   srcSet: `${photoSource(photo, 1600)} ${[1, 5].includes(photo.id) ? 1600 : 1066}w, ${photoSource(photo, 2400)} ${[1, 5].includes(photo.id) ? 2400 : 1600}w`,
   sizes: '(max-width: 1200px) calc(100vw - 40px), 34vw',
   category: 'Portrait Photography',
-  title: 'Ashley Yvonne — Eighteen',
+  title: 'Ashley Yvonne, Eighteen',
   accent: '#FFFFFF',
 }))
 
@@ -56,7 +56,7 @@ function GalleryCarousel() {
           onOpen={viewer.open}
           cropPreviews
         />
-        <Caption heading="Portrait Photography" name="Ashley Yvonne — Eighteen">
+        <Caption heading="Portrait Photography" name="Ashley Yvonne, Eighteen">
           A timeless portrait series created to preserve an important milestone with intention.
         </Caption>
       </div>
@@ -131,7 +131,7 @@ export default function DbfortriPage() {
 
         <section className="dbfortri-paper relative h-[86.25vw] min-h-[820px] text-center max-[1201px]:h-auto max-[1201px]:min-h-0 max-[1201px]:px-6 max-[1201px]:py-24">
           <div className={`absolute left-1/2 top-[10.15%] w-[24.74%] -translate-x-1/2 max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mx-auto max-[1201px]:w-full max-[1201px]:max-w-[475px] max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
-            <ResponsiveImage src={`${ASSET_ROOT}/dbfortri-black-wordmark-vector.svg`} alt="DBFortri — Formed to be timeless" className="w-full" loading="lazy" decoding="async" />
+            <ResponsiveImage src={`${ASSET_ROOT}/dbfortri-black-wordmark-vector.svg`} alt="DBFortri, Formed to be timeless" className="w-full" loading="lazy" decoding="async" />
           </div>
 
           <article className={`absolute left-1/2 top-[35.33%] w-[44.38%] -translate-x-1/2 max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mt-20 max-[1201px]:w-full max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
@@ -245,7 +245,7 @@ export default function DbfortriPage() {
 
           <ResponsiveImage
             src={`${ASSET_ROOT}/dbfortri-footer-logo-vector.svg`}
-            alt="DBFortri — Formed to be timeless"
+            alt="DBFortri, Formed to be timeless"
             loading="lazy"
             decoding="async"
             className={`absolute left-1/2 top-[76.9%] w-[10.73%] -translate-x-1/2 max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mx-auto max-[1201px]:mt-20 max-[1201px]:w-[190px] max-[1201px]:translate-x-0 ${REVEAL}`}

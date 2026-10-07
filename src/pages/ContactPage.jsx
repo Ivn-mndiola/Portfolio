@@ -21,7 +21,7 @@ export default function ContactPage() {
     if (!form.reportValidity()) return
     const data = new FormData(form)
     const name = [data.get('firstName'), data.get('lastName')].map(value => String(value || '').trim()).filter(Boolean).join(' ')
-    const subject = service ? `${service} enquiry${name ? ` — ${name}` : ''}` : `Portfolio enquiry${name ? ` — ${name}` : ''}`
+    const subject = service ? `${service} enquiry${name ? ` from ${name}` : ''}` : `Portfolio enquiry${name ? ` from ${name}` : ''}`
     const body = [`Name: ${name || 'Not provided'}`, `Email: ${String(data.get('email')).trim()}`, ...(service ? [`Service: ${service}`] : []), '', String(data.get('message')).trim()].join('\n')
     const url = `${GMAIL_COMPOSE}&${new URLSearchParams({ su: subject, body })}`
     setDraft(`To: ${EMAIL}\nSubject: ${subject}\n\n${body}`)

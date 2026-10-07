@@ -56,7 +56,7 @@ export default function DanesPage() {
           <br />
           <br />
           The concept <strong className="italic">&ldquo;Cut Through the Meta&rdquo;</strong> became the
-          foundation of the identity&mdash;a mindset of <strong>breaking trends</strong> rather
+          foundation of the identity, a mindset of <strong>breaking trends</strong> rather
           than following them. The visual system uses angular cuts, bold typography, and
           high-contrast color to communicate <strong>speed, focus, and confidence.</strong>
           <br />

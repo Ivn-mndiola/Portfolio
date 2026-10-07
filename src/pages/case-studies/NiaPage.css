@@ -91,7 +91,7 @@
  .nia-terminal-section .nia-timeline-marker img{filter:brightness(0) invert(1);}
  .nia-staff-section>article{order:1;}
  .nia-staff-section>img{order:2;max-width:620px;margin-inline:auto;}
- .nia-staff-section>img[alt^="New Ilocos Airport —"]{order:3;width:150px;margin-top:30px;}
+ .nia-staff-section>img[alt^="New Ilocos Airport,"]{order:3;width:150px;margin-top:30px;}
  .nia-staff-section>span{order:4;text-align:center;}
 }
 @media(max-width:600px){

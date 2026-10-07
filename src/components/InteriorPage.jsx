@@ -6,7 +6,7 @@ import './InteriorPage.css'
 export default function InteriorPage({ active, title, children, fixedBackground = false }) {
   useEffect(() => {
     const previousTitle = document.title
-    document.title = `${title} — Iverson Mendiola`
+    document.title = `${title} | Iverson Mendiola`
     window.scrollTo(0, 0)
     return () => { document.title = previousTitle }
   }, [active, title])

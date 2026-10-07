@@ -62,7 +62,7 @@
   padding: 0;
   background: transparent;
   transition: transform 0.3s ease;
-  font-family: 'Inter', sans-serif; /* reset — don't inherit the page's Montserrat */
+  font-family: 'Inter', sans-serif; /* reset: don't inherit the page's Montserrat */
 }
 
 /* ===========================

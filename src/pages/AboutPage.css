@@ -18,6 +18,27 @@
 
 .about-portrait img { display: block; width: 100%; height: auto; }
 
+.about-layout .about-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 750ms cubic-bezier(0.22, 1, 0.36, 1) var(--about-reveal-delay, 0ms),
+    transform 750ms cubic-bezier(0.22, 1, 0.36, 1) var(--about-reveal-delay, 0ms);
+}
+
+.about-layout .about-reveal[data-revealed="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-layout .about-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 .about-scroll-content {
   position: relative;
   width: 42.3%;

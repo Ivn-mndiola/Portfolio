@@ -1,4 +1,12 @@
-# Portfolio v81
+# Portfolio v84
+
+On phones and tablets, the Projects previous and next buttons now stay midway down the left and right sides of the preview. A smaller bottom bar keeps the progress indicator visible while the preview scrolls.
+
+Em dashes have been removed from page copy, captions, image descriptions, browser titles, and generated contact-draft subjects. Commas, colons, or natural wording keep the text readable.
+
+All case-study descriptions use Inter, including opening summaries, body copy, gallery descriptions, DBFortri descriptions, and project-preview descriptions. Description size remains 14px with a 1.8 line height. Photography uses Fugaz One for its case-study and project-preview headings, matching Illustrations. The camera label uses Montserrat and reads “SONY ZV-E10” without a dot.
+
+About now has a gentle upward fade for the portrait, introduction, education, experience, and tools. Sections reveal once as they enter the viewport. Reduced-motion settings show the content immediately.
 
 Services titles and descriptions now share the same horizontal center as “What I Do.” Equal space on both sides of the copy keeps it centered while the service numbers remain on the left. The layout adjusts for mobile screens, and the background stays fixed while the content scrolls.
 
@@ -8,7 +16,7 @@ Some supplied images are small originals and need higher-resolution exports for 
 
 The v80 lockfile fix for `source-map-js` 1.2.2 is retained. Dependency versions are unchanged in this update.
 
-Home and metadata retain the original typography restored in v79. Case-study descriptions retain their project-specific font families.
+Home and metadata retain the original typography restored in v79.
 
 ## Start the site
 

@@ -67,7 +67,7 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
   }, [menuOpen])
 
   // Scroll-tint: only runs when a page opts in via darkSectionSelectors.
-  // State resets naturally on unmount — no manual DOM cleanup needed.
+  // State resets naturally on unmount: no manual DOM cleanup needed.
   useEffect(() => {
     if (!darkSectionSelectors || darkSectionSelectors.length === 0) return
 

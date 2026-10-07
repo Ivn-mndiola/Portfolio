@@ -2,7 +2,7 @@
    NEW ILOCOS AIRPORT CASE STUDY
    ----------------------------------------------------------
    Global reset, glass nav, and hamburger menu already live in
-   index.css and are rendered by the shared <Nav> component —
+   index.css and are rendered by the shared <Nav> component,
    this file only holds Nia-page-specific rules.
    ----------------------------------------------------------
    CONTENTS
@@ -388,7 +388,7 @@
 }
 
 /* ==========================================================
-   ID MOCKUP SECTION — matches Figma exactly
+   ID MOCKUP SECTION: matches Figma exactly
    - Soft neutral background, artwork begins at the section boundary
    - Teal vertical rule aligned to the global timeline column
    - NIA logo + heading + subtitle on the left
@@ -480,7 +480,7 @@
 }
 
 /* ==========================================================
-   RESPONSIVE — ID SECTION
+   RESPONSIVE: ID SECTION
 ========================================================== */
 @media (max-width: 1200px) {
 .nia-case-study .id-card-img {

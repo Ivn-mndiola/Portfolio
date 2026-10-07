@@ -31,7 +31,7 @@ export default function PhotographyPage() {
   const openLightbox = viewer.open
 
   return (
-    <div className="photography-case-page min-h-screen overflow-x-hidden bg-[#262626] font-urbanist text-white">
+    <div className="photography-case-page min-h-screen overflow-x-hidden bg-[#262626] font-montserrat text-white">
       <Nav active="/projects" darkSectionSelectors={DARK_SECTIONS} />
 
       <main>
@@ -41,7 +41,7 @@ export default function PhotographyPage() {
             data-reveal
           >
             <p className="text-[clamp(11px,0.82vw,16px)] uppercase tracking-[0.03em]">
-              <span className="font-serif font-black">SONY.</span>{' '}
+              <span className="font-montserrat font-bold">SONY</span>{' '}
               <span className="font-montserrat font-bold">ZV-E10</span>
             </p>
             <h1 className="mt-[0.6vw] case-study-title text-[clamp(52px,4.35vw,84px)] not-italic uppercase leading-none tracking-[0.01em] [text-shadow:0_9px_5px_rgba(55,66,0,0.38)] max-[1201px]:mt-3 max-[1201px]:text-[clamp(46px,13vw,76px)]">

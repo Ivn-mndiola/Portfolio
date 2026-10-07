@@ -173,7 +173,7 @@ export default function NiaPage() {
         <div className="absolute left-[60.5%] top-[12.6%] z-10 w-[31%]">
           <Feature title="Clarity" label="Precision">High-contrast, bold strokes and generous spacing.</Feature>
           <Feature title="Flow" label="Movement">The curve rhythm that connects the three letters.</Feature>
-          <Feature title="Efficiency" label="Connectivity">The use of mirrored modules&mdash;N and A share the same geometry.</Feature>
+          <Feature title="Efficiency" label="Connectivity">The use of mirrored modules: N and A share the same geometry.</Feature>
         </div>
 
         <article className={`${COPY_BLOCK} left-[18.45%] top-[28.7%] w-[34%] ${REVEAL}`} data-reveal>
@@ -327,7 +327,7 @@ export default function NiaPage() {
 
         <ResponsiveImage
           src="/assets/images/nia/NIA-FOOTER.svg"
-          alt="New Ilocos Airport — A Gateway to the North"
+          alt="New Ilocos Airport, A Gateway to the North"
           className={`absolute left-1/2 top-[68.3%] z-[7] h-auto w-[12.2%] -translate-x-1/2 ${REVEAL}`}
           data-reveal
         />

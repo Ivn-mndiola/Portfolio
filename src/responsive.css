@@ -46,7 +46,7 @@
 .project-slide-background{background-image:var(--project-background);}
 .project-slide-artwork{display:none;}
 @media(max-width:1200px),(max-height:700px){
- .projects-page{--project-controls-height:calc(88px + env(safe-area-inset-bottom));height:100svh;width:100%;}
+ .projects-page{--project-controls-height:calc(56px + env(safe-area-inset-bottom));--project-arrow-inset:clamp(12px,2.4vw,24px);--project-side-clearance:calc(var(--project-arrow-inset) + 56px);height:100svh;width:100%;}
  .projects-viewport{height:calc(100svh - var(--project-controls-height));min-height:0;width:100%;overflow-y:auto;overflow-x:hidden;overscroll-behavior-y:contain;scrollbar-width:thin;}
  .projects-viewport:focus-visible{outline:2px solid white;outline-offset:-4px;}
  .project-slide[data-active="true"]{position:relative;min-height:100%;}
@@ -61,12 +61,13 @@
  }
  .project-slide-stack{display:contents;}
  .project-slide-title{grid-area:title;position:relative;z-index:3;justify-content:center;align-self:center;max-width:620px;min-width:0;height:auto;}
+ .project-slide[data-has-visual="false"] .project-slide-title{max-width:min(620px,calc(100vw - 2 * var(--project-side-clearance)));}
  .project-slide-title>img:not(.project-slide-icon){width:auto;max-height:170px;max-width:min(100%,360px);filter:drop-shadow(0 8px 16px #0003);}
  .project-slide-icon{width:36px;margin-bottom:12px;}
  .project-slide-title h2{font-size:clamp(29px,6.8vw,64px);translate:0;}
  .project-slide-title>p{max-width:360px;font-size:12px;}
  .project-slide-cta{grid-area:cta;z-index:3;padding:14px 32px;min-height:48px;font-size:12px;letter-spacing:.18em;}
- .project-slide-description{grid-area:description;z-index:3;height:auto;max-width:460px;}
+ .project-slide-description{grid-area:description;z-index:3;height:auto;max-width:min(460px,calc(100vw - 2 * var(--project-side-clearance)));}
  .project-slide-description p{margin:0;white-space:normal;color:#ffffffc4;text-wrap:pretty;}
  .project-slide-visual,.project-slide-roster,.project-slide-artwork{
   grid-area:visual;position:relative;inset:auto;display:flex;align-items:center;justify-content:center;
@@ -97,10 +98,10 @@
  .project-slide[data-project="source"] .project-slide-background,
  .project-slide[data-project="nia"] .project-slide-background{background-image:var(--project-mobile-background);}
  .project-slide::after{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(0deg,#03071288,transparent 65%);}
- .projects-prev,.projects-next{position:fixed;top:auto;bottom:max(20px,env(safe-area-inset-bottom));translate:0;width:44px;height:44px;}
- .projects-prev{left:max(24px,env(safe-area-inset-left));}
- .projects-next{right:max(24px,env(safe-area-inset-right));}
- .projects-tracker{position:fixed;left:50%;bottom:max(36px,calc(env(safe-area-inset-bottom) + 16px));translate:-50% 0;gap:14px;}
+ .projects-prev,.projects-next{position:fixed;top:calc((100svh - var(--project-controls-height)) / 2);bottom:auto;translate:0 -50%;width:44px;height:44px;}
+ .projects-prev{left:max(var(--project-arrow-inset),env(safe-area-inset-left));}
+ .projects-next{right:max(var(--project-arrow-inset),env(safe-area-inset-right));}
+ .projects-tracker{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 20px);translate:-50% 0;gap:14px;}
  .projects-tracker>div{width:76px;}
  .projects-tracker>span{font-size:11px;}
  .projects-page :is(.projects-prev,.projects-next,.project-slide-cta):focus-visible{outline:2px solid white;outline-offset:4px;}
@@ -118,7 +119,7 @@
 }
 /* A short, wide viewport uses two columns instead of squeezing a poster. */
 @media(min-width:1000px) and (max-width:1200px),(min-width:768px) and (max-height:700px){
- .project-slide-content{min-height:max(420px,calc(100svh - var(--project-controls-height)));padding:104px 6vw 32px;column-gap:24px;}
+ .project-slide-content{min-height:max(420px,calc(100svh - var(--project-controls-height)));padding:104px max(6vw,var(--project-side-clearance)) 32px;column-gap:24px;}
  .project-slide[data-has-visual="true"] .project-slide-content{
   grid-template:"title visual" minmax(150px,1fr) "cta visual" auto "description visual" auto / minmax(0,1fr) minmax(0,1fr);
  }
@@ -264,7 +265,7 @@
  .dbfortri-hero>.case-study-description{top:48%;width:70%;max-width:800px;}
 }
 
-/* A visible control bar remains reachable when a small poster needs scrolling. */
+/* Keep progress visible below the scrollable poster; arrows sit at its sides. */
 @media(max-width:1200px),(max-height:700px){
  .projects-page::after{content:'';position:fixed;inset:auto 0 0;height:var(--project-controls-height);z-index:9;pointer-events:none;background:var(--project-theme);border-top:1px solid #ffffff20;}
  .source-liquid-glass button{min-width:44px;min-height:44px;}
@@ -411,5 +412,5 @@
 }
 .verto-sticker-row:focus-visible{outline:2px solid currentColor;outline-offset:4px;}
 @media(max-width:1200px){
- .nia-case-page .nia-staff-section>img[alt^="New Ilocos Airport —"]{width:150px;max-width:150px;}
+ .nia-case-page .nia-staff-section>img[alt^="New Ilocos Airport,"]{width:150px;max-width:150px;}
 }

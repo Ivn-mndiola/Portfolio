@@ -5,18 +5,18 @@ export default function AboutProfile() {
   return (
     <>
       <header className="about-introduction">
-        <h1>Hello,</h1>
-        <div className="about-biography">
+        <h1 className="about-reveal" data-reveal style={{ '--about-reveal-delay': '100ms' }}>Hello,</h1>
+        <div className="about-biography about-reveal" data-reveal style={{ '--about-reveal-delay': '200ms' }}>
           <p className="about-biography-lead">He is a multidisciplinary designer based in the Philippines, specializing in Logo Design, Branding, Visual Identity, Illustration, and Creative Content. A graduate of the Bachelor of Fine Arts Major in Visual Communication program at the University of the Cordilleras, he approaches design as a balance between clarity, strategy, and visual storytelling.</p>
           <p>His work is rooted in minimalism and intentionality, creating thoughtful visual experiences that help brands communicate with confidence and authenticity.<br />From developing brand identities and marketing materials to crafting illustrations and digital content, he focuses on delivering designs that are both aesthetically refined and purpose-driven.</p>
           <p>Through academic, internship, and independent creative experiences, Iverson continues to explore new ways of combining design, storytelling, and visual communication while embracing collaboration, adaptability, and lifelong learning.</p>
         </div>
       </header>
 
-      <hr className="about-divider" />
+      <hr className="about-divider about-reveal" data-reveal />
 
       <div className="about-history">
-        <section aria-labelledby="about-education-title">
+        <section aria-labelledby="about-education-title" className="about-reveal" data-reveal>
           <h2 id="about-education-title" className="about-section-title">EDUCATION</h2>
           <div className="about-history-row">
             <p>May 2022 - Oct 2025</p>
@@ -30,8 +30,8 @@ export default function AboutProfile() {
         </section>
 
         <section aria-labelledby="about-experience-title" className="about-experience">
-          <h2 id="about-experience-title" className="about-section-title">EXPERIENCE</h2>
-          <div className="about-history-row about-dbfortri">
+          <h2 id="about-experience-title" className="about-section-title about-reveal" data-reveal>EXPERIENCE</h2>
+          <div className="about-history-row about-dbfortri about-reveal" data-reveal style={{ '--about-reveal-delay': '60ms' }}>
             <p>Jul 2026 - Present</p>
             <div>
               <h3 className="about-dbfortri-name">dbfortri</h3>
@@ -39,7 +39,7 @@ export default function AboutProfile() {
               <p className="about-detail">Creative direction, brand identity, photography, and graphic design focused on developing cohesive visual solutions for clients.</p>
             </div>
           </div>
-          <div className="about-history-row">
+          <div className="about-history-row about-reveal" data-reveal style={{ '--about-reveal-delay': '120ms' }}>
             <p>Jan 2025 - Apr 2025</p>
             <div>
               <h3>CORDILLERA SCHOOL OF DIGITAL ARTS, INC.</h3>
@@ -48,7 +48,7 @@ export default function AboutProfile() {
               <p className="about-detail">Supported the design team in creating marketing materials, social media graphics, and visual assets while ensuring consistency across brand communications.</p>
             </div>
           </div>
-          <div className="about-history-row about-freelance">
+          <div className="about-history-row about-freelance about-reveal" data-reveal style={{ '--about-reveal-delay': '180ms' }}>
             <p>Jan 2024 - Present</p>
             <div>
               <h3>FREELANCE ARTIST</h3>
@@ -60,7 +60,7 @@ export default function AboutProfile() {
       </div>
 
       <div className="about-tools">
-        <section aria-labelledby="about-software-title">
+        <section aria-labelledby="about-software-title" className="about-reveal" data-reveal>
           <h2 id="about-software-title" className="about-section-title">SOFTWARE</h2>
           <ul aria-label="Design software" className="about-software-list">
             {SOFTWARE.map((name, index) => (
@@ -70,7 +70,7 @@ export default function AboutProfile() {
             ))}
           </ul>
         </section>
-        <section aria-labelledby="about-equipment-title">
+        <section aria-labelledby="about-equipment-title" className="about-reveal" data-reveal style={{ '--about-reveal-delay': '100ms' }}>
           <h2 id="about-equipment-title" className="about-equipment-title">CREATIVE EQUIPMENT AND SETUP</h2>
           <ul className="about-equipment-list">
             <li><img src="/assets/images/interior/gear-1.webp" alt="XP-Pen Artist 13.3 Pro" width="768" height="181" loading="lazy" decoding="async" /></li>
