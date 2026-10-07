@@ -1,8 +1,10 @@
-# Portfolio v85
+# Portfolio v86
+
+The Projects progress tracker now uses the desktop bar length, counter typography, spacing, and bottom-left placement on phones and tablets. It sits over the full project background with a soft gradient for readability. Bottom padding keeps the final description clear of the tracker when scrolling, and the previous/next arrows remain at the sides.
 
 Tablet layouts from 768px to 1024px use consistent fluid gutters of at least 24px, balanced one- or two-column content, and proportionally sized headings. About uses a portrait beside readable copy; Game Dev identity and mockup grids use two columns; Source social content pairs its carousel with its description; Photography and DBFortri galleries give the featured image its own row. Tablet navigation and contact controls have touch targets of at least 44px, including the Danes carousel dots. Original font families, Inter descriptions, supplied artwork, and the side project arrows are retained.
 
-On phones and tablets, the Projects previous and next buttons now stay midway down the left and right sides of the preview. A smaller bottom bar keeps the progress indicator visible while the preview scrolls.
+On phones and tablets, the Projects previous and next buttons stay midway down the left and right sides of the preview. The progress tracker stays visible while the preview scrolls.
 
 Em dashes have been removed from page copy, captions, image descriptions, browser titles, and generated contact-draft subjects. Commas, colons, or natural wording keep the text readable.
 

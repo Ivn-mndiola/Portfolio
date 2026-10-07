@@ -1,3 +1,15 @@
+# v86: Project progress tracker validation
+
+- Production build passed with the existing dependencies.
+- All eight project previews were checked at 320x568, 390x844, 430x932, 768x1024, 820x1180, 1024x768, 844x390, 1200x800, 1201x800, and 1920x1080: 80 preview and viewport checks.
+- The progress line retains the desktop 140px width and 2px height, with 16px spacing and the same Inter 12px counter. The fill updates from 01/08 through 08/08, next wraps back to 01/08, and keyboard previous wraps to 08/08.
+- Phone and tablet previews use the full viewport background with a transparent bottom gradient instead of a solid footer strip. The tracker stays visible when scrolling; bottom padding leaves the final description clear of it. Side arrows retain 44x44px touch targets.
+- No horizontal document overflow, missing requested files, or runtime page errors were detected. Phone portrait, phone landscape, and tablet screenshots were visually reviewed. The desktop tracker matches the prior screenshot pixel for pixel.
+- Fonts, artwork, tablet case-study layouts, and dependency files are unchanged from v85. Only ProjectsPage.jsx, responsive.css, README.md, and this validation file changed.
+- Checks used Chromium browser emulation. Physical-device and Safari testing were not performed.
+
+---
+
 # v85: Tablet validation
 
 - Production build passed with the existing React, Vite, and Tailwind dependencies.

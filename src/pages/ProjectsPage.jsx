@@ -47,7 +47,7 @@ export default function ProjectsPage() {
   const totalLabel = String(total).padStart(2, '0')
 
   return (
-    <div className="projects-page relative h-screen overflow-hidden font-inter text-white" style={{ backgroundColor: activeSlide.themeColor, '--project-theme': activeSlide.themeColor }}>
+    <div className="projects-page relative h-screen overflow-hidden font-inter text-white" style={{ backgroundColor: activeSlide.themeColor }}>
       <Nav active="/projects" />
 
       <main className="projects-viewport relative h-screen w-screen" tabIndex={0} aria-label="Project previews">
@@ -80,7 +80,7 @@ export default function ProjectsPage() {
         </svg>
       </button>
 
-      <div className="projects-tracker absolute bottom-10 left-[8vw] z-10 flex items-center gap-4 max-[900px]:bottom-6 max-[900px]:left-1/2 max-[900px]:-translate-x-1/2">
+      <div className="projects-tracker absolute bottom-10 left-[8vw] z-10 flex items-center gap-4">
         <div className="relative h-0.5 w-[140px] overflow-hidden bg-white/15">
           <div className="absolute inset-y-0 left-0 bg-white transition-[width] duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] motion-reduce:transition-none" style={{ width: `${pct}%` }} />
         </div>
