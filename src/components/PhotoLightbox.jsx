@@ -1,3 +1,4 @@
+import { lockPageScroll } from './DesktopCanvas.jsx'
 import { useEffect, useRef } from 'react'
 
 function DirectionIcon({ direction }) {
@@ -23,8 +24,7 @@ export default function PhotoLightbox({
   const touchStartX = useRef(null)
 
   useEffect(() => {
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
+    const unlockScroll = lockPageScroll()
     closeButtonRef.current?.focus()
 
     function handleKeyDown(event) {
@@ -63,7 +63,7 @@ export default function PhotoLightbox({
 
     document.addEventListener('keydown', handleKeyDown)
     return () => {
-      document.body.style.overflow = previousOverflow
+      unlockScroll()
       document.removeEventListener('keydown', handleKeyDown)
     }
   }, [onClose, onNext, onPrevious])

@@ -1,3 +1,4 @@
+import { lockPageScroll } from './DesktopCanvas.jsx'
 import ResponsiveImage from './ResponsiveImage.jsx'
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
@@ -70,10 +71,7 @@ export function Lightbox({ photos, index, onClose, onPrevious, onNext }) {
   const touchStartX = useRef(null)
 
   useEffect(() => {
-    const previousOverflow = document.body.style.overflow
-    const previousRootOverflow = document.documentElement.style.overflow
-    document.body.style.overflow = 'hidden'
-    document.documentElement.style.overflow = 'hidden'
+    const unlockScroll = lockPageScroll()
     closeButtonRef.current?.focus({ preventScroll: true })
 
     function handleKeyDown(event) {
@@ -112,8 +110,7 @@ export function Lightbox({ photos, index, onClose, onPrevious, onNext }) {
 
     document.addEventListener('keydown', handleKeyDown)
     return () => {
-      document.body.style.overflow = previousOverflow
-      document.documentElement.style.overflow = previousRootOverflow
+      unlockScroll()
       document.removeEventListener('keydown', handleKeyDown)
     }
   }, [onClose, onNext, onPrevious])
@@ -211,7 +208,7 @@ export function Lightbox({ photos, index, onClose, onPrevious, onNext }) {
         </button>
       </div>
     </div>,
-    document.body,
+    document.querySelector('[data-site-canvas="true"] #desktop-canvas-overlays') || document.body,
   )
 }
 

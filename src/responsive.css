@@ -44,7 +44,13 @@
  .home-client-logos{bottom:10px;}
 }
 /* Mobile project posters form one composition instead of shrinking the desktop. */
-.project-slide-background{background-image:var(--project-background);}
+.project-slide-background{background-image:var(--project-background-fallback);}
+@supports(background-image:-webkit-image-set(url("") 1x)){
+ .project-slide-background{background-image:var(--project-background-webkit);}
+}
+@supports(background-image:image-set(url("") 1x)){
+ .project-slide-background{background-image:var(--project-background);}
+}
 .project-slide-artwork{display:none;}
 @media(max-width:1200px),(max-height:700px){
  :where(.projects-stage:not([data-desktop-canvas="true"])) .projects-page{--project-tracker-clearance:calc(100px + env(safe-area-inset-bottom));--project-arrow-inset:clamp(12px,2.4vw,24px);--project-side-clearance:calc(var(--project-arrow-inset) + 56px);height:100svh;width:100%;}

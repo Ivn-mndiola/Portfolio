@@ -1,0 +1,38 @@
+/* Physical viewport dimensions here must not be converted to canvas units. */
+.desktop-canvas-stage,
+.desktop-canvas-viewport,
+.desktop-canvas-scroll { display: contents; }
+
+.desktop-canvas-stage[data-site-canvas="true"] {
+  position: fixed;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: var(--canvas-physical-height, 100vh);
+  overflow: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+[data-site-canvas="true"] > .desktop-canvas-viewport {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--canvas-width);
+  height: var(--canvas-height);
+  margin-left: calc(var(--canvas-width) / -2);
+  margin-top: calc(var(--canvas-height) / -2);
+  transform: scale(var(--canvas-scale));
+  transform-origin: center center;
+}
+
+[data-site-canvas="true"] .desktop-canvas-scroll {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}

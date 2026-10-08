@@ -1,3 +1,4 @@
+import { DESKTOP_ARTWORK } from '../../hooks/useDesktopCanvas.js'
 import ResponsiveImage from '../../components/ResponsiveImage.jsx'
 import Nav from '../../components/Nav.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
@@ -36,7 +37,7 @@ export default function ArtlantisPage() {
 
       <main className="relative min-[1201px]:h-[240.52vw]">
         <picture aria-hidden="true">
-          <source media="(min-width: 1201px)" srcSet="/assets/images/artlantis/artlantis-page-bg-1920.webp 1920w, /assets/images/artlantis/artlantis-page-bg-3840.webp 3840w" sizes="100vw" />
+          <source media={DESKTOP_ARTWORK} srcSet="/assets/images/artlantis/artlantis-page-bg-1920.webp 1920w, /assets/images/artlantis/artlantis-page-bg-3840.webp 3840w" sizes="100vw" />
           <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/%3E"
           alt=""
           aria-hidden="true"

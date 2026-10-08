@@ -1,3 +1,4 @@
+import { DESKTOP_ARTWORK } from '../../hooks/useDesktopCanvas.js'
 import ResponsiveImage from '../../components/ResponsiveImage.jsx'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import Nav from '../../components/Nav.jsx'
@@ -85,7 +86,7 @@ export default function SourcePage() {
       <Nav active="/projects" darkSectionSelectors={DARK_SECTIONS} accent="blue" />
 
       <picture aria-hidden="true">
-          <source media="(min-width: 1201px)" srcSet="/assets/images/source/source-bg-main-1920.webp 1920w, /assets/images/source/source-bg-main-3840.webp 3840w" sizes="100vw" />
+          <source media={DESKTOP_ARTWORK} srcSet="/assets/images/source/source-bg-main-1920.webp 1920w, /assets/images/source/source-bg-main-3840.webp 3840w" sizes="100vw" />
           <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/%3E"
         alt=""
         aria-hidden="true"

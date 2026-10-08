@@ -1,3 +1,4 @@
+import { pageScrollToTop } from './components/DesktopCanvas.jsx'
 import { lazy, Suspense, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import useBrowserTheme from './hooks/useBrowserTheme.js'
@@ -18,7 +19,7 @@ const DbfortriPage = lazy(() => import('./pages/case-studies/DbfortriPage.jsx'))
 
 export default function App() {
   const pathname = useLocation().pathname.replace(/\/+$/, '') || '/'
-  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  useEffect(() => { pageScrollToTop() }, [pathname])
   const project = SLIDES.find((slide) => slide.cta.href === pathname)
   const isInteriorPage = ['/services', '/about', '/contact'].includes(pathname)
   // The carousel supplies its live slide color; other routes supply their own.

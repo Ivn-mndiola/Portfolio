@@ -5,11 +5,9 @@ import SLIDES from '../data/projectSlides.jsx'
 import useSlider from '../hooks/useSlider.js'
 import useRosterCycle from '../hooks/useRosterCycle.js'
 import useBrowserTheme from '../hooks/useBrowserTheme.js'
-import useDesktopCanvas from '../hooks/useDesktopCanvas.js'
+import { useCanvasMode } from '../components/DesktopCanvas.jsx'
 
 const SELECTED_PROJECT_KEY = 'iverson-portfolio:selected-project'
-const DESIGN_WIDTH = 1920
-const DESIGN_HEIGHT = 1080
 let lastSelectedProjectId = null
 
 function restoreSelectedProject() {
@@ -26,7 +24,7 @@ function restoreSelectedProject() {
 }
 
 export default function ProjectsPage() {
-  const { stageRef, isScaled, canvasStyle } = useDesktopCanvas(DESIGN_WIDTH, DESIGN_HEIGHT)
+  const isScaled = useCanvasMode()
   const total = SLIDES.length
   const { current, previous, goPrev, goNext } = useSlider(total, restoreSelectedProject)
   const activeSlide = SLIDES[current]
@@ -51,7 +49,7 @@ export default function ProjectsPage() {
   const totalLabel = String(total).padStart(2, '0')
 
   return (
-    <div ref={stageRef} className="projects-stage" data-desktop-canvas={isScaled} style={canvasStyle}>
+    <div className="projects-stage" data-desktop-canvas={isScaled}>
       <div className="projects-page relative h-screen overflow-hidden font-inter text-white" style={{ backgroundColor: activeSlide.themeColor }}>
         <Nav active="/projects" desktopCanvas={isScaled} />
 

@@ -1,3 +1,4 @@
+import { pageScrollToTop } from './DesktopCanvas.jsx'
 import { useEffect } from 'react'
 import Nav from './Nav.jsx'
 import './InteriorPage.css'
@@ -7,7 +8,7 @@ export default function InteriorPage({ active, title, children, fixedBackground 
   useEffect(() => {
     const previousTitle = document.title
     document.title = `${title} | Iverson Mendiola`
-    window.scrollTo(0, 0)
+    pageScrollToTop()
     return () => { document.title = previousTitle }
   }, [active, title])
 

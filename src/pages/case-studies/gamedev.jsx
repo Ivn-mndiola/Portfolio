@@ -1,3 +1,4 @@
+import { pageScrollToTop } from '../../components/DesktopCanvas.jsx'
 import ResponsiveImage from '../../components/ResponsiveImage.jsx'
 import { useEffect } from 'react'
 import Nav from '../../components/Nav.jsx'
@@ -60,7 +61,7 @@ export default function GameDev() {
   useEffect(() => {
     const previousTitle = document.title
     document.title = 'Philippine Game Dev Experience | Iverson Mendiola'
-    window.scrollTo(0, 0)
+    pageScrollToTop()
 
     const fadeElements = document.querySelectorAll('.gamedev-case-study .fade-in')
     const observer = new IntersectionObserver(

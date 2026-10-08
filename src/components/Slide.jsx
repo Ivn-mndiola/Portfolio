@@ -7,6 +7,8 @@ export default function Slide({ slide, isActive, rosterIndex }) {
   const backgroundAsset = slide.bgSet
     ? `image-set(url('${slide.bgSet.oneX}') 1x, url('${slide.bgSet.twoX}') 2x)`
     : `url('${slide.bg}')`
+  const withOverlay = (asset) => slide.bgOverlay ? `${slide.bgOverlay}, ${asset}` : asset
+  const fallbackAsset = `url('${slide.bgSet?.twoX || slide.bg}')`
 
   return (
     <div
@@ -21,7 +23,11 @@ export default function Slide({ slide, isActive, rosterIndex }) {
     >
       <div
         className="project-slide-background absolute inset-0 -z-[1] bg-cover bg-center bg-no-repeat"
-        style={{ '--project-background': slide.bgOverlay ? `${slide.bgOverlay}, ${backgroundAsset}` : backgroundAsset }}
+        style={{
+          '--project-background': withOverlay(backgroundAsset),
+          '--project-background-webkit': withOverlay(backgroundAsset.replace('image-set(', '-webkit-image-set(')),
+          '--project-background-fallback': withOverlay(fallbackAsset),
+        }}
       />
 
       <div className="project-slide-content flex h-full w-full max-w-[1500px] items-center justify-between px-[calc(8*var(--project-vw))]">

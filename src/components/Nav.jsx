@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Nav.css'
+import { useCanvasMode } from './DesktopCanvas.jsx'
 
 const LINKS = [
   { label: 'HOME', to: '/' },
@@ -13,7 +14,8 @@ const LINKS = [
 // Pass `darkSectionSelectors` on case-study pages that have dark-background
 // sections (hero, mockups, socials, etc.). The optional `accent` controls the
 // navbar color used over lighter sections.
-export default function Nav({ active = '/', darkSectionSelectors = null, accent = 'red', desktopCanvas = false }) {
+export default function Nav({ active = '/', darkSectionSelectors = null, accent = 'red' }) {
+  const desktopCanvas = useCanvasMode()
   const [menuOpen, setMenuOpen] = useState(false)
   // Starts true (not-red) since every page using darkSectionSelectors always
   // opens scrolled to the top, over its dark hero section. Prevents a red
@@ -97,12 +99,12 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
     }
 
     function onScroll() { if (frame === null) frame = requestAnimationFrame(updateTint) }
-    document.addEventListener('scroll', onScroll, { passive: true })
+    document.addEventListener('scroll', onScroll, { passive: true, capture: true })
     window.addEventListener('resize', onScroll)
     updateTint()
 
     return () => {
-      document.removeEventListener('scroll', onScroll)
+      document.removeEventListener('scroll', onScroll, true)
       window.removeEventListener('resize', onScroll)
       if (frame !== null) cancelAnimationFrame(frame)
     }
