@@ -1,17 +1,19 @@
-# PC canvas and iPad checks
+# Full-screen iPad checks, v90
 
-This release uses the recovered earlier Portfolio.rar-based project. The newest Portfolio.rar download was denied, so its contents could not be checked. The v61 attachment was not used.
+The landscape tablet canvas uses a 1920px logical width, uniform width-based scale, and a logical height derived from the visible browser height. Its transformed bounds now match the viewport edges instead of centering a fixed 16:9 rectangle inside it. The persistent wrapper is shared by all thirteen routes.
 
-The desktop master stays fixed at 1920 x 1080. Every landscape tablet tab shares one uniformly scaled canvas and centered origin. The smaller of width/1920 and height/1080 sets the scale; different aspect ratios leave space around the unchanged composition.
+Verification used the production build in Chromium with touch/tablet emulation:
 
-Verification used Chromium with touch/tablet emulation:
+- Production build passed.
+- Home, Services, About, Contact, and all eight case studies filled the complete 1024 x 768 viewport at both the top and bottom of their scrollable content. Every long page reached its final content without an outside canvas band or horizontal overflow.
+- Those twelve routes and all eight Projects previews matched a desktop viewport of the same aspect ratio, 1920 x 1440, in visible content, fonts, and normalized geometry within 0.6 logical pixels.
+- All eight project previews filled 1024 x 604, 1024 x 568, 960 x 600, 1180 x 820, 1366 x 1024, and 1376 x 900. Their arrows, tracker, project buttons, and descriptions stayed inside the viewport. The 568px height checks cover the previous 600px mode cutoff.
+- Resizing each of the twelve content routes between 768px, 604px, and 568px high updated the canvas to the new viewport height while retaining its width-based scale.
+- Home-to-Projects navigation retained the same navigation bounds and scale. Route changes reset the inner scroll. Portrait-to-landscape rotation closed the menu and filled the landscape viewport.
+- DBFortri's desktop mockups, founder portrait, and gallery remained visible. Its photo viewer filled the entire viewport, advanced photos, and closed correctly. Navigation stayed fixed while scrolling.
+- Desktop 1920 x 1080, phone 390 x 844, and portrait tablet 768 x 1024 remained unchanged in comparisons of Home, Projects, DBFortri, and Artlantis against v89.
+- No broken visible images, requested-asset failures, or JavaScript errors were found. All 401 public assets and both dependency manifests are byte-for-byte unchanged.
 
-- Production build passed. Development-mode checks passed for Home, Projects, and DBFortri.
-- All eight project slides and all eight complete case studies, plus Home, Services, About, and Contact, matched the PC master in visible content, font family, font size, and normalized geometry within 0.6 logical pixels at 1024 x 768.
-- Desktop 1920 x 1080, phone 390 x 844, and portrait tablet 768 x 1024 comparisons passed for Home, Projects, DBFortri, and Artlantis.
-- All eight slides were checked at 960 x 600, 1024 x 671, 1133 x 744, 1180 x 820, 1194 x 834, and 1366 x 1024. The canvas remained 1920 x 1080 with one scale; arrows, tracker, buttons, and descriptions stayed inside it.
-- Navigation from Home to Projects kept the same scale and navigation bounds. Rotation closed the portrait menu. Route changes reset the inner page scroll.
-- DBFortri's original desktop mockups, founder portrait, full background, and gallery were visible. The gallery advanced and closed correctly, and navigation stayed fixed while scrolling.
-- No broken visible images, requested-asset failures, or JavaScript errors were found.
+Total: 32 layout comparisons and ten full-screen/interaction/viewport groups passed. Danes, DBFortri, Home, Contact, and project-preview screenshots were also inspected. A physical iPad/Safari was not available; browser toolbar heights were simulated through viewport resizing.
 
-Total: 32 layout comparisons and eight interaction/viewport check groups passed. CSS container queries have been removed from the implementation. DBFortri's preview has a full-resolution background fallback plus prefixed and standard image-set paths. A physical iPad/Safari was not available, so device-specific rendering remains unverified.
+This update uses the previously delivered v89 source. The newer Portfolio.rar download was denied in the preceding update, so its contents have not been compared. The v61 attachment was not used.

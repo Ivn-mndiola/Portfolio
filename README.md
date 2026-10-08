@@ -1,12 +1,12 @@
-# Portfolio v89
+# Portfolio v90
 
-This update fixes the size change when switching from Home to Projects on a landscape iPad. One persistent desktop canvas now surrounds the application, so navigation and page content use the same uniform scale across every tab and all eight case studies.
+This update removes the empty bands above and below the website on a landscape iPad. One persistent desktop canvas fills the browser's visible viewport across every tab and all eight case studies. Switching from Home to Projects keeps the same scale.
 
-The PC master is fixed at 1920 x 1080. The entire composition uses one `transform: scale()` with `transform-origin: center center`; its scale is the smaller of the available width and height ratios. The canvas height stays fixed, so portrait size, title positions, descriptions, navigation, arrows, and the tracker match the actual PC composition. The same persistent canvas surrounds every landscape tablet tab, preventing a size change on entering Projects. Different viewport aspect ratios leave centered space around the unchanged composition.
+The composition uses the desktop's 1920px coordinate width and one `transform: scale()` with `transform-origin: center center`. Its uniform scale is the visible width divided by 1920. The logical canvas height is the visible height divided by that scale, so the transformed canvas reaches all four viewport edges without stretching or cropping it. Desktop viewport-relative styles follow that available height. Long case studies scroll inside the full-screen canvas, while navigation and project controls retain their desktop layout.
 
-This mode applies to touch-capable landscape viewports 768px to 1366px wide and at least 600px high. Desktop size conditions are evaluated against the PC master at build time and scoped to canvas mode. CSS container queries are no longer required. This preserves DBFortri's complete desktop backgrounds, stationery mockups, founder portrait, and gallery, along with the original Source and Artlantis backgrounds. DBFortri's project-preview background also has prefixed Safari and full-resolution image fallbacks.
+The canvas follows `visualViewport` resize events as Safari's toolbars expand or collapse. This mode applies to touch-capable landscape viewports 768px to 1440px wide and at least 500px high, including browser heights below the previous 600px cutoff. Desktop size conditions are still evaluated against the 1920 x 1080 PC master at build time and scoped to canvas mode. CSS container queries are not required. DBFortri retains its complete desktop backgrounds, stationery mockups, founder portrait, gallery, prefixed Safari image-set support, and full-resolution background fallback. Source and Artlantis retain their desktop artwork.
 
-This release was made from the recovered earlier Portfolio.rar-based project. The newly uploaded Portfolio.rar could not be downloaded because access was denied, so any new changes in that archive could not be compared or included. The attached v61 archive was not used.
+This update builds on the previously delivered v89 project, recovered from the earlier Portfolio.rar-based source. The newer Portfolio.rar remains unavailable because its download was denied; the v61 attachment was not used.
 
 Desktop, phone, and portrait-tablet layouts keep their existing behavior. All supplied images and font files are byte-for-byte unchanged, and dependencies and the lockfile are unchanged. See `IPAD_VALIDATION.md` for checks and their limits.
 
