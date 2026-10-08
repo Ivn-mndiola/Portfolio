@@ -13,7 +13,7 @@ const LINKS = [
 // Pass `darkSectionSelectors` on case-study pages that have dark-background
 // sections (hero, mockups, socials, etc.). The optional `accent` controls the
 // navbar color used over lighter sections.
-export default function Nav({ active = '/', darkSectionSelectors = null, accent = 'red' }) {
+export default function Nav({ active = '/', darkSectionSelectors = null, accent = 'red', desktopCanvas = false }) {
   const [menuOpen, setMenuOpen] = useState(false)
   // Starts true (not-red) since every page using darkSectionSelectors always
   // opens scrolled to the top, over its dark hero section. Prevents a red
@@ -29,6 +29,10 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
     compact.addEventListener('change', onResize)
     return () => compact.removeEventListener('change', onResize)
   }, [])
+
+  useEffect(() => {
+    if (desktopCanvas) setMenuOpen(false)
+  }, [desktopCanvas])
 
   useEffect(() => {
     if (!menuOpen) return
@@ -168,12 +172,13 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
     <nav
       ref={navRef}
       data-menu-open={menuOpen}
+      data-desktop-canvas={desktopCanvas || undefined}
       aria-label="Main navigation"
-      className="site-nav fixed inset-x-0 top-8 z-[100] flex h-20 items-center justify-center bg-transparent p-0 font-ui-inter max-[900px]:top-4 max-[900px]:justify-end max-[900px]:pr-4"
+      className={`site-nav fixed inset-x-0 top-8 z-[100] flex h-20 items-center justify-center bg-transparent p-0 font-ui-inter ${desktopCanvas ? '' : 'max-[900px]:top-4 max-[900px]:justify-end max-[900px]:pr-4'}`}
     >
       <a
         href="/"
-        className={`site-nav-logo absolute left-0 flex h-full w-[17vw] min-w-[150px] items-center justify-end rounded-r-[40px] border border-l-0 pr-9 no-underline backdrop-blur-2xl max-md:w-20 max-md:min-w-20 max-md:pr-4 ${glassColor}`}
+        className={`site-nav-logo absolute left-0 flex h-full w-[calc(17*var(--project-vw,1vw))] min-w-[150px] items-center justify-end rounded-r-[40px] border border-l-0 pr-9 no-underline backdrop-blur-2xl ${desktopCanvas ? '' : 'max-md:w-20 max-md:min-w-20 max-md:pr-4'} ${glassColor}`}
         aria-label="Iverson logo"
         onClick={(e) => handleNavClick(e, '/')}
       >
@@ -192,7 +197,7 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
         ref={menuButtonRef}
         type="button"
         aria-controls="nav-links"
-        className={`site-nav-toggle absolute right-6 z-[200] hidden h-12 w-12 cursor-pointer flex-col items-center justify-center gap-[5px] rounded-full border backdrop-blur-2xl transition-colors hover:bg-white/10 max-[900px]:flex ${glassColor}`}
+        className={`site-nav-toggle absolute right-6 z-[200] hidden h-12 w-12 cursor-pointer flex-col items-center justify-center gap-[5px] rounded-full border backdrop-blur-2xl transition-colors hover:bg-white/10 ${desktopCanvas ? '' : 'max-[900px]:flex'} ${glassColor}`}
         id="mobile-menu-btn"
         aria-label="Toggle menu"
         aria-expanded={menuOpen}
@@ -204,8 +209,8 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
       </button>
 
       <ul
-        className={`site-nav-links flex h-full list-none items-center gap-16 rounded-[40px] border px-[72px] backdrop-blur-2xl max-[900px]:fixed max-[900px]:inset-0 max-[900px]:h-screen max-[900px]:w-screen max-[900px]:flex-col max-[900px]:justify-center max-[900px]:gap-10 max-[900px]:rounded-none max-[900px]:border-0 max-[900px]:bg-[rgba(3,7,18,0.95)] max-[900px]:px-0 max-[900px]:transition-all max-[900px]:duration-[400ms] ${glassColor} ${
-          menuOpen
+        className={`site-nav-links flex h-full list-none items-center gap-16 rounded-[40px] border px-[72px] backdrop-blur-2xl ${desktopCanvas ? '' : 'max-[900px]:fixed max-[900px]:inset-0 max-[900px]:h-screen max-[900px]:w-screen max-[900px]:flex-col max-[900px]:justify-center max-[900px]:gap-10 max-[900px]:rounded-none max-[900px]:border-0 max-[900px]:bg-[rgba(3,7,18,0.95)] max-[900px]:px-0 max-[900px]:transition-all max-[900px]:duration-[400ms]'} ${glassColor} ${
+          desktopCanvas ? '' : menuOpen
             ? 'max-[900px]:visible max-[900px]:translate-y-0 max-[900px]:opacity-100'
             : 'max-[900px]:invisible max-[900px]:-translate-y-5 max-[900px]:opacity-0'
         }`}
@@ -216,7 +221,7 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
             <a
               href={link.to}
               aria-current={active === link.to ? 'page' : undefined}
-              className={`inline-block bg-transparent p-0 text-sm font-normal uppercase tracking-[0.1em] no-underline transition-colors max-[900px]:text-2xl max-[900px]:font-bold max-[900px]:tracking-[0.12em] max-[900px]:text-white/60 max-[900px]:hover:text-white ${
+              className={`inline-block bg-transparent p-0 text-sm font-normal uppercase tracking-[0.1em] no-underline transition-colors ${desktopCanvas ? '' : 'max-[900px]:text-2xl max-[900px]:font-bold max-[900px]:tracking-[0.12em] max-[900px]:text-white/60 max-[900px]:hover:text-white'} ${
                 active === link.to
                   ? showAccent
                     ? `font-extrabold tracking-[0.05em] ${accentStyles.active}`

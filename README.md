@@ -1,8 +1,14 @@
-# Portfolio v86
+# Portfolio v87
 
-The Projects progress tracker now uses the desktop bar length, counter typography, spacing, and bottom-left placement on phones and tablets. It sits over the full project background with a soft gradient for readability. Bottom padding keeps the final description clear of the tracker when scrolling, and the previous/next arrows remain at the sides.
+Tablet and iPad landscape Projects now render the existing desktop composition on one fixed 1920 x 1080 canvas. The entire canvas uses `transform: scale()` with `transform-origin: center center`; its scale is the smaller of the available width and height ratios. Navigation, backgrounds, portraits, typography, arrows, buttons, and the progress indicator all scale together. Centered charcoal margins preserve the composition when the viewport has a different aspect ratio.
 
-Tablet layouts from 768px to 1024px use consistent fluid gutters of at least 24px, balanced one- or two-column content, and proportionally sized headings. About uses a portrait beside readable copy; Game Dev identity and mockup grids use two columns; Source social content pairs its carousel with its description; Photography and DBFortri galleries give the featured image its own row. Tablet navigation and contact controls have touch targets of at least 44px, including the Danes carousel dots. Original font families, Inter descriptions, supplied artwork, and the side project arrows are retained.
+This mode applies to touch-capable landscape viewports from 768px to 1366px wide and at least 600px high, covering common iPad landscape sizes. Choose an iPad or touch-tablet preset when previewing with browser device emulation. Desktop browser layouts, phones, and portrait tablet layouts keep their existing behavior. Case-study pages retain their responsive layouts.
+
+The design dimensions are defined in `src/pages/ProjectsPage.jsx`. `src/hooks/useDesktopCanvas.js` calculates the single scale and observes rotation and resizing; `src/project-canvas.css` centers and transforms the canvas. Viewport units inside the desktop composition use the design dimensions in canvas mode. The usual tablet reflow and hamburger styles are excluded from that mode.
+
+The Projects progress tracker uses the desktop bar length, counter typography, spacing, and bottom-left placement on phones and portrait tablets. It sits over the full project background with a soft gradient for readability. Bottom padding keeps the final description clear of the tracker when scrolling, and the previous/next arrows remain at the sides.
+
+Other tablet pages from 768px to 1024px use consistent fluid gutters of at least 24px, balanced one- or two-column content, and proportionally sized headings. About uses a portrait beside readable copy; Game Dev identity and mockup grids use two columns; Source social content pairs its carousel with its description; Photography and DBFortri galleries give the featured image its own row. Navigation and contact controls in those responsive pages have touch targets of at least 44px, including the Danes carousel dots. Original font families, Inter descriptions, supplied artwork, and the side project arrows are retained.
 
 On phones and tablets, the Projects previous and next buttons stay midway down the left and right sides of the preview. The progress tracker stays visible while the preview scrolls.
 

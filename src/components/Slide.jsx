@@ -24,8 +24,8 @@ export default function Slide({ slide, isActive, rosterIndex }) {
         style={{ '--project-background': slide.bgOverlay ? `${slide.bgOverlay}, ${backgroundAsset}` : backgroundAsset }}
       />
 
-      <div className="project-slide-content flex h-full w-full max-w-[1500px] items-center justify-between px-[8vw]">
-        <div className="project-slide-stack z-[3] mt-[100px] grid h-[70vh] w-full max-w-[680px] grid-rows-[1.2fr_auto_0.8fr] items-center justify-items-center gap-6">
+      <div className="project-slide-content flex h-full w-full max-w-[1500px] items-center justify-between px-[calc(8*var(--project-vw))]">
+        <div className="project-slide-stack z-[3] mt-[100px] grid h-[calc(70*var(--project-vh))] w-full max-w-[680px] grid-rows-[1.2fr_auto_0.8fr] items-center justify-items-center gap-6">
           <div className="project-slide-title row-start-1 flex h-full w-full flex-col items-center justify-end self-end">
             {slide.smallIcon && (
               <ResponsiveImage loading="eager"
@@ -47,7 +47,7 @@ export default function Slide({ slide, isActive, rosterIndex }) {
               />
             )}
             {slide.titleTagline && (
-              <p className="mt-1 w-full max-w-[620px] pr-[1%] text-right text-[clamp(10px,0.78vw,15px)] font-medium uppercase tracking-[0.04em] text-white/85">
+              <p className="mt-1 w-full max-w-[620px] pr-[1%] text-right text-[clamp(10px,calc(0.78*var(--project-vw)),15px)] font-medium uppercase tracking-[0.04em] text-white/85">
                 {slide.titleTagline}
               </p>
             )}
@@ -85,36 +85,36 @@ export default function Slide({ slide, isActive, rosterIndex }) {
         )}
 
         {slide.visualRight && !slide.visualRight.wrapClass && (
-          <div className="project-slide-visual relative z-[2] flex h-[80vh] w-1/2 items-center justify-end">
+          <div className="project-slide-visual relative z-[2] flex h-[calc(80*var(--project-vh))] w-1/2 items-center justify-end">
             <ResponsiveImage loading="eager"
               src={slide.visualRight.src}
               alt={slide.visualRight.alt}
-              className="max-h-[88vh] w-[200%] max-w-[620px] translate-x-[120px] rotate-[-12deg] scale-[1.02] object-contain [filter:drop-shadow(-20px_30px_45px_rgba(0,0,0,0.65))] transition-[transform,filter] duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+              className="max-h-[calc(88*var(--project-vh))] w-[200%] max-w-[620px] translate-x-[120px] rotate-[-12deg] scale-[1.02] object-contain [filter:drop-shadow(-20px_30px_45px_rgba(0,0,0,0.65))] transition-[transform,filter] duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
             />
           </div>
         )}
 
         {slide.visualRight && slide.visualRight.wrapClass && (
-          <div className="project-slide-visual relative z-[2] flex h-[80vh] w-1/2 items-center justify-end">
+          <div className="project-slide-visual relative z-[2] flex h-[calc(80*var(--project-vh))] w-1/2 items-center justify-end">
             <div>
               <ResponsiveImage loading="eager"
                 src={slide.visualRight.src}
                 alt={slide.visualRight.alt}
-                className="max-h-[76vh] max-w-full object-contain [filter:drop-shadow(0_20px_50px_rgba(0,0,0,0.7))]"
+                className="max-h-[calc(76*var(--project-vh))] max-w-full object-contain [filter:drop-shadow(0_20px_50px_rgba(0,0,0,0.7))]"
               />
             </div>
           </div>
         )}
 
         {slide.roster && (
-          <div className="project-slide-roster pointer-events-none absolute inset-0 z-[2] h-screen w-screen">
+          <div className="project-slide-roster pointer-events-none absolute inset-0 z-[2] h-[calc(100*var(--project-vh))] w-[calc(100*var(--project-vw))]">
             {slide.roster.map((face, i) => (
               <ResponsiveImage loading="eager"
                 key={face.key}
                 src={face.src}
                 alt={face.alt}
                 style={{ '--portrait-offset': face.mobileOffset }}
-                className={`absolute bottom-[-1vh] right-0 h-[98vh] w-auto max-w-none object-contain object-right-bottom [backface-visibility:hidden] [filter:drop-shadow(0_25px_60px_rgba(0,0,0,0.95))] transition-[opacity,visibility] duration-[850ms] ease-in-out motion-reduce:transition-none ${
+                className={`absolute bottom-[calc(-1*var(--project-vh))] right-0 h-[calc(98*var(--project-vh))] w-auto max-w-none object-contain object-right-bottom [backface-visibility:hidden] [filter:drop-shadow(0_25px_60px_rgba(0,0,0,0.95))] transition-[opacity,visibility] duration-[850ms] ease-in-out motion-reduce:transition-none ${
                   i === rosterIndex ? 'visible opacity-100' : 'invisible opacity-0'
                 }`}
               />

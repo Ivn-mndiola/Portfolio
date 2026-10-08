@@ -4,6 +4,7 @@
 @import "./responsive.css";
 @import "./typography.css";
 @import "./tablet.css";
+@import "./project-canvas.css";
 
 /* Safari uses the page canvas around its toolbars and during overscroll.
    Keep both surfaces in sync with the current route or project slide. */

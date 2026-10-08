@@ -1,3 +1,16 @@
+# v87: Desktop canvas validation
+
+- Production build passed with the existing dependencies.
+- All eight Projects previews were compared against the previous desktop composition at 1920x1080. At touch landscape sizes 960x600, 1024x768, 1133x744, 1180x820, 1194x834, and 1366x1024, their normalized element coordinates match that composition within 0.12 design pixels. Fonts, type sizes, line heights, letter spacing, backgrounds, visible elements, and text also match before the single parent transform.
+- The internal canvas remains 1920x1080 with an origin of 960px 540px. Only its centered placement and uniform scale change with the viewport. At 1024x768, the canvas scales to 1024x576 and is centered with 96px above and below.
+- All eight previews also retained their previous desktop layouts at 1920x1080, 1440x900, 1366x768, and 1024x768 with a mouse, plus phone 390x844, portrait tablet 768x1024, and phone landscape 844x390 with touch: 104 final preview and viewport comparisons in total.
+- Thirty-two interaction and route checks passed: scaled touch arrows, swipes, case-study navigation and selected-project restoration, rotation with an open portrait menu, landscape resizing, desktop-style navigation, and navigation across all thirteen routes at 390x844 and 1024x768. The canvas does not replace case-study or other page layouts.
+- No horizontal document overflow, missing requested files, or runtime page errors were detected. Landscape tablet screenshots were visually reviewed alongside the reference.
+- Original assets, fonts, project copy, and dependency files are unchanged from v86. No iframe or duplicate tablet hero is used.
+- Checks used Chromium browser emulation. Physical iPad and Safari testing were not performed.
+
+---
+
 # v86: Project progress tracker validation
 
 - Production build passed with the existing dependencies.

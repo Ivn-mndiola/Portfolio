@@ -4,12 +4,12 @@
     --tablet-gap: clamp(24px, 3vw, 32px);
   }
 
-  .site-nav .site-nav-toggle { right: max(24px, env(safe-area-inset-right)); }
-  .site-nav .site-nav-links a { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+  .site-nav:where(:not([data-desktop-canvas="true"])) .site-nav-toggle { right: max(24px, env(safe-area-inset-right)); }
+  .site-nav:where(:not([data-desktop-canvas="true"])) .site-nav-links a { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
 
   .home-page .home-title { padding-inline: var(--tablet-gutter); }
   .home-page .home-title h1 { font-size: clamp(112px, 16vw, 164px); }
-  .projects-page { --project-arrow-inset: 24px; }
+  :where(.projects-stage:not([data-desktop-canvas="true"])) .projects-page { --project-arrow-inset: 24px; }
 
   .interior-page main#page-content:not(.about-layout) { padding: 128px var(--tablet-gutter) 64px; }
   .interior-page #page-content > h1 { font-size: clamp(64px, 8vw, 84px); margin-bottom: 40px; }
