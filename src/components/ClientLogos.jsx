@@ -11,21 +11,22 @@ const LOGOS = [
 ]
 
 export default function ClientLogos({ visible }) {
-  // Duplicate the logo set for a seamless marquee loop
-  const doubled = [...LOGOS, ...LOGOS]
-
   return (
     <footer
-      className={`home-client-logos pointer-events-none absolute bottom-10 left-1/2 z-10 w-[60vw] max-w-[900px] -translate-x-1/2 overflow-hidden transition-opacity duration-[1500ms] [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)] max-md:bottom-5 max-md:w-[90vw] ${visible ? 'opacity-50' : 'opacity-0'}`}
+      className={`home-client-logos pointer-events-none absolute bottom-10 left-1/2 z-10 h-[72px] w-[60vw] max-w-[900px] -translate-x-1/2 overflow-hidden transition-opacity duration-[1500ms] motion-reduce:transition-none [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)] max-md:bottom-5 max-md:w-[90vw] ${visible ? 'opacity-75' : 'opacity-0'}`}
     >
-      <div className="flex w-max animate-marquee items-center">
-        {doubled.map((logo, i) => (
-          <img
-            key={`${logo.alt}-${i}`}
-            src={logo.src}
-            alt={logo.alt}
-            className={`mx-[35px] w-auto shrink-0 object-contain brightness-0 invert max-md:mx-5 max-md:scale-[0.8] ${logo.className}`}
-          />
+      <div className="home-logo-track flex h-full w-max animate-marquee items-center">
+        {[0, 1].map((copy) => (
+          <div key={copy} className="home-logo-group flex h-full shrink-0 items-center" aria-hidden={copy === 1 || undefined}>
+            {LOGOS.map((logo, i) => (
+              <img
+                key={`${logo.alt}-${i}`}
+                src={logo.src}
+                alt={copy === 0 ? logo.alt : ''}
+                className={`mx-[35px] block w-auto max-w-none shrink-0 object-contain brightness-0 invert max-md:mx-5 max-md:scale-[0.8] ${logo.className}`}
+              />
+            ))}
+          </div>
         ))}
       </div>
     </footer>

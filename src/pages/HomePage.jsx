@@ -1,4 +1,5 @@
 import ResponsiveImage from '../components/ResponsiveImage.jsx'
+import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
 import ClientLogos from '../components/ClientLogos.jsx'
@@ -14,7 +15,8 @@ function revealStyle(isVisible, { distance = 42, scale = 1, duration = 1000 } = 
 }
 
 export default function HomePage() {
-  const anim = useHeroAnimation()
+  const portraitRef = useRef(null)
+  const anim = useHeroAnimation(portraitRef)
   const navigate = useNavigate()
 
   function handleCtaClick(e) {
@@ -50,6 +52,7 @@ export default function HomePage() {
         </div>
 
         <div
+          ref={portraitRef}
           className="home-portrait pointer-events-none absolute bottom-[-15vh] z-[2] flex h-[95vh] justify-center"
           style={revealStyle(anim.delay2, { distance: 140, duration: 1200 })}
         >

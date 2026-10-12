@@ -1,14 +1,63 @@
 import ResponsiveImage from './ResponsiveImage.jsx'
 import { Link } from 'react-router-dom'
 import CaseStudyDescription from './CaseStudyDescription.jsx'
+import { useEffect, useRef, useState } from 'react'
+import { waitForImage, waitForVisiblePage } from '../utils/animationReady.js'
+
+function revealImage(event) {
+  const image = event.currentTarget
+  waitForImage(image).then(() => waitForVisiblePage()).then(() => {
+    if (image.isConnected) image.dataset.imageReady = 'true'
+  })
+}
 
 export default function Slide({ slide, isActive, rosterIndex }) {
+  const backgroundRef = useRef(null)
+  const [backgroundReady, setBackgroundReady] = useState(false)
   const hasTextTitle = Boolean(slide.titleText)
   const backgroundAsset = slide.bgSet
     ? `image-set(url('${slide.bgSet.oneX}') 1x, url('${slide.bgSet.twoX}') 2x)`
     : `url('${slide.bg}')`
   const withOverlay = (asset) => slide.bgOverlay ? `${slide.bgOverlay}, ${asset}` : asset
   const fallbackAsset = `url('${slide.bgSet?.twoX || slide.bg}')`
+
+  useEffect(() => {
+    let controller
+    let frame
+    let previousSource
+    function loadBackground() {
+      const background = getComputedStyle(backgroundRef.current).backgroundImage
+      const sources = [...background.matchAll(/url\(["']?([^"')]+)["']?\)/g)].map(match => match[1])
+      const source = background.includes('image-set(') && devicePixelRatio > 1
+        ? sources.at(-1) : sources[0]
+      if (source === previousSource && previousSource !== undefined) return
+      previousSource = source
+      controller?.abort()
+      if (!source) {
+        setBackgroundReady(true)
+        return
+      }
+      setBackgroundReady(false)
+      const request = new AbortController()
+      controller = request
+      const image = new Image()
+      image.src = source
+      waitForImage(image, request.signal).then(() => waitForVisiblePage(request.signal)).then(() => {
+        if (!request.signal.aborted) setBackgroundReady(true)
+      })
+    }
+    function onResize() {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(loadBackground)
+    }
+    loadBackground()
+    window.addEventListener('resize', onResize)
+    return () => {
+      controller?.abort()
+      cancelAnimationFrame(frame)
+      window.removeEventListener('resize', onResize)
+    }
+  }, [slide.id])
 
   return (
     <div
@@ -22,6 +71,8 @@ export default function Slide({ slide, isActive, rosterIndex }) {
       }`}
     >
       <div
+        ref={backgroundRef}
+        data-background-ready={backgroundReady}
         className="project-slide-background absolute inset-0 -z-[1] bg-cover bg-center bg-no-repeat"
         style={{
           '--project-background': withOverlay(backgroundAsset),
@@ -37,6 +88,8 @@ export default function Slide({ slide, isActive, rosterIndex }) {
               <ResponsiveImage loading="eager"
                 src={slide.smallIcon}
                 alt=""
+                onLoad={revealImage}
+                onError={revealImage}
                 className="project-slide-icon mb-8 h-auto w-[75px] brightness-0 invert"
               />
             )}
@@ -44,6 +97,8 @@ export default function Slide({ slide, isActive, rosterIndex }) {
               <ResponsiveImage loading="eager"
                 src={slide.titleGraphic}
                 alt={`${slide.id} title`}
+                onLoad={revealImage}
+                onError={revealImage}
                 style={slide.id === 'gamedev'
                   ? { filter: 'brightness(0) invert(0.9921568627) drop-shadow(0 15px 35px rgba(0,0,0,0.65))' }
                   : undefined}
@@ -86,7 +141,7 @@ export default function Slide({ slide, isActive, rosterIndex }) {
 
         {slide.mobileArtwork && (
           <div className="project-slide-artwork" data-kind={slide.mobileArtwork.kind}>
-            <ResponsiveImage loading="eager" src={slide.mobileArtwork.src} alt={slide.mobileArtwork.alt} width={slide.mobileArtwork.width} height={slide.mobileArtwork.height} />
+            <ResponsiveImage loading="eager" src={slide.mobileArtwork.src} alt={slide.mobileArtwork.alt} width={slide.mobileArtwork.width} height={slide.mobileArtwork.height} onLoad={revealImage} onError={revealImage} />
           </div>
         )}
 
@@ -95,6 +150,8 @@ export default function Slide({ slide, isActive, rosterIndex }) {
             <ResponsiveImage loading="eager"
               src={slide.visualRight.src}
               alt={slide.visualRight.alt}
+              onLoad={revealImage}
+              onError={revealImage}
               className="max-h-[calc(88*var(--project-vh))] w-[200%] max-w-[620px] translate-x-[120px] rotate-[-12deg] scale-[1.02] object-contain [filter:drop-shadow(-20px_30px_45px_rgba(0,0,0,0.65))] transition-[transform,filter] duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
             />
           </div>
@@ -106,6 +163,8 @@ export default function Slide({ slide, isActive, rosterIndex }) {
               <ResponsiveImage loading="eager"
                 src={slide.visualRight.src}
                 alt={slide.visualRight.alt}
+                onLoad={revealImage}
+                onError={revealImage}
                 className="max-h-[calc(76*var(--project-vh))] max-w-full object-contain [filter:drop-shadow(0_20px_50px_rgba(0,0,0,0.7))]"
               />
             </div>
@@ -119,6 +178,8 @@ export default function Slide({ slide, isActive, rosterIndex }) {
                 key={face.key}
                 src={face.src}
                 alt={face.alt}
+                onLoad={revealImage}
+                onError={revealImage}
                 style={{ '--portrait-offset': face.mobileOffset }}
                 className={`absolute bottom-[calc(-1*var(--project-vh))] right-0 h-[calc(98*var(--project-vh))] w-auto max-w-none object-contain object-right-bottom [backface-visibility:hidden] [filter:drop-shadow(0_25px_60px_rgba(0,0,0,0.95))] transition-[opacity,visibility] duration-[850ms] ease-in-out motion-reduce:transition-none ${
                   i === rosterIndex ? 'visible opacity-100' : 'invisible opacity-0'

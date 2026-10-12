@@ -5,6 +5,7 @@ import Nav from '../../components/Nav.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
 import CaseStudyDescription from '../../components/CaseStudyDescription.jsx'
 import useScrollReveal from '../../hooks/useScrollReveal.js'
+import './SourcePage.css'
 
 const DARK_SECTIONS = ['.source-hero', '.source-brand-dark-nav', '.source-social-dark-nav']
 const REVEAL = 'opacity-0 translate-y-10 transition-[opacity,transform] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] will-change-[opacity,transform] data-[revealed=true]:translate-y-0 data-[revealed=true]:opacity-100'
@@ -161,7 +162,7 @@ export default function SourcePage() {
           <ResponsiveImage
             src="/assets/images/source/source-character-cutout.png"
             alt="Source team member"
-            className={`absolute bottom-0 left-[49.5%] z-10 w-[24.5%] max-[1201px]:relative max-[1201px]:bottom-auto max-[1201px]:left-auto max-[1201px]:mx-auto max-[1201px]:block max-[1201px]:w-full max-[1201px]:max-w-[430px] ${REVEAL}`}
+            className={`source-character absolute bottom-0 left-[49.5%] z-10 w-[24.5%] max-[1201px]:relative max-[1201px]:bottom-auto max-[1201px]:left-auto max-[1201px]:mx-auto max-[1201px]:block max-[1201px]:w-full max-[1201px]:max-w-[430px] ${REVEAL}`}
             data-reveal
           />
 
@@ -212,7 +213,7 @@ export default function SourcePage() {
             </div>
 
             <div className={`source-liquid-glass flex min-h-[clamp(270px,21.45vw,310px)] w-[33vw] max-w-[480px] shrink-0 flex-col items-center justify-center rounded-[clamp(26px,1.98vw,31px)] px-[clamp(33px,3.08vw,46px)] py-8 text-center max-[1201px]:h-auto max-[1201px]:w-full max-[1201px]:max-w-none max-[1201px]:rounded-[26px] max-[1201px]:px-6 max-[1201px]:py-12 ${REVEAL}`} data-reveal>
-              <ResponsiveImage src="/assets/images/source/source-main.png" alt="Source" className="mb-[clamp(9px,0.83vw,12px)] w-[13%] max-[1201px]:mb-2 max-[1201px]:w-[56px]" />
+              <ResponsiveImage src="/assets/images/source/SOURCE-PROJ.png" alt="Source" className="source-social-logo mb-[clamp(9px,0.83vw,12px)] block h-auto w-[clamp(56px,4vw,76px)] shrink-0 object-contain max-[1201px]:mb-2 max-[1201px]:w-[56px]" />
               <h2 className="case-study-title whitespace-nowrap text-[clamp(42px,4.29vw,62px)] leading-none tracking-[-0.055em] max-[1201px]:text-[clamp(36px,7vw,62px)]">Social Media</h2>
               <p className="mt-[clamp(10px,0.99vw,14px)] font-questrial text-[clamp(12px,1.08vw,15px)] leading-none max-[1201px]:mt-3 max-[1201px]:text-sm">Marketing Design</p>
               <CaseStudyDescription className="mt-[clamp(15px,1.65vw,23px)] text-white/95 max-[1201px]:mt-6">

@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import Nav from '../../components/Nav.jsx'
 import CaseStudyMeta from '../../components/CaseStudyMeta.jsx'
 import CaseStudyDescription from '../../components/CaseStudyDescription.jsx'
+import useScrollReveal from '../../hooks/useScrollReveal.js'
 
 const MOCKUPS = Array.from({ length: 9 }, (_, index) => ({
   n: index + 1,
@@ -58,30 +59,13 @@ const PALETTE = [
 ]
 
 export default function GameDev() {
+  useScrollReveal([], '0px 0px -50px 0px', '.gamedev-case-study .fade-in', 0.15)
   useEffect(() => {
     const previousTitle = document.title
     document.title = 'Philippine Game Dev Experience | Iverson Mendiola'
     pageScrollToTop()
 
-    const fadeElements = document.querySelectorAll('.gamedev-case-study .fade-in')
-    const observer = new IntersectionObserver(
-      (entries, revealObserver) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.dataset.revealed = 'true'
-            revealObserver.unobserve(entry.target)
-          }
-        })
-      },
-      { threshold: 0.15, rootMargin: '0px 0px -50px 0px' },
-    )
-
-    fadeElements.forEach((element) => {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) element.dataset.revealed = 'true'
-      else observer.observe(element)
-    })
     return () => {
-      observer.disconnect()
       document.title = previousTitle
     }
   }, [])
@@ -182,14 +166,14 @@ export default function GameDev() {
         </section>
       </main>
 
-      <footer className="flex h-[260px] w-full items-end justify-center bg-transparent pb-10">
-        <div className="flex w-full max-w-[1100px] items-center justify-between px-10 max-md:max-w-[2000px] max-md:px-[6vw]">
-          <BrandMark src="/assets/images/gamedev/game-main.png" alt="Game Dev Logo" className="h-[38px] w-[131.1px]" />
-          <div className="flex flex-col items-center gap-1.5">
+      <footer className="gamedev-footer flex h-[260px] w-full items-end justify-center bg-transparent pb-10">
+        <div className="gamedev-footer-marks grid w-full max-w-[1100px] grid-cols-3 items-end px-10 max-md:max-w-[2000px] max-md:px-[6vw]">
+          <BrandMark src="/assets/images/gamedev/game-main.png" alt="Game Dev Logo" className="h-[38px] w-[131.1px] max-w-full" />
+          <div className="flex flex-col items-center justify-self-center gap-1.5">
             <BrandMark src="/assets/images/gamedev/PINE-TREE.svg" alt="Pine Icon" className="aspect-[576.47/925.73] w-[25px]" />
             <p className="font-montserrat text-[13px] font-bold tracking-normal">2025</p>
           </div>
-          <BrandMark src="/assets/images/gamedev/game-dev-icon.png" alt="Secondary Icon" className="h-[46px] w-[47.08px]" />
+          <BrandMark src="/assets/images/gamedev/game-dev-icon.png" alt="Secondary Icon" className="h-[46px] w-[47.08px] justify-self-end" />
         </div>
       </footer>
     </div>

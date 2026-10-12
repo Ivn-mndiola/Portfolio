@@ -1,0 +1,5 @@
+@media (min-width: 1202px) {
+  .source-case-page .source-character { bottom: 2.5vw; }
+}
+
+[data-site-canvas="true"] .source-case-page .source-character { bottom: -1.5vw; }

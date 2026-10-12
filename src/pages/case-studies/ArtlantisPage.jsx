@@ -141,16 +141,9 @@ export default function ArtlantisPage() {
             </CaseStudyDescription>
           </div>
 
-          <div className={`absolute left-1/2 top-[84.5%] flex w-[28%] -translate-x-1/2 flex-col items-center max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mx-auto max-[1201px]:mt-24 max-[1201px]:w-full max-[1201px]:max-w-[520px] max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
-            <div className="relative isolate w-full">
-              <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-                <span className="absolute bottom-[11%] left-[1%] h-[4%] w-[22%] -rotate-12 rounded-[50%] bg-black/25 blur-[clamp(3px,0.35vw,7px)]" />
-                <span className="absolute bottom-[-2%] left-[13%] h-[13%] w-[42%] rounded-[50%] bg-black/30 blur-[clamp(3px,0.35vw,7px)]" />
-                <span className="absolute bottom-[4%] right-[-2%] h-[12%] w-[58%] rounded-[50%] bg-black/30 blur-[clamp(3px,0.35vw,7px)]" />
-              </div>
-              <ResponsiveImage src="/assets/images/artlantis/artlantis-duo-cutout.png" alt="Sharky and Chanty" className="relative z-10 w-full" />
-            </div>
-            <ResponsiveImage src="/assets/images/artlantis/ARTLANTIS-PROJ.png" alt="Artlantis Duo" className="mt-[3vw] w-[27%] max-[1201px]:mt-10 max-[1201px]:w-[140px]" />
+          <div className={`artlantis-ending absolute left-1/2 top-[84.5%] flex w-[34%] -translate-x-1/2 flex-col items-center max-[1201px]:relative max-[1201px]:left-auto max-[1201px]:top-auto max-[1201px]:mx-auto max-[1201px]:mt-24 max-[1201px]:w-full max-[1201px]:max-w-[520px] max-[1201px]:translate-x-0 ${REVEAL}`} data-reveal>
+            <ResponsiveImage src="/assets/images/artlantis/ArtlantisEnding.png" alt="Sharky and Chanty with their complete fins and tails" width="6912" height="3897" className="block h-auto w-full object-contain" />
+            <ResponsiveImage src="/assets/images/artlantis/ARTLANTIS-PROJ.png" alt="Artlantis Duo" className="w-[27%] max-[1201px]:w-[140px]" />
           </div>
         </section>
       </main>

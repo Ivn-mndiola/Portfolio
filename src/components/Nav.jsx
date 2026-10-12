@@ -112,6 +112,7 @@ export default function Nav({ active = '/', darkSectionSelectors = null, accent 
   }, [darkSectionSelectors])
 
   function handleNavClick(e, to) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
     e.preventDefault()
     setMenuOpen(false)
     navigate(to)

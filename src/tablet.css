@@ -35,7 +35,8 @@
     left: auto;
     bottom: auto;
     display: block;
-    width: min(100%, 340px, calc((100svh - 156px) * 0.8213));
+    width: min(100%, 420px, calc((100svh - 156px) * 6527 / 6483));
+    height: auto;
     margin: 0 auto;
     mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
   }

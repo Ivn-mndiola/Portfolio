@@ -1,4 +1,30 @@
-# Portfolio v90
+# Portfolio v93
+
+This revision fixes missed first-visit animations in the latest v92 project. Home and About portraits now reveal after their images finish loading and decoding. Project artwork fades in when ready, and animation entrances wait until the browser tab is visible. Project buttons remain available while large artwork downloads.
+
+Scroll reveals now include the visible bottom edge of the viewport. Hidden layout variants and offscreen lazy images do not block a visible image reveal. Game Dev uses the shared reveal hook and displays content when IntersectionObserver is unavailable. The visitor's Reduce Motion preference remains respected, including changes while an image is still loading.
+
+The v92 artwork revisions, fonts, full-screen iPad canvas, layouts, navigation, dependencies, and Vercel routing are retained. All 403 files under `public` are byte-for-byte unchanged. See `ANIMATION_VALIDATION.md` for reproduction evidence, checks, and limitations.
+
+Redeploy the complete project using your existing Vercel workflow. Use `npm ci --include=dev` and `npm run build`. This source update has not been deployed to your Vercel account.
+
+---
+
+# Portfolio v92
+
+This revision applies the supplied revision image and both files from `new-assets.zip` to the latest v91 project.
+
+- Game Dev's footer uses three equal columns, keeping its pine/year mark centered between the two brand marks.
+- Source's character moves up on PC and down on the landscape tablet canvas. Its Social Media panel uses the larger original logo with automatic height, preserved proportions, and no flex shrinking.
+- Artlantis's ending uses the complete supplied `ArtlantisEnding.png`, including its fins, tails, and original shadows.
+- About uses the supplied `About.png` in a larger portrait frame. Tighter introduction spacing brings Education into the initial desktop view, and visible About details reveal without the previous 100px inset at the bottom of the screen. Education, Experience, Software, and Equipment remain scrollable.
+- Home's logo preview has a consistent height, equal repeating groups, stronger visibility, and reduced-motion support.
+
+All earlier supplied assets, description fonts, dependencies, the full-screen iPad canvas, and the Vercel routing config are retained. Both replacement PNGs are included at their original resolution. See `REVISION_VALIDATION.md` for this revision's checks.
+
+Vercel now has the required SPA fallback in `vercel.json`. Direct visits, refreshes, and new-tab opens of `/projects` and the case-study routes load `index.html`, then React Router opens the requested page. Navigation also preserves browser defaults for Ctrl/Cmd-click, Shift-click, and non-primary clicks. Normal left-click navigation is unchanged.
+
+Keep `vercel.json` beside `package.json` in the project root used by Vercel. Commit and push the updated source, or redeploy it using your existing deployment workflow. This local update has not been deployed to your Vercel account. The full-screen iPad changes below are retained.
 
 This update removes the empty bands above and below the website on a landscape iPad. One persistent desktop canvas fills the browser's visible viewport across every tab and all eight case studies. Switching from Home to Projects keeps the same scale.
 
