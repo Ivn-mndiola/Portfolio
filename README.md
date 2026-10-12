@@ -1,3 +1,15 @@
+# Portfolio v95
+
+Game Dev's Projects preview now displays the original supplied icon and title artwork without brightness/invert color conversion. The cream lettering and the title's original dark shadows remain visible when opening Projects or switching slides on desktop, iPad, and phone. NIA's existing white icon treatment is retained.
+
+The Source man now meets the bottom edge of the blue Source bar on both PC and landscape iPad. One shared alignment follows the border in the background image and the visible bottom of the cutout, including its transparent padding. It also accounts for the PC content width being narrower than the viewport because of a scrollbar. Separate PC and iPad vertical offsets have been removed. Portrait-tablet and phone positioning remains unchanged.
+
+The v94 portrait-floor and Source-scrolling fixes, v93 animation loading fixes, fonts, high-resolution assets, full-screen iPad canvas, and routing are retained. All 403 public files are byte-for-byte unchanged. See `LOGO_SOURCE_VALIDATION.md` for checks and limits.
+
+Replace the complete project and redeploy it through your existing Vercel workflow. Use `npm ci --include=dev` and `npm run build`. This source revision has not been published to your live website.
+
+---
+
 # Portfolio v94
 
 This update closes the gap below the About portrait on desktop and landscape iPad, including while scrolling. The supplied PNG has transparent padding below the visible coat; the image is positioned lower within its existing frame so the coat meets the viewport floor. Its original resolution and displayed size are retained. Phone and portrait-tablet placement is unchanged.

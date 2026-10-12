@@ -90,7 +90,7 @@ export default function Slide({ slide, isActive, rosterIndex }) {
                 alt=""
                 onLoad={revealImage}
                 onError={revealImage}
-                className="project-slide-icon mb-8 h-auto w-[75px] brightness-0 invert"
+                className={`project-slide-icon mb-8 h-auto w-[75px] ${slide.id === 'gamedev' ? '' : 'brightness-0 invert'}`}
               />
             )}
             {slide.titleGraphic && (
@@ -99,9 +99,6 @@ export default function Slide({ slide, isActive, rosterIndex }) {
                 alt={`${slide.id} title`}
                 onLoad={revealImage}
                 onError={revealImage}
-                style={slide.id === 'gamedev'
-                  ? { filter: 'brightness(0) invert(0.9921568627) drop-shadow(0 15px 35px rgba(0,0,0,0.65))' }
-                  : undefined}
                 className={`h-auto max-h-[200px] w-full object-contain [filter:drop-shadow(0_15px_35px_rgba(0,0,0,0.65))] ${
                   slide.id === 'gamedev' ? 'max-w-[540px]' : slide.id === 'dbfortri' ? 'max-w-[620px]' : 'max-w-[520px]'
                 }`}

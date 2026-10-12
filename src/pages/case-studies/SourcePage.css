@@ -1,7 +1,10 @@
 .source-case-page { touch-action: pan-y pinch-zoom; }
 
 @media (min-width: 1202px) {
-  .source-case-page .source-character { bottom: 2.5vw; }
+  .source-case-page .source-character {
+    top: -65.7vw;
+    bottom: auto;
+    margin-top: calc(100% * 5606 / 3840);
+    transform: translateY(calc(-100% * 837 / 867));
+  }
 }
-
-[data-site-canvas="true"] .source-case-page .source-character { bottom: -1.5vw; }
