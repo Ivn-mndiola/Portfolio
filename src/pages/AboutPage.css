@@ -21,7 +21,7 @@
 
 .about-portrait img {
   position: absolute;
-  bottom: 0;
+  bottom: calc(-100% * 358 / 6483);
   left: 50%;
   display: block;
   width: auto;
@@ -156,6 +156,7 @@
     margin-bottom: 32px;
     mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
   }
+  .about-portrait img { bottom: 0; }
   .about-scroll-content { width: 100%; max-width: 760px; margin-inline: auto; padding-top: 0; padding-bottom: 64px; }
   .about-introduction { padding: 0; }
   .about-introduction h1 { text-align: left; font-size: clamp(72px, 13vw, 112px); }

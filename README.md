@@ -1,3 +1,15 @@
+# Portfolio v94
+
+This update closes the gap below the About portrait on desktop and landscape iPad, including while scrolling. The supplied PNG has transparent padding below the visible coat; the image is positioned lower within its existing frame so the coat meets the viewport floor. Its original resolution and displayed size are retained. Phone and portrait-tablet placement is unchanged.
+
+The Source case study now uses horizontal clipping without an extra vertical scroll container. Vertical touch panning and pinch zoom are explicit, the large background uses asynchronous decoding, and reveal elements no longer request permanent compositor layers. Source scrolling responds while the artwork is downloading. The desktop composition, landscape canvas scale, character position, background artwork, and carousel remain in place.
+
+All v93 animation fixes are retained. All 403 files under `public`, the dependencies, fonts, shared navigation, desktop-canvas implementation, and Vercel config are unchanged. See `AVATAR_SCROLL_VALIDATION.md` for the reproduction and checks.
+
+Replace the complete project and redeploy using your existing Vercel workflow. Run `npm ci --include=dev`, then `npm run build`. This source update has not been published to your live site.
+
+---
+
 # Portfolio v93
 
 This revision fixes missed first-visit animations in the latest v92 project. Home and About portraits now reveal after their images finish loading and decoding. Project artwork fades in when ready, and animation entrances wait until the browser tab is visible. Project buttons remain available while large artwork downloads.

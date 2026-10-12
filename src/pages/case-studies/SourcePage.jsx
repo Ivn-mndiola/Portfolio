@@ -8,7 +8,7 @@ import useScrollReveal from '../../hooks/useScrollReveal.js'
 import './SourcePage.css'
 
 const DARK_SECTIONS = ['.source-hero', '.source-brand-dark-nav', '.source-social-dark-nav']
-const REVEAL = 'opacity-0 translate-y-10 transition-[opacity,transform] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] will-change-[opacity,transform] data-[revealed=true]:translate-y-0 data-[revealed=true]:opacity-100'
+const REVEAL = 'opacity-0 translate-y-10 transition-[opacity,transform] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] data-[revealed=true]:translate-y-0 data-[revealed=true]:opacity-100'
 
 const SOCIAL_POSTS = [
   { src: '/assets/images/source/source-social-01-pulsar.jpg', alt: 'Pulsar X2V2 gaming mouse campaign' },
@@ -83,7 +83,7 @@ export default function SourcePage() {
   }, [carouselPaused, carouselVisible, goNext])
 
   return (
-    <div className="source-case-page questrial-regular relative min-h-screen overflow-x-hidden bg-[#233F91] text-white">
+    <div className="source-case-page questrial-regular relative min-h-screen overflow-x-clip bg-[#233F91] text-white">
       <Nav active="/projects" darkSectionSelectors={DARK_SECTIONS} accent="blue" />
 
       <picture aria-hidden="true">
@@ -92,6 +92,7 @@ export default function SourcePage() {
         alt=""
         aria-hidden="true"
         fetchPriority="high"
+        decoding="async"
         className="pointer-events-none absolute inset-x-0 top-0 z-0 hidden h-auto w-full select-none min-[1201px]:block"
        width="3840" height="7776" />
         </picture>
