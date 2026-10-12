@@ -1,3 +1,13 @@
+# Portfolio v96
+
+Home's bottom logo row now reserves each logo's original aspect ratio before loading and starts its scrolling animation after the images have decoded. This prevents the row from changing width when the Game Dev wordmark arrives. The fade and clipping use a stationary, isolated frame, with explicit Safari mask bounds. Centering the footer no longer applies a transform to that frame.
+
+The existing logo sizes, spacing, white treatment, fade, 20-second loop, and desktop/tablet composition are retained. The v95 Game Dev preview color and Source border alignment fixes are included. All 403 public files, fonts, dependencies, other pages, and the portrait are unchanged. See `HOME_LOGOS_VALIDATION.md` for checks and the physical-iPad testing limit.
+
+Replace the complete project and redeploy it through your existing Vercel workflow. Run `npm ci --include=dev` and `npm run build`. This source revision has not been published to your live website.
+
+---
+
 # Portfolio v95
 
 Game Dev's Projects preview now displays the original supplied icon and title artwork without brightness/invert color conversion. The cream lettering and the title's original dark shadows remain visible when opening Projects or switching slides on desktop, iPad, and phone. NIA's existing white icon treatment is retained.
@@ -179,5 +189,3 @@ Deploy the generated `dist` folder to a host with an SPA fallback to `index.html
 - Source rotates designs only while its carousel is visible, and mounts only its current and outgoing designs.
 
 See `VALIDATION.md` for the browser checks and their limits.
-
-- continuous project
