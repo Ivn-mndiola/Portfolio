@@ -179,3 +179,5 @@ Deploy the generated `dist` folder to a host with an SPA fallback to `index.html
 - Source rotates designs only while its carousel is visible, and mounts only its current and outgoing designs.
 
 See `VALIDATION.md` for the browser checks and their limits.
+
+- continuous project
