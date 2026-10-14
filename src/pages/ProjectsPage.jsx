@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import Nav from '../components/Nav.jsx'
 import Slide from '../components/Slide.jsx'
 import SLIDES from '../data/projectSlides.jsx'
@@ -42,7 +42,8 @@ export default function ProjectsPage() {
 
   const danesSlideIndex = SLIDES.findIndex((s) => s.id === 'danes')
   const rosterCount = SLIDES[danesSlideIndex]?.roster?.length ?? 0
-  const rosterIndex = useRosterCycle(rosterCount, current === danesSlideIndex)
+  const rosterRef = useRef(null)
+  const rosterIndex = useRosterCycle(rosterCount, current === danesSlideIndex, rosterRef)
 
   const pct = ((current + 1) / total) * 100
   const label = String(current + 1).padStart(2, '0')
@@ -60,6 +61,7 @@ export default function ProjectsPage() {
               slide={slide}
               isActive={i === current}
               rosterIndex={rosterIndex}
+              rosterRef={rosterRef}
             />
           ))}
         </main>

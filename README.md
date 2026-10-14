@@ -1,3 +1,13 @@
+# Portfolio v97
+
+The rotating Danes portraits in Projects now wait until the images have loaded and decoded before cycling. A delayed image no longer makes the current portrait disappear. Failed image requests are skipped, and the roster uses its existing 850ms crossfade without restarting a separate entrance animation on every portrait change.
+
+Cycling pauses while Danes is inactive or the browser document is hidden. Reduce Motion keeps one portrait visible. The existing portrait artwork, sizes, positions, shadows, 2500ms interval, desktop/tablet composition, case studies, fonts, and all v96 fixes are retained. All 403 public files are unchanged. See `DANES_PORTRAITS_VALIDATION.md` for checks and testing limits.
+
+Replace the complete project and redeploy it through your existing Vercel workflow. Run `npm ci --include=dev` and `npm run build`. This source revision has not been published to your live website.
+
+---
+
 # Portfolio v96
 
 Home's bottom logo row now reserves each logo's original aspect ratio before loading and starts its scrolling animation after the images have decoded. This prevents the row from changing width when the Game Dev wordmark arrives. The fade and clipping use a stationary, isolated frame, with explicit Safari mask bounds. Centering the footer no longer applies a transform to that frame.

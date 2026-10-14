@@ -11,7 +11,7 @@ function revealImage(event) {
   })
 }
 
-export default function Slide({ slide, isActive, rosterIndex }) {
+export default function Slide({ slide, isActive, rosterIndex, rosterRef }) {
   const backgroundRef = useRef(null)
   const [backgroundReady, setBackgroundReady] = useState(false)
   const hasTextTitle = Boolean(slide.titleText)
@@ -169,12 +169,13 @@ export default function Slide({ slide, isActive, rosterIndex }) {
         )}
 
         {slide.roster && (
-          <div className="project-slide-roster pointer-events-none absolute inset-0 z-[2] h-[calc(100*var(--project-vh))] w-[calc(100*var(--project-vw))]">
+          <div ref={rosterRef} className="project-slide-roster pointer-events-none absolute inset-0 z-[2] h-[calc(100*var(--project-vh))] w-[calc(100*var(--project-vw))]">
             {slide.roster.map((face, i) => (
               <ResponsiveImage loading="eager"
                 key={face.key}
                 src={face.src}
                 alt={face.alt}
+                aria-hidden={!isActive || i !== rosterIndex}
                 onLoad={revealImage}
                 onError={revealImage}
                 style={{ '--portrait-offset': face.mobileOffset }}
